@@ -10,9 +10,9 @@ import axios from "axios";
 Vue.prototype.$axios = axios;
 
 // 引入Vant
-import Vant from "vant";
-import "vant/lib/index.css";
-Vue.use(Vant);
+// import Vant from "vant";
+// import "vant/lib/index.css";
+// Vue.use(Vant);
 
 import Video from 'video.js'
 import 'video.js/dist/video-js.css'
