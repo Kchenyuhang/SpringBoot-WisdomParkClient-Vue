@@ -1,37 +1,74 @@
 <template>
-<transition :name="transitionName">
-  <div style=" position:absolute;width:100%">
-    <div class="cc-col-center">
-      <p class="title">首页</p>
-    </div>
+  <transition :name="transitionName">
+    <div class="address1">
+      <div class="cc-col-center">
+        <p class="title">首页</p>
+      </div>
       <Carousel :slideList="slideList"></Carousel>
-    
-    <div class="cc-df">
-      <div class="cc-col-center cc-coll-3">
-        <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_kechengbiao.png" alt="课程表图标" class="icon">
-        <p class="cc-mtop font-size">课程表</p>
+      <div class="cc-df">
+        <div class="cc-col-center cc-coll-3">
+          <img
+            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_kechengbiao.png"
+            alt="课程表图标"
+            class="icon"
+          />
+          <p class="cc-mtop font-size">课程表</p>
+        </div>
+        <div class="cc-col-center cc-coll-3">
+          <img
+            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_kaowuchaxun.png"
+            alt="考务查询图标"
+            class="icon"
+          />
+          <p class="cc-mtop font-size">考务查询</p>
+        </div>
+        <div class="cc-col-center cc-coll-3">
+          <img
+            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_tushuguan.png"
+            alt="图书馆图标"
+            class="icon"
+          />
+          <p class="cc-mtop font-size">图书馆</p>
+        </div>
+        <div class="cc-col-center cc-coll-3">
+          <img
+            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_xiaoyuankachongzhi.png"
+            alt="一卡通图标"
+            class="icon"
+          />
+          <p class="cc-mtop font-size">一卡通</p>
+        </div>
       </div>
-      <div class="cc-col-center cc-coll-3">
-        <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_kaowuchaxun.png" alt="课程表图标" class="icon">
-        <p class="cc-mtop font-size">考务查询</p>
+      <hr class="line" />
+      <div class="address">
+        <p class="fontSize">我的课程</p>
+        <div class="cc-df cc-mtop lateral-sliding">
+          <div v-for="item in 3" :key="item.id">
+            <div class="subject-card" v-bind:style="{backgroundImage:'url(' + avatar + ')'}">
+              <p class=" fontSizeTitle">微信小程序</p>
+              <p class=" fontSizebody1">1-2节</p>
+              <div class="cc-df">
+                <p class=" fontSizebody">教四</p>
+                <p class=" fontSizebody cc-mleft">402</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="cc-col-center cc-coll-3">
-        <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_tushuguan.png" alt="课程表图标" class="icon">
-        <p class="cc-mtop font-size">图书馆</p>
-      </div>
-      <div class="cc-col-center cc-coll-3">
-        <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_xiaoyuankachongzhi.png" alt="课程表图标" class="icon">
-        <p class="cc-mtop font-size">一卡通</p>
+      <hr class="line" />
+      <div class="address">
+        <p class="fontSize">热门资讯</p>
+        <div class="cc-col">
+          <div class="cc-mtop" v-for="item in 3" :key="item.id">
+            <div class="left" v-bind:style="{backgroundImage:'url(' + avatar + ')'}"></div>
+            <div class="right cc-col">
+              
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <hr class="line">
-    <div class="address">
-      <p class="fontSize">
-        我的课程
-      </p>
-    </div>
-  </div>
-</transition>
+  </transition>
 </template>
 
 <script>
@@ -44,41 +81,44 @@ export default {
           url: "#",
           description: "one",
           image:
-            "https://cdn.dribbble.com/users/329207/screenshots/7824170/media/cc77353e67ca46a4da78553330209a72.jpg"
+            "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/lunbo1.jpeg"
         },
         {
           url: "#",
           description: "two",
           image:
-            "https://cdn.dribbble.com/users/63407/screenshots/7825858/media/547d13eb0522eabcbbaa6683c82bfe40.png"
+            "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/lunbo2.jpg"
         },
         {
           url: "#",
           description: "three",
           image:
-            "https://cdn.dribbble.com/users/1018201/screenshots/7816965/media/2ed92a6a7ee0017e28f3bbcaf88b8138.png"
+            "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/lunbo3.jpg"
         }
       ],
-      transitionName: this.$store.state.transitionName
+      transitionName: this.$store.state.transitionName,
+      avatar:"https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/bj1.png"
     };
   },
   components: {
-    Carousel: require('/school/client_h5_a/src/components/Carousel').default
+    Carousel: require("../../components/Carousel").default
   },
-  created() {
-  },
+  created() {},
   mounted() {},
-  methods: {
-  },
+  methods: {},
   computed: {}
 };
 </script>
 
 <style scoped lang="scss">
-.address{
+.address {
   margin-left: 5%;
 }
-
+.address1{
+  position: absolute;
+  width: 100%;
+  margin-bottom: 100px;
+}
 .title {
   font-size: 18px;
   font-weight: 550;
@@ -86,14 +126,13 @@ export default {
   margin-top: 10px;
 }
 
-
-.icon{
+.icon {
   margin-top: 25px;
   width: 55%;
   height: 50%;
 }
 
-.line{
+.line {
   width: 90%;
   margin-top: 15px;
   border: none;
@@ -102,13 +141,51 @@ export default {
   margin-bottom: 10px;
 }
 
-.font-size{
+.font-size {
   font-size: 12px;
   color: #979797;
 }
-.fontSize{
+.fontSize {
   font-size: 13px;
   color: #5e5e5e;
   font-weight: 550;
+}
+
+.subject-card {
+  width: 130px;
+  height: 80px;
+  border-radius: 5px;
+  margin-right: 30px;
+  padding-left: 5px;
+  padding-top: 3px;
+  background-size: cover;
+}
+
+.lateral-sliding {
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+
+.fontSizeTitle{
+  font-size: 15px;
+  color: #a2c3ff;
+}
+
+.fontSizebody{
+  font-size: 1px;
+  color: #a2c3ff;
+}
+
+.fontSizebody1{
+  font-size: 1px;
+  color: #a2c3ff;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.left{
+  width: 100px;
+  height: 80px;
 }
 </style>

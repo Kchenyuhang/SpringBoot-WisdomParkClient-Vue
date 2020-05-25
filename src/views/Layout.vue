@@ -5,7 +5,7 @@
     </div>
     <div class="wrap">
       <div class="icon1" v-if="iconIsshow1!=1" @click="iconIsshow1=1">
-         <router-link to="/information">
+        <router-link to="/information">
           <img
             src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_zixun1.png"
             alt
@@ -24,7 +24,7 @@
       </div>
 
       <div class="icon2" v-if="iconIsshow1!=2" @click="iconIsshow1=2">
-          <router-link to="/addressbook">
+        <router-link to="/addressbook">
           <img
             src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_tongxunlu.png"
             alt
@@ -32,7 +32,6 @@
           />
           <p>通讯录</p>
         </router-link>
-        
       </div>
       <div class="icon2" v-if="iconIsshow1==2">
         <img
@@ -111,7 +110,7 @@ export default {
   data() {
     return {
       iconIsshow1: 3,
-      transitionName1:''
+      transitionName1: ""
     };
   },
   components: {},
@@ -119,18 +118,24 @@ export default {
   mounted() {},
   methods: {},
   computed: {},
-  watch:{
-    '$route' (to, from) {
+  watch: {
+    $route(to, from) {
       //此时假设从index页面跳转到pointList页面
       console.log(to); // "/pointList"
       console.log(from); // “/index”
-      const routeDeep = ['/information', '/addressbook', '/index','/message', '/my'];
-      const toDepth = routeDeep.indexOf(to.path)
-      const fromDepth = routeDeep.indexOf(from.path)
-      this.transitionName1 = toDepth > fromDepth ? 'fold-left' : 'fold-right'
+      const routeDeep = [
+        "/information",
+        "/addressbook",
+        "/index",
+        "/message",
+        "/my"
+      ];
+      const toDepth = routeDeep.indexOf(to.path);
+      const fromDepth = routeDeep.indexOf(from.path);
+      this.transitionName1 = toDepth > fromDepth ? "fold-left" : "fold-right";
       localStorage.setItem("transitionName", this.transitionName1);
       this.$store.commit("setTransitionName", this.transitionName1);
-      console.log(this.$store.state.transitionName)
+      console.log(this.$store.state.transitionName);
     }
   }
 };
@@ -144,7 +149,7 @@ export default {
   background-color: #ffffff;
   width: 100%;
   height: 70px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   display: flex;
   text-align: center;
@@ -190,5 +195,4 @@ p {
   height: 20px;
   width: 20px;
 }
-
 </style>
