@@ -1,37 +1,53 @@
 <template>
-<transition :name="transitionName">
-  <div style=" position:absolute;width:100%">
-    <div class="cc-col-center">
-      <p class="title">首页</p>
-    </div>
+  <transition :name="transitionName">
+    <div style=" position:absolute;width:100%">
+      <div class="cc-col-center">
+        <p class="title">首页</p>
+      </div>
       <Carousel :slideList="slideList"></Carousel>
-    
-    <div class="cc-df">
-      <div class="cc-col-center cc-coll-3">
-        <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_kechengbiao.png" alt="课程表图标" class="icon">
-        <p class="cc-mtop font-size">课程表</p>
+
+      <div class="cc-df">
+        <div class="cc-col-center cc-coll-3">
+          <img
+            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_kechengbiao.png"
+            alt="课程表图标"
+            class="icon"
+          >
+          <p class="cc-mtop font-size">课程表</p>
+        </div>
+        <div class="cc-col-center cc-coll-3">
+          <img
+            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_kaowuchaxun.png"
+            alt="课程表图标"
+            class="icon"
+          >
+          <p class="cc-mtop font-size">考务查询</p>
+        </div>
+        <div class="cc-col-center cc-coll-3">
+          <img
+            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_tushuguan.png"
+            alt="课程表图标"
+            class="icon"
+          >
+          <p class="cc-mtop font-size">图书馆</p>
+        </div>
+        <div class="cc-col-center cc-coll-3">
+          <img
+            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_xiaoyuankachongzhi.png"
+            alt="课程表图标"
+            class="icon"
+          >
+          <p class="cc-mtop font-size">一卡通</p>
+        </div>
       </div>
-      <div class="cc-col-center cc-coll-3">
-        <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_kaowuchaxun.png" alt="课程表图标" class="icon">
-        <p class="cc-mtop font-size">考务查询</p>
-      </div>
-      <div class="cc-col-center cc-coll-3">
-        <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_tushuguan.png" alt="课程表图标" class="icon">
-        <p class="cc-mtop font-size">图书馆</p>
-      </div>
-      <div class="cc-col-center cc-coll-3">
-        <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_xiaoyuankachongzhi.png" alt="课程表图标" class="icon">
-        <p class="cc-mtop font-size">一卡通</p>
+      <hr class="line">
+      <div class="address">
+        <p class="fontSize">
+          我的课程
+        </p>
       </div>
     </div>
-    <hr class="line">
-    <div class="address">
-      <p class="fontSize">
-        我的课程
-      </p>
-    </div>
-  </div>
-</transition>
+  </transition>
 </template>
 
 <script>
@@ -63,19 +79,17 @@ export default {
     };
   },
   components: {
-    Carousel: require('/school/client_h5_a/src/components/Carousel').default
+    Carousel: require("../../components/Carousel").default
   },
-  created() {
-  },
+  created() {},
   mounted() {},
-  methods: {
-  },
+  methods: {},
   computed: {}
 };
 </script>
 
 <style scoped lang="scss">
-.address{
+.address {
   margin-left: 5%;
 }
 
@@ -86,14 +100,13 @@ export default {
   margin-top: 10px;
 }
 
-
-.icon{
+.icon {
   margin-top: 25px;
   width: 55%;
   height: 50%;
 }
 
-.line{
+.line {
   width: 90%;
   margin-top: 15px;
   border: none;
@@ -102,11 +115,11 @@ export default {
   margin-bottom: 10px;
 }
 
-.font-size{
+.font-size {
   font-size: 12px;
   color: #979797;
 }
-.fontSize{
+.fontSize {
   font-size: 13px;
   color: #5e5e5e;
   font-weight: 550;
