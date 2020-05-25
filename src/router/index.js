@@ -8,49 +8,59 @@ const routes = [
   {
     path: '/',
     name: 'Login',
-    component: Login
+    component: Login,
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login,
+  },
+  {
+    path: '/feedback',
+    name: 'Feedback',
+    component: () => import('../views/person/Feedback.vue'),
   },
   {
     path: '/layout',
     name: 'Layout',
     component: Layout,
-    children:[
+    children: [
       {
         path: '/',
         name: 'Index',
-        component: () => import('../views/main/Index.vue')
+        component: () => import('../views/main/Index.vue'),
       },
       {
         path: '/index',
         name: 'Index',
-        component: () => import('../views/main/Index.vue')
+        component: () => import('../views/main/Index.vue'),
       },
       {
         path: '/addressbook',
         name: 'AddressBook',
-        component: () => import('../views/main/AddressBook.vue')
+        component: () => import('../views/main/AddressBook.vue'),
       },
       {
         path: '/information',
         name: 'Information',
-        component: () => import('../views/main/Information.vue')
+        component: () => import('../views/main/Information.vue'),
       },
       {
         path: '/message',
         name: 'Message',
-        component: () => import('../views/main/Message.vue')
+        component: () => import('../views/main/Message.vue'),
       },
       {
         path: '/my',
         name: 'My',
-        component: () => import('../views/main/My.vue')
-      }
-    ]
-  }
+        component: () => import('../views/main/My.vue'),
+      },
+    ],
+  },
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
 })
 
 export default router
