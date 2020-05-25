@@ -4,11 +4,15 @@
       <router-view />
     </div>
     <div class="wrap">
+<<<<<<< HEAD
+      <div class="icon1" v-if="iconIsshow1!=1" @click="iconIsshow1=1">
+=======
       <div
         class="icon1"
         v-if="iconIsshow1!=1"
         @click="iconIsshow1=1"
       >
+>>>>>>> b7ad131da5918cecfb19305f40e0d721fd8304ec
         <router-link to="/information">
           <img
             src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_zixun1.png"
@@ -30,11 +34,15 @@
         <p :class="{'blue-font':iconIsshow1==1}">资讯</p>
       </div>
 
+<<<<<<< HEAD
+      <div class="icon2" v-if="iconIsshow1!=2" @click="iconIsshow1=2">
+=======
       <div
         class="icon2"
         v-if="iconIsshow1!=2"
         @click="iconIsshow1=2"
       >
+>>>>>>> b7ad131da5918cecfb19305f40e0d721fd8304ec
         <router-link to="/addressbook">
           <img
             src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_tongxunlu.png"
@@ -43,7 +51,10 @@
           />
           <p>通讯录</p>
         </router-link>
+<<<<<<< HEAD
+=======
 
+>>>>>>> b7ad131da5918cecfb19305f40e0d721fd8304ec
       </div>
       <div
         class="icon2"
@@ -185,7 +196,7 @@ export default {
   background-color: #ffffff;
   width: 100%;
   height: 70px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   display: flex;
   text-align: center;
