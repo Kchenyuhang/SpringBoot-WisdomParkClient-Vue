@@ -43,8 +43,14 @@
       <div class="address">
         <p class="fontSize">我的课程</p>
         <div class="cc-df cc-mtop lateral-sliding">
-          <div v-for="item in 3" :key="item.id">
-            <div class="subject-card" v-bind:style="{backgroundImage:'url(' + avatar + ')'}">
+          <div
+            v-for="item in 3"
+            :key="item.id"
+          >
+            <div
+              class="subject-card"
+              v-bind:style="{backgroundImage:'url(' + avatar + ')'}"
+            >
               <p class=" fontSizeTitle">微信小程序</p>
               <p class=" fontSizebody1">1-2节</p>
               <div class="cc-df">
@@ -59,10 +65,17 @@
       <div class="address">
         <p class="fontSize">热门资讯</p>
         <div class="cc-col">
-          <div class="cc-mtop" v-for="item in 3" :key="item.id">
-            <div class="left" v-bind:style="{backgroundImage:'url(' + avatar + ')'}"></div>
+          <div
+            class="cc-mtop"
+            v-for="item in 3"
+            :key="item.id"
+          >
+            <div
+              class="left"
+              v-bind:style="{backgroundImage:'url(' + avatar + ')'}"
+            ></div>
             <div class="right cc-col">
-              
+
             </div>
           </div>
         </div>
@@ -86,18 +99,16 @@ export default {
         {
           url: "#",
           description: "two",
-          image:
-            "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/lunbo2.jpg"
+          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/lunbo2.jpg"
         },
         {
           url: "#",
           description: "three",
-          image:
-            "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/lunbo3.jpg"
+          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/lunbo3.jpg"
         }
       ],
       transitionName: this.$store.state.transitionName,
-      avatar:"https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/bj1.png"
+      avatar: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/bj1.png"
     };
   },
   components: {
@@ -114,7 +125,7 @@ export default {
 .address {
   margin-left: 5%;
 }
-.address1{
+.address1 {
   position: absolute;
   width: 100%;
   margin-bottom: 100px;
@@ -168,24 +179,24 @@ export default {
   overflow-x: scroll;
 }
 
-.fontSizeTitle{
+.fontSizeTitle {
   font-size: 15px;
   color: #a2c3ff;
 }
 
-.fontSizebody{
+.fontSizebody {
   font-size: 1px;
   color: #a2c3ff;
 }
 
-.fontSizebody1{
+.fontSizebody1 {
   font-size: 1px;
   color: #a2c3ff;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-.left{
+.left {
   width: 100px;
   height: 80px;
 }
