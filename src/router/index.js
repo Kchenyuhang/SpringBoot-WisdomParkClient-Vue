@@ -46,6 +46,11 @@ const routes = [
         component: () => import('../views/main/My.vue')
       }
     ]
+  },
+  {
+    path: '/forget',
+    name: 'Forget',
+    component: () => import('../views/Forget.vue')
   }
 ]
 

@@ -1,10 +1,10 @@
 <template>
   <div class="bg">
-    <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/bg_denglu.png" alt />
+    
     <div class="title">
       <p>智慧校园</p>
     </div>
-    <div class="login cc-col-center">
+    <div class="login cc-col-center" v-if="isShow">
       <div class="cc-df">
         <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_shouji.png"
@@ -29,6 +29,45 @@
         <div class="btn-sms"><p>获取验证码</p></div>
       </div>
       <hr class="line">
+      <div class="cc-df">
+        <div><p class="fontSize" @click="isShow=!isShow">账号密码登录</p></div>
+        <div class="cc-mllleft"><p class="fontSize">忘记密码</p></div>
+      </div>
+      <div class="login-btn" @click="signIn()">
+        <p>确认登录</p>
+      </div>
+    </div>
+    <div class="login cc-col-center" v-if="!isShow">
+      <div class="cc-df">
+        <img
+          src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_shouji.png"
+          alt="输入手机号图表"
+          class="size"
+        />
+        <input
+          type="text"
+          maxlength="11"
+          oninput="value=value.replace(/[^\d]/g,'')"
+          placeholder="请输入手机号"
+        />
+      </div>
+      <hr class="line">
+      <div class="cc-df">
+        <img
+          src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_yanzhengma.png"
+          alt="输入mima 图表"
+          class="size"
+        />
+        <input
+          type="password"
+          placeholder="请输入密码"
+        />
+      </div>
+      <hr class="line">
+      <div class="cc-df">
+        <div><p class="fontSize" @click="isShow=!isShow">手机快捷登录</p></div>
+        <div class="cc-mllleft"><p class="fontSize">忘记密码</p></div>
+      </div>
       <div class="login-btn" @click="signIn()">
         <p>确认登录</p>
       </div>
@@ -40,7 +79,9 @@
 export default {
   name: "Login",
   data() {
-    return {};
+    return {
+      isShow:true
+    };
   },
   components: {},
   created() {},
@@ -57,17 +98,20 @@ export default {
 <style scoped lang="scss">
 .bg {
   text-align: center;
+  width: 100%;
+  background-image: url("https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/bg_denglu.png");
+  background-size: cover;
+  padding-top: 130px;
 }
 .title {
   font-family: STLiti;
-  font-size: 50px;
-  margin-top: -140%;
+  font-size: 45px;
 }
 .title p {
   color: white;
 }
 .login {
-  margin-top: 80%;
+  margin-top: 70%;
 }
 .login input {
   border: none;
@@ -107,6 +151,10 @@ export default {
   color: #6cc9ff;
   font-size: 12px;
   margin-left: -30px;
+}
+.fontSize{
+  font-size: 12px;
+  margin-bottom: 15px;
 }
 input::-webkit-input-placeholder{
           color: #CCCCCC;

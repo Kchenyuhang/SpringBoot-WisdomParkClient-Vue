@@ -1,6 +1,5 @@
 <template>
   <transition :name="transitionName">
-<<<<<<< HEAD
     <div class="address1">
       <div class="cc-col-center">
         <p class="title">首页</p>
@@ -67,53 +66,6 @@
             </div>
           </div>
         </div>
-=======
-    <div style=" position:absolute;width:100%">
-      <div class="cc-col-center">
-        <p class="title">首页</p>
-      </div>
-      <Carousel :slideList="slideList"></Carousel>
-
-      <div class="cc-df">
-        <div class="cc-col-center cc-coll-3">
-          <img
-            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_kechengbiao.png"
-            alt="课程表图标"
-            class="icon"
-          >
-          <p class="cc-mtop font-size">课程表</p>
-        </div>
-        <div class="cc-col-center cc-coll-3">
-          <img
-            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_kaowuchaxun.png"
-            alt="课程表图标"
-            class="icon"
-          >
-          <p class="cc-mtop font-size">考务查询</p>
-        </div>
-        <div class="cc-col-center cc-coll-3">
-          <img
-            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_tushuguan.png"
-            alt="课程表图标"
-            class="icon"
-          >
-          <p class="cc-mtop font-size">图书馆</p>
-        </div>
-        <div class="cc-col-center cc-coll-3">
-          <img
-            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_xiaoyuankachongzhi.png"
-            alt="课程表图标"
-            class="icon"
-          >
-          <p class="cc-mtop font-size">一卡通</p>
-        </div>
-      </div>
-      <hr class="line">
-      <div class="address">
-        <p class="fontSize">
-          我的课程
-        </p>
->>>>>>> b7ad131da5918cecfb19305f40e0d721fd8304ec
       </div>
     </div>
   </transition>
@@ -166,6 +118,7 @@ export default {
   position: absolute;
   width: 100%;
   margin-bottom: 100px;
+  background-color: white;
 }
 .title {
   font-size: 18px;
