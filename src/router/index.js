@@ -53,15 +53,20 @@ const routes = [
       {
         path: '/my',
         name: 'My',
-        component: () => import('../views/main/My.vue')
-      }
-    ]
+        component: () => import('../views/main/My.vue'),
+      },
+    ],
   },
   {
     path: '/forget',
     name: 'Forget',
-    component: () => import('../views/Forget.vue')
-  }
+    component: () => import('../views/Forget.vue'),
+  },
+  {
+    path: '/metrocard',
+    name: 'MetroCard',
+    component: () => import('../views/card/MetroCard.vue'),
+  },
 ]
 
 const router = new VueRouter({
