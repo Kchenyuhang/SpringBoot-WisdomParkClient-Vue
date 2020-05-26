@@ -1,10 +1,15 @@
 <template>
   <div class="bg">
-    
     <div class="title">
       <p>智慧校园</p>
     </div>
-    <div class="login cc-col-center" v-if="isShow">
+    <div class="login cc-col-center" v-if="isShow == 1">
+      <div class="alsrtInfo" :style="{display: displayStsates}" ref="alertMsg" v-if="phoneForm.tips=='手机号不能为空'">
+        <div class="profPrompt_test"><p>{{aletMsg}}</p></div>
+      </div>
+      <div class="alsrtInfo" :style="{display: displayStsates}" ref="alertMsg" v-if="phoneForm.tips=='手机号格式不对'">
+        <div class="profPrompt_test"><p>{{aletMsg}}</p></div>
+      </div>
       <div class="cc-df">
         <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_shouji.png"
@@ -16,9 +21,13 @@
           maxlength="11"
           oninput="value=value.replace(/[^\d]/g,'')"
           placeholder="请输入手机号"
+          v-model="phoneForm.phoneNumber"
         />
       </div>
-      <hr class="line">
+      <hr class="line" />
+      <div class="alsrtInfo" :style="{display: displayStsates}" ref="alertMsg" v-if="phoneForm.tips=='验证码不能为空'">
+        <div class="profPrompt_test"><p>{{aletMsg}}</p></div>
+      </div>
       <div class="cc-df" style="margin-left:8%">
         <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_yanzhengma.png"
@@ -26,18 +35,71 @@
           class="size"
         />
         <input type="text" maxlength="6" placeholder="请输入验证码" />
-        <div class="btn-sms"><p>获取验证码</p></div>
+        <div class="btn-sms">
+          <p>获取验证码</p>
+        </div>
       </div>
-      <hr class="line">
+      <hr class="line" />
       <div class="cc-df">
-        <div><p class="fontSize" @click="isShow=!isShow">账号密码登录</p></div>
-        <div class="cc-mllleft"><p class="fontSize">忘记密码</p></div>
+        <div>
+          <p class="fontSize" @click="tabIsShow(2)">账号密码登录</p>
+        </div>
+        <div class="cc-mllleft">
+          <p class="fontSize" @click="tabIsShow(3)">忘记密码</p>
+        </div>
       </div>
-      <div class="login-btn" @click="signIn()">
+      <div class="login-btn" @click="messageSignIn()">
         <p>确认登录</p>
       </div>
     </div>
-    <div class="login cc-col-center" v-if="!isShow">
+    <div class="login cc-col-center" v-if="isShow == 2">
+      <div class="alsrtInfo" :style="{display: displayStsates}" ref="alertMsg" v-if="phoneForm.tips=='学号不能为空'">
+        <div class="profPrompt_test"><p>{{aletMsg}}</p></div>
+      </div>
+      <div class="cc-df">
+        <img
+          src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_shouji.png"
+          alt="输入学号号图表"
+          class="size"
+        />
+        <input
+          type="text"
+          placeholder="请输入学号"
+          v-model="phoneForm.studentId"
+        />
+      </div>
+      <hr class="line" />
+      <div class="alsrtInfo" :style="{display: displayStsates}" ref="alertMsg" v-if="phoneForm.tips=='密码不能为空'">
+        <div class="profPrompt_test"><p>{{aletMsg}}</p></div>
+      </div>
+      <div class="cc-df">
+        <img
+          src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_yanzhengma.png"
+          alt="输入mima 图表"
+          class="size"
+        />
+        <input type="password" placeholder="请输入密码" v-model="phoneForm.passWord"/>
+      </div>
+      <hr class="line" />
+      <div class="cc-df">
+        <div>
+          <p class="fontSize" @click="tabIsShow(1)">手机快捷登录</p>
+        </div>
+        <div class="cc-mllleft">
+          <p class="fontSize" @click="tabIsShow(3)">忘记密码</p>
+        </div>
+      </div>
+      <div class="login-btn" @click="passwordSignIn()">
+        <p>确认登录</p>
+      </div>
+    </div>
+    <div class="login cc-col-center" v-if="isShow == 3">
+      <div class="alsrtInfo" :style="{display: displayStsates}" ref="alertMsg" v-if="phoneForm.tips=='手机号不能为空'">
+        <div class="profPrompt_test"><p>{{aletMsg}}</p></div>
+      </div>
+      <div class="alsrtInfo" :style="{display: displayStsates}" ref="alertMsg" v-if="phoneForm.tips=='手机号格式不对'">
+        <div class="profPrompt_test"><p>{{aletMsg}}</p></div>
+      </div>
       <div class="cc-df">
         <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_shouji.png"
@@ -49,26 +111,46 @@
           maxlength="11"
           oninput="value=value.replace(/[^\d]/g,'')"
           placeholder="请输入手机号"
+          v-model="phoneForm.phoneNumber"
         />
       </div>
-      <hr class="line">
+      <hr class="line" />
+      <div class="alsrtInfo" :style="{display: displayStsates}" ref="alertMsg" v-if="phoneForm.tips=='验证码不能为空'">
+        <div class="profPrompt_test"><p>{{aletMsg}}</p></div>
+      </div>
+      <div class="cc-df" style="margin-left:8%">
+        <img
+          src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_yanzhengma.png"
+          alt="输入验证码图表"
+          class="size"
+        />
+        <input type="text" maxlength="6" placeholder="请输入验证码" v-model="phoneForm.code"/>
+        <div class="btn-sms">
+          <p>获取验证码</p>
+        </div>
+      </div>
+      <hr class="line" />
+      <div class="alsrtInfo" :style="{display: displayStsates}" ref="alertMsg" v-if="phoneForm.tips=='密码不能为空'">
+        <div class="profPrompt_test"><p>{{aletMsg}}</p></div>
+      </div>
       <div class="cc-df">
         <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_yanzhengma.png"
-          alt="输入mima 图表"
+          alt="输入密码图表"
           class="size"
         />
-        <input
-          type="password"
-          placeholder="请输入密码"
-        />
+        <input type="password" placeholder="请输入密码" v-model="phoneForm.passWord"/>
       </div>
-      <hr class="line">
+      <hr class="line" />
       <div class="cc-df">
-        <div><p class="fontSize" @click="isShow=!isShow">手机快捷登录</p></div>
-        <div class="cc-mllleft"><p class="fontSize">忘记密码</p></div>
+        <div>
+          <p class="fontSize" @click="tabIsShow(2)">账号密码登录</p>
+        </div>
+        <div class="cc-mllleft">
+          <p class="fontSize" @click="tabIsShow(1)">手机验证登录</p>
+        </div>
       </div>
-      <div class="login-btn" @click="signIn()">
+      <div class="login-btn" @click="forgetSignIn()">
         <p>确认登录</p>
       </div>
     </div>
@@ -80,15 +162,114 @@ export default {
   name: "Login",
   data() {
     return {
-      isShow:true
+      isShow: 1,
+      aletMsg: '', // 弹出框中的提示语
+      displayStsates: 'none',
+      phoneForm: {
+        phoneNumber: "",
+        code: "",
+        studentId: "",
+        passWord: "",
+        tips: null
+      },
+      schema: {
+        phoneNumber: [
+          { required: true, error: "手机号不能为空" },
+          {
+            regex: /^1[3|4|5|6|7|8][0-9]{9}$/,
+            error: "手机号格式不对"
+          }
+        ],
+        code: [{ required: true, error: "验证码不能为空" }],
+        studentId: [{ required: true, error: "学号不能为空" }],
+        passWord: [{ required: true, error: "密码不能为空" }]
+      }
     };
   },
   components: {},
   created() {},
   mounted() {},
   methods: {
-    signIn(){
-      this.$router.push("/layout");
+    validate(schema, values) {
+      this.phoneForm.tips = null
+      const valArr = schema;
+      for (const field in schema) {
+        if (Object.prototype.hasOwnProperty.call(schema, field)) {
+          for (const key of schema[field]) {
+            if (key.required) {
+              if (!values[field]) {
+                valArr.tips = key.error;
+                this.phoneForm.tips=valArr.tips;
+                console.log(valArr.tips);
+                return false;
+              }
+            } else if (key.regex) {
+              if (!new RegExp(key.regex).test(values[field])) {
+                valArr.tips = key.error;
+                this.phoneForm.tips=valArr.tips;
+                console.log(valArr.tips);
+                return false;
+              }
+            }
+          }
+        }
+      }
+      return true;
+    },
+    clean(){
+       this.phoneForm.phoneNumber=""
+       this.phoneForm.passWord=""
+       this.phoneForm.code=""
+       this.phoneForm.studentId=""
+    },
+     // 提示弹框
+    alertDia (msg) {
+      this.displayStsates = 'block'
+      this.aletMsg = msg
+      // 延迟2秒后消失 自己可以更改时间
+      window.setTimeout(() => {
+        this.displayStsates = 'none'
+      }, 2000)
+    },
+    messageSignIn() {
+      this.phoneForm.passWord=1
+      this.phoneForm.studentId=1
+      this.validate(this.schema, this.phoneForm);
+      this.aletMsg = this.phoneForm.tips
+      this.alertDia(this.aletMsg)
+      // this.$router.push("/layout");
+    },
+    passwordSignIn(){
+      this.phoneForm.phoneNumber=15152231582
+      this.phoneForm.code=1
+      this.validate(this.schema, this.phoneForm);
+      this.aletMsg = this.phoneForm.tips
+      this.alertDia(this.aletMsg)
+      this.$axios({
+        method: 'post',
+        url:this.GLOBAL.baseUrl+'/user/login',
+        data: {
+          userAccount: this.phoneForm.studentId,
+          password: this.phoneForm.password
+       }
+      })
+        .then((res) => {
+          console.log(this.phoneForm)
+          console.log(res)
+        })
+        .catch(function(error) {
+          console.log(error)
+        })
+    },
+    forgetSignIn(){
+      this.phoneForm.studentId=1
+      this.validate(this.schema, this.phoneForm);
+      this.aletMsg = this.phoneForm.tips
+      this.alertDia(this.aletMsg)
+    },
+    tabIsShow(index){
+      this.clean()
+      this.isShow=index
     }
   },
   computed: {}
@@ -96,68 +277,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.bg {
-  text-align: center;
-  width: 100%;
-  background-image: url("https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/bg_denglu.png");
-  background-size: cover;
-  padding-top: 130px;
-}
-.title {
-  font-family: STLiti;
-  font-size: 45px;
-}
-.title p {
-  color: white;
-}
-.login {
-  margin-top: 70%;
-}
-.login input {
-  border: none;
-  margin-bottom: 20px;
-  width: 60%;
-  border-bottom: 1px;
-  border-bottom-color: #e5e5e5;
-}
-.login-btn{
-  background-color: #44bbff;
-  height: 40px;
-  width: 230px;
-  border-radius: 50px;
-  padding-top: 7px;
-}
-.login-btn p{
-    color: #d8f0ff;
-    letter-spacing:3px;
-}
-.size {
-  width: 15px;
-  margin-right: 18px;
-}
-.line{
-  width: 60%;
-  margin-top: -10px;
-  border: none;
-  height: 1px;
-  background: #ececec;
-  margin-bottom: 20px;
-}
-.btn-sms{
-  border: none;
-  
-}
-.btn-sms p{
-  color: #6cc9ff;
-  font-size: 12px;
-  margin-left: -30px;
-}
-.fontSize{
-  font-size: 12px;
-  margin-bottom: 15px;
-}
-input::-webkit-input-placeholder{
-          color: #CCCCCC;
-          font-size: 10px;
-        }
+@import '../assets/scss/login.scss'
+
 </style>
