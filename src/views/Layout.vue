@@ -152,7 +152,11 @@ export default {
     };
   },
   components: {},
-  created() {},
+  created() {
+       if (localStorage.getItem('token') === null) {
+      this.$router.push('/login')
+    }
+  },
   mounted() {},
   methods: {},
   computed: {},

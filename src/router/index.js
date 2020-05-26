@@ -62,6 +62,11 @@ const routes = [
     name: 'MetroCard',
     component: () => import('../views/card/MetroCard.vue'),
   },
+  {
+    path: '/base',
+    name: 'Base',
+    component: () => import('../views/person/Base.vue'),
+  }
 ]
 
 const router = new VueRouter({

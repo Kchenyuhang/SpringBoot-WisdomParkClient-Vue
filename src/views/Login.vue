@@ -34,8 +34,8 @@
           alt="输入验证码图表"
           class="size"
         />
-        <input type="text" maxlength="6" placeholder="请输入验证码" />
-        <div class="btn-sms">
+        <input type="text" maxlength="6" placeholder="请输入验证码" v-model="phoneForm.code"/>
+        <div class="btn-sms" @click="sendMessage()">
           <p>获取验证码</p>
         </div>
       </div>
@@ -125,7 +125,7 @@
           class="size"
         />
         <input type="text" maxlength="6" placeholder="请输入验证码" v-model="phoneForm.code"/>
-        <div class="btn-sms">
+        <div class="btn-sms" @click="sendMessage()">
           <p>获取验证码</p>
         </div>
       </div>
@@ -237,7 +237,29 @@ export default {
       this.validate(this.schema, this.phoneForm);
       this.aletMsg = this.phoneForm.tips
       this.alertDia(this.aletMsg)
-      this.$router.push("/layout");
+      this.$axios({
+        method: 'post',
+        url:this.GLOBAL.baseUrl+'/user/code/login?phoneNumber='+this.phoneForm.phoneNumber +"&verifyCode="+this.phoneForm.code,
+      })
+        .then((res) => {
+          console.log(this.phoneForm)
+          console.log(res)
+          if (res.data.msg == "成功") {
+            localStorage.setItem("token", res.data.data.token);
+            this.$store.commit("setToken", res.data.data.token);
+            console.log(res.data.data.token)
+    
+            localStorage.setItem("user", JSON.stringify(res.data.data.UserAccount));
+            this.$store.commit("setUser", res.data.data.UserAccount);
+            console.log(res.data.data.UserAccount)
+
+            this.$router.push("/layout");
+          }
+        })
+        .catch(function(error) {
+          console.log(error)
+        })
+
     },
     passwordSignIn(){
       this.phoneForm.phoneNumber=15152231582
@@ -248,10 +270,9 @@ export default {
       this.$axios({
         method: 'post',
         url:this.GLOBAL.baseUrl+'/user/login',
-        dataType: "json",
         data: {
-          account: this.phoneForm.studentId,
-          password: this.phoneForm.password
+          userAccount: this.phoneForm.studentId,
+          password: this.phoneForm.passWord
        },
        header: {
           "Content-Type": "application/json"
@@ -260,6 +281,18 @@ export default {
         .then((res) => {
           console.log(this.phoneForm)
           console.log(res)
+
+          if (res.data.msg == "成功") {
+            localStorage.setItem("token", res.data.data.token);
+            this.$store.commit("setToken", res.data.data.token);
+            console.log(res.data.data.token)
+    
+            localStorage.setItem("user", JSON.stringify(res.data.data.UserAccount));
+            this.$store.commit("setUser", res.data.data.UserAccount);
+            console.log(res.data.data.UserAccount)
+
+            this.$router.push("/layout");
+          }
         })
         .catch(function(error) {
           console.log(error)
@@ -270,10 +303,53 @@ export default {
       this.validate(this.schema, this.phoneForm);
       this.aletMsg = this.phoneForm.tips
       this.alertDia(this.aletMsg)
+      this.checkCode()
     },
     tabIsShow(index){
       this.clean()
       this.isShow=index
+    },
+    sendMessage(){
+        this.$axios({
+        method: 'post',
+        url:this.GLOBAL.baseUrl+'/sendCode?phoneNumber=' +this.phoneForm.phoneNumber,
+      })
+        .then((res) => {
+          console.log(this.phoneForm)
+          console.log(res)
+        })
+        .catch(function(error) {
+          console.log(error)
+        })
+    },
+    checkCode(){
+      this.$axios({
+        method: 'post',
+        url:this.GLOBAL.baseUrl+'/verifyCode?phoneNumber=' +this.phoneForm.phoneNumber +"&verifyCode="+this.phoneForm.code,
+      })
+        .then((res) => {
+          console.log(this.phoneForm)
+          console.log(res)
+          if (res.data.msg == "成功") {
+            this.updatePassword()
+          }
+        })
+        .catch(function(error) {
+          console.log(error)
+        })
+    },
+    updatePassword(){
+      // this.$axios({
+      //   method: 'put',
+      //   url:this.GLOBAL.baseUrl+'/user/user/password?userAccount=' +this.phoneForm.phoneNumber,
+      // })
+      //   .then((res) => {
+      //     console.log(this.phoneForm)
+      //     console.log(res)
+      //   })
+      //   .catch(function(error) {
+      //     console.log(error)
+      //   })
     }
   },
   computed: {}
@@ -282,5 +358,4 @@ export default {
 
 <style scoped lang="scss">
 @import '../assets/scss/login.scss'
-
 </style>

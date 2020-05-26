@@ -2,10 +2,20 @@
   <transition :name="transitionName">
     <div class="bg">
       <div class="header cc-col-center">
-        <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/bg_weidenglu.png" alt="未登录" />
-        <p>未登录</p>
+        <div class="cc-df cc-mltop" id="fileBox">
+          <img :src="user.avatar" @click="avatarClick()" />
+          <input
+            type="file"
+            @change="uploadAvatar($event)"
+            ref="file"
+            style="display: none;"
+            id="file"
+          />
+        </div>
+        <p>{{user.nickname}}</p>
       </div>
       <div class="info">
+        <router-link to="/base">
         <div class="cc-df-between">
           <div class="cc-df info-left">
             <img
@@ -18,6 +28,8 @@
             <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/youjiantou.png" alt="右箭头" />
           </div>
         </div>
+        </router-link>
+        
         <hr class="line" />
 
         <div class="cc-df-between">
@@ -52,7 +64,7 @@
           </div>
         </router-link>
         <hr class="line" />
-        <div class="cc-df-between">
+        <div class="cc-df-between" @click="logout()">
           <div class="cc-df info-left">
             <img
               src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_qinlihuncun.png"
@@ -74,7 +86,11 @@ export default {
   name: "My",
   data() {
     return {
-      transitionName: this.$store.state.transitionName
+      transitionName: this.$store.state.transitionName,
+      user: this.$store.state.user,
+      token: this.$store.state.token,
+      avatar: "",
+      imgDataUrl: ""
     };
   },
   components: {},
@@ -82,7 +98,59 @@ export default {
     console.log(this.transitionName);
   },
   mounted() {},
-  methods: {},
+  methods: {
+    logout() {
+      localStorage.removeItem("token");
+      this.$store.commit("setUser", null);
+      this.$router.push("/login");
+    },
+    uploadAvatar(event) {
+      const OSS = require("ali-oss");
+      let client = new OSS({
+        region: "oss-cn-beijing",
+        accessKeyId: "LTAI4FuNH3cQirWwhynvdCxv",
+        accessKeySecret: "TmUIP6EkFBi5c9Mrq5kysWMRsNe7x6",
+        bucket: "niit-cmj"
+      });
+      let timestamp = Date.parse(new Date());
+      let imgUrl = "img/" + timestamp;
+      var file = event.target.files[0]; //获取文件流
+      var _this = this;
+      client.multipartUpload(imgUrl, file).then(function(result) {
+        _this.avatar = result.res.requestUrls[0];
+        _this.updateAdminInfo(_this.avatar);
+      });
+    },
+    updateAdminInfo(url) {
+      this.imgDataUrl = url.substring(0, url.indexOf("?"));
+      this.user.avatar = this.imgDataUrl;
+      this.updateAvatar()
+    },
+    avatarClick() {
+      this.$refs.file.click();
+    },
+    updateAvatar() {
+      this.$axios({
+        method: "put",
+        url: this.GLOBAL.baseUrl + "/user/update/info",
+        data: {
+          avatar: this.imgDataUrl,
+          gender: this.user.gender,
+          nickname: this.user.nickname,
+          pkUserAccountId: this.user.pkUserAccountId
+        }
+      })
+        .then(res => {
+          console.log(res);
+          localStorage.setItem("user", JSON.stringify(res.data.data));
+          this.$store.commit("setUser", res.data.data);
+          console.log(res.data.data)
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    }
+  },
   computed: {}
 };
 </script>

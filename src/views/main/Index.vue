@@ -121,7 +121,8 @@ export default {
   components: {
     Carousel: require("../../components/Carousel").default
   },
-  created() {},
+  created() {
+  },
   mounted() {},
   methods: {},
   computed: {}
