@@ -237,7 +237,8 @@ export default {
       this.validate(this.schema, this.phoneForm);
       this.aletMsg = this.phoneForm.tips
       this.alertDia(this.aletMsg)
-      this.$axios({
+      if(this.phoneForm.tips==null){
+        this.$axios({
         method: 'post',
         url:this.GLOBAL.baseUrl+'/user/code/login?phoneNumber='+this.phoneForm.phoneNumber +"&verifyCode="+this.phoneForm.code,
       })
@@ -259,7 +260,7 @@ export default {
         .catch(function(error) {
           console.log(error)
         })
-
+      }
     },
     passwordSignIn(){
       this.phoneForm.phoneNumber=15152231582
@@ -267,7 +268,8 @@ export default {
       this.validate(this.schema, this.phoneForm);
       this.aletMsg = this.phoneForm.tips
       this.alertDia(this.aletMsg)
-      this.$axios({
+      if(this.phoneForm.tips==null){
+         this.$axios({
         method: 'post',
         url:this.GLOBAL.baseUrl+'/user/login',
         data: {
@@ -297,6 +299,7 @@ export default {
         .catch(function(error) {
           console.log(error)
         })
+      }
     },
     forgetSignIn(){
       this.phoneForm.studentId=1
