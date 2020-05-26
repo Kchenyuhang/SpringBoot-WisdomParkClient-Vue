@@ -248,10 +248,14 @@ export default {
       this.$axios({
         method: 'post',
         url:this.GLOBAL.baseUrl+'/user/login',
+        dataType: "json",
         data: {
-          userAccount: this.phoneForm.studentId,
+          account: this.phoneForm.studentId,
           password: this.phoneForm.password
-       }
+       },
+       header: {
+          "Content-Type": "application/json"
+        }
       })
         .then((res) => {
           console.log(this.phoneForm)

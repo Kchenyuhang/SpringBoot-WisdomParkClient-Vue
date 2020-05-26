@@ -1,0 +1,85 @@
+.address {
+  margin-left: 5%;
+}
+
+.address1 {
+  position: absolute;
+  width: 100%;
+  margin-bottom: 100px;
+  background-color: white;
+}
+
+.address2 {
+  margin-left: 10px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 550;
+  letter-spacing: 3px;
+  margin-top: 10px;
+}
+
+.icon {
+  margin-top: 25px;
+  width: 55%;
+  height: 50%;
+}
+
+.line {
+  width: 90%;
+  margin-top: 15px;
+  border: none;
+  height: 1px;
+  background: #ececec;
+  margin-bottom: 10px;
+}
+
+.font-size {
+  font-size: 12px;
+  color: #979797;
+}
+
+.fontSize {
+  font-size: 13px;
+  color: #5e5e5e;
+  font-weight: 550;
+}
+
+.subject-card {
+  width: 130px;
+  height: 80px;
+  border-radius: 5px;
+  margin-right: 30px;
+  padding-left: 5px;
+  padding-top: 3px;
+  background-size: cover;
+}
+
+.lateral-sliding {
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+
+.fontSizeTitle {
+  font-size: 15px;
+  color: #a2c3ff;
+}
+
+.fontSizebody {
+  font-size: 1px;
+  color: #a2c3ff;
+}
+
+.fontSizebody1 {
+  font-size: 1px;
+  color: #a2c3ff;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.left {
+  width: 100px;
+  height: 80px;
+}
