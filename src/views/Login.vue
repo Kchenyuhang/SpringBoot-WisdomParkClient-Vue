@@ -237,7 +237,7 @@ export default {
       this.validate(this.schema, this.phoneForm);
       this.aletMsg = this.phoneForm.tips
       this.alertDia(this.aletMsg)
-      // this.$router.push("/layout");
+      this.$router.push("/layout");
     },
     passwordSignIn(){
       this.phoneForm.phoneNumber=15152231582

@@ -1,10 +1,7 @@
 <template>
   <transition :name="transitionName">
     <div class="bg">
-      <!-- <img
-        src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/bg_wode.png"
-        alt="我的头像背景"
-      > -->
+
       <div class="header cc-col-center">
         <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/bg_weidenglu.png"

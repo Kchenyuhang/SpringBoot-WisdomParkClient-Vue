@@ -6,38 +6,46 @@
       </div>
       <Carousel :slideList="slideList"></Carousel>
       <div class="cc-df">
-        <div class="cc-col-center cc-coll-3">
-          <img
-            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_kechengbiao.png"
-            alt="课程表图标"
-            class="icon"
-          />
-          <p class="cc-mtop font-size">课程表</p>
-        </div>
-        <div class="cc-col-center cc-coll-3">
-          <img
-            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_kaowuchaxun.png"
-            alt="考务查询图标"
-            class="icon"
-          />
-          <p class="cc-mtop font-size">考务查询</p>
-        </div>
-        <div class="cc-col-center cc-coll-3">
-          <img
-            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_tushuguan.png"
-            alt="图书馆图标"
-            class="icon"
-          />
-          <p class="cc-mtop font-size">图书馆</p>
-        </div>
-        <div class="cc-col-center cc-coll-3">
-          <img
-            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_xiaoyuankachongzhi.png"
-            alt="一卡通图标"
-            class="icon"
-          />
-          <p class="cc-mtop font-size">一卡通</p>
-        </div>
+        <router-link to="/metrocard">
+          <div class="cc-col-center cc-coll-3">
+            <img
+              src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_kechengbiao.png"
+              alt="课程表图标"
+              class="icon"
+            />
+            <p class="cc-mtop font-size">课程表</p>
+          </div>
+        </router-link>
+        <router-link to="/metrocard">
+          <div class="cc-col-center cc-coll-3 address2">
+            <img
+              src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_kaowuchaxun.png"
+              alt="考务查询图标"
+              class="icon"
+            />
+            <p class="cc-mtop font-size">考务查询</p>
+          </div>
+        </router-link>
+        <router-link to="/metrocard">
+          <div class="cc-col-center cc-coll-3 address2">
+            <img
+              src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_tushuguan.png"
+              alt="图书馆图标"
+              class="icon"
+            />
+            <p class="cc-mtop font-size">图书馆</p>
+          </div>
+        </router-link>
+        <router-link to="/metrocard">
+          <div class="cc-col-center cc-coll-3 address2">
+            <img
+              src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_xiaoyuankachongzhi.png"
+              alt="一卡通图标"
+              class="icon"
+            />
+            <p class="cc-mtop font-size">一卡通</p>
+          </div>
+        </router-link>
       </div>
       <hr class="line" />
       <div class="address">
@@ -75,7 +83,6 @@
               v-bind:style="{backgroundImage:'url(' + avatar + ')'}"
             ></div>
             <div class="right cc-col">
-
             </div>
           </div>
         </div>
@@ -130,6 +137,9 @@ export default {
   width: 100%;
   margin-bottom: 100px;
   background-color: white;
+}
+.address2 {
+  margin-left: 10px;
 }
 .title {
   font-size: 18px;
