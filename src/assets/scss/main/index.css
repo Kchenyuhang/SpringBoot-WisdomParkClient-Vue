@@ -57,6 +57,8 @@
 }
 
 .lateral-sliding {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   overflow-y: hidden;
   overflow-x: scroll;
@@ -83,3 +85,4 @@
   width: 100px;
   height: 80px;
 }
+/*# sourceMappingURL=index.css.map */

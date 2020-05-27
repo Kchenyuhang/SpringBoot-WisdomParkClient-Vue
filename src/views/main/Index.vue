@@ -16,7 +16,7 @@
             <p class="cc-mtop font-size">课程表</p>
           </div>
         </router-link>
-        <router-link to="/metrocard">
+        <router-link to="/exam">
           <div class="cc-col-center cc-coll-3 address2">
             <img
               src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_kaowuchaxun.png"
@@ -121,8 +121,7 @@ export default {
   components: {
     Carousel: require("../../components/Carousel").default
   },
-  created() {
-  },
+  created() {},
   mounted() {},
   methods: {},
   computed: {}
@@ -130,5 +129,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../../assets/scss/main/index.scss'
+@import "../../assets/scss/main/index.scss";
 </style>

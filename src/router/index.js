@@ -45,11 +45,7 @@ const routes = [
         name: 'Information',
         component: () => import('../views/main/Information.vue'),
       },
-      {
-        path: '/message',
-        name: 'Message',
-        component: () => import('../views/main/Message.vue'),
-      },
+
       {
         path: '/my',
         name: 'My',
@@ -63,10 +59,20 @@ const routes = [
     component: () => import('../views/card/MetroCard.vue'),
   },
   {
+    path: '/exam',
+    name: 'Exam',
+    component: () => import('../views/exam/Exam.vue'),
+  },
+  {
     path: '/base',
     name: 'Base',
     component: () => import('../views/person/Base.vue'),
-  }
+  },
+  {
+    path: '/message',
+    name: 'Message',
+    component: () => import('../views/main/Message.vue'),
+  },
 ]
 
 const router = new VueRouter({
