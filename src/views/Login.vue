@@ -158,6 +158,7 @@
 </template>
 
 <script>
+const API =require('../request/api')
 export default {
   name: "Login",
   data() {
@@ -170,7 +171,10 @@ export default {
         code: "",
         studentId: "",
         passWord: "",
-        tips: null
+        tips: null,
+        data:{},
+        url:'',
+        result:{}
       },
       schema: {
         phoneNumber: [
@@ -231,115 +235,97 @@ export default {
         this.displayStsates = 'none'
       }, 2000)
     },
-    messageSignIn() {
+    async messageSignIn() {
       this.phoneForm.passWord=1
       this.phoneForm.studentId=1
       this.validate(this.schema, this.phoneForm);
       this.aletMsg = this.phoneForm.tips
       this.alertDia(this.aletMsg)
       if(this.phoneForm.tips==null){
-        this.$axios({
-        method: 'post',
-        url:this.GLOBAL.baseUrl+'/user/code/login?phoneNumber='+this.phoneForm.phoneNumber +"&verifyCode="+this.phoneForm.code,
-      })
-        .then((res) => {
-          console.log(this.phoneForm)
-          console.log(res)
-          if (res.data.msg == "成功") {
-            localStorage.setItem("token", res.data.data.token);
-            this.$store.commit("setToken", res.data.data.token);
-            console.log(res.data.data.token)
+        this.data={
+        phoneNumber: this.phoneForm.phoneNumber,
+        verifyCode: this.phoneForm.code
+      }
+      this.url=this.GLOBAL.baseUrl+'/user/code/login'
+        this.result= await  API.init(this.url,this.data,"post")
+        console.log(this.result)
+        if (this.result.msg == "成功") {
+            localStorage.setItem("token", this.result.data.token);
+            this.$store.commit("setToken", this.result.data.token);
+            console.log(this.result.data.token)
     
-            localStorage.setItem("user", JSON.stringify(res.data.data.UserAccount));
-            this.$store.commit("setUser", res.data.data.UserAccount);
-            console.log(res.data.data.UserAccount)
-
+            localStorage.setItem("user", JSON.stringify(this.result.data.UserAccount));
+            this.$store.commit("setUser", this.result.data.UserAccount);
+            console.log(this.result.data.UserAccount)
             this.$router.push("/layout");
           }
-        })
-        .catch(function(error) {
-          console.log(error)
-        })
       }
     },
-    passwordSignIn(){
+    async passwordSignIn(){
       this.phoneForm.phoneNumber=15152231582
       this.phoneForm.code=1
       this.validate(this.schema, this.phoneForm);
       this.aletMsg = this.phoneForm.tips
       this.alertDia(this.aletMsg)
       if(this.phoneForm.tips==null){
-         this.$axios({
-        method: 'post',
-        url:this.GLOBAL.baseUrl+'/user/login',
-        data: {
-          userAccount: this.phoneForm.studentId,
-          password: this.phoneForm.passWord
-       },
-       header: {
-          "Content-Type": "application/json"
-        }
-      })
-        .then((res) => {
-          console.log(this.phoneForm)
-          console.log(res)
-
-          if (res.data.msg == "成功") {
-            localStorage.setItem("token", res.data.data.token);
-            this.$store.commit("setToken", res.data.data.token);
-            console.log(res.data.data.token)
+      this.data={
+        userAccount: this.phoneForm.studentId,
+        password: this.phoneForm.passWord
+      }
+      this.url=this.GLOBAL.baseUrl+'/user/login'
+      // this.$axios.defaults.headers.post['token'] = null;
+      this.result= await  API.init(this.url,this.data,"post")
+      console.log(this.result)
+      if (this.result.msg == "成功") {
+            localStorage.setItem("token", this.result.data.token);
+            this.$store.commit("setToken", this.result.data.token);
+            console.log(this.result.data.token)
     
-            localStorage.setItem("user", JSON.stringify(res.data.data.UserAccount));
-            this.$store.commit("setUser", res.data.data.UserAccount);
-            console.log(res.data.data.UserAccount)
-
+            localStorage.setItem("user", JSON.stringify(this.result.data.UserAccount));
+            this.$store.commit("setUser", this.result.data.UserAccount);
+            console.log(this.result.data.UserAccount)
             this.$router.push("/layout");
           }
-        })
-        .catch(function(error) {
-          console.log(error)
-        })
       }
     },
-    forgetSignIn(){
+    async forgetSignIn(){
       this.phoneForm.studentId=1
       this.validate(this.schema, this.phoneForm);
       this.aletMsg = this.phoneForm.tips
       this.alertDia(this.aletMsg)
-      this.checkCode()
+      if(this.phoneForm.tips==null){
+        this.checkCode()
+      }
     },
     tabIsShow(index){
       this.clean()
       this.isShow=index
     },
-    sendMessage(){
-        this.$axios({
-        method: 'post',
-        url:this.GLOBAL.baseUrl+'/sendCode?phoneNumber=' +this.phoneForm.phoneNumber,
-      })
-        .then((res) => {
-          console.log(this.phoneForm)
-          console.log(res)
-        })
-        .catch(function(error) {
-          console.log(error)
-        })
+    async sendMessage(){
+        this.data={
+        phoneNumber: this.phoneForm.phoneNumber
+      }
+      this.url=this.GLOBAL.baseUrl+'/sendCode'
+        this.result= await  API.init(this.url,this.data,"post")
+        console.log(this.result)
     },
-    checkCode(){
-      this.$axios({
-        method: 'post',
-        url:this.GLOBAL.baseUrl+'/verifyCode?phoneNumber=' +this.phoneForm.phoneNumber +"&verifyCode="+this.phoneForm.code,
-      })
-        .then((res) => {
-          console.log(this.phoneForm)
-          console.log(res)
-          if (res.data.msg == "成功") {
-            this.updatePassword()
-          }
-        })
-        .catch(function(error) {
-          console.log(error)
-        })
+    async checkCode(){
+      this.data={
+        phoneNumber: this.phoneForm.phoneNumber,
+        verifyCode: this.phoneForm.code
+      }
+      this.url=this.GLOBAL.baseUrl+'/verifyCode'
+        this.result= await  API.init(this.url,this.data,"post")
+        console.log(this.result)
+      this.data={
+        userAccount: this.phoneForm.phoneNumber,
+        password: this.phoneForm.passWord
+      }
+      this.url=this.GLOBAL.baseUrl+'/user/password'
+        this.result= await  API.init(this.url,this.data,"put")
+        console.log(this.result)
+        this.isShow=2
+        this.clean()
     },
     updatePassword(){
       // this.$axios({

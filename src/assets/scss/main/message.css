@@ -7,8 +7,6 @@
 .header {
   background-color: #ffffff;
   height: 40px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -65,4 +63,7 @@
   margin-top: 10px;
   margin-bottom: 15px;
 }
-/*# sourceMappingURL=message.css.map */
+
+.font-smoke {
+  color: #adadad;
+}

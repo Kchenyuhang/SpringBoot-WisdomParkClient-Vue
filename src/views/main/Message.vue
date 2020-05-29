@@ -10,8 +10,8 @@
       <p>消息</p>
     </div>
     <div
-      v-for="item in 3"
-      :key="item.id"
+      v-for="(item,index) in messages"
+      :key="index"
     >
       <div class="card cc-df">
         <div class="icon">
@@ -21,9 +21,9 @@
           >
         </div>
 
-        <p>最新通知：最近教务处的老师严查学生上课情况，请同学们注意相关考勤！</p>
+        <p>{{item.content}}</p>
         <div class="time">
-          <p>2020-06-01</p>
+          <p>{{item.gmtCreate}}</p>
         </div>
 
       </div>
@@ -34,15 +34,33 @@
 </template>
 
 <script>
+const API =require('../../request/api')
 export default {
   name: "message",
   data() {
-    return {};
+    return {
+      result:{},
+      messages:[],
+      page:0
+    };
   },
   components: {},
-  created() {},
+  created() {
+    this.selectMessage()
+  },
   mounted() {},
-  methods: {},
+  methods: {
+    async selectMessage(){
+      this.data={
+        "currentPage": this.page,
+	      "pageSize": 5
+      }
+      this.url=this.GLOBAL.baseUrl+'/message/all'
+        this.result= await  API.init(this.url,this.data,"post")
+        console.log(this.result)
+        this.messages=this.result.data
+    }
+  },
   computed: {}
 };
 </script>

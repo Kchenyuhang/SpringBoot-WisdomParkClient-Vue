@@ -14,10 +14,10 @@ Vue.prototype.$axios = axios;
 // import "vant/lib/index.css";
 // Vue.use(Vant);
 
-import Video from 'video.js'
-import 'video.js/dist/video-js.css'
+// import Video from 'video.js'
+// import 'video.js/dist/video-js.css'
 
-Vue.prototype.$video = Video
+// Vue.prototype.$video = Video
 
 Vue.config.productionTip = false;
 
@@ -26,3 +26,5 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount("#app");
+
+

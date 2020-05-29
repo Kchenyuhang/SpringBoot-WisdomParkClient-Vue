@@ -95,13 +95,14 @@ export default {
   },
   components: {},
   created() {
-    console.log(this.transitionName);
+    console.log(this.user);
   },
   mounted() {},
   methods: {
     logout() {
       localStorage.removeItem("token");
       this.$store.commit("setUser", null);
+      this.user=null
       this.$router.push("/login");
     },
     uploadAvatar(event) {
