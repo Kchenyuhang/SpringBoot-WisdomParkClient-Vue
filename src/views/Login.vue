@@ -348,3 +348,4 @@ export default {
 <style scoped lang="scss">
 @import '../assets/scss/login.scss'
 </style>
+  
