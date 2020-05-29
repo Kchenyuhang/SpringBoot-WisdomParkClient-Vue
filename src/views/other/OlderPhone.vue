@@ -7,14 +7,14 @@
           alt=""
         >
       </router-link>
-      <p>设置地址</p>
+      <p>验证手机号</p>
       <div class="save">
         <button
           @click="updateNickname()"
           class="color"
           :class="{'changeColor':nicknameInput!=user.nickname}"
         >
-          <p>保存</p>
+          <p>确认</p>
         </button>
       </div>
     </div>
