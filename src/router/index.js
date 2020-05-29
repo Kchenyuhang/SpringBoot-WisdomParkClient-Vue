@@ -69,6 +69,21 @@ const routes = [
     component: () => import('../views/person/Base.vue'),
   },
   {
+    path: '/update',
+    name: 'Update',
+    component: () => import('../views/other/Update.vue'),
+  },
+  {
+    path: '/gender',
+    name: 'Gender',
+    component: () => import('../views/other/Gender.vue'),
+  },
+  {
+    path: '/address',
+    name: 'Address',
+    component: () => import('../views/other/Address.vue'),
+  },
+  {
     path: '/message',
     name: 'Message',
     component: () => import('../views/main/Message.vue'),

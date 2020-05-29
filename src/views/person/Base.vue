@@ -10,28 +10,48 @@
       <p>基本信息</p>
     </div>
     <div class="card cc-shadow">
-      <div class="cc-df-between row">
-        <div>
-          <p class="nick">昵称</p>
+      <router-link to="/update">
+        <div class="cc-df-between row">
+          <div>
+            <p class="nick">昵称</p>
+          </div>
+          <div>
+            <p class="nickname">{{user.nickname}}</p>
+          </div>
         </div>
-        <div>
-          <p class="nickname">{{user.nickname}}</p>
-        </div>
-      </div>
+      </router-link>
       <hr class="line" />
-      <div class="cc-df-between row1">
-        <div>
-          <p class="nick">性别</p>
+      <router-link to="/gender">
+        <div class="cc-df-between row1">
+          <div>
+            <p class="nick">性别</p>
+          </div>
+          <div class="cc-df-right">
+            <p class="nickname cc-mright">{{user.gender}}</p>
+            <img
+              src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/youjiantou.png"
+              alt="右箭头"
+              class="nickimg"
+            >
+          </div>
         </div>
-        <div class="cc-df-right">
-          <p class="nickname cc-mright">{{user.gender}}</p>
-          <img
-            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/youjiantou.png"
-            alt="右箭头"
-            class="nickimg"
-          >
+      </router-link>
+      <hr class="line" />
+      <router-link to="/address">
+        <div class="cc-df-between row1">
+          <div>
+            <p class="nick">地址</p>
+          </div>
+          <div class="cc-df-right">
+            <p class="nickname cc-mright">{{user.address}}</p>
+            <img
+              src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/youjiantou.png"
+              alt="右箭头"
+              class="nickimg"
+            >
+          </div>
         </div>
-      </div>
+      </router-link>
       <hr class="line" />
       <div class="cc-df-between row1">
         <div>
@@ -60,11 +80,7 @@
         </div>
       </div>
     </div>
-    <div class="btn">
-      <p>
-        保存
-      </p>
-    </div>
+
   </div>
 </template>
 
