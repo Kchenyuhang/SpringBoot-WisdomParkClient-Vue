@@ -1,6 +1,4 @@
 .bg {
-  background-color: #f9f9f9;
-  height: 900px;
   width: 100%;
 }
 .header {
@@ -52,7 +50,21 @@
 .card {
   width: 100%;
   margin: auto;
-  margin-top: 10px;
   background: white;
-  height: 40%;
+}
+.subCard{
+ margin-left: 5%;
+ margin-right: 5%;
+ padding-top: 10px;
+ img{
+   width: 15px;
+ }
+}
+.line {
+  width:90%;
+  border: none;
+  margin-top: 20px;
+  height: 1px;
+  background: #ececec;
+  margin-bottom: 20px;
 }

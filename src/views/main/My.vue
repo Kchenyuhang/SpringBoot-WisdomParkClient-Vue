@@ -82,6 +82,7 @@
   </transition>
 </template>
 <script>
+const API = require("../../request/api");
 export default {
   name: "My",
   data() {
@@ -130,26 +131,21 @@ export default {
     avatarClick() {
       this.$refs.file.click();
     },
-    updateAvatar() {
-      this.$axios({
-        method: "put",
-        url: this.GLOBAL.baseUrl + "/user/update/info",
-        data: {
-          avatar: this.imgDataUrl,
-          gender: this.user.gender,
-          nickname: this.user.nickname,
-          pkUserAccountId: this.user.pkUserAccountId
+    async updateAvatar() {
+      this.url = this.GLOBAL.baseUrl + "/user/update/info";
+      this.data = {
+        avatar: this.imgDataUrl,
+        gender: this.user.gender,
+        nickname: this.nicknameInput,
+        pkUserAccountId: this.user.pkUserAccountId,
+        address: this.user.address
+      };
+       this.result = await API.init(this.url, this.data, "put");
+        console.log(this.result.msg);
+        if (this.result.msg == "成功") {
+          localStorage.setItem("user", JSON.stringify(this.result.data));
+          this.$store.commit("setUser", this.result.data);
         }
-      })
-        .then(res => {
-          console.log(res);
-          localStorage.setItem("user", JSON.stringify(res.data.data));
-          this.$store.commit("setUser", res.data.data);
-          console.log(res.data.data)
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
     }
   },
   computed: {}

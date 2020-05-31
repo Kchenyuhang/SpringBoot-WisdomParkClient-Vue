@@ -1,11 +1,8 @@
 <template>
-  <div class=" bg">
+  <div class="bg">
     <div class="header">
       <router-link to="/my">
-        <img
-          src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
-          alt=""
-        >
+        <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png" alt />
       </router-link>
       <p>基本信息</p>
     </div>
@@ -32,14 +29,14 @@
               src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/youjiantou.png"
               alt="右箭头"
               class="nickimg"
-            >
+            />
           </div>
         </div>
       </router-link>
       <hr class="line" />
       <router-link to="/address">
         <div class="cc-df-between row1">
-          <div>
+          <div class="address">
             <p class="nick">地址</p>
           </div>
           <div class="cc-df-right">
@@ -48,7 +45,7 @@
               src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/youjiantou.png"
               alt="右箭头"
               class="nickimg"
-            >
+            />
           </div>
         </div>
       </router-link>
@@ -80,7 +77,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 

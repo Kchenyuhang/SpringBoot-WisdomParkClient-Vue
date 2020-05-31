@@ -1,33 +1,29 @@
 <template>
   <div class="bg">
     <div class="header">
-      <router-link to="/base">
+
         <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
           alt=""
+          @click="out()"
         >
-      </router-link>
-      <p>设置名字</p>
-      <div class="save">
-        <button
-          @click="updateNickname()"
-          class="color"
-          :class="{'changeColor':nicknameInput!=user.nickname}"
-        >
-          <p>保存</p>
-        </button>
-      </div>
+      <p>设置地址</p>
     </div>
-    <input
-      type="text"
-      class="name cc-shadow"
-      v-model="nicknameInput"
-    >
+    <div class="cc-col card">
+         <div v-for="(item,index) in citys" :key="index">
+             <div class="cc-df-between subCard" @click="updateAddress(index)">
+               <p>{{item}}</p>
+             </div>
+             <hr class="line">
+         </div>
+    </div>
   </div>
 </template>
 
+
 <script>
 const API = require("../../request/api");
+import provinces from '../../assets/js/city'
 export default {
   name: "update",
   data() {
@@ -37,23 +33,32 @@ export default {
       token: this.$store.state.token,
       nicknameInput: this.$store.state.user.nickname,
       url: "",
-      data: {}
+      data: {},
+      citys:[]
     };
   },
   components: {},
-  created() {},
+  created() {
+      console.log(this.$route.params.Id.split(',')[0])
+    this.citys=provinces[this.$route.params.Id.split(',')[0]].city[this.$route.params.Id.split(',')[1]].districtAndCounty;
+    console.log(this.citys)
+
+  },
   mounted() {},
   methods: {
-    async updateNickname() {
+      out(){
+          this.$router.push({name: 'City', params: {Id: this.$route.params.Id.split(',')[0],Address:provinces[this.$route.params.Id.split(',')[0]].name}})
+      },
+    async updateAddress(index) {
       this.url = this.GLOBAL.baseUrl + "/user/update/info";
       this.data = {
         avatar: this.user.avatar,
         gender: this.user.gender,
-        nickname: this.nicknameInput,
+        nickname: this.user.nickname,
         pkUserAccountId: this.user.pkUserAccountId,
-        address: this.user.address
+        address: this.$route.params.City + "-" + this.citys[index]
       };
-      if (this.nicknameInput != this.user.nickname) {
+
         this.result = await API.init(this.url, this.data, "put");
         console.log(this.result.msg);
         if (this.result.msg == "成功") {
@@ -61,7 +66,7 @@ export default {
           this.$store.commit("setUser", this.result.data);
           this.$router.push("/base");
         }
-      }
+      
     }
   },
   computed: {}
@@ -69,5 +74,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/scss/other/update.scss";
+@import "../../assets/scss/other/address.scss";
 </style>

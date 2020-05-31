@@ -84,6 +84,16 @@ const routes = [
     component: () => import('../views/other/Address.vue'),
   },
   {
+    path: '/city/:Id/:Address',
+    name: 'City',
+    component: () => import('../views/other/City.vue'),
+  },
+  {
+    path: '/DistrictAndCounty/:Id/:City',
+    name: 'DistrictAndCounty',
+    component: () => import('../views/other/DistrictAndCounty.vue'),
+  },
+  {
     path: '/message',
     name: 'Message',
     component: () => import('../views/main/Message.vue'),
