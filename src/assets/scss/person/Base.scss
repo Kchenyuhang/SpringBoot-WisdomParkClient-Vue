@@ -1,18 +1,20 @@
 .bg {
   background-color: #f9f9f9;
-  height: 900px;
   width: 100%;
 }
+
 .header {
   background-color: #ffffff;
   height: 40px;
   display: flex;
+
   img {
     height: 20px;
     width: 20px;
     margin-top: 10px;
     margin-left: 5px;
   }
+
   p {
     font-size: 16px;
     font-weight: 550;
@@ -20,6 +22,7 @@
     margin-top: 3%;
   }
 }
+
 .card {
   width: 100%;
   margin: auto;
@@ -27,13 +30,19 @@
   background: white;
   height: 40%;
 }
+.address{
+  width: 30%;
+}
+
 .nick {
   font-size: 16px;
 }
+
 .nickname {
   font-size: 16px;
   color: #ababab;
 }
+
 .nickimg {
   height: 5%;
   width: 5%;
@@ -46,12 +55,14 @@
   padding-top: 5px;
   margin: auto;
 }
+
 .row1 {
   width: 92%;
   height: 30px;
   padding-top: 5px;
   margin: auto;
 }
+
 .line {
   width: 100%;
   border: none;
@@ -60,6 +71,7 @@
   margin-top: 15px;
   margin-bottom: 15px;
 }
+
 .btn {
   width: 60%;
   height: 40px;
@@ -70,6 +82,7 @@
   margin: auto;
   margin-top: 20%;
   position: relative;
+
   p {
     font-size: 14px;
     color: #ffffff;

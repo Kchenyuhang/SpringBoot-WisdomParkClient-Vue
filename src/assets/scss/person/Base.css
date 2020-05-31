@@ -1,14 +1,11 @@
 .bg {
   background-color: #f9f9f9;
-  height: 900px;
   width: 100%;
 }
 
 .header {
   background-color: #ffffff;
   height: 40px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -32,6 +29,10 @@
   margin-top: 10px;
   background: white;
   height: 40%;
+}
+
+.address {
+  width: 30%;
 }
 
 .nick {
@@ -91,4 +92,3 @@
   left: 42%;
   top: 22%;
 }
-/*# sourceMappingURL=Base.css.map */
