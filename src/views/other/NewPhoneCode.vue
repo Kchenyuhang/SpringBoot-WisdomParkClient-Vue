@@ -1,39 +1,40 @@
 <template>
-  <div class="bg cc-donghua-top">
+  <div class="bg  cc-donghua-top">
     <div class="header">
-      <router-link to="/olderphone">
-        <div class="cancel">
-          <p>取消</p>
-        </div>
+      <router-link to="/newphone">
+        <img
+          src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
+          alt=""
+        >
       </router-link>
-      <p>更换手机号</p>
-      <router-link to="/newphonecode">
-        <div class="save">
-          <button
-            @click="updateNickname()"
-            class="color"
-            :class="{'changeColor':nicknameInput!=user.nickname}"
-          >
-            <p>下一步</p>
-          </button>
-        </div>
-      </router-link>
+      <p>填写验证码</p>
     </div>
     <hr class="line" />
     <div class="card">
-      <div class="phone">
-        <p>更换手机后，下次登陆可使用新手机号登陆。当前手机号：{{user.phoneNumber}}</p>
+      <div class="code">
+        <p>短信验证码已发送，请填写验证码</p>
       </div>
-      <hr class="line1" />
-      <div class="newphone">
-        <p>新手机号:</p>
-        <input
-          type="text"
-          class="phonenumber"
-          placeholder="请填写手机号码"
-        >
+      <div>
+        <div class="phone">
+          <p>手机号:</p>
+          <p class="phonenum">15370000688</p>
+        </div>
+        <hr class="line1" />
+        <div class="codenum">
+          <p>验证码:</p>
+          <input
+            type="text"
+            class="codenumber"
+            placeholder="请输入验证码"
+          >
+        </div>
+        <hr class="line1" />
       </div>
-      <hr class="line1" />
+      <router-link to="/base">
+        <div class="btn">
+          <p>提交</p>
+        </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -80,5 +81,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/scss/other/newphone.scss";
+@import "../../assets/scss/other/newphonecode.scss";
 </style>

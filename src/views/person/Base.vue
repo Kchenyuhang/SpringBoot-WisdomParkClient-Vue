@@ -52,15 +52,17 @@
           </div>
         </div>
       </router-link>
-      <hr class="line" />
-      <div class="cc-df-between row1">
-        <div>
-          <p class="nick">手机号</p>
+      <hr class="line">
+      <router-link to="/olderphone">
+        <div class="cc-df-between row1">
+          <div>
+            <p class="nick">手机号</p>
+          </div>
+          <div>
+            <p class="nickname">{{user.phoneNumber}}</p>
+          </div>
         </div>
-        <div>
-          <p class="nickname">{{user.phoneNumber}}</p>
-        </div>
-      </div>
+      </router-link>
       <hr class="line" />
       <div class="cc-df-between row1">
         <div>

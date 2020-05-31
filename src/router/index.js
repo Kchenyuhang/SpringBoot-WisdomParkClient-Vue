@@ -88,6 +88,21 @@ const routes = [
     name: 'Message',
     component: () => import('../views/main/Message.vue'),
   },
+  {
+    path: '/olderphone',
+    name: 'OlderPhone',
+    component: () => import('../views/other/OlderPhone.vue'),
+  },
+  {
+    path: '/newphone',
+    name: 'NewPhone',
+    component: () => import('../views/other/NewPhone.vue'),
+  },
+  {
+    path: '/newphonecode',
+    name: 'NewPhoneCode',
+    component: () => import('../views/other/NewPhoneCode.vue'),
+  },
 ]
 
 const router = new VueRouter({

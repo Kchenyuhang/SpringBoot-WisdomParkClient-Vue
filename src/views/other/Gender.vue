@@ -10,16 +10,19 @@
       <p>设置性别</p>
       <div class="save">
         <button
-          @click="updateNickname()"
+          @click="updateGender()"
           class="color"
-          :class="{'changeColor':nicknameInput!=user.nickname}"
+          :class="{'changeColor':isShow!=user.gender}"
         >
           <p>保存</p>
         </button>
       </div>
     </div>
     <div class="card cc-shadow">
-      <div class="cc-df-between row">
+      <div
+        class="cc-df-between row"
+        @click="isShow = '男'"
+      >
         <div>
           <p class="nick">男</p>
         </div>
@@ -28,11 +31,15 @@
             src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/gou.png"
             alt=""
             class="nickimg"
+            v-if="isShow == '男'"
           >
         </div>
       </div>
       <hr class="line" />
-      <div class="cc-df-between row1">
+      <div
+        class="cc-df-between row1"
+        @click="isShow = '女'"
+      >
         <div>
           <p class="nick">女</p>
         </div>
@@ -41,6 +48,7 @@
             src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/gou.png"
             alt=""
             class="nickimg"
+            v-if="isShow == '女'"
           >
         </div>
       </div>
@@ -54,7 +62,7 @@ export default {
   name: "update",
   data() {
     return {
-      dis: true,
+      isShow: this.$store.state.user.gender,
       user: this.$store.state.user,
       token: this.$store.state.token,
       nicknameInput: this.$store.state.user.nickname,
@@ -66,15 +74,16 @@ export default {
   created() {},
   mounted() {},
   methods: {
-    async updateNickname() {
+    async updateGender() {
       this.url = this.GLOBAL.baseUrl + "/user/update/info";
       this.data = {
         avatar: this.user.avatar,
-        gender: this.user.gender,
-        nickname: this.nicknameInput,
-        pkUserAccountId: this.user.pkUserAccountId
+        gender: this.isShow,
+        nickname: this.user.nickname,
+        pkUserAccountId: this.user.pkUserAccountId,
+        address: this.user.address
       };
-      if (this.nicknameInput != this.user.nickname) {
+      if (this.isShow != this.user.gender) {
         this.result = await API.init(this.url, this.data, "put");
         console.log(this.result.msg);
         if (this.result.msg == "成功") {

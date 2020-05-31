@@ -1,17 +1,20 @@
 /* 公共规约:所有样式以bl开头
 按模块和主键划分 */
 @font-face {
-    font-family: 'iconfont';  /* project id 1615918 */
+    font-family: 'iconfont';
+    /* project id 1615918 */
     src: url('//at.alicdn.com/t/font_1615918_h54d23e7ghl.eot');
     src: url('//at.alicdn.com/t/font_1615918_h54d23e7ghl.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_1615918_h54d23e7ghl.woff2') format('woff2'),
-    url('//at.alicdn.com/t/font_1615918_h54d23e7ghl.woff') format('woff'),
-    url('//at.alicdn.com/t/font_1615918_h54d23e7ghl.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_1615918_h54d23e7ghl.svg#iconfont') format('svg');
-  }
-  .font-white {
+        url('//at.alicdn.com/t/font_1615918_h54d23e7ghl.woff2') format('woff2'),
+        url('//at.alicdn.com/t/font_1615918_h54d23e7ghl.woff') format('woff'),
+        url('//at.alicdn.com/t/font_1615918_h54d23e7ghl.ttf') format('truetype'),
+        url('//at.alicdn.com/t/font_1615918_h54d23e7ghl.svg#iconfont') format('svg');
+}
+
+.font-white {
     color: white;
-  }
+}
+
 .iconfont {
     font-family: "iconfont" !important;
     font-size: 16px;
@@ -535,65 +538,122 @@ hr {
 }
 
 
-.cc-donghua{
-	animation: myfirst 1.5s;
+.cc-donghua {
+    animation: myfirst 1.5s;
 }
+
 @keyframes myfirst {
-		from {
-			opacity: 0;
-		}
+    from {
+        opacity: 0;
+    }
 
-		to {
-		}
-	}
+    to {}
+}
 
-    /* 滑动特效 */
-    .fold-left-enter-active {
-        animation-name: fold-left-in;
-        animation-duration: .5s;
-      }
-      .fold-left-leave-active {
-        animation-name: fold-left-out;
-        animation-duration: .5s;
-      }
-    .fold-right-enter-active {
-        animation-name: fold-right-in;
-        animation-duration: .5s;
-      }
-      .fold-right-leave-active {
-        animation-name: fold-right-out;
-        animation-duration: .5s;
-      }
-    
-    @keyframes fold-left-in {
-        0% {
-          transform: translate3d(100%, 0, 0);
-        }
-        100% {
-          transform: translate3d(0, 0, 0);
-        }
-      }
-      @keyframes fold-left-out {
-        0% {
-          transform: translate3d(0, 0, 0);
-        }
-        100% {
-          transform: translate3d(-100%, 0, 0);
-        }
-      }    
-      @keyframes fold-right-in {
-        0% {
-          transform: translate3d(0, 0, 0);
-        }
-        100% {
-          transform: translate3d(100%, 0, 0);
-        }
-      }
-      @keyframes fold-right-out {
-        0% {
-          transform: translate3d(-100%, 0, 0);
-        }
-        100% {
-          transform: translate3d(0, 0, 0);
-        }
-      } 
+.cc-donghua-top {
+    animation: top 1s;
+}
+
+@keyframes top {
+    from {
+        margin-top: 200%;
+    }
+
+    to {}
+}
+
+/* 滑动特效 */
+.fold-left-enter-active {
+    animation-name: fold-left-in;
+    animation-duration: .5s;
+}
+
+.fold-left-leave-active {
+    animation-name: fold-left-out;
+    animation-duration: .5s;
+}
+
+.fold-right-enter-active {
+    animation-name: fold-right-in;
+    animation-duration: .5s;
+}
+
+.fold-right-leave-active {
+    animation-name: fold-right-out;
+    animation-duration: .5s;
+}
+
+@keyframes fold-left-in {
+    0% {
+        transform: translate3d(100%, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fold-left-out {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(-100%, 0, 0);
+    }
+}
+
+@keyframes fold-right-in {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(100%, 0, 0);
+    }
+}
+
+@keyframes fold-right-out {
+    0% {
+        transform: translate3d(-100%, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.fold-top-enter-active {
+    animation-name: fold-top-in;
+    animation-duration: 1s;
+}
+
+.fold-top-leave-active {
+    animation-name: fold-top-out;
+    animation-duration: 0.7s;
+}
+
+@keyframes fold-top-in {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(0, 200%, 0);
+    }
+}
+
+@keyframes fold-top-out {
+    0% {
+        transform: translate3d(0, -200%, 0);
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.none {
+    animation-name: fold-top-out;
+    animation-duration: 0s;
+}
