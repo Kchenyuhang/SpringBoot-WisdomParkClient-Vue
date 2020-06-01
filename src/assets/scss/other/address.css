@@ -6,6 +6,8 @@
   background-color: #ffffff;
   height: 40px;
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -79,3 +81,4 @@
   background: #ececec;
   margin-bottom: 20px;
 }
+/*# sourceMappingURL=address.css.map */

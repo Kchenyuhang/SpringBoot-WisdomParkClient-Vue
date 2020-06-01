@@ -7,17 +7,14 @@
         </div>
       </router-link>
       <p>更换手机号</p>
-      <router-link to="/newphonecode">
-        <div class="save">
+        <div class="save" @click="into()">
           <button
-            @click="updateNickname()"
             class="color"
-            :class="{'changeColor':nicknameInput!=user.nickname}"
+            :class="{'changeColor':isTrue()}"
           >
             <p>下一步</p>
           </button>
         </div>
-      </router-link>
     </div>
     <hr class="line" />
     <div class="card">
@@ -31,6 +28,7 @@
           type="text"
           class="phonenumber"
           placeholder="请填写手机号码"
+          v-model="phoneInput"
         >
       </div>
       <hr class="line1" />
@@ -39,7 +37,6 @@
 </template>
 
 <script>
-const API = require("../../request/api");
 export default {
   name: "update",
   data() {
@@ -47,7 +44,7 @@ export default {
       dis: true,
       user: this.$store.state.user,
       token: this.$store.state.token,
-      nicknameInput: this.$store.state.user.nickname,
+      phoneInput: '',
       url: "",
       data: {}
     };
@@ -56,23 +53,19 @@ export default {
   created() {},
   mounted() {},
   methods: {
-    async updateNickname() {
-      this.url = this.GLOBAL.baseUrl + "/user/update/info";
-      this.data = {
-        avatar: this.user.avatar,
-        gender: this.user.gender,
-        nickname: this.nicknameInput,
-        pkUserAccountId: this.user.pkUserAccountId
-      };
-      if (this.nicknameInput != this.user.nickname) {
-        this.result = await API.init(this.url, this.data, "put");
-        console.log(this.result.msg);
-        if (this.result.msg == "成功") {
-          localStorage.setItem("user", JSON.stringify(this.result.data));
-          this.$store.commit("setUser", this.result.data);
-          this.$router.push("/base");
-        }
+    into(){
+      if(this.isTrue()){
+        this.$router.push({name: 'NewPhoneCode', params: {Phone: this.phoneInput}})
       }
+    },
+    isTrue(){
+         if(this.phoneInput==this.user.phoneNumber){
+           return false
+         }
+         if(new RegExp(/^1[3|4|5|6|7|8][0-9]{9}$/).test(this.phoneInput)){
+           return true
+         }
+         return false
     }
   },
   computed: {}

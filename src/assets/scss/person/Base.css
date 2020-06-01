@@ -6,6 +6,8 @@
 .header {
   background-color: #ffffff;
   height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -92,3 +94,4 @@
   left: 42%;
   top: 22%;
 }
+/*# sourceMappingURL=Base.css.map */
