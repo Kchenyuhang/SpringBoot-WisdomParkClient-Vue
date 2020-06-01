@@ -17,7 +17,7 @@
       <div>
         <div class="phone">
           <p>手机号:</p>
-          <p class="phonenum">15370000688</p>
+          <p class="phonenum">{{phoneInput}}</p>
         </div>
         <hr class="line1" />
         <div class="codenum">
@@ -26,15 +26,17 @@
             type="text"
             class="codenumber"
             placeholder="请输入验证码"
+            v-model="code"
           >
         </div>
         <hr class="line1" />
       </div>
-      <router-link to="/base">
-        <div class="btn">
-          <p>提交</p>
-        </div>
-      </router-link>
+      <div
+        class="btn"
+        @click="checkCode()"
+      >
+        <p>提交</p>
+      </div>
     </div>
   </div>
 </template>
@@ -48,31 +50,51 @@ export default {
       dis: true,
       user: this.$store.state.user,
       token: this.$store.state.token,
-      nicknameInput: this.$store.state.user.nickname,
+      phoneInput: this.$route.params.Phone,
       url: "",
-      data: {}
+      data: {},
+      code: ""
     };
   },
   components: {},
-  created() {},
+  created() {
+    this.sendMessage();
+  },
   mounted() {},
   methods: {
-    async updateNickname() {
-      this.url = this.GLOBAL.baseUrl + "/user/update/info";
+    async sendMessage() {
       this.data = {
-        avatar: this.user.avatar,
-        gender: this.user.gender,
-        nickname: this.nicknameInput,
+        phoneNumber: this.phoneInput
+      };
+      this.url = this.GLOBAL.baseUrl + "/sendCode";
+      this.result = await API.init(this.url, this.data, "post");
+      console.log(this.result);
+    },
+    async updatePhone() {
+      this.url = this.GLOBAL.baseUrl + "/user/update/phone";
+      this.data = {
+        phoneNumber: this.phoneInput,
         pkUserAccountId: this.user.pkUserAccountId
       };
-      if (this.nicknameInput != this.user.nickname) {
-        this.result = await API.init(this.url, this.data, "put");
-        console.log(this.result.msg);
-        if (this.result.msg == "成功") {
-          localStorage.setItem("user", JSON.stringify(this.result.data));
-          this.$store.commit("setUser", this.result.data);
-          this.$router.push("/base");
-        }
+
+      this.result = await API.init(this.url, this.data, "put");
+      console.log(this.result.msg);
+      if (this.result.msg == "成功") {
+        localStorage.setItem("user", JSON.stringify(this.result.data));
+        this.$store.commit("setUser", this.result.data);
+        this.$router.push("/base");
+      }
+    },
+    async checkCode() {
+      this.data = {
+        phoneNumber: this.phoneInput,
+        verifyCode: this.code
+      };
+      this.url = this.GLOBAL.baseUrl + "/verifyCode";
+      this.result = await API.init(this.url, this.data, "post");
+      console.log(this.result);
+      if (this.result.msg == "成功") {
+        this.updatePhone();
       }
     }
   },

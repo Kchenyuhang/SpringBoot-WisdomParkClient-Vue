@@ -64,10 +64,27 @@
   height: 100%;
 }
 
+.card .phone {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+}
+
+.card .phone p {
+  font-size: 18px;
+}
+
+.card .phone .phonenum {
+  margin-left: 20%;
+}
+
 .card .code {
-  width: 100%;
+  width: 90%;
   margin: auto;
   margin-top: 20px;
+  margin-bottom: 20px;
   text-align: center;
 }
 
@@ -77,7 +94,11 @@
 }
 
 .card .codenum {
-  width: 100%;
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
 }
 
 .card .codenum p {
@@ -86,22 +107,29 @@
 }
 
 .card .codenumber {
-  width: 60%;
+  width: 35%;
   height: 40px;
   outline-style: none;
   border: 0px;
-  margin-left: 3%;
-  margin-top: 3%;
-  background-color: #efefef;
-  padding: 14px 14px;
+  margin-top: -5px;
+  margin-left: 20%;
   font-size: 15px;
 }
 
 .line {
   width: 100%;
   border: none;
+  height: 2px;
+  background: #f9f9f9;
+}
+
+.line1 {
+  width: 90%;
+  border: none;
   height: 1px;
-  background: #fbfbfb;
+  background: #efefef;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .btn {

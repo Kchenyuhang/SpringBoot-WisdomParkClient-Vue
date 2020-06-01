@@ -59,6 +59,26 @@ const routes = [
     component: () => import('../views/card/MetroCard.vue'),
   },
   {
+    path: '/campuscard',
+    name: 'CampusCard',
+    component: () => import('../views/card/CampusCard.vue'),
+  },
+  {
+    path: '/electriccharge',
+    name: 'ElectricCharge',
+    component: () => import('../views/card/ElectricCharge.vue'),
+  },
+  {
+    path: '/paylist',
+    name: 'PayList',
+    component: () => import('../views/card/PayList.vue'),
+  },
+  {
+    path: '/network',
+    name: 'Network',
+    component: () => import('../views/card/Network.vue'),
+  },
+  {
     path: '/exam',
     name: 'Exam',
     component: () => import('../views/exam/Exam.vue'),
@@ -83,11 +103,7 @@ const routes = [
     name: 'Address',
     component: () => import('../views/other/Address.vue'),
   },
-  {
-    path: '/city/:Id/:Address',
-    name: 'City',
-    component: () => import('../views/other/City.vue'),
-  },
+
   {
     path: '/DistrictAndCounty/:Id/:City',
     name: 'DistrictAndCounty',
@@ -109,7 +125,7 @@ const routes = [
     component: () => import('../views/other/NewPhone.vue'),
   },
   {
-    path: '/newphonecode',
+    path: '/newphonecode/:Phone',
     name: 'NewPhoneCode',
     component: () => import('../views/other/NewPhoneCode.vue'),
   },

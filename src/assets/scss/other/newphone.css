@@ -72,24 +72,36 @@
   width: 90%;
   margin: auto;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .card .phone p {
+  font-size: 16px;
+  font-weight: 550;
+}
+
+.card .newphone {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+  margin-top: 3%;
+}
+
+.card .newphone p {
   font-size: 18px;
   font-weight: 550;
 }
 
 .card .phonenumber {
-  width: 94%;
-  height: 50px;
+  width: 50%;
+  height: 40px;
   outline-style: none;
   border: 0px;
-  margin-left: 3%;
-  margin-top: 3%;
-  background-color: #efefef;
-  padding: 14px 14px;
-  font-size: 16px;
-  font-weight: 600;
+  margin-top: -5px;
+  margin-left: 20%;
+  font-size: 15px;
 }
 
 input::-webkit-input-placeholder {
@@ -99,7 +111,16 @@ input::-webkit-input-placeholder {
 .line {
   width: 100%;
   border: none;
+  height: 2px;
+  background: #f9f9f9;
+}
+
+.line1 {
+  width: 90%;
+  border: none;
   height: 1px;
-  background: #fbfbfb;
+  background: #efefef;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 /*# sourceMappingURL=newphone.css.map */

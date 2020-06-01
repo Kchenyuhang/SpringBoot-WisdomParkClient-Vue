@@ -1,0 +1,159 @@
+.header {
+  background-color: #ffffff;
+  height: 40px;
+  display: flex;
+  img {
+    height: 20px;
+    width: 20px;
+    margin-top: 10px;
+    margin-left: 5px;
+  }
+  p {
+    font-size: 16px;
+    font-weight: 550;
+    margin-left: 34%;
+    margin-top: 3%;
+  }
+}
+.card {
+  width: 100%;
+  margin: auto;
+  background: white;
+  height: 100%;
+  .recharge {
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    p {
+      font-size: 16px;
+    }
+  }
+  .rechargeicon {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 20px;
+    .icon {
+      height: 70px;
+      border: 1px #80c2ee solid;
+      border-radius: 10px;
+      flex: 0 0 48%;
+      input {
+        width: 45%;
+        border: none;
+      }
+      input::-webkit-input-placeholder {
+        color: #959595;
+        font-size: 14px;
+      }
+    }
+    .cc-df-between {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+  }
+  .pay {
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    p {
+      font-size: 18px;
+    }
+  }
+  .paycard {
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    .alipaycard {
+      width: 100%;
+      .alipay {
+        display: flex;
+        align-items: center;
+        img {
+          width: 16%;
+          height: 16%;
+        }
+        p {
+          font-size: 17px;
+          margin-left: 10px;
+        }
+      }
+      .xuanzhong {
+        img {
+          width: 15%;
+          height: 15%;
+        }
+      }
+    }
+    .wechatpaycard {
+      width: 100%;
+      .wechatpay {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        img {
+          width: 18%;
+          height: 18%;
+        }
+        p {
+          font-size: 17px;
+          margin-left: 10px;
+        }
+      }
+      .weixuanzhong {
+        img {
+          width: 16%;
+          height: 16%;
+          margin-top: 20px;
+          margin-right: -2px;
+        }
+      }
+    }
+  }
+  .login-btn {
+    background-color: #5db1ea;
+    height: 40px;
+    width: 270px;
+    margin: auto;
+    border-radius: 50px;
+    padding-top: 7px;
+    margin-top: 20%;
+    p {
+      text-align: center;
+      color: #d8f0ff;
+      letter-spacing: 3px;
+      font-size: 16px;
+    }
+  }
+}
+.dorm {
+  background-color: #ffffff;
+  height: 40px;
+  display: flex;
+  .dormnum {
+    width: 100%;
+    margin: auto;
+    p {
+      text-align: center;
+      font-size: 14px;
+    }
+  }
+}
+.line {
+  width: 100%;
+  border: none;
+  height: 2px;
+  background: #f9f9f9;
+}
+
+.change {
+  background-color: #5db1ea;
+  p {
+    color: white;
+  }
+  input {
+    background-color: #5db1ea;
+  }
+}
