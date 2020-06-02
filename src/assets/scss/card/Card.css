@@ -35,7 +35,6 @@
 }
 
 .card .recharge p {
-  font-weight: 600;
   font-size: 16px;
 }
 
@@ -140,8 +139,8 @@
 }
 
 .card .paycard .wechatpaycard .weixuanzhong img {
-  width: 18%;
-  height: 18%;
+  width: 16%;
+  height: 16%;
   margin-top: 20px;
   margin-right: -2px;
 }
@@ -186,5 +185,17 @@
   border: none;
   height: 2px;
   background: #f9f9f9;
+}
+
+.change {
+  background-color: #5db1ea;
+}
+
+.change p {
+  color: white;
+}
+
+.change input {
+  background-color: #5db1ea;
 }
 /*# sourceMappingURL=Card.css.map */

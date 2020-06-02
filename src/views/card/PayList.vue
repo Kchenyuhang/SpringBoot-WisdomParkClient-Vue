@@ -1,7 +1,7 @@
 <template>
   <div class="bg">
     <div class="header">
-      <router-link to="/layout">
+      <router-link to="/metrocard">
         <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
           alt=""

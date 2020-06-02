@@ -1,0 +1,100 @@
+.bg {
+  background-color: #f5f7fb;
+  height: 900px;
+  width: 100%;
+}
+
+.header {
+  background-color: #ffffff;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header img {
+  height: 20px;
+  width: 20px;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.header p {
+  font-size: 15px;
+  font-weight: 550;
+  margin-left: 34%;
+  margin-top: 3%;
+}
+
+.card {
+  width: 95%;
+  margin: auto;
+  margin-top: 10px;
+  background: white;
+  height: 18%;
+  border-radius: 5px;
+}
+
+.card1 {
+  width: 95%;
+  margin: auto;
+  margin-top: 10px;
+  background: white;
+  height: 24%;
+  border-radius: 5px;
+}
+
+.theme {
+  width: 94%;
+  outline-style: none;
+  border: 0px;
+  margin-left: 3%;
+  margin-top: 3%;
+  background-color: #e6e6e6;
+  padding: 14px 14px;
+}
+
+.theme1 {
+  width: 94%;
+  height: 30px;
+  outline-style: none;
+  border: 0px;
+  margin-left: 3%;
+  margin-top: 3%;
+  background-color: #e6e6e6;
+  padding: 14px 14px;
+}
+
+.content {
+  width: 94%;
+  outline-style: none;
+  border: 0px;
+  margin-left: 3%;
+  margin-top: 5%;
+  background-color: #e6e6e6;
+  padding: 14px;
+  height: 80px;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #808080;
+}
+
+.btn {
+  width: 60%;
+  height: 45px;
+  background-color: #46abf1;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+  margin: auto;
+  margin-top: 10%;
+  position: relative;
+}
+
+.btn p {
+  font-size: 16px;
+  color: #ffffff;
+}
+/*# sourceMappingURL=LossCard.css.map */

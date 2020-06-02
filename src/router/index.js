@@ -79,6 +79,11 @@ const routes = [
     component: () => import('../views/card/Network.vue'),
   },
   {
+    path: '/losscard',
+    name: 'LossCard',
+    component: () => import('../views/card/LossCard.vue'),
+  },
+  {
     path: '/exam',
     name: 'Exam',
     component: () => import('../views/exam/Exam.vue'),

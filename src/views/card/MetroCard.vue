@@ -66,7 +66,10 @@
         />
         <p class="cc-mtop font-size">消费明细</p>
       </div>
-      <div class="cc-col-center cc-coll-4">
+      <div
+        class="cc-col-center cc-coll-4"
+        @click="into(5)"
+      >
         <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_guashi.png"
           alt="挂失申请图标"
@@ -100,6 +103,9 @@ export default {
       }
       if (index == 4) {
         this.$router.push("/paylist");
+      }
+      if (index == 5) {
+        this.$router.push("/losscard");
       }
     }
   },
