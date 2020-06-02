@@ -1,6 +1,7 @@
 <template>
   <transition :name="transitionName">
     <div class="bg">
+      <Dialog v-bind.sync="showBombTips" :tipsContent="tipsContent"></Dialog>
       <div class="header cc-col-center">
         <div class="cc-df cc-mltop" id="fileBox">
           <img :src="user.avatar" @click="avatarClick()" />
@@ -91,10 +92,16 @@ export default {
       user: this.$store.state.user,
       token: this.$store.state.token,
       avatar: "",
-      imgDataUrl: ""
+      imgDataUrl: "",
+      showBombTips: {
+        visible: true
+      },
+      tipsContent: "成功"
     };
   },
-  components: {},
+  components: {
+     Dialog: require("../../components/dialog").default
+  },
   created() {
     console.log(this.user);
   },
