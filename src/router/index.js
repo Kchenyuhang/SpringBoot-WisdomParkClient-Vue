@@ -59,9 +59,34 @@ const routes = [
     component: () => import("../views/card/MetroCard.vue"),
   },
   {
-    path: "/exam",
-    name: "Exam",
-    component: () => import("../views/exam/Exam.vue"),
+    path: '/campuscard',
+    name: 'CampusCard',
+    component: () => import('../views/card/CampusCard.vue'),
+  },
+  {
+    path: '/electriccharge',
+    name: 'ElectricCharge',
+    component: () => import('../views/card/ElectricCharge.vue'),
+  },
+  {
+    path: '/paylist',
+    name: 'PayList',
+    component: () => import('../views/card/PayList.vue'),
+  },
+  {
+    path: '/network',
+    name: 'Network',
+    component: () => import('../views/card/Network.vue'),
+  },
+  {
+    path: '/losscard',
+    name: 'LossCard',
+    component: () => import('../views/card/LossCard.vue'),
+  },
+  {
+    path: '/exam',
+    name: 'Exam',
+    component: () => import('../views/exam/Exam.vue'),
   },
   {
     path: "/library",

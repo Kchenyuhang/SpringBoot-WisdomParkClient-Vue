@@ -7,14 +7,17 @@
         </div>
       </router-link>
       <p>更换手机号</p>
-        <div class="save" @click="into()">
-          <button
-            class="color"
-            :class="{'changeColor':isTrue()}"
-          >
-            <p>下一步</p>
-          </button>
-        </div>
+      <div
+        class="save"
+        @click="into()"
+      >
+        <button
+          class="color"
+          :class="{'changeColor':isTrue()}"
+        >
+          <p>下一步</p>
+        </button>
+      </div>
     </div>
     <hr class="line" />
     <div class="card">
@@ -44,7 +47,7 @@ export default {
       dis: true,
       user: this.$store.state.user,
       token: this.$store.state.token,
-      phoneInput: '',
+      phoneInput: "",
       url: "",
       data: {}
     };
@@ -53,19 +56,22 @@ export default {
   created() {},
   mounted() {},
   methods: {
-    into(){
-      if(this.isTrue()){
-        this.$router.push({name: 'NewPhoneCode', params: {Phone: this.phoneInput}})
+    into() {
+      if (this.isTrue()) {
+        this.$router.push({
+          name: "NewPhoneCode",
+          params: { Phone: this.phoneInput }
+        });
       }
     },
-    isTrue(){
-         if(this.phoneInput==this.user.phoneNumber){
-           return false
-         }
-         if(new RegExp(/^1[3|4|5|6|7|8][0-9]{9}$/).test(this.phoneInput)){
-           return true
-         }
-         return false
+    isTrue() {
+      if (this.phoneInput == this.user.phoneNumber) {
+        return false;
+      }
+      if (new RegExp(/^1[3|4|5|6|7|8][0-9]{9}$/).test(this.phoneInput)) {
+        return true;
+      }
+      return false;
     }
   },
   computed: {}

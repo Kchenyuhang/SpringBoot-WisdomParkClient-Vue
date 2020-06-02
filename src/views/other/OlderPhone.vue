@@ -25,7 +25,6 @@
   </div>
 </template>
 <script>
-
 export default {
   name: "update",
   data() {
@@ -46,8 +45,7 @@ export default {
 
   mounted() {},
 
-  methods: {
-  },
+  methods: {},
 
   computed: {}
 };

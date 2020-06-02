@@ -31,9 +31,12 @@
         </div>
         <hr class="line1" />
       </div>
-        <div class="btn" @click="checkCode()">
-          <p>提交</p>
-        </div>
+      <div
+        class="btn"
+        @click="checkCode()"
+      >
+        <p>提交</p>
+      </div>
     </div>
   </div>
 </template>
@@ -50,22 +53,22 @@ export default {
       phoneInput: this.$route.params.Phone,
       url: "",
       data: {},
-      code:""
+      code: ""
     };
   },
   components: {},
   created() {
-    this.sendMessage()
+    this.sendMessage();
   },
   mounted() {},
   methods: {
-    async sendMessage(){
-        this.data={
+    async sendMessage() {
+      this.data = {
         phoneNumber: this.phoneInput
-      }
-      this.url=this.GLOBAL.baseUrl+'/sendCode'
-        this.result= await  API.init(this.url,this.data,"post")
-        console.log(this.result)
+      };
+      this.url = this.GLOBAL.baseUrl + "/sendCode";
+      this.result = await API.init(this.url, this.data, "post");
+      console.log(this.result);
     },
     async updatePhone() {
       this.url = this.GLOBAL.baseUrl + "/user/update/phone";
@@ -74,19 +77,24 @@ export default {
         pkUserAccountId: this.user.pkUserAccountId
       };
 
-        this.result = await API.init(this.url, this.data, "put");
-        console.log(this.result.msg);
-        if (this.result.msg == "成功") {
-          localStorage.setItem("user", JSON.stringify(this.result.data));
-          this.$store.commit("setUser", this.result.data);
-          this.$router.push("/base");
-        }
-      
+      this.result = await API.init(this.url, this.data, "put");
+      console.log(this.result.msg);
+      if (this.result.msg == "成功") {
+        localStorage.setItem("user", JSON.stringify(this.result.data));
+        this.$store.commit("setUser", this.result.data);
+        this.$router.push("/base");
+      }
     },
-    async checkCode(){
-      this.data={
+    async checkCode() {
+      this.data = {
         phoneNumber: this.phoneInput,
         verifyCode: this.code
+      };
+      this.url = this.GLOBAL.baseUrl + "/verifyCode";
+      this.result = await API.init(this.url, this.data, "post");
+      console.log(this.result);
+      if (this.result.msg == "成功") {
+        this.updatePhone();
       }
       this.url=this.GLOBAL.baseUrl+'/verifyCode'
         this.result= await  API.init(this.url,this.data,"post")

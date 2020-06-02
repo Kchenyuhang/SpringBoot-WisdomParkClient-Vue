@@ -1,0 +1,76 @@
+.header {
+  background-color: #ffffff;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header img {
+  height: 20px;
+  width: 20px;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.header p {
+  font-size: 16px;
+  font-weight: 550;
+  margin-left: 36%;
+  margin-top: 3%;
+}
+
+.card {
+  background-color: #f5f7fb;
+  height: 160px;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.cardimg {
+  background-image: url("https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/bg_yikatongchongzhi.png");
+  background-size: cover;
+  height: 99%;
+  width: 99%;
+  margin: auto;
+  position: relative;
+}
+
+.avatar {
+  height: 45px;
+  width: 45px;
+  margin-top: 5%;
+}
+
+.cardNumber {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  font-size: 10px;
+  color: #ffffff;
+}
+
+.balance {
+  font-size: 10px;
+  color: #ffffff;
+  margin-top: 10px;
+}
+
+.money {
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.icon {
+  margin-top: 25px;
+  width: 50%;
+  height: 50%;
+}
+
+.font-size {
+  font-size: 14px;
+  color: #000000;
+}
+/*# sourceMappingURL=MetroCard.css.map */

@@ -119,8 +119,17 @@
 .line {
   width: 100%;
   border: none;
+  height: 2px;
+  background: #f9f9f9;
+}
+
+.line1 {
+  width: 90%;
+  border: none;
   height: 1px;
-  background: #fbfbfb;
+  background: #efefef;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .line1 {
