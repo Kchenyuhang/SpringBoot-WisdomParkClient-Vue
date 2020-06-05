@@ -118,7 +118,10 @@
           </div>
         </div>
       </div>
-      <div class="login-btn">
+      <div
+        class="login-btn"
+        @click="topUp()"
+      >
         <p>立即充值</p>
       </div>
     </div>
@@ -131,13 +134,34 @@ export default {
   data() {
     return {
       isShow: 1,
-      radio: true
+      radio: true,
+      user: this.$store.state.user
     };
   },
   components: {},
   created() {},
   mounted() {},
-  methods: {},
+  methods: {
+    async topUp() {
+      if (this.isShow == 1) {
+        this.money = 30;
+      }
+      if (this.isShow == 2) {
+        this.money = 50;
+      }
+      if (this.isShow == 3) {
+        this.money = 100;
+      }
+      this.url =
+        this.GLOBAL.baseUrl +
+        "/alipay/toPay/" +
+        this.money +
+        "/" +
+        this.user.jobNumber;
+      console.log(this.url);
+      window.location.href = this.url;
+    }
+  },
   computed: {}
 };
 </script>
