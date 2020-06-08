@@ -6,31 +6,73 @@
   }
   .header {
     margin-top: 8%;
+    .name{
+      color: white;
+    margin-top: 10px;
+    font-size: 15px;
+    }
+    .phone{
+    color: white;
+    margin-top: 6px;
+    font-size: 12px;
+    }
   }
   .header img {
-    width: 80px;
-    height: 80px;
+    width: 65px;
+    height: 65px;
     border-radius: 50%;
     
   }
-  .header p {
-    color: white;
-    margin-top: 18px;
-  }
+
   .info {
     width: 93%;
-    margin-top: 15%;
+    margin-top: 11%;
     margin-left: 3%;
     background-color: balck;
     z-index: 1000000;
   }
-  .info-left img {
-    width: 20%;
-    height: 20%;
+  .info-left1 img {
+    width: 17%;
+    height: 17%;
+    position: relative;
+    top: 2px;
   }
-  .info-left p {
-    margin-left: 8px;
-    font-size: 17px;
+  .info-left1 p {
+    margin-left: 10px;
+    font-size: 16px;
+    color: #666666;
+  }
+  .info-left2 img {
+    width: 17%;
+    height: 17%;
+    position: relative;
+    top: 2px;
+  }
+  .info-left2 p {
+    margin-left: 10px;
+    font-size: 16px;
+    color: #666666;
+  }
+  .info-left3 img {
+    width: 17%;
+    height: 17%;
+    position: relative;
+    top: 4px;
+  }
+  .info-left3 p {
+    margin-left: 10px;
+    font-size: 16px;
+    color: #666666;
+  }
+  .info-left4 img {
+    width: 17%;
+    height: 17%;
+    position: relative;
+    top: 0px;
+  }
+  .info-left4 p {
+    margin-left: 10px;
+    font-size: 16px;
     color: #666666;
   }
   .info-right img {

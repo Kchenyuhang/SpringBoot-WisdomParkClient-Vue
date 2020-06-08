@@ -1,77 +1,73 @@
-
 .address1 {
-    position: absolute;
-    width: 100%;
-    margin-bottom: 100px;
-    background-color: white;
-  }
+  position: absolute;
+  width: 100%;
+  margin-bottom: 100px;
+  background-color: white;
+}
 .header {
-    background-color: #ffffff;
-    height: 25px;
-    display: flex;
-
-    img {
-        height: 20px;
-        width: 20px;
-        margin-top: 10px;
-        margin-left: 5px;
-    }
-
-    p {
-        font-size: 16px;
-        font-weight: 550;
-        margin-left: 34%;
-        margin-top: 2%;
-    }
+  background-color: #ffffff;
+  height: 30px;
+  display: flex;
+  img {
+    height: 20px;
+    width: 20px;
+    margin-top: 10px;
+    margin-left: 5px;
+  }
+  p {
+    font-size: 18px;
+    font-weight: 550;
+    margin-left: 38%;
+    margin-top: 2%;
+  }
 }
 
 .Top {
-    margin-top: 30px;
-    .title {
-        margin-left: 13px;
-        font-size: 15px;
-    }
+  margin-top: 30px;
+  .title {
+    margin-left: 13px;
+    font-size: 15px;
+  }
 
-    img {
-        width: 90px;
-        height: 60px;
-        margin-top: 5px;
-        margin-left: 25px;
-    }
+  img {
+    width: 90px;
+    height: 60px;
+    margin-top: 5px;
+    margin-left: 25px;
+  }
 
-    .file{
-        font-size: 12px;
-        margin-top: 10px;
-    }
-    
-    .time{
-        color: #b6b6b6;
-        font-size: 12px;
-    }
+  .file {
+    font-size: 12px;
+    margin-top: 10px;
+  }
 
+  .time {
+    color: #b6b6b6;
+    font-size: 12px;
+  }
 }
 
-.container{
-    .container-header{
-        border-top: 3px #f5f5f5 solid;
-        margin-top: 20px;
-    }
-    img{
-        width: 80px;
-        height: 80px;
-    }
-    .file{
-        font-size: 15px;
-    }
-    
-    .time{
-        color: #b6b6b6;
-        font-size: 12px;
-    }
+.container {
+  .container-header {
+    border-top: 3px #f5f5f5 solid;
+    margin-top: 20px;
+  }
+  img {
+    width: 80px;
+    height: 80px;
+  }
+  .file {
+    font-size: 15px;
+  }
+
+  .time {
+    color: #b6b6b6;
+    font-size: 12px;
+  }
 }
-.blueLine{
-    padding-bottom: 7px;
-    margin-bottom: 3px;
-    border-bottom: 4px #46abf1 solid;
-    color: #46abf1;
+.blueLine {
+  padding-bottom: 7px;
+  margin-bottom: 3px;
+  border-bottom: 4px #46abf1 solid;
+  color: #46abf1;
 }
