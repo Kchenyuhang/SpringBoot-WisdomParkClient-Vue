@@ -310,13 +310,13 @@ export default {
           { required: true, error: "手机号不能为空" },
           {
             regex: /^1[3|4|5|6|7|8][0-9]{9}$/,
-            error: "手机号格式不对"
-          }
+            error: "手机号格式不对",
+          },
         ],
         code: [{ required: true, error: "验证码不能为空" }],
         studentId: [{ required: true, error: "学号不能为空" }],
-        passWord: [{ required: true, error: "密码不能为空" }]
-      }
+        passWord: [{ required: true, error: "密码不能为空" }],
+      },
     };
   },
   components: {},
@@ -373,7 +373,10 @@ export default {
       if (this.phoneForm.tips == null) {
         this.data = {
           phoneNumber: this.phoneForm.phoneNumber,
-          verifyCode: this.phoneForm.code
+
+          verifyCode: this.phoneForm.code,
+
+
         };
         this.url = this.GLOBAL.baseUrl + "/user/code/login";
         this.result = await API.init(this.url, this.data, "post");
@@ -402,7 +405,7 @@ export default {
       if (this.phoneForm.tips == null) {
         this.data = {
           userAccount: this.phoneForm.studentId,
-          password: this.phoneForm.passWord
+          password: this.phoneForm.passWord,
         };
         this.url = this.GLOBAL.baseUrl + "/user/login";
         // this.$axios.defaults.headers.post['token'] = null;
@@ -438,7 +441,9 @@ export default {
     },
     async sendMessage() {
       this.data = {
-        phoneNumber: this.phoneForm.phoneNumber
+
+        phoneNumber: this.phoneForm.phoneNumber,
+
       };
       this.url = this.GLOBAL.baseUrl + "/sendCode";
       this.result = await API.init(this.url, this.data, "post");
@@ -447,14 +452,19 @@ export default {
     async checkCode() {
       this.data = {
         phoneNumber: this.phoneForm.phoneNumber,
+
         verifyCode: this.phoneForm.code
+
       };
       this.url = this.GLOBAL.baseUrl + "/verifyCode";
       this.result = await API.init(this.url, this.data, "post");
       console.log(this.result);
       this.data = {
         userAccount: this.phoneForm.phoneNumber,
-        password: this.phoneForm.passWord
+
+        password: this.phoneForm.passWord,
+
+
       };
       this.url = this.GLOBAL.baseUrl + "/user/password";
       this.result = await API.init(this.url, this.data, "put");
@@ -474,9 +484,9 @@ export default {
       //   .catch(function(error) {
       //     console.log(error)
       //   })
-    }
+    },
   },
-  computed: {}
+  computed: {},
 };
 </script>
 
