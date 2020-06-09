@@ -82,7 +82,7 @@ export default {
   position: relative;
   top: 15px;
   width: 100%;
-  height: 200px;
+  height: 175px;
   overflow: hidden;
 }
 
@@ -115,9 +115,10 @@ export default {
 
 .carousel-items span {
   display: inline-block;
-  width: 10px;
+  width: 6px;
   height: 6px;
   margin: 0 5px;
+  border-radius: 10px;
   background-color: #eee;
   cursor: pointer;
 }

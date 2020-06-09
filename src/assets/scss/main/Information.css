@@ -7,7 +7,7 @@
 
 .header {
   background-color: #ffffff;
-  height: 25px;
+  height: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -21,9 +21,9 @@
 }
 
 .header p {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 550;
-  margin-left: 34%;
+  margin-left: 38%;
   margin-top: 2%;
 }
 

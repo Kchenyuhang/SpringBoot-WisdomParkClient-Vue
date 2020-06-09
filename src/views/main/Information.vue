@@ -101,12 +101,12 @@ export default {
         {
           url: "#",
           description: "two",
-          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/lunbo2.jpg"
+          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/2.jpg"
         },
         {
           url: "#",
           description: "three",
-          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/lunbo3.jpg"
+          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg"
         }
       ],
       imgs: [],
