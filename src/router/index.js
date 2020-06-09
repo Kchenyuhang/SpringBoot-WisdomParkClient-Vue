@@ -59,34 +59,34 @@ const routes = [
     component: () => import("../views/card/MetroCard.vue"),
   },
   {
-    path: '/campuscard',
-    name: 'CampusCard',
-    component: () => import('../views/card/CampusCard.vue'),
+    path: "/campuscard",
+    name: "CampusCard",
+    component: () => import("../views/card/CampusCard.vue"),
   },
   {
-    path: '/electriccharge',
-    name: 'ElectricCharge',
-    component: () => import('../views/card/ElectricCharge.vue'),
+    path: "/electriccharge",
+    name: "ElectricCharge",
+    component: () => import("../views/card/ElectricCharge.vue"),
   },
   {
-    path: '/paylist',
-    name: 'PayList',
-    component: () => import('../views/card/PayList.vue'),
+    path: "/paylist",
+    name: "PayList",
+    component: () => import("../views/card/PayList.vue"),
   },
   {
-    path: '/network',
-    name: 'Network',
-    component: () => import('../views/card/Network.vue'),
+    path: "/network",
+    name: "Network",
+    component: () => import("../views/card/Network.vue"),
   },
   {
-    path: '/losscard',
-    name: 'LossCard',
-    component: () => import('../views/card/LossCard.vue'),
+    path: "/losscard",
+    name: "LossCard",
+    component: () => import("../views/card/LossCard.vue"),
   },
   {
-    path: '/exam',
-    name: 'Exam',
-    component: () => import('../views/exam/Exam.vue'),
+    path: "/exam",
+    name: "Exam",
+    component: () => import("../views/exam/Exam.vue"),
   },
   {
     path: "/library",
@@ -147,7 +147,7 @@ const routes = [
     path: "/base",
     name: "Base",
     component: () => import("../views/person/Base.vue"),
-  }
+  },
 ];
 
 const router = new VueRouter({

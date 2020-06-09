@@ -1,6 +1,10 @@
 <template>
   <div class="carousel-wrap">
-    <transition-group tag="ul" class="slide-ul" name="slide">
+    <transition-group
+      tag="ul"
+      class="slide-ul"
+      name="slide"
+    >
       <li
         v-for="(item,index) in slideList"
         :key="index"
@@ -9,13 +13,22 @@
         @mouseleave="go"
       >
         <a :href="item.url">
-          <img :src="item.image" :alt="item.description" />
+          <img
+            :src="item.image"
+            :alt="item.description"
+          />
         </a>
       </li>
     </transition-group>
     <div class="carousel-items cc-df-center">
-      <div v-for="(item,index) in slideList" :key="index">
-        <span :class="{'active': index==currentIndex}" @mouseover="change(index)"></span>
+      <div
+        v-for="(item,index) in slideList"
+        :key="index"
+      >
+        <span
+          :class="{'active': index==currentIndex}"
+          @mouseover="change(index)"
+        ></span>
       </div>
     </div>
   </div>
@@ -27,8 +40,8 @@ export default {
   props: ["slideList"],
   data() {
     return {
-        currentIndex: 0,
-        timer: null
+      currentIndex: 0,
+      timer: null
     };
   },
   components: {},
