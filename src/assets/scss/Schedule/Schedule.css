@@ -1,0 +1,57 @@
+.bg {
+  background-color: #f2f2f2;
+  height: 900px;
+  width: 100%;
+}
+
+.header {
+  background-color: #ffffff;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header img {
+  height: 20px;
+  width: 20px;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.header p {
+  font-size: 18px;
+  font-weight: 550;
+  margin-left: 34%;
+  margin-top: 2%;
+}
+
+.line {
+  width: 100%;
+  border: none;
+  height: 1px;
+  background: #dcdcde;
+}
+
+.container {
+  background-color: #ffffff;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.container img {
+  height: 20px;
+  width: 20px;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.container p {
+  font-size: 14px;
+  font-weight: 550;
+  margin-left: 38%;
+  margin-top: 2%;
+}
+/*# sourceMappingURL=Schedule.css.map */
