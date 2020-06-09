@@ -59,10 +59,11 @@
       width: 100%;
       border: none;
       background-color: #f2f2f4;
+      .selected {
+        color: #0d858e;
+      }
     }
-    .content.selected {
-      color: #0d858e;
-    }
+
     .ccard {
       display: flex;
       // justify-content: space-around;
