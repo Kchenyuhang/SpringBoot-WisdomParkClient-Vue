@@ -1,67 +1,142 @@
 <template>
-  <transition :name="transitionName">
-    <div class="bg">
-      <h2>2</h2>
+  <div class="bg">
+    <div class="header">
+      <router-link to="/layout">
+        <img
+          src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
+          alt=""
+        />
+      </router-link>
+      <p>通讯录</p>
     </div>
-  </transition>
+    <div class="top">软件{{ clazzId }}</div>
+    <!-- 左边内容显示 -->
+    <ul class="student-container">
+      <li v-for="(student, stIndex) in studentInfo" :key="stIndex">
+        <div
+          class="content"
+          :class="{
+            'spell-letter': true,
+            selected: student.spell.toUpperCase().slice(0, 1) === selectLetter,
+          }"
+          :id="student.spell.toUpperCase().slice(0, 1)"
+          v-if="
+            stIndex === 0 ||
+              studentInfo[stIndex].spell.toUpperCase().slice(0, 1) !==
+                studentInfo[stIndex - 1].spell.toUpperCase().slice(0, 1)
+          "
+        >
+          {{ student.spell.toUpperCase().slice(0, 1) }}
+        </div>
+        <div class="ccard">
+          <div class="leftDiv">
+            <img
+              src="https://soft1851.oss-cn-beijing.aliyuncs.com/markdown/用户 (1).png"
+              alt=""
+            />
+          </div>
+          <div class="rightDiv">
+            <p>{{ student.name }}</p>
+            <p>{{ student.number }}</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <!-- 右边字母 -->
+    <div class="left-letter">
+      <span
+        v-for="(letter, letterIndex) in letterList"
+        :key="letterIndex"
+        @click="toLetters(letter)"
+        >{{ letter }}
+      </span>
+      <button class="btn">+</button>
+    </div>
+  </div>
 </template>
 
 <script>
 const API = require("../../request/api");
+var pinyin = require("pinyin");
 export default {
-  name: "Information",
+  name: "Login",
   data() {
     return {
-      transitionName: this.$store.state.transitionName,
-      FristPin: [
-        "A",
-        "B",
-        "C",
-        "D",
-        "E",
-        "F",
-        "G",
-        "H",
-        "J",
-        "K",
-        "L",
-        "M",
-        "N",
-        "P",
-        "Q",
-        "R",
-        "S",
-        "T",
-        "W",
-        "X",
-        "Y",
-        "Z"
-      ],
-      addressBooks: [],
-      addressBook: {}
+      // 拿到用户的userId 用来查询通讯录好友
+      userId: this.$store.state.user.pkUserAccountId,
+      clazzId: this.$store.state.user.clazzId,
+      // 后端请求到前端的数据
+      result: [],
+      // 拼音数组
+      spells: [],
+      studentInfo: [], //学生信息列表
+      letterList: [], //字母列表
+      selectLetter: "", //被选中的字母
     };
   },
   components: {},
   created() {
-    console.log(this.transitionName);
+    this.selectSchedule();
   },
   mounted() {},
   methods: {
-    async selectAddressBooks() {
-      this.url = this.GLOBAL.baseUrl + "/address_book/list/userId";
+    // 点击左侧字母，右侧学生列表滚动到指定位置
+    toLetters(letter) {
+      this.selectLetter = letter;
+      let e = document.getElementById(letter);
+      if (e) {
+        e.scrollIntoView(); //滚动到指定位置
+      }
+    },
+    async selectSchedule() {
       this.data = {
-        field: 2
+        field: this.userId,
       };
-      this.result = await API.init(this.url, null, "get");
+      this.url = this.GLOBAL.baseUrl + "/address_book/list/userId";
+      this.result = await API.init(this.url, this.data, "post");
       console.log(this.result);
-    }
+      this.transition();
+    },
+    transition() {
+      let z = 97;
+      for (let i = 0; i < 26; i++) {
+        console.log(String.fromCharCode(z));
+        for (let j = 0; j < this.result.length; j++) {
+          this.spells = pinyin(this.result[j].remark)[0][0];
+          if (String.fromCharCode(z) == this.spells.substring(0, 1)) {
+            this.studentInfo.push({
+              name: this.result[j].remark,
+              spell: this.spells,
+              number: this.result[j].phoneNumber,
+              // avatar: this.result[j]
+            });
+          }
+        }
+        z++;
+      }
+      this.ziMu();
+    },
+    ziMu() {
+      // 初始化字母列表
+      this.studentInfo.forEach((e, index) => {
+        //过滤字母，重复的不选
+        if (index === 0) {
+          this.letterList[0] = e.spell.toUpperCase().slice(0, 1);
+          this.selectLetter = this.letterList[0];
+        } else if (
+          index != 0 &&
+          this.studentInfo[index].spell.toUpperCase().slice(0, 1) !==
+            this.studentInfo[index - 1].spell.toUpperCase().slice(0, 1)
+        ) {
+          this.letterList.push(e.spell.toUpperCase().slice(0, 1));
+        }
+      });
+    },
   },
-  computed: {}
+  computed: {},
 };
 </script>
 
 <style scoped lang="scss">
-.bg {
-  position: absolute;
-}
+@import "../../assets/scss/main/AdressBook.scss";
 </style>
