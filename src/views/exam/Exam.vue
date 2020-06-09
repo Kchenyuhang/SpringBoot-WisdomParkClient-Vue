@@ -100,14 +100,14 @@ export default {
     },
     async getList() {
       console.log(1);
-      this.url = this.GLOBAL.baseUrl + "/semester/all";
+      this.url = this.GLOBAL.baseUrl + "/examination/list/semester";
       this.result = await API.init(this.url, null, "get");
       // console.log(this.result);
       this.semesters = this.result.data;
       this.semester = this.semesters[this.semesters.length - 1].name;
     },
     async selectExam() {
-      this.url = "http://27e1537o04.zicp.vip:20304/examination/list/semester";
+      this.url = this.GLOBAL.baseUrl + "/examination/list/semester";
       this.result = await API.init(this.url, this.data, "post");
       console.log(this.result);
       this.semester = this.result[0].semester;
