@@ -13,12 +13,13 @@
             id="file"
           />
         </div>
-        <p>{{user.nickname}}</p>
+        <p class="name">{{user.nickname}}</p>
+        <p class="phone">{{user.phoneNumber.substring(0,3)}}****{{user.phoneNumber.substring(7)}}</p>
       </div>
       <div class="info">
         <router-link to="/base">
         <div class="cc-df-between">
-          <div class="cc-df info-left">
+          <div class="cc-df info-left1">
             <img
               src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_jibenxinxi.png"
               alt="基本信息"
@@ -34,7 +35,7 @@
         <hr class="line" />
 
         <div class="cc-df-between">
-          <div class="cc-df info-left">
+          <div class="cc-df info-left2">
             <img
               src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_guanyuwomen.png"
               alt="关于我们"
@@ -49,7 +50,7 @@
         <hr class="line" />
         <router-link to="/feedback">
           <div class="cc-df-between">
-            <div class="cc-df info-left">
+            <div class="cc-df info-left3">
               <img
                 src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_yijianfankui.png"
                 alt="意见反馈"
@@ -66,7 +67,7 @@
         </router-link>
         <hr class="line" />
         <div class="cc-df-between" @click="logout()">
-          <div class="cc-df info-left">
+          <div class="cc-df info-left4">
             <img
               src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_qinlihuncun.png"
               alt="清理缓存"

@@ -10,21 +10,22 @@ export const apiUpdeteDevice = (url, data) => put(url, data);
 // 删除设备
 export const apiDelDevice = (url, data) => $delete(url, data);
 
-export async function init (url,data,method) {     // 方法
-    if(method=="post"){
-      this.result= await apiDeviceDetail(url,data).then(res => {
-      return res
-    })
-    }
-    if(method=="put"){
-      this.result=await apiUpdeteDevice(url,data).then(res => {
-        return res
-      })
-    }
-    if(method=="del"){
-        this.result=await apiDelDevice(url,data).then(res => {
-            return res
-          })
-    }
-    return this.result
+export async function init(url, data, method) {
+  // 方法
+  if (method == "post") {
+    this.result = await apiDeviceDetail(url, data).then((res) => {
+      return res;
+    });
   }
+  if (method == "put") {
+    this.result = await apiUpdeteDevice(url, data).then((res) => {
+      return res;
+    });
+  }
+  if (method == "del") {
+    this.result = await apiDelDevice(url, data).then((res) => {
+      return res;
+    });
+  }
+  return this.result;
+}

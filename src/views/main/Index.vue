@@ -78,18 +78,17 @@ export default {
         {
           url: "#",
           description: "one",
-          image:
-            "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/lunbo1.jpeg"
+          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/1.jpg"
         },
         {
           url: "#",
           description: "two",
-          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/lunbo2.jpg"
+          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/2.jpg"
         },
         {
           url: "#",
           description: "three",
-          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/lunbo3.jpg"
+          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg"
         }
       ],
       transitionName: this.$store.state.transitionName,
