@@ -1,7 +1,7 @@
 <template>
   <transition :name="transitionName">
     <div class="bg">
-      <Dialog v-bind.sync="showBombTips" :tipsContent="tipsContent"></Dialog>
+      <!-- <Dialog v-bind.sync="showBombTips" :tipsContent="tipsContent"></Dialog> -->
       <div class="header cc-col-center">
         <div class="cc-df cc-mltop" id="fileBox">
           <img :src="user.avatar" @click="avatarClick()" />
@@ -100,7 +100,7 @@ export default {
     };
   },
   components: {
-     Dialog: require("../../components/dialog").default
+    // Dialog: require("../../components/dialog").default
   },
   created() {
     console.log(this.user);

@@ -1,8 +1,6 @@
 .header {
   background-color: #ffffff;
   height: 40px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -48,9 +46,7 @@
   height: 70px;
   border: 1px #80c2ee solid;
   border-radius: 10px;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 48%;
-          flex: 0 0 48%;
+  flex: 0 0 48%;
 }
 
 .card .rechargeicon .icon input {
@@ -91,12 +87,8 @@
 }
 
 .card .paycard .alipaycard .alipay {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 
 .card .paycard .alipaycard .alipay img {
@@ -119,12 +111,8 @@
 }
 
 .card .paycard .wechatpaycard .wechatpay {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   margin-top: 20px;
 }
 
@@ -165,8 +153,6 @@
 .dorm {
   background-color: #ffffff;
   height: 40px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -198,4 +184,3 @@
 .change input {
   background-color: #5db1ea;
 }
-/*# sourceMappingURL=Card.css.map */
