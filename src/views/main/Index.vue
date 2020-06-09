@@ -22,14 +22,7 @@
           />
           <p class="cc-mtop font-size">考务查询</p>
         </div>
-        <div class="cc-col-center cc-coll-3 address2" @click="into(3)">
-          <img
-            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_tushuguan.png"
-            alt="图书馆图标"
-            class="icon"
-          />
-          <p class="cc-mtop font-size">图书馆</p>
-        </div>
+        
         <div class="cc-col-center cc-coll-3 address2" @click="into(4)">
           <img
             src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_xiaoyuankachongzhi.png"
@@ -38,7 +31,90 @@
           />
           <p class="cc-mtop font-size">一卡通</p>
         </div>
+        
+        <div class="cc-col-center cc-coll-3 address2" @click="isShow=true">
+          <img
+            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/gengduo.png"
+            alt="更多图标"
+            class="icon"
+          />
+          <p class="cc-mtop font-size ">更多</p>
+        </div>
       </div>
+      <transition name="fold-top">
+      <div class="more cc-df cc-donghua-top" v-if="isShow">
+        <div class="close" @click="isShow=false">
+          <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/cha.png" alt="">
+        </div>
+        <div class="more-row cc-df-warp">
+        <div class="cc-col-center cc-coll-3 address2" @click="into(3)">
+          <img
+            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_tushuguan.png"
+            alt="图书馆图标"
+            class="icon"
+          />
+          <p class="cc-mtop font-size">图书馆</p>
+        </div>
+        <div class="cc-col-center cc-coll-3 address2">
+          <img
+            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/jianzhi.png"
+            alt="兼职图标"
+            class="icon"
+          />
+          <p class="cc-mtop font-size">兼职</p>
+        </div>
+        <div class="cc-col-center cc-coll-3 address2">
+          <img
+            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/xiaoyouquan.png"
+            alt="校友圈图标"
+            class="icon"
+          />
+          <p class="cc-mtop font-size">校友圈</p>
+        </div>
+        
+        <div class="cc-col-center cc-coll-3 address2">
+          <img
+            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/paotui.png"
+            alt="跑腿图标"
+            class="icon"
+          />
+          <p class="cc-mtop font-size">跑腿</p>
+        </div>
+        <div class="cc-col-center cc-coll-3 address2">
+          <img
+            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/ershoushichang.png"
+            alt="二手市场图标"
+            class="icon"
+          />
+          <p class="cc-mtop font-size">跳蚤市场</p>
+        </div>
+        <div class="cc-col-center cc-coll-3 address2">
+          <img
+            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zhinengjiaju.png"
+            alt="智能家居图标"
+            class="icon"
+          />
+          <p class="cc-mtop font-size">智能家居</p>
+        </div>
+        <div class="cc-col-center cc-coll-3 address2">
+          <img
+            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zhihuikaisuo.png"
+            alt="智慧开锁图标"
+            class="icon"
+          />
+          <p class="cc-mtop font-size">智慧开锁</p>
+        </div>
+        <div class="cc-col-center cc-coll-3 address2">
+          <img
+            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zhihuianfang.png"
+            alt="智慧安防图标"
+            class="icon"
+          />
+          <p class="cc-mtop font-size">智慧安防</p>
+        </div>
+        </div>
+      </div>
+      </transition>
       <hr class="line" />
       <div class="address">
         <p class="fontSize">我的课程</p>
@@ -60,9 +136,21 @@
         <p class="fontSize">热门资讯</p>
         <div class="cc-col">
           <div class="cc-mtop" v-for="item in 3" :key="item.id">
-            <div class="left" v-bind:style="{backgroundImage:'url(' + avatar + ')'}"></div>
-            <div class="right cc-col"></div>
+            <div class="cc-df-between">
+              <div class="left" v-bind:style="{backgroundImage:'url(' + avatar + ')'}"></div>
+            <div class="right cc-col">
+              <div class="right-top">
+                <p>4月22日下午，计算机与信息技术学院已腾讯会议</p>
+              </div>
+              <div class="right-bottom">
+                <p>2020-06-01</p>
+              </div>
+            </div>
+            </div>
+            
+            <hr class="line1"/>
           </div>
+          
         </div>
       </div>
     </div>
@@ -92,7 +180,8 @@ export default {
         }
       ],
       transitionName: this.$store.state.transitionName,
-      avatar: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/bj1.png"
+      avatar: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/bj1.png",
+      isShow: false
     };
   },
   components: {

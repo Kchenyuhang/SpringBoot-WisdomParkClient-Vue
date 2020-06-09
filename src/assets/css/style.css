@@ -623,33 +623,19 @@ hr {
     }
 }
 
-.fold-top-enter-active {
-    animation-name: fold-top-in;
-    animation-duration: 1s;
-}
 
 .fold-top-leave-active {
     animation-name: fold-top-out;
     animation-duration: 0.7s;
 }
 
-@keyframes fold-top-in {
-    0% {
-        transform: translate3d(0, 0, 0);
-    }
-
-    100% {
-        transform: translate3d(0, 200%, 0);
-    }
-}
-
 @keyframes fold-top-out {
     0% {
-        transform: translate3d(0, -200%, 0);
+        transform: translate3d(0, 0, 0);
     }
 
     100% {
-        transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 60%, 0);
     }
 }
 
