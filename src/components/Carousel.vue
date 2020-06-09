@@ -1,6 +1,10 @@
 <template>
   <div class="carousel-wrap">
-    <transition-group tag="ul" class="slide-ul" name="slide">
+    <transition-group
+      tag="ul"
+      class="slide-ul"
+      name="slide"
+    >
       <li
         v-for="(item,index) in slideList"
         :key="index"
@@ -9,13 +13,22 @@
         @mouseleave="go"
       >
         <a :href="item.url">
-          <img :src="item.image" :alt="item.description" />
+          <img
+            :src="item.image"
+            :alt="item.description"
+          />
         </a>
       </li>
     </transition-group>
     <div class="carousel-items cc-df-center">
-      <div v-for="(item,index) in slideList" :key="index">
-        <span :class="{'active': index==currentIndex}" @mouseover="change(index)"></span>
+      <div
+        v-for="(item,index) in slideList"
+        :key="index"
+      >
+        <span
+          :class="{'active': index==currentIndex}"
+          @mouseover="change(index)"
+        ></span>
       </div>
     </div>
   </div>
@@ -27,8 +40,8 @@ export default {
   props: ["slideList"],
   data() {
     return {
-        currentIndex: 0,
-        timer: null
+      currentIndex: 0,
+      timer: null
     };
   },
   components: {},
@@ -69,7 +82,7 @@ export default {
   position: relative;
   top: 15px;
   width: 100%;
-  height: 200px;
+  height: 175px;
   overflow: hidden;
 }
 
@@ -102,9 +115,10 @@ export default {
 
 .carousel-items span {
   display: inline-block;
-  width: 10px;
+  width: 6px;
   height: 6px;
   margin: 0 5px;
+  border-radius: 10px;
   background-color: #eee;
   cursor: pointer;
 }
