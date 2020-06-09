@@ -41,7 +41,6 @@ export default {
   components: {},
   created() {
     this.citys = provinces[this.id].city;
-    console.log(this.citys);
   },
   mounted() {},
   methods: {

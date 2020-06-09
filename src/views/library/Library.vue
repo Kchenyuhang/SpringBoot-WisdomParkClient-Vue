@@ -12,7 +12,7 @@
     <hr class="line" />
     <div class="book cc-df">
       <p class="font">已阅读</p>
-      <p class="num">{{result.length}}</p>
+      <p class="num">{{count}}</p>
       <p class="font">本</p>
     </div>
     <div>
@@ -21,10 +21,13 @@
       </div>
     </div>
     <div
-      v-for="(item,index) in result"
+      v-for="(item,index) in result.sysBorrowNoReturnList"
       :key="index"
     >
-      <div class="card">
+      <div
+        class="card"
+        v-if="item.isReturned===false"
+      >
         <div class="card1">
           <div>
             <p class="mid">{{ item.borrowBookName }}</p>
@@ -46,7 +49,7 @@
       <p>历史借阅</p>
     </div>
     <div
-      v-for="item in result"
+      v-for="item in result.sysBorrowReturnList"
       :key="item.pkBorrowId"
     >
       <div class="card">
@@ -76,6 +79,7 @@ export default {
     return {
       url: "",
       result: [],
+      count: 0,
       data: {
         jobNumber: "1802343116"
       }
@@ -88,8 +92,9 @@ export default {
   mounted() {},
   methods: {
     async getList() {
-      this.url = this.GLOBAL.baseUrl + "/book/record";
+      this.url = this.GLOBAL.baseUrl + "/book/borrow";
       this.result = (await API.init(this.url, this.data, "post")).data;
+      this.count = this.result.borrowCount;
       console.log(this.result);
     }
   },

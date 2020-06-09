@@ -7,8 +7,6 @@
 .header {
   background-color: #ffffff;
   height: 40px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -74,13 +72,11 @@
   background-color: #f2f2f4;
 }
 
-.student-container li .content.selected {
+.student-container li .content .selected {
   color: #0d858e;
 }
 
 .student-container li .ccard {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   padding: 10px 0 10px;
 }
@@ -107,4 +103,3 @@
 .student-container li .rightDiv {
   margin: 5px 0 0 10px;
 }
-/*# sourceMappingURL=AdressBook.css.map */

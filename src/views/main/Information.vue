@@ -21,8 +21,8 @@
             <div class="cc-df">
               <img :src="item.cover" />
               <div class="cc-col-between cc-mleft">
-                <p class="file">默认不打断不换行。需要通过CSS进行强制打断</p>
-                <p class="time">2020-06-01</p>
+                <p class="file">{{item.text.slice(0,35)}}...</p>
+                <p class="time">{{item.gmtCreate.slice(0,10)}}</p>
               </div>
             </div>
           </div>
@@ -153,7 +153,6 @@ export default {
       for (let i = 0; i < this.result.length; i++) {
         this.slideList[i].image = this.result[i].cover;
       }
-      // console.log(this.slideList);
     },
     async getDoList() {
       this.url1 = this.GLOBAL.baseUrl + "/info/type/page";
