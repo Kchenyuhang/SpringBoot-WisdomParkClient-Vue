@@ -24,7 +24,10 @@
       v-for="(item,index) in result"
       :key="index"
     >
-      <div class="card">
+      <div
+        class="card"
+        v-if="item.isReturned===false"
+      >
         <div class="card1">
           <div>
             <p class="mid">{{ item.borrowBookName }}</p>
@@ -77,7 +80,7 @@ export default {
       url: "",
       result: [],
       data: {
-        jobNumber: "1802343116"
+        jobNumber: "1802343210"
       }
     };
   },

@@ -39,14 +39,26 @@
             <p class="mid">{{item.subject_name}}</p>
           </div>
           <div>
-            <p class="small1">{{item.score}}</p>
+            <p
+              class="small1"
+              v-if="item.endTime ===-1"
+              :class="item.score < 60 ? 'font-red' : 'font-blue'"
+            >{{item.score}}分</p>
+            <p
+              class="small1"
+              v-if="item.endTime ===0"
+            >考试中</p>
+            <p
+              class="small1"
+              v-if="item.endTime >0"
+            >距离还有{{item.endTime}}天</p>
           </div>
         </div>
         <div>
           <p class="small">考试地点：{{item.area}}</p>
         </div>
         <div>
-          <p class="small">考试时间：{{item.start_time}}~</p>
+          <p class="small">考试时间：{{item.start_time}}~{{item.finish_time}}</p>
         </div>
       </div>
     </div>
