@@ -1,200 +1,56 @@
 <template>
-  <div id="classSchedule">
-    <!--引入navBar-->
-    <!--        <NavBar>{{ title }}</NavBar>-->
-    <!--课程表-->
-    <table class="schedule">
-      <tr class="week blank">
-        <td colspan="9">
-          <label>
-            <select class="week-select ">
-              <option>第一周</option>
-            </select>
-          </label>
-        </td>
-      </tr>
-      <tr>
-        <td
-          colspan="9"
-          class="blank"
-        ></td>
-      </tr>
-      <tr class="week-list">
-        <td></td>
-        <td></td>
-        <td
-          v-for="(item, index) in weeks"
-          :key="index"
-        >{{ item }}</td>
-      </tr>
-      <tr class="am">
-        <td rowspan="2">上午</td>
-        <td>1-2</td>
-        <td
-          v-for="(item, index) in classTableData"
-          :key="index"
-        >
-          {{ item.monday }}
-        </td>
-      </tr>
-      <tr>
-        <td>3-4</td>
-        <td
-          v-for="(item, index) in classTableData"
-          :key="index"
-        >
-          {{ item.tuesday }}
-        </td>
-      </tr>
-      <tr class="noon">
-        <td
-          colspan="9"
-          class="blank"
-        ></td>
-      </tr>
-      <tr>
-        <td rowspan="2">下午</td>
-        <td>5-6</td>
-        <td
-          v-for="(item, index) in classTableData"
-          :key="index"
-        >
-          {{ item.tuesday }}
-        </td>
-      </tr>
-      <tr class="pm">
-        <td>7-8</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td
-          colspan="9"
-          class="blank"
-        ></td>
-      </tr>
-      <tr>
-        <td>下午</td>
-        <td>9-10</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
+  <div class="mylist">    
+    <delete-slider v-for="(list, index) in dataList" :key="index" @deleteLine="deleteLine(index, list.id)">
+      <div class="li-img" slot="img"><img :src="list.img" alt=""></div>
+      <h3 class="li-title" slot="title">{{list.title}}</h3>
+      <p class="li-price" slot="price">{{list.price}}</p>
+    </delete-slider> 
   </div>
 </template>
 
 <script>
-// import NavBar from '../../components/tabBar/NavBar'
+import deleteSlider from '../../components/deleteTemplate' 
+
 export default {
-  name: "Class",
-  // components: { NavBar },
-  data() {
+  components: {
+    deleteSlider
+  },
+  data () {
     return {
-      title: "课程表",
-      weeks: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
-      classTableData: [
+      dataList: [
         {
-          monday: "",
-          tuesday: "工业软件后端架构技术",
-          wednesday: "前端框架技术",
-          thursday: "工业软件后端框架技术",
-          friday: "工业软件产品设计",
-          saturday: "",
-          sunday: ""
+          id: 1,
+          img: 'static/a1.jpg',
+          title: '法国专柜2019夏季新款修身显瘦气质包臀短裙镂空蕾丝性感连衣裙子',
+          price: '399.00'
         },
         {
-          monday: "体育俱乐部-健美",
-          tuesday: "工业软件后端架构技术",
-          wednesday: "前端框架技术",
-          thursday: "工业软件后端框架技术",
-          friday: "工业软件产品设计",
-          saturday: "",
-          sunday: ""
+          id: 2,
+          img: 'static/a2.jpg',
+          title: 'VERAMOON 亮片印花短袖连衣裙女夏甜美露背性感泡泡袖修身短裙',
+          price: '689.00'
         },
         {
-          monday: "前端框架技术",
-          tuesday: "",
-          wednesday: "",
-          thursday: "毛泽东思想和中国特色社会主义体系理论建设",
-          friday: "",
-          saturday: "",
-          sunday: ""
+          id: 3,
+          img: 'static/a3.jpg',
+          title: 'famous 仙气木耳边紫色小碎花短裙a字雪纺连衣裙女',
+          price: '199.00'
         },
         {
-          monday: "前端框架技术",
-          tuesday: "",
-          wednesday: "",
-          thursday: "毛泽东思想和中国特色社会主义体系理论建设",
-          friday: "",
-          saturday: "",
-          sunday: ""
-        },
-        {
-          monday: "",
-          tuesday: "",
-          wednesday: "艺--红色经典电影欣赏",
-          thursday: "",
-          friday: "",
-          saturday: "",
-          sunday: ""
-        },
-        {
-          monday: "",
-          tuesday: "",
-          wednesday: "",
-          thursday: "",
-          friday: "",
-          saturday: "",
-          sunday: ""
+          id: 4,
+          img: 'static/a4.jpg',
+          title: '灰灰定制 2019春夏新款小香风粗花呢连衣裙女法式名媛复古短裙M家',
+          price: '298.00'
         }
       ]
-    };
-  }
-};
+    }
+  },
+  methods:{
+      deleteLine (index, id){
+        console.log(id);
+        
+        this.dataList.splice(index, 1)
+      }      
+   }
+}
 </script>
-
-<style scoped lang="scss">
-.schedule {
-  border: 1px solid #eeeeee;
-  width: 100%;
-  height: 95vh;
-  border-collapse: collapse;
-  tr {
-    td {
-      border: 1px solid #eeeeee;
-      box-sizing: border-box;
-      font-size: 0.7rem;
-      text-align: center;
-      padding: 5px 5px;
-    }
-    td:first-child {
-      padding: 10px 10px;
-    }
-  }
-  .blank {
-    height: 30px;
-  }
-}
-.week-select {
-  border: none;
-  outline: none;
-  width: 20%;
-  height: 20px;
-  margin-top: 50px;
-
-  -webkit-appearance: none; /* google */
-  -moz-appearance: none; /* firefox */
-  appearance: none; /* IE */
-  /*background: #ffffff url(../../assets/images/drawable-xhdpi/icon_xiala2.png) no-repeat scroll right center;*/
-}
-</style>

@@ -39,10 +39,7 @@ export default {
   },
   components: {},
   created() {
-      console.log(this.$route.params.Id.split(',')[0])
     this.citys=provinces[this.$route.params.Id.split(',')[0]].city[this.$route.params.Id.split(',')[1]].districtAndCounty;
-    console.log(this.citys)
-
   },
   mounted() {},
   methods: {
@@ -60,13 +57,11 @@ export default {
       };
 
         this.result = await API.init(this.url, this.data, "put");
-        console.log(this.result.msg);
         if (this.result.msg == "成功") {
           localStorage.setItem("user", JSON.stringify(this.result.data));
           this.$store.commit("setUser", this.result.data);
           this.$router.push("/base");
-        }
-      
+        }  
     }
   },
   computed: {}

@@ -43,8 +43,6 @@ export default {
   components: {},
   created() {
     this.citys=provinces;
-    console.log(this.citys)
-
   },
   mounted() {},
   methods: {
