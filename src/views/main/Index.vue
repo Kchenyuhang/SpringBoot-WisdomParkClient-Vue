@@ -6,7 +6,10 @@
       </div>
       <Carousel :slideList="slideList"></Carousel>
       <div class="cc-df">
-        <div class="cc-col-center cc-coll-3" @click="into(1)">
+        <div
+          class="cc-col-center cc-coll-3"
+          @click="into(1)"
+        >
           <img
             src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_kechengbiao.png"
             alt="课程表图标"
@@ -14,7 +17,10 @@
           />
           <p class="cc-mtop font-size">课程表</p>
         </div>
-        <div class="cc-col-center cc-coll-3 address2" @click="into(2)">
+        <div
+          class="cc-col-center cc-coll-3 address2"
+          @click="into(2)"
+        >
           <img
             src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_kaowuchaxun.png"
             alt="考务查询图标"
@@ -22,15 +28,11 @@
           />
           <p class="cc-mtop font-size">考务查询</p>
         </div>
-        <div class="cc-col-center cc-coll-3 address2" @click="into(3)">
-          <img
-            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_tushuguan.png"
-            alt="图书馆图标"
-            class="icon"
-          />
-          <p class="cc-mtop font-size">图书馆</p>
-        </div>
-        <div class="cc-col-center cc-coll-3 address2" @click="into(4)">
+
+        <div
+          class="cc-col-center cc-coll-3 address2"
+          @click="into(4)"
+        >
           <img
             src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_xiaoyuankachongzhi.png"
             alt="一卡通图标"
@@ -38,13 +40,119 @@
           />
           <p class="cc-mtop font-size">一卡通</p>
         </div>
+
+        <div
+          class="cc-col-center cc-coll-3 address2"
+          @click="isShow = true"
+        >
+          <img
+            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/gengduo.png"
+            alt="更多图标"
+            class="icon"
+          />
+          <p class="cc-mtop font-size ">更多</p>
+        </div>
       </div>
+      <transition name="fold-top">
+        <div
+          class="more cc-df cc-donghua-top"
+          v-if="isShow"
+        >
+          <div
+            class="close"
+            @click="isShow = false"
+          >
+            <img
+              src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/cha.png"
+              alt=""
+            />
+          </div>
+          <div class="more-row cc-df-warp">
+            <div
+              class="cc-col-center cc-coll-3 address2"
+              @click="into(3)"
+            >
+              <img
+                src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_tushuguan.png"
+                alt="图书馆图标"
+                class="icon"
+              />
+              <p class="cc-mtop font-size">图书馆</p>
+            </div>
+            <div class="cc-col-center cc-coll-3 address2">
+              <img
+                src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/jianzhi.png"
+                alt="兼职图标"
+                class="icon"
+              />
+              <p class="cc-mtop font-size">兼职</p>
+            </div>
+            <div class="cc-col-center cc-coll-3 address2">
+              <img
+                src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/xiaoyouquan.png"
+                alt="校友圈图标"
+                class="icon"
+              />
+              <p class="cc-mtop font-size">校友圈</p>
+            </div>
+
+            <div class="cc-col-center cc-coll-3 address2"
+                      @click="into(7)"
+>
+              <img
+                src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/paotui.png"
+                alt="跑腿图标"
+                class="icon"
+              />
+              <p class="cc-mtop font-size">跑腿</p>
+            </div>
+            <div class="cc-col-center cc-coll-3 address2">
+              <img
+                src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/ershoushichang.png"
+                alt="二手市场图标"
+                class="icon"
+              />
+              <p class="cc-mtop font-size">跳蚤市场</p>
+            </div>
+            <div class="cc-col-center cc-coll-3 address2">
+              <img
+                src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zhinengjiaju.png"
+                alt="智能家居图标"
+                class="icon"
+              />
+              <p class="cc-mtop font-size">智能家居</p>
+            </div>
+            <div class="cc-col-center cc-coll-3 address2">
+              <img
+                src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zhihuikaisuo.png"
+                alt="智慧开锁图标"
+                class="icon"
+              />
+              <p class="cc-mtop font-size">智慧开锁</p>
+            </div>
+            <div class="cc-col-center cc-coll-3 address2">
+              <img
+                src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zhihuianfang.png"
+                alt="智慧安防图标"
+                class="icon"
+              />
+              <p class="cc-mtop font-size">智慧安防</p>
+            </div>
+          </div>
+        </div>
+      </transition>
       <hr class="line" />
       <div class="address">
         <p class="fontSize">我的课程</p>
         <div class="cc-df cc-mtop lateral-sliding">
-          <div v-for="item in 3" :key="item.id">
-            <div class="subject-card" v-bind:style="{backgroundImage:'url(' + avatar + ')'}">
+          <div
+            v-for="item in 3"
+            :key="item.id"
+          >
+            <div
+              class="subject-card"
+              v-bind:style="{ backgroundImage: 'url(' + avatar + ')' }"
+            >
               <p class="fontSizeTitle">微信小程序</p>
               <p class="fontSizebody1">1-2节</p>
               <div class="cc-df">
@@ -59,9 +167,27 @@
       <div class="address">
         <p class="fontSize">热门资讯</p>
         <div class="cc-col">
-          <div class="cc-mtop" v-for="item in 3" :key="item.id">
-            <div class="left" v-bind:style="{backgroundImage:'url(' + avatar + ')'}"></div>
-            <div class="right cc-col"></div>
+          <div
+            class="cc-mtop"
+            v-for="(item, index) in result"
+            :key="index"
+          >
+            <div class="cc-df-between">
+              <div
+                class="left"
+                v-bind:style="{ backgroundImage: 'url(' + item.cover + ')' }"
+              ></div>
+              <div class="right cc-col">
+                <div class="right-top">
+                  <p>{{ item.text.slice(0,28)}}...</p>
+                </div>
+                <div class="right-bottom">
+                  <p>{{ item.gmtCreate }}</p>
+                </div>
+              </div>
+            </div>
+
+            <hr class="line1" />
           </div>
         </div>
       </div>
@@ -70,6 +196,7 @@
 </template>
 
 <script>
+const API = require("../../request/api.js");
 export default {
   name: "Index",
   data() {
@@ -91,14 +218,23 @@ export default {
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg"
         }
       ],
+      data: {
+        currentPage: 1,
+        field: {},
+        pageSize: 3
+      },
+      result: [],
       transitionName: this.$store.state.transitionName,
-      avatar: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/bj1.png"
+      avatar: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/bj1.png",
+      isShow: false
     };
   },
   components: {
     Carousel: require("../../components/Carousel").default
   },
-  created() {},
+  created() {
+    this.getList();
+  },
   mounted() {},
   methods: {
     into(index) {
@@ -114,6 +250,14 @@ export default {
       if (index == 4) {
         this.$router.push("/metrocard");
       }
+       if (index == 7) {
+        this.$router.push("/errandshomepage");
+      }
+    },
+    async getList() {
+      this.url = this.GLOBAL.baseUrl + "/info/isTap";
+      this.result = (await API.init(this.url, this.data, "post")).data;
+      console.log(this.result);
     }
   },
   computed: {}

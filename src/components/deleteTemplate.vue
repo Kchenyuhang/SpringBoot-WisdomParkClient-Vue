@@ -31,7 +31,10 @@ export default {
   props: ["index", "id"],
   data() {
     return {
+      // 拿到用户的userId 用来查询通讯录好友
+      userId: this.$store.state.user.pkUserAccountId,
       result: [],
+      results: [],
       startX: 0, //触摸位置
       endX: 0, //结束位置
       moveX: 0, //滑动时的位置
@@ -91,19 +94,21 @@ export default {
     },
     async deleteLine() {
       // this.deleteSlider = "transform:translateX(0px)";
-      // this.$emit("deleteLine");
       // 删除方法测试
+      console.log(this.id);
       this.data = {
-        id: this.id
+        field: this.id
       };
-      this.url = this.GLOBAL.baseUrl + "/address_book/id";
+      this.url = this.GLOBAL.baseUrl + "/address_book/deletion/id";
       this.rusult = await API.init(this.url, this.data, "post");
-      console.log(this.result);
-      // if (this.result.code === 1) {
-      //   console.log("删除成功");
-      // }
+      this.data = {
+        field: this.userId,
+      };
+      this.url = this.GLOBAL.baseUrl + "/address_book/list/userId";
+      this.result = await API.init(this.url, this.data, "post");
+      this.$emit("deleteLine", this.result);
     }
-  },
+  }
 };
 </script>
 <style scoped lang="less">

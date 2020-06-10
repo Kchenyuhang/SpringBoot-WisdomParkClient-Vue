@@ -1,93 +1,91 @@
 .bg {
-    background-color: #f2f2f2;
-    height: 900px;
-    width: 100%;
+  background-color: #f2f2f2;
+  height: 100vh;
+  width: 100%;
 }
 
 .header {
-    background-color: #ffffff;
-    height: 40px;
-    display: flex;
+  background-color: #ffffff;
+  height: 40px;
+  display: flex;
 
-    img {
-        height: 20px;
-        width: 20px;
-        margin-top: 10px;
-        margin-left: 5px;
-    }
+  img {
+    height: 20px;
+    width: 20px;
+    margin-top: 10px;
+    margin-left: 5px;
+  }
 
-    p {
-        font-size: 18px;
-        font-weight: 550;
-        margin-left: 34%;
-        margin-top: 2%;
-    }
+  p {
+    font-size: 18px;
+    font-weight: 550;
+    margin-left: 34%;
+    margin-top: 2%;
+  }
 }
 
 .line {
-    width: 100%;
-    border: none;
-    height: 1px;
-    background: #dcdcde;
+  width: 100%;
+  border: none;
+  height: 1px;
+  background: #dcdcde;
 }
 
 .book {
-    width: 94%;
-    margin: auto;
-    margin-top: 10px;
-    height: 120px;
-    background-image: url("https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/bg_tushuguan.png");
-    background-size: cover;
-    padding-top: 17%;
-    padding-left: 6%;
+  width: 94%;
+  margin: auto;
+  margin-top: 10px;
+  height: 120px;
+  background-image: url('https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/bg_tushuguan.png');
+  background-size: cover;
+  padding-top: 17%;
+  padding-left: 6%;
 
-    .font {
-        color: #abd9e4;
-        font-size: 13px;
-    }
+  .font {
+    color: #abd9e4;
+    font-size: 13px;
+  }
 
-    .num {
-        color: white;
-        font-size: 35px;
-        margin-top: -6%;
-    }
+  .num {
+    color: white;
+    font-size: 35px;
+    margin-top: -6%;
+  }
 }
 
 .card {
-    position: relative;
-    width: 94%;
-    margin: auto;
-    height: 70px;
-    border-radius: 5px;
-    margin-top: 10px;
-    background-color: #ffffff;
-    padding: 5px;
+  position: relative;
+  width: 94%;
+  margin: auto;
+  height: 70px;
+  border-radius: 5px;
+  margin-top: 10px;
+  background-color: #ffffff;
+  padding: 5px;
 
-    .mid {
-        font-size: 15px;
-        font-weight: 550;
-    }
-    .small1 {
-        font-size: 10px;
-        margin-top: 16px;
-        color: red;
-    }
-    .small {
-        font-size: 10px;
-        margin-top: 15px;
-    }
+  .mid {
+    font-size: 15px;
+    font-weight: 550;
+  }
+  .small1 {
+    font-size: 10px;
+    margin-top: 16px;
+    color: red;
+  }
+  .small {
+    font-size: 10px;
+    margin-top: 15px;
+  }
 }
 
-
-
 .title {
-    width: 94%;
-    margin: auto;
+  width: 94%;
+  margin: auto;
 
-    p {
-        font-size: 14px;
-        color: #a7a7a7;
-        margin-top: 15px;
-        margin-bottom: 15px;
-    }
+  p {
+    font-size: 14px;
+    color: #a7a7a7;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
 }

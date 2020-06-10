@@ -16,7 +16,7 @@
         v-for="(student, stIndex) in studentInfo"
         :key="stIndex"
         :id="student.pkAddressBookId"
-        @deleteLine="deleteLine(index, list.id)"
+        @deleteLine="deleteLine"
       >
         <div
           class="content"
@@ -75,12 +75,13 @@ export default {
       letterList: [], //字母列表
       selectLetter: "", //被选中的字母
       number: 0,
+      msg: false
     };
   },
   components: { deleteSlider },
   created() {
     this.selectSchedule();
-  },
+},
   mounted() {},
   methods: {
     // 点击左侧字母，右侧学生列表滚动到指定位置
@@ -138,8 +139,12 @@ export default {
       });
     },
     insert() {
-      alert(1);
       this.$router.push("/insertaddress");
+    },
+    deleteLine(list) {
+      this.studentInfo = [];
+      this.result = list;
+      this.transition();
     }
   },
   computed: {},
