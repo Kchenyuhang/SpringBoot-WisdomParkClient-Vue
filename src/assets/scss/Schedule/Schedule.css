@@ -7,8 +7,6 @@
 .header {
   background-color: #ffffff;
   height: 40px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -26,6 +24,75 @@
   margin-top: 2%;
 }
 
+.schedule {
+  border: 1px solid #b1cff4;
+  width: 100%;
+  height: 80vh;
+  border-collapse: collapse;
+}
+
+.schedule tr {
+  height: 5px;
+}
+
+.schedule tr td {
+  border: 1px solid #b1cff4;
+  box-sizing: border-box;
+  font-size: 0.7rem;
+  text-align: center;
+  padding: 5px 5px;
+}
+
+.schedule tr td:first-child {
+  padding: 5px 10px;
+}
+
+.schedule .blank {
+  height: 5px;
+}
+
+.week-list {
+  height: 51px;
+}
+
+.week-select {
+  border: none;
+  outline: none;
+  width: 20%;
+  margin-top: 0px;
+  -webkit-appearance: none;
+  /* google */
+  -moz-appearance: none;
+  /* firefox */
+  appearance: none;
+  /* IE */
+  /*background: #ffffff url(../../assets/images/drawable-xhdpi/icon_xiala2.png) no-repeat scroll right center;*/
+}
+
+.shortselect {
+  background: #fafdfe;
+  height: 28px;
+  width: 90px;
+  line-height: 28px;
+  border: 1px solid #9bc0dd;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  margin-left: 40px;
+}
+
+.longselect {
+  background: #fafdfe;
+  height: 28px;
+  width: 160px;
+  line-height: 28px;
+  border: 1px solid #9bc0dd;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  margin-left: 30px;
+}
+
 .line {
   width: 100%;
   border: none;
@@ -36,16 +103,7 @@
 .container {
   background-color: #ffffff;
   height: 40px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-}
-
-.container img {
-  height: 20px;
-  width: 20px;
-  margin-top: 10px;
-  margin-left: 5px;
 }
 
 .container p {
@@ -54,4 +112,44 @@
   margin-left: 38%;
   margin-top: 2%;
 }
-/*# sourceMappingURL=Schedule.css.map */
+
+.card {
+  z-index: 999;
+  position: absolute;
+  top: 30%;
+  width: 60%;
+  height: 47%;
+  background-color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+  left: 20%;
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.card p {
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+.card .title {
+  font-size: 20px;
+}
+
+.card .grey p {
+  color: #858585;
+}
+
+.close {
+  position: absolute;
+  top: 80%;
+  left: 45%;
+  width: 40px;
+  height: 40px;
+}
