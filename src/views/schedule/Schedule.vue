@@ -265,7 +265,7 @@ export default {
     },
     async getList() {
       this.url = this.GLOBAL.baseUrl + "/semester/all";
-      this.List = (await API.init(this.url, this.data, "get")).data;
+      this.List = (await API.init(this.url, this.data, "post")).data;
     },
     getMessage(data) {
       console.log(data);

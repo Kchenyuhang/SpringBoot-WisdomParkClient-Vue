@@ -31,9 +31,9 @@
           <p>0</p>
         </div>
         <div class="down">
-          <p>收藏</p>
+          <p>收 藏</p>
           <p>历史浏览</p>
-          <p>关注</p>
+          <p class="mar-left">关 注</p>
           <p>粉丝</p>
         </div>
       </div>
