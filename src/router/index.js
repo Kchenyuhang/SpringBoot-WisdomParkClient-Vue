@@ -148,6 +148,11 @@ const routes = [
     name: "Base",
     component: () => import("../views/person/Base.vue"),
   },
+  {
+    path: "/insertaddress",
+    name: "InsertAddressBook",
+    component: () => import("../views/main/InsertAddressBook.vue"),
+  }
 ];
 
 const router = new VueRouter({

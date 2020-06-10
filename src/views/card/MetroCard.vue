@@ -5,27 +5,20 @@
         <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
           alt="左箭头"
-        >
+        />
       </router-link>
       <p>一卡通</p>
     </div>
     <div class="card">
       <div class="cardimg cc-col-center">
-        <img
-          src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/bg_weidenglu.png"
-          alt="头像"
-          class="avatar"
-        >
+        <img :src="avatar" alt="头像" class="avatar" />
         <p class="balance">我的余额</p>
-        <p class="money">188元</p>
-        <p class="cardNumber">卡号：123456789</p>
+        <p class="money">{{ balance }}元</p>
+        <p class="cardNumber">卡号：{{ jobNumber }}</p>
       </div>
     </div>
     <div class="cc-df-warp ">
-      <div
-        class="cc-col-center cc-coll-4"
-        @click="into(1)"
-      >
+      <div class="cc-col-center cc-coll-4" @click="into(1)">
         <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_xiaoyuankachongzhi.png"
           alt="校园卡充值图标"
@@ -33,10 +26,7 @@
         />
         <p class="cc-mtop font-size">校园卡充值</p>
       </div>
-      <div
-        class="cc-col-center cc-coll-4"
-        @click="into(2)"
-      >
+      <div class="cc-col-center cc-coll-4" @click="into(2)">
         <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_dianfei.png"
           alt="电费充值图标"
@@ -44,10 +34,7 @@
         />
         <p class="cc-mtop font-size">电费充值</p>
       </div>
-      <div
-        class="cc-col-center cc-coll-4"
-        @click="into(3)"
-      >
+      <div class="cc-col-center cc-coll-4" @click="into(3)">
         <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_wangfei.png"
           alt="网费充值图标"
@@ -55,10 +42,7 @@
         />
         <p class="cc-mtop font-size">网费充值</p>
       </div>
-      <div
-        class="cc-col-center cc-coll-4"
-        @click="into(4)"
-      >
+      <div class="cc-col-center cc-coll-4" @click="into(4)">
         <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_xiaofeimingxi.png"
           alt="消费明细图标"
@@ -66,10 +50,7 @@
         />
         <p class="cc-mtop font-size">消费明细</p>
       </div>
-      <div
-        class="cc-col-center cc-coll-4"
-        @click="into(5)"
-      >
+      <div class="cc-col-center cc-coll-4" @click="into(5)">
         <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_guashi.png"
           alt="挂失申请图标"
@@ -82,13 +63,23 @@
 </template>
 
 <script>
+const API = require("../../request/api");
 export default {
   name: "MetroCard",
   data() {
-    return {};
+    return {
+      // 获取用户jobNumber 和头像
+      jobNumber: this.$store.state.user.jobNumber,
+      avatar: this.$store.state.user.avatar,
+      // 获取结果和余额
+      result: [],
+      balance: '',
+    };
   },
   components: {},
-  created() {},
+  created() {
+    this.CurrentCredit();
+  },
   mounted() {},
   methods: {
     into(index) {
@@ -107,9 +98,18 @@ export default {
       if (index == 5) {
         this.$router.push("/losscard");
       }
+    },
+    // 查询余额交互
+    async CurrentCredit() {
+      this.data = {
+        job_number: this.jobNumber
+      };
+      this.url = this.GLOBAL.baseUrl + "/card/balance";
+      this.result = await API.init(this.url, this.data, "get");
+      this.balance = this.result.data;
     }
   },
-  computed: {}
+  computed: {},
 };
 </script>
 
