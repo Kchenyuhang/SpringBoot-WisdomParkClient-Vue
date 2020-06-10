@@ -12,7 +12,7 @@
     <hr class="line" />
     <div class="book cc-df">
       <p class="font">已阅读</p>
-      <p class="num">{{count}}</p>
+      <p class="num">{{ count }}</p>
       <p class="font">本</p>
     </div>
     <div>
@@ -21,12 +21,12 @@
       </div>
     </div>
     <div
-      v-for="(item,index) in result.sysBorrowNoReturnList"
+      v-for="(item, index) in result.sysBorrowNoReturnList"
       :key="index"
     >
       <div
         class="card"
-        v-if="item.isReturned===false"
+        v-if="item.isReturned === false"
       >
         <div class="card1">
           <div>
@@ -78,6 +78,7 @@ export default {
   data() {
     return {
       url: "",
+      show: false,
       result: [],
       count: 0,
       data: {
