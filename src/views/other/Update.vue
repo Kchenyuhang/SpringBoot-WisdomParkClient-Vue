@@ -54,7 +54,7 @@ export default {
         address: this.user.address
       };
       if (this.nicknameInput != this.user.nickname) {
-        this.result = await API.init(this.url, this.data, "put");
+        this.result = await API.init(this.url, this.data, "post");
         console.log(this.result.msg);
         if (this.result.msg == "成功") {
           localStorage.setItem("user", JSON.stringify(this.result.data));

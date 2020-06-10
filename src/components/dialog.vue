@@ -1,8 +1,15 @@
 <!-- 弹框 -->
 <template>
-  <div :visible="visible" ref="tipsBox" @update:visible="updateDialog" class="tipsBox">
+  <div
+    :visible="visible"
+    ref="tipsBox"
+    @update:visible="updateDialog"
+    class="tipsBox"
+  >
     <div ref="showPopover" class="tipsClass animated">
-      <div><p>{{tipsContent}}</p></div>
+      <div>
+        <p>{{ tipsContent }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -49,8 +56,8 @@ export default {
   transform: translate(-50%, -50%);
   border-radius: 3px;
 }
-.tipsClass p{
-    color: red;
+.tipsClass p {
+  color: red;
 }
 .animated {
   opacity: 0;

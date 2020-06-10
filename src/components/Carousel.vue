@@ -1,32 +1,22 @@
 <template>
   <div class="carousel-wrap">
-    <transition-group
-      tag="ul"
-      class="slide-ul"
-      name="slide"
-    >
+    <transition-group tag="ul" class="slide-ul" name="slide">
       <li
-        v-for="(item,index) in slideList"
+        v-for="(item, index) in slideList"
         :key="index"
-        v-show="index===currentIndex"
+        v-show="index === currentIndex"
         @mouseenter="stop"
         @mouseleave="go"
       >
         <a :href="item.url">
-          <img
-            :src="item.image"
-            :alt="item.description"
-          />
+          <img :src="item.image" :alt="item.description" />
         </a>
       </li>
     </transition-group>
     <div class="carousel-items cc-df-center">
-      <div
-        v-for="(item,index) in slideList"
-        :key="index"
-      >
+      <div v-for="(item, index) in slideList" :key="index">
         <span
-          :class="{'active': index==currentIndex}"
+          :class="{ active: index == currentIndex }"
           @mouseover="change(index)"
         ></span>
       </div>

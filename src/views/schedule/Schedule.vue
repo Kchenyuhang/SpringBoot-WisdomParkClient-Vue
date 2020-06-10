@@ -2,14 +2,21 @@
   <div id="classSchedule">
     <div class="header">
       <router-link to="/layout">
-        <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png" alt />
+        <img
+          src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
+          alt
+        />
       </router-link>
       <p>课程表</p>
     </div>
     <hr class="line" />
     <div class="container">
       <!-- <p>第一周</p> -->
-      <select name="bbxb" id="selecte1" class="longselect">
+      <select
+        name="bbxb"
+        id="selecte1"
+        class="longselect"
+      >
         <option value>---请选择--</option>
         <option
           value="0"
@@ -19,9 +26,16 @@
         >{{ item.name }}</option>
       </select>
 
-      <select name="bb" id="selecte" class="shortselect">
+      <select
+        name="bb"
+        id="selecte"
+        class="shortselect"
+      >
         <option value>---请选择--</option>
-        <option value="0" selected="selected">第一周</option>
+        <option
+          value="0"
+          selected="selected"
+        >第一周</option>
         <option value="1">第二周</option>
         <option value="2">第三周</option>
         <option value="3">第四周</option>
@@ -47,18 +61,29 @@
             </div>
           </div>
         </div>
-        <img class="close" src="../../assets/close.png" alt="123" @click="show=false" />
+        <img
+          class="close"
+          src="../../assets/close.png"
+          alt="123"
+          @click="show=false"
+        />
       </div>
     </div>
-
     <!--课程表-->
     <table class="schedule">
       <tr class="week-list">
         <td colspan="2"></td>
-        <td v-for="(item, index) in weekends" :key="index">{{ item }}</td>
+        <td
+          v-for="(item, index) in weekends"
+          :key="index"
+        >{{ item }}</td>
       </tr>
       <tr class="am">
-        <td rowspan="2">上午</td>
+        <td
+          rowspan="2"
+          @click="show=true"
+        >上午</td>
+
         <td>1-2</td>
         <td
           v-for="item in 7"
@@ -79,7 +104,10 @@
         >{{subjects[1][item-1].subjectName}}</td>
       </tr>
       <tr class="noon">
-        <td colspan="9" class="blank"></td>
+        <td
+          colspan="9"
+          class="blank"
+        ></td>
       </tr>
       <tr>
         <td rowspan="2">下午</td>
@@ -103,7 +131,10 @@
         >{{subjects[3][item-1].subjectName}}</td>
       </tr>
       <tr>
-        <td colspan="9" class="blank"></td>
+        <td
+          colspan="9"
+          class="blank"
+        ></td>
       </tr>
       <tr>
         <td>晚上</td>
@@ -116,6 +147,7 @@
         >{{subjects[4][item-1].subjectName}}</td>
       </tr>
     </table>
+
   </div>
 </template>
 
@@ -233,7 +265,7 @@ export default {
     },
     async getList() {
       this.url = this.GLOBAL.baseUrl + "/semester/all";
-      this.List = (await API.init(this.url, this.data, "get")).data;
+      this.List = (await API.init(this.url, this.data, "post")).data;
     },
     getMessage(data) {
       console.log(data);

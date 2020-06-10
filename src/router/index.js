@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Login from "../views/Login.vue";
 import Layout from "../views/Layout.vue";
+import Nav from "../views/fleamarket/Nav.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -174,7 +175,44 @@ const routes = [
         name: "Order",
         component: () => import("../views/errand/Order.vue"),
       },
-    ]
+    ],
+  },
+  {
+    path: "/nav",
+    name: "Nav",
+    component: Nav,
+    children: [
+      {
+        path: "/",
+        name: "HomePage",
+        component: () => import("../views/fleamarket/HomePage.vue"),
+      },
+      {
+        path: "/homePage",
+        name: "HomePage",
+        component: () => import("../views/fleamarket/HomePage.vue"),
+      },
+      {
+        path: "/reward",
+        name: "/Reward",
+        component: () => import("../views/fleamarket/Reward.vue"),
+      },
+      {
+        path: "/list",
+        name: "/List",
+        component: () => import("../views/fleamarket/List.vue"),
+      },
+      {
+        path: "/sell",
+        name: "/Sell",
+        component: () => import("../views/fleamarket/Sell.vue"),
+      },
+      {
+        path: "/fleaMy",
+        name: "/FleaMy",
+        component: () => import("../views/fleamarket/FleaMy.vue"),
+      },
+    ],
   },
 ];
 

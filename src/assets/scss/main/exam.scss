@@ -113,3 +113,20 @@
   font-weight: 600;
   color: rgb(76, 215, 255);
 }
+.none {
+  width: 60%;
+  height: 40px;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+  margin: auto;
+  margin-top: 20%;
+  position: relative;
+  p {
+    font-size: 20px;
+    // color: #ffffff;
+    // position: absolute;
+    text-align: center;
+    top: 50%;
+  }
+}
