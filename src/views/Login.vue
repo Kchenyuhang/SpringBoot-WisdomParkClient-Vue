@@ -3,10 +3,7 @@
     <div class="title">
       <p>智慧校园</p>
     </div>
-    <div
-      class="login cc-col-center"
-      v-if="isShow == 1"
-    >
+    <div class="login cc-col-center" v-if="isShow == 1">
       <div
         class="alsrtInfo"
         :style="{ display: displayStsates }"
@@ -52,10 +49,7 @@
           <p>{{ aletMsg }}</p>
         </div>
       </div>
-      <div
-        class="cc-df"
-        style="margin-left:8%"
-      >
+      <div class="cc-df" style="margin-left:8%">
         <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_yanzhengma.png"
           alt="输入验证码图表"
@@ -67,39 +61,24 @@
           placeholder="请输入验证码"
           v-model="phoneForm.code"
         />
-        <div
-          class="btn-sms"
-          @click="sendMessage()"
-        >
+        <div class="btn-sms" @click="sendMessage()">
           <p>获取验证码</p>
         </div>
       </div>
       <hr class="line" />
       <div class="cc-df">
         <div>
-          <p
-            class="fontSize"
-            @click="tabIsShow(2)"
-          >账号密码登录</p>
+          <p class="fontSize" @click="tabIsShow(2)">账号密码登录</p>
         </div>
         <div class="cc-mllleft">
-          <p
-            class="fontSize"
-            @click="tabIsShow(3)"
-          >忘记密码</p>
+          <p class="fontSize" @click="tabIsShow(3)">忘记密码</p>
         </div>
       </div>
-      <div
-        class="login-btn"
-        @click="messageSignIn()"
-      >
+      <div class="login-btn" @click="messageSignIn()">
         <p>确认登录</p>
       </div>
     </div>
-    <div
-      class="login cc-col-center"
-      v-if="isShow == 2"
-    >
+    <div class="login cc-col-center" v-if="isShow == 2">
       <div
         class="alsrtInfo"
         :style="{ display: displayStsates }"
@@ -148,29 +127,17 @@
       <hr class="line" />
       <div class="cc-df">
         <div>
-          <p
-            class="fontSize"
-            @click="tabIsShow(1)"
-          >手机快捷登录</p>
+          <p class="fontSize" @click="tabIsShow(1)">手机快捷登录</p>
         </div>
         <div class="cc-mllleft">
-          <p
-            class="fontSize"
-            @click="tabIsShow(3)"
-          >忘记密码</p>
+          <p class="fontSize" @click="tabIsShow(3)">忘记密码</p>
         </div>
       </div>
-      <div
-        class="login-btn"
-        @click="passwordSignIn()"
-      >
+      <div class="login-btn" @click="passwordSignIn()">
         <p>确认登录</p>
       </div>
     </div>
-    <div
-      class="login cc-col-center"
-      v-if="isShow == 3"
-    >
+    <div class="login cc-col-center" v-if="isShow == 3">
       <div
         class="alsrtInfo"
         :style="{ display: displayStsates }"
@@ -216,10 +183,7 @@
           <p>{{ aletMsg }}</p>
         </div>
       </div>
-      <div
-        class="cc-df"
-        style="margin-left:8%"
-      >
+      <div class="cc-df" style="margin-left:8%">
         <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_yanzhengma.png"
           alt="输入验证码图表"
@@ -231,10 +195,7 @@
           placeholder="请输入验证码"
           v-model="phoneForm.code"
         />
-        <div
-          class="btn-sms"
-          @click="sendMessage()"
-        >
+        <div class="btn-sms" @click="sendMessage()">
           <p>获取验证码</p>
         </div>
       </div>
@@ -264,22 +225,13 @@
       <hr class="line" />
       <div class="cc-df">
         <div>
-          <p
-            class="fontSize"
-            @click="tabIsShow(2)"
-          >账号密码登录</p>
+          <p class="fontSize" @click="tabIsShow(2)">账号密码登录</p>
         </div>
         <div class="cc-mllleft">
-          <p
-            class="fontSize"
-            @click="tabIsShow(1)"
-          >手机验证登录</p>
+          <p class="fontSize" @click="tabIsShow(1)">手机验证登录</p>
         </div>
       </div>
-      <div
-        class="login-btn"
-        @click="forgetSignIn()"
-      >
+      <div class="login-btn" @click="forgetSignIn()">
         <p>确认登录</p>
       </div>
     </div>
@@ -310,13 +262,13 @@ export default {
           { required: true, error: "手机号不能为空" },
           {
             regex: /^1[3|4|5|6|7|8][0-9]{9}$/,
-            error: "手机号格式不对",
-          },
+            error: "手机号格式不对"
+          }
         ],
         code: [{ required: true, error: "验证码不能为空" }],
         studentId: [{ required: true, error: "学号不能为空" }],
-        passWord: [{ required: true, error: "密码不能为空" }],
-      },
+        passWord: [{ required: true, error: "密码不能为空" }]
+      }
     };
   },
   components: {},
@@ -374,9 +326,7 @@ export default {
         this.data = {
           phoneNumber: this.phoneForm.phoneNumber,
 
-          verifyCode: this.phoneForm.code,
-
-
+          verifyCode: this.phoneForm.code
         };
         this.url = this.GLOBAL.baseUrl + "/user/code/login";
         this.result = await API.init(this.url, this.data, "post");
@@ -405,7 +355,7 @@ export default {
       if (this.phoneForm.tips == null) {
         this.data = {
           userAccount: this.phoneForm.studentId,
-          password: this.phoneForm.passWord,
+          password: this.phoneForm.passWord
         };
         this.url = this.GLOBAL.baseUrl + "/user/login";
         // this.$axios.defaults.headers.post['token'] = null;
@@ -441,9 +391,7 @@ export default {
     },
     async sendMessage() {
       this.data = {
-
-        phoneNumber: this.phoneForm.phoneNumber,
-
+        phoneNumber: this.phoneForm.phoneNumber
       };
       this.url = this.GLOBAL.baseUrl + "/sendCode";
       this.result = await API.init(this.url, this.data, "post");
@@ -454,7 +402,6 @@ export default {
         phoneNumber: this.phoneForm.phoneNumber,
 
         verifyCode: this.phoneForm.code
-
       };
       this.url = this.GLOBAL.baseUrl + "/verifyCode";
       this.result = await API.init(this.url, this.data, "post");
@@ -462,9 +409,7 @@ export default {
       this.data = {
         userAccount: this.phoneForm.phoneNumber,
 
-        password: this.phoneForm.passWord,
-
-
+        password: this.phoneForm.passWord
       };
       this.url = this.GLOBAL.baseUrl + "/user/password";
       this.result = await API.init(this.url, this.data, "put");
@@ -484,9 +429,9 @@ export default {
       //   .catch(function(error) {
       //     console.log(error)
       //   })
-    },
+    }
   },
-  computed: {},
+  computed: {}
 };
 </script>
 
