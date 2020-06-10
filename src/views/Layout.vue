@@ -110,7 +110,7 @@ export default {
   data() {
     return {
       iconIsshow1: 3,
-      transitionName1: "",
+      transitionName1: ""
     };
   },
   components: {},
@@ -132,7 +132,7 @@ export default {
         "/addressbook",
         "/index",
         "/message",
-        "/my",
+        "/my"
       ];
       const toDepth = routeDeep.indexOf(to.path);
       const fromDepth = routeDeep.indexOf(from.path);
@@ -140,8 +140,8 @@ export default {
       localStorage.setItem("transitionName", this.transitionName1);
       this.$store.commit("setTransitionName", this.transitionName1);
       console.log(this.$store.state.transitionName);
-    },
-  },
+    }
+  }
 };
 </script>
 

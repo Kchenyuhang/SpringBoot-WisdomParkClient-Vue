@@ -22,8 +22,8 @@
             <div class="cc-df">
               <img :src="item.cover" />
               <div class="cc-col-between cc-mleft">
-                <p class="file">{{item.text.slice(0,35)}}...</p>
-                <p class="time">{{item.gmtCreate.slice(0,10)}}</p>
+                <p class="file">{{ item.text.slice(0, 35) }}...</p>
+                <p class="time">{{ item.gmtCreate.slice(0, 10) }}</p>
               </div>
             </div>
           </div>
