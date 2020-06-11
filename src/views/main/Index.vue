@@ -96,7 +96,10 @@
               <p class="cc-mtop font-size">校友圈</p>
             </div>
 
-            <div class="cc-col-center cc-coll-3 address2">
+            <div
+              class="cc-col-center cc-coll-3 address2"
+              @click="into(7)"
+            >
               <img
                 src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/paotui.png"
                 alt="跑腿图标"
@@ -255,6 +258,9 @@ export default {
       }
       if (index == 4) {
         this.$router.push("/metrocard");
+      }
+      if (index == 7) {
+        this.$router.push("/errandshomepage");
       }
       if (index == 8) {
         this.$router.push("/homePage");

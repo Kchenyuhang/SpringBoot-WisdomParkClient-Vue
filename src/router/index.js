@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../views/Login.vue'
 import Layout from '../views/Layout.vue'
-import Nav from '../views/fleamarket/Nav.vue'
+import FleaNav from '../views/fleamarket/FleaNav.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -150,9 +150,37 @@ const routes = [
     component: () => import('../views/person/Base.vue'),
   },
   {
-    path: '/nav',
-    name: 'Nav',
-    component: Nav,
+    path: '/insertaddress',
+    name: 'InsertAddressBook',
+    component: () => import('../views/main/InsertAddressBook.vue'),
+  },
+  // 跑腿路由搭建
+  {
+    path: '/errandshomepage',
+    name: 'Errandshomepage',
+    component: () => import('../views/errand/Errandshomepage.vue'),
+  },
+  {
+    path: '/personalcenter',
+    name: 'Personalcenter',
+    component: () => import('../views/errand/Personalcenter.vue'),
+  },
+  {
+    path: '/order',
+    name: 'Order',
+    component: () => import('../views/errand/Order.vue'),
+    children: [
+      {
+        path: '/order',
+        name: 'Order',
+        component: () => import('../views/errand/Order.vue'),
+      },
+    ],
+  },
+  {
+    path: '/fleaNav',
+    name: 'FleaNav',
+    component: FleaNav,
     children: [
       {
         path: '/',
@@ -166,22 +194,22 @@ const routes = [
       },
       {
         path: '/reward',
-        name: 'Reward',
+        name: '/Reward',
         component: () => import('../views/fleamarket/Reward.vue'),
       },
       {
         path: '/list',
-        name: 'List',
+        name: '/List',
         component: () => import('../views/fleamarket/List.vue'),
       },
       {
         path: '/sell',
-        name: 'Sell',
+        name: '/Sell',
         component: () => import('../views/fleamarket/Sell.vue'),
       },
       {
         path: '/fleaMy',
-        name: 'FleaMy',
+        name: '/FleaMy',
         component: () => import('../views/fleamarket/FleaMy.vue'),
       },
     ],
@@ -193,7 +221,7 @@ const routes = [
   },
   {
     path: '/personaldetail',
-    name: 'PersonalDetail',
+    name: 'PersonaDetail',
     component: () => import('../views/fleamarket/personal/PersonalDetail.vue'),
   },
 ]

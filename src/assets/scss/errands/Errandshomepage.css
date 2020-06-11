@@ -1,0 +1,130 @@
+.bg {
+  background-color: #ffffff;
+  height: 100vh;
+  width: 100%;
+}
+
+.bg img {
+  width: 100%;
+  height: 250px;
+}
+
+.inputDiv {
+  position: absolute;
+  top: 220px;
+  left: 12px;
+  width: 94%;
+  height: 180px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0 0 30px 0 #d2e1ee;
+          box-shadow: 0 0 30px 0 #d2e1ee;
+}
+
+.inputDiv .inputTop {
+  margin-top: 15px;
+  width: 80%;
+  height: 40px;
+}
+
+.inputDiv .inputCenter {
+  width: 100%;
+  height: 110px;
+}
+
+.inputDiv .inputCenter .inputext {
+  width: 90%;
+  height: 40px;
+  margin: 0 0 15px 20px;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.inputDiv .inputCenter .line {
+  border-radius: 2px;
+  margin-top: -63px;
+  width: 89%;
+  height: 1px;
+  background-color: #f4f4f4;
+}
+
+.inputDiv span {
+  margin-top: 20px;
+  margin: 20px 10px 10px 30px;
+}
+
+.menu {
+  width: 96%;
+  position: absolute;
+  top: 416px;
+  left: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.menu div {
+  padding-left: 25px;
+}
+
+.menu img {
+  width: 40px;
+  height: 40px;
+}
+
+.menu p {
+  padding-left: -2px;
+}
+
+.bottom {
+  width: 94%;
+  height: 180px;
+  position: absolute;
+  top: 500px;
+  left: 10px;
+}
+
+.bottom .card {
+  border: 1px solid #c4c4c4;
+  margin: 1px 1px 1px 1px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  width: 100%;
+  height: 120px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.bottom .card .leftdiv {
+  width: 65%;
+  height: 120px;
+}
+
+.bottom .card .leftdiv .title {
+  margin: 13px 0 0 10px;
+  font-size: 15px;
+  color: #494949;
+}
+
+.bottom .card .leftdiv p {
+  margin: 25px 0 0 10px;
+  font-size: 13px;
+  color: #c4c4c4;
+}
+
+.bottom .card .rightdiv {
+  width: 35%;
+  height: 120px;
+}
+
+.bottom .card .rightdiv img {
+  margin: 10px 0 0 10px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+/*# sourceMappingURL=Errandshomepage.css.map */
