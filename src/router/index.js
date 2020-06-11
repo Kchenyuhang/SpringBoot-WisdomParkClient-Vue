@@ -1,157 +1,216 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import Login from "../views/Login.vue";
-import Layout from "../views/Layout.vue";
-Vue.use(VueRouter);
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import Login from '../views/Login.vue'
+import Layout from '../views/Layout.vue'
+import JobNav from '../views/Job/JobNav.vue'
+
+Vue.use(VueRouter)
 
 const routes = [
   {
-    path: "/",
-    name: "Login",
+    path: '/',
+    name: 'Login',
     component: Login,
   },
   {
-    path: "/login",
-    name: "Login",
+    path: '/login',
+    name: 'Login',
     component: Login,
   },
   {
-    path: "/feedback",
-    name: "Feedback",
-    component: () => import("../views/person/Feedback.vue"),
+    path: '/feedback',
+    name: 'Feedback',
+    component: () => import('../views/person/Feedback.vue'),
   },
   {
-    path: "/layout",
-    name: "Layout",
+    path: '/layout',
+    name: 'Layout',
     component: Layout,
     children: [
       {
-        path: "/",
-        name: "Index",
-        component: () => import("../views/main/Index.vue"),
+        path: '/',
+        name: 'Index',
+        component: () => import('../views/main/Index.vue'),
       },
       {
-        path: "/index",
-        name: "Index",
-        component: () => import("../views/main/Index.vue"),
+        path: '/index',
+        name: 'Index',
+        component: () => import('../views/main/Index.vue'),
       },
       {
-        path: "/addressbook",
-        name: "AddressBook",
-        component: () => import("../views/main/AddressBook.vue"),
+        path: '/addressbook',
+        name: 'AddressBook',
+        component: () => import('../views/main/AddressBook.vue'),
       },
       {
-        path: "/information",
-        name: "Information",
-        component: () => import("../views/main/Information.vue"),
+        path: '/information',
+        name: 'Information',
+        component: () => import('../views/main/Information.vue'),
       },
 
       {
-        path: "/my",
-        name: "My",
-        component: () => import("../views/main/My.vue"),
+        path: '/my',
+        name: 'My',
+        component: () => import('../views/main/My.vue'),
       },
     ],
   },
   {
-    path: "/metrocard",
-    name: "MetroCard",
-    component: () => import("../views/card/MetroCard.vue"),
+    path: '/jobnav',
+    name: 'JobNav',
+    component: JobNav,
+    children: [
+      {
+        path: '/position',
+        name: 'Position',
+        component: () => import('../views/Job/Position.vue'),
+      },
+      {
+        path: '/company',
+        name: 'Company',
+        component: () => import('../views/Job/Company.vue'),
+      },
+      {
+        path: '/jobmessage',
+        name: 'JobMessage',
+        component: () => import('../views/Job/JobMessage.vue'),
+      },
+      {
+        path: '/jobmy',
+        name: 'JobMy',
+        component: () => import('../views/Job/JobMy.vue'),
+      },
+    ],
   },
   {
-    path: "/campuscard",
-    name: "CampusCard",
-    component: () => import("../views/card/CampusCard.vue"),
+    path: '/jobsearch',
+    name: 'JobSearch',
+    component: () => import('../views/Job/JobSearch.vue'),
   },
   {
-    path: "/electriccharge",
-    name: "ElectricCharge",
-    component: () => import("../views/card/ElectricCharge.vue"),
+    path: '/jobscreen',
+    name: 'JobScreen',
+    component: () => import('../views/Job/JobScreen.vue'),
   },
   {
-    path: "/paylist",
-    name: "PayList",
-    component: () => import("../views/card/PayList.vue"),
+    path: '/alumnusindex',
+    name: 'AlumnusIndex',
+    component: () => import('../views/Alumnus/AlumnusIndex.vue'),
   },
   {
-    path: "/network",
-    name: "Network",
-    component: () => import("../views/card/Network.vue"),
+    path: '/alumnusmessage',
+    name: 'AlumnusMessage',
+    component: () => import('../views/Alumnus/AlumnusMessage.vue'),
   },
   {
-    path: "/losscard",
-    name: "LossCard",
-    component: () => import("../views/card/LossCard.vue"),
+    path: '/alumnuscollect',
+    name: 'AlumnusCollect',
+    component: () => import('../views/Alumnus/AlumnusCollect.vue'),
   },
   {
-    path: "/exam",
-    name: "Exam",
-    component: () => import("../views/exam/Exam.vue"),
+    path: '/publish',
+    name: 'Publish',
+    component: () => import('../views/Alumnus/Publish.vue'),
   },
   {
-    path: "/library",
-    name: "Library",
-    component: () => import("../views/library/Library.vue"),
+    path: '/metrocard',
+    name: 'MetroCard',
+    component: () => import('../views/card/MetroCard.vue'),
   },
   {
-    path: "/update",
-    name: "Update",
-    component: () => import("../views/other/Update.vue"),
+    path: '/campuscard',
+    name: 'CampusCard',
+    component: () => import('../views/card/CampusCard.vue'),
   },
   {
-    path: "/gender",
-    name: "Gender",
-    component: () => import("../views/other/Gender.vue"),
+    path: '/electriccharge',
+    name: 'ElectricCharge',
+    component: () => import('../views/card/ElectricCharge.vue'),
   },
   {
-    path: "/address",
-    name: "Address",
-    component: () => import("../views/other/Address.vue"),
+    path: '/paylist',
+    name: 'PayList',
+    component: () => import('../views/card/PayList.vue'),
   },
   {
-    path: "/city/:Id/:Address",
-    name: "City",
-    component: () => import("../views/other/City.vue"),
+    path: '/network',
+    name: 'Network',
+    component: () => import('../views/card/Network.vue'),
   },
   {
-    path: "/DistrictAndCounty/:Id/:City",
-    name: "DistrictAndCounty",
-    component: () => import("../views/other/DistrictAndCounty.vue"),
+    path: '/losscard',
+    name: 'LossCard',
+    component: () => import('../views/card/LossCard.vue'),
   },
   {
-    path: "/message",
-    name: "Message",
-    component: () => import("../views/main/Message.vue"),
+    path: '/exam',
+    name: 'Exam',
+    component: () => import('../views/exam/Exam.vue'),
   },
   {
-    path: "/olderphone",
-    name: "OlderPhone",
-    component: () => import("../views/other/OlderPhone.vue"),
+    path: '/library',
+    name: 'Library',
+    component: () => import('../views/library/Library.vue'),
   },
   {
-    path: "/newphone",
-    name: "NewPhone",
-    component: () => import("../views/other/NewPhone.vue"),
+    path: '/update',
+    name: 'Update',
+    component: () => import('../views/other/Update.vue'),
   },
   {
-    path: "/newphonecode/:Phone",
-    name: "NewPhoneCode",
-    component: () => import("../views/other/NewPhoneCode.vue"),
+    path: '/gender',
+    name: 'Gender',
+    component: () => import('../views/other/Gender.vue'),
   },
   {
-    path: "/schedule",
-    name: "Schedule",
-    component: () => import("../views/schedule/Schedule.vue"),
+    path: '/address',
+    name: 'Address',
+    component: () => import('../views/other/Address.vue'),
   },
   {
-    path: "/base",
-    name: "Base",
-    component: () => import("../views/person/Base.vue"),
+    path: '/city/:Id/:Address',
+    name: 'City',
+    component: () => import('../views/other/City.vue'),
   },
-];
+  {
+    path: '/DistrictAndCounty/:Id/:City',
+    name: 'DistrictAndCounty',
+    component: () => import('../views/other/DistrictAndCounty.vue'),
+  },
+  {
+    path: '/message',
+    name: 'Message',
+    component: () => import('../views/main/Message.vue'),
+  },
+  {
+    path: '/olderphone',
+    name: 'OlderPhone',
+    component: () => import('../views/other/OlderPhone.vue'),
+  },
+  {
+    path: '/newphone',
+    name: 'NewPhone',
+    component: () => import('../views/other/NewPhone.vue'),
+  },
+  {
+    path: '/newphonecode/:Phone',
+    name: 'NewPhoneCode',
+    component: () => import('../views/other/NewPhoneCode.vue'),
+  },
+  {
+    path: '/schedule',
+    name: 'Schedule',
+    component: () => import('../views/schedule/Schedule.vue'),
+  },
+  {
+    path: '/base',
+    name: 'Base',
+    component: () => import('../views/person/Base.vue'),
+  },
+]
 
 const router = new VueRouter({
   routes,
-});
+})
 
-export default router;
+export default router

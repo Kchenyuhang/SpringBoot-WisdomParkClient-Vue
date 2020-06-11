@@ -28,6 +28,17 @@
         <option value="4">第五周</option>
         <option value="5">第六周</option>
         <option value="6">第七周</option>
+        <option value="6">第八周</option>
+        <option value="6">第九周</option>
+        <option value="6">第十周</option>
+        <option value="6">第十一周</option>
+        <option value="6">第十二周</option>
+        <option value="6">第十三周</option>
+        <option value="6">第十四周</option>
+        <option value="6">第十五周</option>
+        <option value="6">第十六周</option>
+        <option value="6">第十七周</option>
+        <option value="6">第十八周</option>
       </select>
       <!-- <img
         src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/xiajiantou.png"

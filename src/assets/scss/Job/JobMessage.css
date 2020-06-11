@@ -1,0 +1,53 @@
+.bg {
+  background-color: #f7f7f7;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+.header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: #63beba;
+  height: 55px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header .header-title {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .header-title img {
+  height: 18px;
+  width: 18px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.header .header-title p {
+  font-size: 18px;
+  font-weight: 550;
+  margin-left: 15px;
+  color: white;
+}
+
+.header .bell {
+  margin-right: 15px;
+}
+
+.header .bell img {
+  height: 28px;
+  width: 28px;
+  margin-top: 8px;
+}
+/*# sourceMappingURL=JobMessage.css.map */

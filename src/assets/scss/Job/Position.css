@@ -1,0 +1,202 @@
+.bg {
+  background-color: #f7f7f7;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+.header {
+  background-color: #63beba;
+  height: 55px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header .header-title {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .header-title img {
+  height: 18px;
+  width: 18px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.header .header-title p {
+  font-size: 18px;
+  font-weight: 550;
+  margin-left: 15px;
+  color: white;
+}
+
+.header .search {
+  margin-right: 15px;
+}
+
+.header .search img {
+  height: 28px;
+  width: 28px;
+  margin-top: 8px;
+}
+
+.job-type {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.job-type .part-time-job {
+  width: 50%;
+}
+
+.job-type .full-time-job {
+  width: 50%;
+}
+
+.choose {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  height: 55px;
+  background-color: white;
+}
+
+.choose .choose-between {
+  width: 90%;
+  height: 50px;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.choose .choose-between .choose-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.choose .choose-between .choose-title p {
+  margin-right: 25px;
+  font-size: 15px;
+}
+
+.choose .choose-between .choose-all img {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+}
+
+.job-card {
+  width: 100%;
+  height: 130px;
+  margin-bottom: 5px;
+  background-color: white;
+}
+
+.job-card .job-card-wide {
+  width: 90%;
+  margin: auto;
+  padding-top: 15px;
+}
+
+.job-card .job-card-wide .job-title .job-name {
+  font-size: 18px;
+  font-weight: 550;
+}
+
+.job-card .job-card-wide .job-title .salary {
+  font-size: 14px;
+  font-weight: 550;
+  color: #52aba9;
+}
+
+.job-card .job-card-wide .job-time {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.job-card .job-card-wide .job-time p {
+  font-size: 12px;
+  color: #6d6d6d;
+  margin-right: 20px;
+}
+
+.job-card .job-card-wide .job-number {
+  margin-top: 10px;
+}
+
+.job-card .job-card-wide .job-number p {
+  font-size: 12px;
+  color: #6d6d6d;
+  margin-right: 20px;
+}
+
+.job-card .job-card-wide .job-place {
+  margin-top: 10px;
+}
+
+.job-card .job-card-wide .job-place .boss {
+  font-size: 14px;
+}
+
+.job-card .job-card-wide .job-place .place {
+  font-size: 16px;
+  font-weight: 550;
+}
+
+.line {
+  width: 90%;
+  border: none;
+  height: 1px;
+  background: #ececec;
+}
+
+.line1 {
+  width: 90%;
+  border: none;
+  height: 1px;
+  margin-top: 2px;
+  background: #ececec;
+}
+
+.fontBlack {
+  font-size: 19px;
+  color: black;
+}
+
+.changeBackgroundColor {
+  background-color: #63beba;
+}
+
+.changeBackgroundColor p {
+  color: white;
+}
+
+.fontBlack1 {
+  font-size: 14px;
+  color: black;
+}
+/*# sourceMappingURL=Position.css.map */

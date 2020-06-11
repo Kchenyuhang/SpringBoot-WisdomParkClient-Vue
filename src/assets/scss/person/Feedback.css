@@ -1,6 +1,6 @@
 .bg {
   background-color: #f5f7fb;
-  height: 900px;
+  height: 100vh;
   width: 100%;
 }
 
@@ -54,6 +54,7 @@
   background-color: #e6e6e6;
   padding: 14px;
   height: 180px;
+  resize: none;
 }
 
 input::-webkit-input-placeholder,
