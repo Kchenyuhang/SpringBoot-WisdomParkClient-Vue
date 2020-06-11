@@ -11,45 +11,6 @@
     </div>
     <hr class="line" />
     <div class="container">
-<<<<<<< HEAD
-      <!-- <p>第一周</p> -->
-      <select name="bbxb" id="selecte1" class="longselect">
-        <option value>---请选择--</option>
-        <option
-          value="0"
-          selected="selected"
-          v-for="(item, index) in List"
-          :key="index"
-        >{{ item.name }}</option>
-      </select>
-
-      <select name="bb" id="selecte" class="shortselect">
-        <option value>---请选择--</option>
-        <option value="0" selected="selected">第一周</option>
-        <option value="1">第二周</option>
-        <option value="2">第三周</option>
-        <option value="3">第四周</option>
-        <option value="4">第五周</option>
-        <option value="5">第六周</option>
-        <option value="6">第七周</option>
-        <option value="6">第八周</option>
-        <option value="6">第九周</option>
-        <option value="6">第十周</option>
-        <option value="6">第十一周</option>
-        <option value="6">第十二周</option>
-        <option value="6">第十三周</option>
-        <option value="6">第十四周</option>
-        <option value="6">第十五周</option>
-        <option value="6">第十六周</option>
-        <option value="6">第十七周</option>
-        <option value="6">第十八周</option>
-      </select>
-      <!-- <img
-        src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/xiajiantou.png"
-        alt=""
-      />-->
-      <div v-if="show==true">
-=======
       <p class="shortselect cc-df-center" @click="change(1)">{{ day }}</p>
       <p class="longselect cc-df-center" @click="change(2)">{{ semester }}</p>
       <div class="zhezhaoceng" v-if="show1">
@@ -63,7 +24,6 @@
         </div>
       </div>
       <div v-if="show == true">
->>>>>>> db3350920d3c080b93fdae9b397eebd4c2eb2f11
         <div class="card cc-shadow cc-donghua">
           <div>
             <img :src="message.cover" />
