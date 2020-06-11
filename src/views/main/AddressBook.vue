@@ -17,7 +17,7 @@
           class="content"
           :class="{
             'spell-letter': true,
-            selected: student.spell.toUpperCase().slice(0, 1) === selectLetter,
+            selected: student.spell.toUpperCase().slice(0, 1) === selectLetter
           }"
           :id="student.spell.toUpperCase().slice(0, 1)"
           v-if="
@@ -71,7 +71,7 @@ export default {
       spells: [],
       studentInfo: [], //学生信息列表
       letterList: [], //字母列表
-      selectLetter: "", //被选中的字母
+      selectLetter: "" //被选中的字母
     };
   },
   components: {},
@@ -90,7 +90,7 @@ export default {
     },
     async selectSchedule() {
       this.data = {
-        field: this.userId,
+        field: this.userId
       };
       this.url = this.GLOBAL.baseUrl + "/address_book/list/userId";
       this.result = await API.init(this.url, this.data, "post");
@@ -107,7 +107,7 @@ export default {
             this.studentInfo.push({
               name: this.result[j].remark,
               spell: this.spells,
-              number: this.result[j].phoneNumber,
+              number: this.result[j].phoneNumber
               // avatar: this.result[j]
             });
           }
@@ -131,9 +131,9 @@ export default {
           this.letterList.push(e.spell.toUpperCase().slice(0, 1));
         }
       });
-    },
+    }
   },
-  computed: {},
+  computed: {}
 };
 </script>
 

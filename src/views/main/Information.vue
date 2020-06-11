@@ -15,10 +15,7 @@
       <div class="Top">
         <p class="title">置顶帖</p>
         <div>
-          <div
-            v-for="(item, index) in result"
-            :key="index"
-          >
+          <div v-for="(item, index) in result" :key="index">
             <div class="cc-df">
               <img :src="item.cover" />
               <div class="cc-col-between cc-mleft">
@@ -31,46 +28,22 @@
       </div>
       <div class="container ">
         <div class="cc-df container-header">
-          <div
-            class="cc-coll-4 cc-df-center"
-            @click="isShow = 1"
-          >
-            <p
-              :class="{ blueLine: isShow == 1 }"
-              @click="getAll"
-            >全部</p>
+          <div class="cc-coll-4 cc-df-center" @click="isShow = 1">
+            <p :class="{ blueLine: isShow == 1 }" @click="getAll">全部</p>
           </div>
-          <div
-            class="cc-coll-4 cc-df-center"
-            @click="isShow = 2"
-          >
-            <p
-              :class="{ blueLine: isShow == 2 }"
-              @click="getDoList"
-            >教务处</p>
+          <div class="cc-coll-4 cc-df-center" @click="isShow = 2">
+            <p :class="{ blueLine: isShow == 2 }" @click="getDoList">教务处</p>
           </div>
-          <div
-            class="cc-coll-4 cc-df-center"
-            @click="isShow = 3"
-          >
-            <p
-              :class="{ blueLine: isShow == 3 }"
-              @click="getStudentList"
-            >
+          <div class="cc-coll-4 cc-df-center" @click="isShow = 3">
+            <p :class="{ blueLine: isShow == 3 }" @click="getStudentList">
               学生会
             </p>
           </div>
         </div>
         <div>
-          <div
-            v-for="(item,index) in teachResult"
-            :key="index"
-          >
+          <div v-for="(item, index) in teachResult" :key="index">
             <div class="cc-df cc-mtop cc-mleft">
-              <img
-                :src="item.cover"
-                alt=""
-              />
+              <img :src="item.cover" alt="" />
               <div class="cc-col-between cc-mleft">
                 <p class="file">
                   <b>{{ item.title }}</b>
