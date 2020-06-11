@@ -81,7 +81,7 @@ export default {
   components: { deleteSlider },
   created() {
     this.selectSchedule();
-},
+  },
   mounted() {},
   methods: {
     // 点击左侧字母，右侧学生列表滚动到指定位置

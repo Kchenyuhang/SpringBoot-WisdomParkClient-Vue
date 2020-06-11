@@ -81,7 +81,7 @@
         <div>
           <img :src="item.image" alt="" />
           <span>{{ item.sub }}</span>
-          <p>$  {{ item.price }}</p>
+          <p>$ {{ item.price }}</p>
           <div class="r-right">
             <img :src="item.image" alt="" />
             <p>旗靓店</p>

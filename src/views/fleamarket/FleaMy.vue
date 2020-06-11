@@ -2,7 +2,9 @@
   <div class="bg">
     <div class="header">
       <div class="icon">
-        <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/settings.png" />
+        <img
+          src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/settings.png"
+        />
       </div>
       <div class="inform">
         <div class="left">
