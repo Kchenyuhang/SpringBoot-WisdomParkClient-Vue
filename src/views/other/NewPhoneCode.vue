@@ -77,7 +77,7 @@ export default {
         pkUserAccountId: this.user.pkUserAccountId
       };
 
-      this.result = await API.init(this.url, this.data, "put");
+      this.result = await API.init(this.url, this.data, "post");
       console.log(this.result.msg);
       if (this.result.msg == "成功") {
         localStorage.setItem("user", JSON.stringify(this.result.data));
@@ -96,14 +96,13 @@ export default {
       if (this.result.msg == "成功") {
         this.updatePhone();
       }
-      this.url=this.GLOBAL.baseUrl+'/verifyCode'
-        this.result= await  API.init(this.url,this.data,"post")
-        console.log(this.result)
-        if(this.result.msg=='成功'){
-          this.updatePhone()
-        }
-      
-    },
+      this.url = this.GLOBAL.baseUrl + "/verifyCode";
+      this.result = await API.init(this.url, this.data, "post");
+      console.log(this.result);
+      if (this.result.msg == "成功") {
+        this.updatePhone();
+      }
+    }
   },
   computed: {}
 };

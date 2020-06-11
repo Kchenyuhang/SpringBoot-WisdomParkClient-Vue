@@ -1,0 +1,108 @@
+.bg {
+    background-color: #ffffff;
+    height: 100vh;
+    width: 100%;
+    img {
+        width: 100%;
+        height: 250px;
+    }
+  }
+.inputDiv {
+      position:absolute;
+      top: 220px;
+      left: 12px;
+      width: 94%;
+      height: 180px;
+      border-radius: 10px;
+      background-color: #ffffff;
+      box-shadow: 0 0 30px 0 #d2e1ee;
+      .inputTop {
+          margin-top: 15px;
+          width: 80%;
+          height: 40px;
+      }
+      .inputCenter {
+          width: 100%;
+          height: 110px;
+          .inputext {
+              width: 90%;
+              height: 40px;
+              margin: 0 0 15px 20px;
+              border: none;
+              font-size: 16px;
+              border-radius: 5px;
+          }
+          .line {
+              border-radius: 2px;
+              margin-top:-63px;
+              width: 89%;
+              height: 1px;
+              background-color: #f4f4f4;
+          }
+      }
+      span {
+          margin-top: 20px;
+          margin: 20px 10px 10px 30px;
+      }
+  }
+  .menu {
+    width: 96%;
+    // background-color: red;
+    position:absolute;
+      top: 416px;
+      left: 5px;
+      display: flex;
+      justify-content: space-around;
+      div{
+          padding-left: 25px;
+      }
+      img{
+        width: 40px;
+        height: 40px;
+        padding-left: 10px;
+      }
+      p{
+          padding-left: -5px;
+      }
+  }
+  .bottom {
+    width: 94%;
+    height: 180px;
+    // background-color: red;
+    position:absolute;
+    top: 500px;
+    left: 10px;
+    .card {
+        border: 1px solid #c4c4c4;
+    margin: 1px 1px 1px 1px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    width: 100%;
+    height: 120px;
+    display: flex;
+    .leftdiv {
+        width: 65%;
+        height:120px ;
+        .title {
+            margin: 13px 0 0 10px;
+            font-size: 15px;
+            color: #494949;
+        }
+        p{
+            margin: 25px 0 0 10px;
+            font-size: 13px;
+            color: #c4c4c4;
+        }
+    }
+    .rightdiv {
+        width: 35%;
+        height:120px ;
+        img{
+            margin: 10px 0 0 10px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+    }
+    }
+  }

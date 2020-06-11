@@ -207,8 +207,50 @@ const routes = [
     name: 'Base',
     component: () => import('../views/person/Base.vue'),
   },
-]
-
+  {
+    path: "/insertaddress",
+    name: "InsertAddressBook",
+    component: () => import("../views/main/InsertAddressBook.vue"),
+  },
+   // 跑腿路由搭建
+   {
+    path: "/errandshomepage",
+    name: "Errandshomepage",
+    component: () => import("../views/errand/Errandshomepage.vue")
+  },
+  {
+    path: "/personalcenter",
+    name: "Personalcenter",
+    component: () => import("../views/errand/Personalcenter.vue")
+  },
+  {
+    path: "/order",
+    name: "Order",
+    component:  () => import("../views/errand/Order.vue"),
+    children: [
+      {
+        path: "all",
+        name: "All",
+        component:  () => import("../views/errand/orders/All.vue")
+      },
+      {
+        path: "underway",
+        name: "Underway",
+        component: () => import("../views/errand/orders/Underway.vue"),
+      },
+    ],
+  },
+  {
+    path: "/originadress",
+    name: "OriginAdress",
+    component: () => import("../views/errand/adressorder/OriginAdress.vue"),
+  },
+  {
+    path: "/destinationadress",
+    name: "DestinationAdress",
+    component: () => import("../views/errand/adressorder/DestinationAdress.vue"),
+  },
+];
 const router = new VueRouter({
   routes,
 })

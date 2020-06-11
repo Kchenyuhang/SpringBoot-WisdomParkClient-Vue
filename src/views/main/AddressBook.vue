@@ -10,14 +10,19 @@
       <p>通讯录</p>
     </div>
     <div class="top">软件{{ clazzId }}</div>
-    <!-- 左边内容显示 -->
-    <ul class="student-container">
-      <li v-for="(student, stIndex) in studentInfo" :key="stIndex">
+    <!-- 左边内容部分 -->
+    <div class="mylist">
+      <delete-slider
+        v-for="(student, stIndex) in studentInfo"
+        :key="stIndex"
+        :id="student.pkAddressBookId"
+        @deleteLine="deleteLine"
+      >
         <div
           class="content"
           :class="{
             'spell-letter': true,
-            selected: student.spell.toUpperCase().slice(0, 1) === selectLetter,
+            selected: student.spell.toUpperCase().slice(0, 1) === selectLetter
           }"
           :id="student.spell.toUpperCase().slice(0, 1)"
           v-if="
@@ -28,20 +33,16 @@
         >
           {{ student.spell.toUpperCase().slice(0, 1) }}
         </div>
-        <div class="ccard">
-          <div class="leftDiv">
-            <img
-              src="https://soft1851.oss-cn-beijing.aliyuncs.com/markdown/用户 (1).png"
-              alt=""
-            />
-          </div>
-          <div class="rightDiv">
-            <p>{{ student.name }}</p>
-            <p>{{ student.number }}</p>
-          </div>
+        <div class="li-img" slot="img">
+          <img
+            src="https://soft1851.oss-cn-beijing.aliyuncs.com/markdown/用户 (1).png"
+            alt=""
+          />
         </div>
-      </li>
-    </ul>
+        <h3 class="li-title" slot="title">{{ student.name }}</h3>
+        <p class="li-price" slot="price">{{ student.number }}</p>
+      </delete-slider>
+    </div>
     <!-- 右边字母 -->
     <div class="left-letter">
       <span
@@ -50,7 +51,7 @@
         @click="toLetters(letter)"
         >{{ letter }}
       </span>
-      <button class="btn">+</button>
+      <button class="btn" @click="insert">+</button>
     </div>
   </div>
 </template>
@@ -58,6 +59,7 @@
 <script>
 const API = require("../../request/api");
 var pinyin = require("pinyin");
+import deleteSlider from "../../components/deleteTemplate";
 export default {
   name: "Login",
   data() {
@@ -72,9 +74,11 @@ export default {
       studentInfo: [], //学生信息列表
       letterList: [], //字母列表
       selectLetter: "", //被选中的字母
+      number: 0,
+      msg: false
     };
   },
-  components: {},
+  components: { deleteSlider },
   created() {
     this.selectSchedule();
   },
@@ -82,6 +86,7 @@ export default {
   methods: {
     // 点击左侧字母，右侧学生列表滚动到指定位置
     toLetters(letter) {
+      console.log(letter);
       this.selectLetter = letter;
       let e = document.getElementById(letter);
       if (e) {
@@ -90,17 +95,18 @@ export default {
     },
     async selectSchedule() {
       this.data = {
-        field: this.userId,
+        field: this.userId
       };
-      this.url = this.GLOBAL.baseUrl + "/address_book/list/userId";
+      this.url = this.GLOBAL.baseUrl + "/addressBook/list/userId";
       this.result = await API.init(this.url, this.data, "post");
-      console.log(this.result);
+      // console.log(this.result);
       this.transition();
     },
     transition() {
       let z = 97;
       for (let i = 0; i < 26; i++) {
-        console.log(String.fromCharCode(z));
+        // 输出26个字母
+        // console.log(String.fromCharCode(z));
         for (let j = 0; j < this.result.length; j++) {
           this.spells = pinyin(this.result[j].remark)[0][0];
           if (String.fromCharCode(z) == this.spells.substring(0, 1)) {
@@ -108,7 +114,7 @@ export default {
               name: this.result[j].remark,
               spell: this.spells,
               number: this.result[j].phoneNumber,
-              // avatar: this.result[j]
+              pkAddressBookId: this.result[j].pkAddressBookId
             });
           }
         }
@@ -132,8 +138,16 @@ export default {
         }
       });
     },
+    insert() {
+      this.$router.push("/insertaddress");
+    },
+    deleteLine(list) {
+      this.studentInfo = [];
+      this.result = list;
+      this.transition();
+    }
   },
-  computed: {},
+  computed: {}
 };
 </script>
 
