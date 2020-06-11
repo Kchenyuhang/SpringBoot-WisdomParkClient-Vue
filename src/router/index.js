@@ -2,9 +2,6 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Login from "../views/Login.vue";
 import Layout from "../views/Layout.vue";
-import Nav from "../views/fleamarket/Nav.vue";
-import Order from "../views/errand/Order.vue";
-import All from "../views/errand/orders/All.vue"
 Vue.use(VueRouter);
 
 const routes = [
@@ -107,7 +104,7 @@ const routes = [
     component: () => import("../views/other/Gender.vue"),
   },
   {
-    path: "/address/",
+    path: "/address",
     name: "Address",
     component: () => import("../views/other/Address.vue"),
   },
@@ -156,26 +153,26 @@ const routes = [
     name: "InsertAddressBook",
     component: () => import("../views/main/InsertAddressBook.vue"),
   },
-  // 跑腿路由搭建
-  {
+   // 跑腿路由搭建
+   {
     path: "/errandshomepage",
     name: "Errandshomepage",
-    component: () => import("../views/errand/Errandshomepage.vue"),
+    component: () => import("../views/errand/Errandshomepage.vue")
   },
   {
     path: "/personalcenter",
     name: "Personalcenter",
-    component: () => import("../views/errand/Personalcenter.vue"),
+    component: () => import("../views/errand/Personalcenter.vue")
   },
   {
     path: "/order",
     name: "Order",
-    component: Order,
+    component:  () => import("../views/errand/Order.vue"),
     children: [
       {
         path: "all",
         name: "All",
-        component: All
+        component:  () => import("../views/errand/orders/All.vue")
       },
       {
         path: "underway",
@@ -193,43 +190,6 @@ const routes = [
     path: "/destinationadress",
     name: "DestinationAdress",
     component: () => import("../views/errand/adressorder/DestinationAdress.vue"),
-  },
-  {
-    path: "/nav",
-    name: "Nav",
-    component: Nav,
-    children: [
-      {
-        path: "/",
-        name: "HomePage",
-        component: () => import("../views/fleamarket/HomePage.vue"),
-      },
-      {
-        path: "/homePage",
-        name: "HomePage",
-        component: () => import("../views/fleamarket/HomePage.vue"),
-      },
-      {
-        path: "/reward",
-        name: "/Reward",
-        component: () => import("../views/fleamarket/Reward.vue"),
-      },
-      {
-        path: "/list",
-        name: "/List",
-        component: () => import("../views/fleamarket/List.vue"),
-      },
-      {
-        path: "/sell",
-        name: "/Sell",
-        component: () => import("../views/fleamarket/Sell.vue"),
-      },
-      {
-        path: "/fleaMy",
-        name: "/FleaMy",
-        component: () => import("../views/fleamarket/FleaMy.vue"),
-      },
-    ],
   },
 ];
 

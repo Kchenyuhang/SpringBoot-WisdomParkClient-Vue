@@ -122,16 +122,16 @@
       <div class="address">
         <p class="fontSize">我的课程</p>
         <div class="cc-df cc-mtop lateral-sliding">
-          <div v-for="item in 3" :key="item.id">
+          <div v-for="(item, index) in today" :key="index">
             <div
               class="subject-card"
-              v-bind:style="{ backgroundImage: 'url(' + avatar + ')' }"
+              v-bind:style="{ backgroundColor: item.backgroundColor }"
             >
-              <p class="fontSizeTitle">微信小程序</p>
-              <p class="fontSizebody1">1-2节</p>
+              <p class="fontSizeTitle">{{ item.subjectName }}</p>
+              <p class="fontSizebody1">{{ item.time }}</p>
               <div class="cc-df">
-                <p class="fontSizebody">教四</p>
-                <p class="fontSizebody cc-mleft">402</p>
+                <p class="fontSizebody">{{ item.towerName }}</p>
+                <p class="fontSizebody cc-mleft">{{ item.roomName }}</p>
               </div>
             </div>
           </div>
@@ -175,35 +175,40 @@ export default {
         {
           url: "#",
           description: "one",
-          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/1.jpg",
+          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/1.jpg"
         },
         {
           url: "#",
           description: "two",
-          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/2.jpg",
+          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/2.jpg"
         },
         {
           url: "#",
           description: "three",
-          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg",
-        },
+          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg"
+        }
       ],
       data: {
         currentPage: 1,
         field: {},
-        pageSize: 3,
+        pageSize: 3
+      },
+      todayData: {
+        field: 1
       },
       result: [],
       transitionName: this.$store.state.transitionName,
       avatar: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/bj1.png",
       isShow: false,
+      today: []
     };
   },
   components: {
-    Carousel: require("../../components/Carousel").default,
+    Carousel: require("../../components/Carousel").default
   },
   created() {
     this.getList();
+    this.getToday();
   },
   mounted() {},
   methods: {
@@ -222,9 +227,9 @@ export default {
       }
       if (index == 7) {
         this.$router.push("/errandshomepage");
-        if (index == 8) {
-          this.$router.push("/homePage");
-        }
+      }
+      if (index == 8) {
+        this.$router.push("/homePage");
       }
     },
     async getList() {
@@ -232,8 +237,13 @@ export default {
       this.result = (await API.init(this.url, this.data, "post")).data;
       console.log(this.result);
     },
+    async getToday() {
+      this.url = this.GLOBAL.baseUrl + "/course/today";
+      this.today = (await API.init(this.url, this.todayData, "post")).data;
+      console.log(this.today);
+    }
   },
-  computed: {},
+  computed: {}
 };
 </script>
 

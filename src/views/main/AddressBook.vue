@@ -22,7 +22,7 @@
           class="content"
           :class="{
             'spell-letter': true,
-            selected: student.spell.toUpperCase().slice(0, 1) === selectLetter,
+            selected: student.spell.toUpperCase().slice(0, 1) === selectLetter
           }"
           :id="student.spell.toUpperCase().slice(0, 1)"
           v-if="
@@ -81,7 +81,7 @@ export default {
   components: { deleteSlider },
   created() {
     this.selectSchedule();
-},
+  },
   mounted() {},
   methods: {
     // 点击左侧字母，右侧学生列表滚动到指定位置
@@ -95,7 +95,7 @@ export default {
     },
     async selectSchedule() {
       this.data = {
-        field: this.userId,
+        field: this.userId
       };
       this.url = this.GLOBAL.baseUrl + "/addressBook/list/userId";
       this.result = await API.init(this.url, this.data, "post");
@@ -147,7 +147,7 @@ export default {
       this.transition();
     }
   },
-  computed: {},
+  computed: {}
 };
 </script>
 

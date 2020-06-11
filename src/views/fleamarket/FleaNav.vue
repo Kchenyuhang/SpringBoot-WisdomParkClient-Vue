@@ -44,7 +44,7 @@
 
       <div class="icon3" v-if="iconIsshow1 == 3">
         <img
-          src="http://ww1.sinaimg.cn/large/0064QvQTly1gfmxh6zrflj305k05k3yc.jpg"
+          src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/jiahao.PNG"
           alt
           style="height: 40px;
   width: 40px;"
@@ -54,7 +54,7 @@
       <div class="icon3" v-if="iconIsshow1 != 3" @click="iconIsshow1 = 3">
         <router-link to="/sell">
           <img
-            src="http://ww1.sinaimg.cn/large/0064QvQTly1gfmxh6zrflj305k05k3yc.jpg"
+            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/jiahao.PNG"
             alt
             style="height: 40px;
   width: 40px;"
@@ -79,7 +79,7 @@
           alt
           class="icon"
         />
-        <p :class="{ 'yellow-font': iconIsshow1 == 4 }">消息</p>
+        <p :class="{ 'yellow-font': iconIsshow1 == 4 }">悬赏</p>
       </div>
 
       <div class="icon5" v-if="iconIsshow1 != 5" @click="iconIsshow1 = 5">

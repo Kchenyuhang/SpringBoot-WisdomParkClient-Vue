@@ -38,7 +38,6 @@ export default {
   },
   created() {
     console.log(this.userId);
-    
   },
   methods: {
     go() {
@@ -47,7 +46,7 @@ export default {
     async insert() {
       this.data = {
         avatar:
-        "https://soft1851.oss-cn-beijing.aliyuncs.com/markdown/用户 (1).png",
+          "https://soft1851.oss-cn-beijing.aliyuncs.com/markdown/用户 (1).png",
         phoneNumber: this.phoneNumber,
         remark: this.remark,
         userId: this.userId,
