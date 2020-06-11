@@ -1,5 +1,5 @@
 // 引入
-import axios from 'axios'
+import axios from "axios";
 // import store from '../store'
 //  axios.defaults.headers.post['token'] = null;
 
@@ -15,12 +15,12 @@ export function get(url, params) {
         params: params,
       })
       .then((res) => {
-        resolve(res.data)
+        resolve(res.data);
       })
       .catch((err) => {
-        reject(err.data)
-      })
-  })
+        reject(err.data);
+      });
+  });
 }
 
 /**
@@ -33,12 +33,12 @@ export function post(url, params) {
     axios
       .post(url, params)
       .then((res) => {
-        resolve(res.data)
+        resolve(res.data);
       })
       .catch((err) => {
-        reject(err.data)
-      })
-  })
+        reject(err.data);
+      });
+  });
 }
 
 /**
@@ -51,12 +51,12 @@ export function put(url, params) {
     axios
       .put(url, params)
       .then((res) => {
-        resolve(res.data)
+        resolve(res.data);
       })
       .catch((err) => {
-        reject(err.data)
-      })
-  })
+        reject(err.data);
+      });
+  });
 }
 
 /**
@@ -69,10 +69,10 @@ export function $delete(url, params) {
         data: params,
       })
       .then((res) => {
-        resolve(res.data)
+        resolve(res.data);
       })
       .catch((err) => {
-        reject(err.data)
-      })
-  })
+        reject(err.data);
+      });
+  });
 }

@@ -75,7 +75,7 @@
               <p class="cc-mtop font-size">校友圈</p>
             </div>
 
-            <div class="cc-col-center cc-coll-3 address2">
+            <div class="cc-col-center cc-coll-3 address2" @click="into(7)">
               <img
                 src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/paotui.png"
                 alt="跑腿图标"
@@ -175,32 +175,32 @@ export default {
         {
           url: "#",
           description: "one",
-          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/1.jpg"
+          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/1.jpg",
         },
         {
           url: "#",
           description: "two",
-          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/2.jpg"
+          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/2.jpg",
         },
         {
           url: "#",
           description: "three",
-          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg"
-        }
+          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg",
+        },
       ],
       data: {
         currentPage: 1,
         field: {},
-        pageSize: 3
+        pageSize: 3,
       },
       result: [],
       transitionName: this.$store.state.transitionName,
       avatar: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/bj1.png",
-      isShow: false
+      isShow: false,
     };
   },
   components: {
-    Carousel: require("../../components/Carousel").default
+    Carousel: require("../../components/Carousel").default,
   },
   created() {
     this.getList();
@@ -220,17 +220,20 @@ export default {
       if (index == 4) {
         this.$router.push("/metrocard");
       }
-      if (index == 8) {
-        this.$router.push("/homePage");
+      if (index == 7) {
+        this.$router.push("/errandshomepage");
+        if (index == 8) {
+          this.$router.push("/homePage");
+        }
       }
     },
     async getList() {
       this.url = this.GLOBAL.baseUrl + "/info/isTap";
       this.result = (await API.init(this.url, this.data, "post")).data;
       console.log(this.result);
-    }
+    },
   },
-  computed: {}
+  computed: {},
 };
 </script>
 
