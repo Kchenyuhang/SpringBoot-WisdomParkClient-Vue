@@ -121,5 +121,5 @@ export default {
             line-height: 200px;
         }
     }
- 
+   
 </style>

@@ -1,5 +1,5 @@
 .bg {
-  background-color: #f2f2f2;
+  background-color: white;
   height: 900px;
   width: 100%;
 }
@@ -31,10 +31,6 @@
   border-collapse: collapse;
 }
 
-.schedule tr {
-  height: 5px;
-}
-
 .schedule tr td {
   border: 1px solid #b1cff4;
   box-sizing: border-box;
@@ -49,10 +45,6 @@
 
 .schedule .blank {
   height: 5px;
-}
-
-.week-list {
-  height: 51px;
 }
 
 .week-select {
@@ -78,19 +70,16 @@
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
-  margin-left: 40px;
+  margin-right: 40px;
+  margin-left: 20px;
 }
 
 .longselect {
   background: #fafdfe;
   height: 28px;
-  width: 160px;
-  line-height: 28px;
+  width: 180px;
   border: 1px solid #9bc0dd;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
   border-radius: 2px;
-  margin-left: 30px;
 }
 
 .line {
@@ -109,7 +98,6 @@
 .container p {
   font-size: 14px;
   font-weight: 550;
-  margin-left: 38%;
   margin-top: 2%;
 }
 
@@ -123,7 +111,7 @@
   border: none;
   font-size: 16px;
   border-radius: 5px;
-  left: 20%;
+  left: 24%;
 }
 
 .card img {
@@ -152,4 +140,58 @@
   left: 45%;
   width: 40px;
   height: 40px;
+}
+
+.zhezhaoceng {
+  z-index: 999;
+  position: absolute;
+  width: 50%;
+  height: 100px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: white;
+  border: 1px #c3daf7 solid;
+  font-size: 16px;
+  left: 40%;
+  top: 12%;
+}
+
+.zhezhaoceng p {
+  font-size: 14px;
+  color: black;
+  position: relative;
+  left: 5%;
+  right: 50px;
+  top: 26%;
+  margin-bottom: 10px;
+}
+
+.zhezhaoceng2 {
+  z-index: 999;
+  position: absolute;
+  border: 1px #c3daf7 solid;
+  width: 25%;
+  height: 100px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: white;
+  font-size: 16px;
+  left: 5%;
+  top: 12%;
+}
+
+.zhezhaoceng2 p {
+  font-size: 14px;
+  color: black;
+  position: relative;
+  left: 5%;
+  right: 50px;
+  top: 26%;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.text {
+  width: 100px;
+  height: 10px;
 }
