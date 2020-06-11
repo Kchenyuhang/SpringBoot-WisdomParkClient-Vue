@@ -18,34 +18,58 @@
           </div>
         </div>
         <div class="right">
-          <div class="btn">
-            <p>个人主页></p>
-          </div>
+          <router-link to="/personal">
+            <div class="btn">
+              <p>个人主页></p>
+            </div>
+          </router-link>
         </div>
       </div>
       <div class="count">
-        <div class="up">
-          <p>0</p>
-          <p>0</p>
-          <p>0</p>
-          <p>0</p>
-        </div>
-        <div class="down">
-          <p>收 藏</p>
-          <p>历史浏览</p>
-          <p class="mar-left">关 注</p>
-          <p>粉丝</p>
+        <div class="tab">
+          <div @click="isShow = 1">
+            <p :class="{ blueLine: isShow == 1 }">发布1</p>
+          </div>
+          <div @click="isShow = 2">
+            <p :class="{ blueLine: isShow == 2 }">购买0</p>
+          </div>
+          <div @click="isShow = 3">
+            <p :class="{ blueLine: isShow == 3 }">评价0</p>
+          </div>
+          <div @click="isShow = 4">
+            <p :class="{ blueLine: isShow == 4 }">收藏0</p>
+          </div>
         </div>
       </div>
     </div>
-    <div></div>
+    <div class="container">
+      <div class="box">
+        <div class="left">
+          <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/3.jpg" />
+        </div>
+        <div class="right">
+          <p class="title">商品名</p>
+          <p class="des">描述</p>
+          <p class="price">￥价格</p>
+          <div class="com">
+            <img
+              class="icon"
+              src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/cc-message.png"
+            />
+            <p class="mes">10</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
 export default {
   name: "FleaMy",
   data() {
-    return {};
+    return {
+      isShow: 1
+    };
   },
   components: {},
   created() {},

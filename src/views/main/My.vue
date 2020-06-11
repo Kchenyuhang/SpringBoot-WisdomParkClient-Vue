@@ -13,25 +13,32 @@
             id="file"
           />
         </div>
-        <p class="name">{{user.nickname}}</p>
-        <p class="phone">{{user.phoneNumber.substring(0,3)}}****{{user.phoneNumber.substring(7)}}</p>
+        <p class="name">{{ user.nickname }}</p>
+        <p class="phone">
+          {{ user.phoneNumber.substring(0, 3) }}****{{
+            user.phoneNumber.substring(7)
+          }}
+        </p>
       </div>
       <div class="info">
         <router-link to="/base">
-        <div class="cc-df-between">
-          <div class="cc-df info-left1">
-            <img
-              src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_jibenxinxi.png"
-              alt="基本信息"
-            />
-            <p>基本信息</p>
+          <div class="cc-df-between">
+            <div class="cc-df info-left1">
+              <img
+                src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_jibenxinxi.png"
+                alt="基本信息"
+              />
+              <p>基本信息</p>
+            </div>
+            <div class="info-right">
+              <img
+                src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/youjiantou.png"
+                alt="右箭头"
+              />
+            </div>
           </div>
-          <div class="info-right">
-            <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/youjiantou.png" alt="右箭头" />
-          </div>
-        </div>
         </router-link>
-        
+
         <hr class="line" />
 
         <div class="cc-df-between">
@@ -43,7 +50,10 @@
             <p>关于我们</p>
           </div>
           <div class="info-right">
-            <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/youjiantou.png" alt="右箭头" />
+            <img
+              src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/youjiantou.png"
+              alt="右箭头"
+            />
           </div>
         </div>
 
@@ -75,7 +85,10 @@
             <p>清理缓存</p>
           </div>
           <div class="info-right">
-            <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/youjiantou.png" alt="右箭头" />
+            <img
+              src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/youjiantou.png"
+              alt="右箭头"
+            />
           </div>
         </div>
       </div>
@@ -111,7 +124,7 @@ export default {
     logout() {
       localStorage.removeItem("token");
       this.$store.commit("setUser", null);
-      this.user=null
+      this.user = null;
       this.$router.push("/login");
     },
     uploadAvatar(event) {
@@ -134,7 +147,7 @@ export default {
     updateAdminInfo(url) {
       this.imgDataUrl = url.substring(0, url.indexOf("?"));
       this.user.avatar = this.imgDataUrl;
-      this.updateAvatar()
+      this.updateAvatar();
     },
     avatarClick() {
       this.$refs.file.click();
@@ -148,12 +161,12 @@ export default {
         pkUserAccountId: this.user.pkUserAccountId,
         address: this.user.address
       };
-       this.result = await API.init(this.url, this.data, "put");
-        console.log(this.result.msg);
-        if (this.result.msg == "成功") {
-          localStorage.setItem("user", JSON.stringify(this.result.data));
-          this.$store.commit("setUser", this.result.data);
-        }
+      this.result = await API.init(this.url, this.data, "put");
+      console.log(this.result.msg);
+      if (this.result.msg == "成功") {
+        localStorage.setItem("user", JSON.stringify(this.result.data));
+        this.$store.commit("setUser", this.result.data);
+      }
     }
   },
   computed: {}
