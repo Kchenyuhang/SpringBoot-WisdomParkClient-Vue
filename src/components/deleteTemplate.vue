@@ -1,6 +1,6 @@
 <template>
   <div class="delete">
-    <div class="slider">
+    <div class="slider student-container">
       <div
         class="content cc-df-between"
         @touchstart="touchStart"
@@ -9,30 +9,40 @@
         :style="deleteSlider"
       >
         <div class="size">
-          <slot name="img"></slot>
-          <slot name="title"></slot>
-          <slot name="price"></slot>
+          <div class="leftDiv">
+            <slot name="img"></slot>
+          </div>
+          <div class="rightDiv">
+            <slot name="title"></slot>
+            <slot name="price"></slot>
+          </div>
           <!-- 默认插槽 -->
           <slot></slot>
           <!-- 插槽中放具体项目中需要内容 -->
         </div>
-        <div class="remove" ref="remove" @click="deleteLine">删除</div>
+        <div class="remove" ref="remove" @click="deleteLine()">删除</div>
       </div>
     </div>
   </div>
 </template>
 <script>
+const API = require("../request/api");
 export default {
-  props: ["index"],
+  props: ["index", "id"],
   data() {
     return {
+      // 拿到用户的userId 用来查询通讯录好友
+      userId: this.$store.state.user.pkUserAccountId,
+      result: [],
+      results: [],
       startX: 0, //触摸位置
       endX: 0, //结束位置
       moveX: 0, //滑动时的位置
       disX: 0, //移动距离
-      deleteSlider: "transform:translateX(0px)" //滑动时的效果,使用v-bind:style="deleteSlider"
+      deleteSlider: "transform:translateX(0px)", //滑动时的效果,使用v-bind:style="deleteSlider"
     };
   },
+  created() {},
   methods: {
     touchStart(ev) {
       ev = ev || event;
@@ -82,44 +92,75 @@ export default {
         }
       }
     },
-    deleteLine() {
-      this.deleteSlider = "transform:translateX(0px)";
-      this.$emit("deleteLine");
+    async deleteLine() {
+      // this.deleteSlider = "transform:translateX(0px)";
+      // 删除方法测试
+      console.log(this.id);
+      this.data = {
+        field: this.id
+      };
+      this.url = this.GLOBAL.baseUrl + "/address_book/deletion/id";
+      this.rusult = await API.init(this.url, this.data, "post");
+      this.data = {
+        field: this.userId,
+      };
+      this.url = this.GLOBAL.baseUrl + "/address_book/list/userId";
+      this.result = await API.init(this.url, this.data, "post");
+      this.$emit("deleteLine", this.result);
     }
   }
 };
 </script>
 <style scoped lang="less">
-    .slider{
-        width: 100%;
-        height:100px;
-        display: flex;
-        overflow-x: hidden;
-        position: relative;
-        user-select: none;
-        .content{
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            z-index: 100;
-            //    设置过渡动画
-            transition: 0.3s;
-             
-        }
-        .remove{
-            position: absolute;
-            width:50px;
-            height:100px;
-            background:red;
-            right:-50px;
-            top: 0;
-            color:#fff;
-            text-align: center;
-            font-size: 40px;
-            line-height: 200px;
-        }
+.slider {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: relative;
+  user-select: none;
+  .content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    // 设置过渡动画
+    transition: 0.3s;
+    .selected {
+      color: #0d858e;
     }
-   
+    .size {
+      display: flex;
+    }
+  }
+  .remove {
+    position: absolute;
+    width: 60px;
+    height: 70px;
+    background: #ff0000;
+    right: -60px;
+    top: 0;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    padding-top: 20px;
+  }
+}
+.leftDiv {
+  margin: 5px 0 0 15px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  text-align: center;
+  background-color: #eeeeee;
+  img {
+    width: 50px;
+    height: 50px;
+  }
+}
+.rightDiv {
+  margin: 8px 0 0 20px;
+}
 </style>

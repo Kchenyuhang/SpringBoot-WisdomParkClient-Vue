@@ -7,6 +7,8 @@
 .header {
   background-color: #ffffff;
   height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -33,7 +35,8 @@
 
 .schedule tr td {
   border: 1px solid #b1cff4;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   font-size: 0.7rem;
   text-align: center;
   padding: 5px 5px;
@@ -67,8 +70,6 @@
   width: 90px;
   line-height: 28px;
   border: 1px solid #9bc0dd;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
   border-radius: 2px;
   margin-right: 40px;
   margin-left: 20px;
@@ -92,6 +93,8 @@
 .container {
   background-color: #ffffff;
   height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -141,6 +144,7 @@
   width: 40px;
   height: 40px;
 }
+<<<<<<< HEAD
 
 .zhezhaoceng {
   z-index: 999;
@@ -195,3 +199,6 @@
   width: 100px;
   height: 10px;
 }
+=======
+/*# sourceMappingURL=Schedule.css.map */
+>>>>>>> 7039f59918058227cf35becbab241ce9f3500638
