@@ -99,12 +99,12 @@ export default {
       this.data = {
         field: this.id
       };
-      this.url = this.GLOBAL.baseUrl + "/address_book/deletion/id";
+      this.url = this.GLOBAL.baseUrl + "/addressBook/deletion/id";
       this.rusult = await API.init(this.url, this.data, "post");
       this.data = {
         field: this.userId,
       };
-      this.url = this.GLOBAL.baseUrl + "/address_book/list/userId";
+      this.url = this.GLOBAL.baseUrl + "/addressBook/list/userId";
       this.result = await API.init(this.url, this.data, "post");
       this.$emit("deleteLine", this.result);
     }

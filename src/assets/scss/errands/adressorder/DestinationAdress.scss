@@ -1,0 +1,84 @@
+.bg {
+    background-color: #fefefe;
+    height: 100vh;
+    width: 100%;
+  }
+  .header {
+    background-color: #ffffff;
+    height: 40px;
+    display: flex;
+    img {
+      height: 20px;
+      width: 20px;
+      margin-top: 10px;
+      margin-left: 5px;
+    }
+    p {
+      font-size: 18px;
+      font-weight: 550;
+      margin-left: 3%;
+      margin-top: 2%;
+    }
+  }
+  // .originDiv {
+  //     width: 95%;
+  //     height: 200px;
+  //     margin: 10px 0 20px 10px;
+  //     .orginput {
+  //         width: 100%;
+  //         height: 60px;
+  //     }
+  // }
+  .destinationDiv {
+    width: 95%;
+    height: 200px;
+    margin: 10px 0 20px 10px;
+    .orginput {
+        width: 100%;
+        height: 60px;
+    }
+}
+  .userinfoput {
+      display: flex;
+      .nameput {
+        width: 35%;
+        height: 40px;
+        border: none;
+      }
+      p {
+          margin-top: 8px;
+      }
+      .numput {
+          border: none;
+        width: 60%;
+        height: 40px;
+      }
+
+  }
+  .inputtext {
+      border: none;
+      width: 95%;
+      height: 40px;
+      margin-top: 7px;
+      font-size: 17px;
+  }
+  .inputtext1 {
+    border: none;
+    width: 95%;
+    height: 40px;
+    margin-top: 7px;
+}
+  .line {
+      width: 95%;
+      height: 1px;
+      margin-left: 0px;
+  }
+  .btn {
+    margin: 345px 0 0 10px;
+    width: 95%;
+    height: 45px;
+    color: #ffffff;
+    background-color:#12a3fd ;
+    border-radius: 20px;
+    border: none;
+  }

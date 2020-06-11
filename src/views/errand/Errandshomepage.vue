@@ -3,7 +3,7 @@
     <!-- 顶部图片 -->
     <div class="bg">
       <img
-        src="https://soft1851.oss-cn-beijing.aliyuncs.com/markdown/lADPD4d8pjZA-2nNAljNA4Q_900_600.jpg_720x720q90g.jpg"
+        src="https://soft1851.oss-cn-beijing.aliyuncs.com/markdown/lADPGqGoaTpyd_7NAljNA4Q_900_600.jpg_720x720q90g.jpg"
         alt=""
       />
       <!-- 地址栏 -->
@@ -13,8 +13,18 @@
           <span>帮我取</span>
         </div>
         <div class="inputCenter">
-          <input type="text" class="inputext" placeholder="从哪里取件" />
-          <input type="text" class="inputext" placeholder="送到哪里" />
+          <input
+            type="text"
+            class="inputext"
+            placeholder="从哪里取件"
+            @click="origin"
+          />
+          <input
+            type="text"
+            class="inputext"
+            placeholder="送到哪里"
+            @click="go"
+          />
           <hr class="line" />
         </div>
       </div>
@@ -30,12 +40,12 @@
           <p>个人中心</p>
         </div>
         <div>
-        <router-link to="/order">
-          <img
-            src="https://soft1851.oss-cn-beijing.aliyuncs.com/markdown/lALPD2eDMm1eLEfMyMzI_200_200.png_720x720q90g.jpg"
-            alt=""
-          />
-           </router-link>
+          <router-link to="/order/all">
+            <img
+              src="https://soft1851.oss-cn-beijing.aliyuncs.com/markdown/lALPD2eDMm1eLEfMyMzI_200_200.png_720x720q90g.jpg"
+              alt=""
+            />
+          </router-link>
           <p>我的订单</p>
         </div>
         <div>
@@ -91,7 +101,20 @@ export default {
   },
   created() {},
   components: {},
-  methods: {},
+  methods: {
+    // 目的地
+    go() {
+      this.$router.push("/destinationadress");
+    },
+    // 发送地
+    origin() {
+      // this.$store.store.removeItem("address");
+      // this.$store.store.removeItem("originname");
+      // this.$store.store.removeItem("originnumber");
+      // this.$store.store.removeItem("addressinfo");
+      this.$router.push("/originadress");
+    },
+  },
 };
 </script>
 

@@ -47,7 +47,7 @@ export default {
     into(index) {
       this.$router.push({
         name: "DistrictAndCounty",
-        params: { Id:this.id+','+index, City:this.$route.params.Address+'-'+this.citys[index].name }
+        params: { Id:this.id+','+index, City:this.$route.params.Address+'-'+this.citys[index].name}
       });
     }
   },

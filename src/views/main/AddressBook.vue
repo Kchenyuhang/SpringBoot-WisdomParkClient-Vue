@@ -97,7 +97,7 @@ export default {
       this.data = {
         field: this.userId,
       };
-      this.url = this.GLOBAL.baseUrl + "/address_book/list/userId";
+      this.url = this.GLOBAL.baseUrl + "/addressBook/list/userId";
       this.result = await API.init(this.url, this.data, "post");
       // console.log(this.result);
       this.transition();

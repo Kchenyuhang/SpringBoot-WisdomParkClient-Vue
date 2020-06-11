@@ -3,6 +3,8 @@ import VueRouter from "vue-router";
 import Login from "../views/Login.vue";
 import Layout from "../views/Layout.vue";
 import Nav from "../views/fleamarket/Nav.vue";
+import Order from "../views/errand/Order.vue";
+import All from "../views/errand/orders/All.vue"
 Vue.use(VueRouter);
 
 const routes = [
@@ -105,7 +107,7 @@ const routes = [
     component: () => import("../views/other/Gender.vue"),
   },
   {
-    path: "/address",
+    path: "/address/",
     name: "Address",
     component: () => import("../views/other/Address.vue"),
   },
@@ -168,14 +170,29 @@ const routes = [
   {
     path: "/order",
     name: "Order",
-    component: () => import("../views/errand/Order.vue"),
+    component: Order,
     children: [
       {
-        path: "/order",
-        name: "Order",
-        component: () => import("../views/errand/Order.vue"),
+        path: "all",
+        name: "All",
+        component: All
+      },
+      {
+        path: "underway",
+        name: "Underway",
+        component: () => import("../views/errand/orders/Underway.vue"),
       },
     ],
+  },
+  {
+    path: "/originadress",
+    name: "OriginAdress",
+    component: () => import("../views/errand/adressorder/OriginAdress.vue"),
+  },
+  {
+    path: "/destinationadress",
+    name: "DestinationAdress",
+    component: () => import("../views/errand/adressorder/DestinationAdress.vue"),
   },
   {
     path: "/nav",
