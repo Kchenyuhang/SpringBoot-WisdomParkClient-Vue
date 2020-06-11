@@ -8,8 +8,6 @@
   background-color: #ffffff;
   height: 40px;
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -64,7 +62,7 @@
   margin: auto;
   margin-top: 10px;
   background: white;
-  height: 13%;
+  height: 18%;
 }
 
 .row {
@@ -98,4 +96,3 @@
   margin-top: 15px;
   margin-bottom: 15px;
 }
-/*# sourceMappingURL=gender.css.map */
