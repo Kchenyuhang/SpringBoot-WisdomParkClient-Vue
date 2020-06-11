@@ -1,14 +1,13 @@
 .bg {
-  background-color: #f2f2f2;
+  background-color: white;
   height: 100vh;
   width: 100%;
   .header {
     background-color: rgb(244, 213, 58);
-    height: 20%;
+    height: auto;
     .icon {
       width: 6%;
       height: 3%;
-      //   width: 20%;
       position: absolute;
       top: 5px;
       right: 15px;
@@ -16,7 +15,8 @@
     .inform {
       position: relative;
       display: flex;
-      top: 20%;
+      top: 35px;
+      // top: 80%;
       //   left: 5%;
       margin-left: 20px;
       .left {
@@ -58,21 +58,67 @@
       margin-top: 10%;
       margin-left: 8%;
       margin-right: 10%;
-      .up {
-        margin-right: 10px;
-        display: flex;
-        justify-content: space-between;
-      }
-      .down {
-        margin-top: 1%;
+      .tab {
+        margin-top: 20%;
         margin-left: -10px;
         margin-right: 0px;
         display: flex;
         justify-content: space-between;
-        .mar-left {
-          margin-right: 10px;
+      }
+    }
+  }
+  .container {
+    height: 80%;
+    background-color: rgb(178, 176, 176);
+    margin-top: 4px;
+    .box {
+      margin-top: 5%;
+      width: 100%;
+      // height: 15%;
+      background-color: #fff;
+      position: absolute;
+      display: flex;
+      .left {
+        img {
+          width: 130px;
+          height: 90px;
+          margin: 10px 10px 10px 10px;
+        }
+      }
+      .right {
+        .title {
+          font-weight: 700;
+        }
+        .des {
+          font-size: 14px;
+          color: rgb(183, 182, 182);
+        }
+        .price {
+          margin-top: 35%;
+          font-size: 14px;
+          font-weight: 600;
+          color: rgb(245, 105, 105);
+        }
+        .com {
+          position: absolute;
+          right: 4%;
+          display: flex;
+
+          .icon {
+            width: 18px;
+          }
+          .mes {
+            font-size: 13px;
+          }
         }
       }
     }
   }
+}
+.blueLine {
+  padding-bottom: 50%;
+  margin-bottom: -4px;
+  border-bottom: 4px #46abf1 solid;
+  color: #46abf1;
+  // width:10px;
 }
