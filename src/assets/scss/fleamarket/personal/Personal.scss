@@ -110,7 +110,10 @@
   }
   .container {
     height: 80%;
-    background-color: rgb(196, 190, 190);
+    width: 90%;
+    margin-left: 15px;
+    border-radius: 10px;
+    // background-color: rgb(196, 190, 190);
     margin-top: 4px;
     .box {
       margin-top: 5%;
@@ -123,12 +126,14 @@
         img {
           width: 130px;
           height: 90px;
+          border-radius: 10px;
           margin: 10px 10px 10px 10px;
         }
       }
       .right {
         .title {
           font-weight: 700;
+          margin-top: 8px;
         }
         .des {
           font-size: 14px;
@@ -142,8 +147,9 @@
         }
         .com {
           position: absolute;
-          right: 4%;
+          right: 6%;
           display: flex;
+
 
           .icon {
             width: 18px;

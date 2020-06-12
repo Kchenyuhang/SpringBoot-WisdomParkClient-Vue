@@ -10,7 +10,7 @@
       <div class="search bar">
         <form>
           <input type="text" placeholder="请输入您要搜索的内容..." />
-          <button type="submit"></button>
+          <button type="submit">搜索</button>
         </form>
       </div>
     </div>
@@ -143,7 +143,7 @@ export default {
   right: 0;
 }
 .bar button:before {
-  content: "\f002";
+  // content: "\f002";
   font-family: FontAwesome;
   color: #324b4e;
 }

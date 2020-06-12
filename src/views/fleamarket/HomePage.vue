@@ -9,12 +9,15 @@
       </router-link>
       <p>跳蚤市场</p>
     </div>
+
+    <!-- 搜索框 -->
     <div class="search bar">
       <form>
         <input type="text" placeholder="请输入您要搜索的内容..." />
-        <button type="submit"></button>
+        <button>搜索</button>
       </form>
     </div>
+    <!-- 分类图标 -->
     <div class="listAll">
       <div class="row">
         <div class="list">
@@ -63,7 +66,10 @@
     </div>
     <!-- 悬赏界面 -->
     <div class="reward">
-      <p>悬赏</p>
+      <div class="reward-top">
+        <p>悬赏</p>
+        <span>更多</span>
+      </div>
       <div class="reward-list">
         <div
           class="col-4"
@@ -72,18 +78,21 @@
           style="display:flex"
         >
           <img :src="item.image" alt="分类图标" class="icon" />
+          <span>标题</span>
         </div>
       </div>
     </div>
     <!-- 推荐界面 -->
     <div class="r-list">
       <div class="r-left" v-for="(item, index) in list" :key="index">
-        <div>
+        <div class="r-left-con">
           <img :src="item.image" alt="" />
           <span>{{ item.sub }}</span>
           <p>$ {{ item.price }}</p>
           <div class="r-right">
-            <img :src="item.image" alt="" />
+            <div class="img-box">
+              <img :src="item.image" alt="" />
+            </div>
             <p>旗靓店</p>
           </div>
         </div>
@@ -146,6 +155,7 @@ export default {
   background-color: #f2f2f2;
   position: absolute;
   width: 100%;
+  height: 1000px;
   margin-bottom: 100px;
 }
 .bar form {
@@ -157,7 +167,6 @@ export default {
   border-radius: 42px;
   border: 2px solid white;
   background: #f1f1f1;
-  transition: 0.3s linear;
   float: right;
 }
 .bar input:focus {
@@ -169,7 +178,7 @@ export default {
   right: 0;
 }
 .bar button:before {
-  content: "\f002";
+  // content: "\f002";
   font-family: FontAwesome;
   color: #324b4e;
 }
@@ -205,10 +214,9 @@ button {
   display: flex;
   flex-wrap: wrap;
   margin-left: 18px;
-  margin-top: -25px;
+  margin-top: -50px;
 }
 .list {
-  width: 10%;
   display: flex;
   flex: 0 0 18%;
   flex-wrap: wrap;
@@ -227,26 +235,63 @@ button {
 .reward {
   width: 90%;
   margin-left: 20px;
-  height: 130px;
+  height: 150px;
   background-color: white;
   border-radius: 15px;
-  margin-top: 10px;
+  margin-top: -10px;
   display: flex;
   flex-wrap: wrap;
+  padding: 10px 10px;
   // flex: 0 0 12%;
 }
 .reward-list {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 .reward-list img {
-  height: 100px;
+  height: 80px;
   width: 80px;
-  margin-left: 25px;
+  margin-top: 5px;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
 }
-.reward p {
-  margin-left: 19px;
+.reward-list {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  span {
+    font-size: 0.8rem;
+    margin-top: 10px;
+  }
 }
+.reward-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  width: 100%;
+  font-size: 0.8rem;
+  padding-left: 10px;
+  padding-right: 10px;
+  p {
+    color: red;
+  }
+  span {
+    color: red;
+  }
+}
+.col-4 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .listAll {
   width: 90%;
   height: 75px;
@@ -262,19 +307,23 @@ button {
 }
 .r-left {
   height: 230px;
-  width: 42%;
-  margin-left: 20px;
-  margin-top: 40px;
+  width: 46%;
+  margin-left: 8px;
+  margin-top: 15px;
   background-color: white;
   border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .r-left img {
   height: 100px;
-  border-radius: 10px;
+  border: none;
+  border-bottom: 1px solid #eeeeee;
 }
 .r-right p {
   color: red;
 }
+
 .r-right img {
   height: 30px;
   width: 30px;
@@ -284,7 +333,16 @@ button {
 .r-right p {
   float: right;
   margin-right: 60px;
-  margin-top: 34px;
+  margin-top: -24px;
   color: red;
+}
+.r-left-con {
+  p {
+    font-size: 0.7rem;
+    color: red;
+  }
+  span {
+    font-size: 0.8rem;
+  }
 }
 </style>

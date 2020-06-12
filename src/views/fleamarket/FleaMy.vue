@@ -45,21 +45,21 @@
       </div>
     </div>
     <div class="container">
-      <div class="box">
-        <div class="left">
-          <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/3.jpg" />
+      <div class="r-inform">
+        <div class="r-left">
+          <img
+            src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/3.jpg"
+            alt=""
+          />
         </div>
-        <div class="right">
-          <p class="title">商品名</p>
-          <p class="des">描述</p>
-          <p class="price">￥价格</p>
-          <div class="com">
-            <img
-              class="icon"
-              src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/cc-message.png"
-            />
-            <p class="mes">10</p>
-          </div>
+        <div class="r-right">
+          <h5>我是你爸爸</h5>
+          <p>描述</p>
+          <span>¥ 价格</span>
+          <img
+            src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/cc-message.png"
+            alt=""
+          />
         </div>
       </div>
     </div>
@@ -84,4 +84,52 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/scss/fleamarket/FleaMy.scss";
+.r-inform {
+  width: 95%;
+  height: 100px;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-left: 10px;
+  background-color: white;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+}
+.r-left {
+  width: 40%;
+  height: 100px;
+  float: left;
+  // background-color: black;
+}
+.r-left img {
+  border-radius: 10px;
+}
+.r-right {
+  float: right;
+  width: 58%;
+  margin-left: 5px;
+}
+.r-right h5 {
+  font-weight: bold;
+}
+.r-right p {
+  font-size: 10px;
+  color: #b9b7c9;
+  margin-top: 3px;
+}
+.r-right span {
+  display: flex;
+  font-size: 13px;
+  color: red;
+  margin-top: 30px;
+}
+.r-right img {
+  display: flex;
+  height: 20px;
+  width: 20px;
+  margin-left: 150px;
+  margin-top: -10px;
+.r-right h6 {
+  display: flex;
+  margin-left: 160px;
+  }
+}
 </style>

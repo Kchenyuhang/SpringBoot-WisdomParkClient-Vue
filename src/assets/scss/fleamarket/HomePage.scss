@@ -22,4 +22,37 @@
       margin-top: 3%;
     }
   }
+  .listAll {
+   background:green;
+   padding-right: 10px;
   
+    .row {
+      width: 90%;
+      display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    
+    align-items: center;
+    
+    
+    .list {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      
+      img {
+       width: 30px;
+       height: 30px;
+      }
+     
+      p{
+        text-align: center;
+      
+        margin:5px 1px;
+      }
+    }
+  
+    
+    }
+  }

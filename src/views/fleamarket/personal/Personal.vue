@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="bottom">
-        <p> 1234天前来过</p>
+        <p>1234天前来过</p>
         <p>个人简介</p>
       </div>
       <div class="count">

@@ -21,14 +21,7 @@
 .header p {
   font-size: 16px;
   font-weight: 550;
-  margin-left: 2%;
+  margin-left: 34%;
   margin-top: 3%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
 }
 /*# sourceMappingURL=Sell.css.map */
