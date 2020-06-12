@@ -9,36 +9,38 @@
       </router-link>
       <div class="search bar">
         <form>
-          <input type="text" placeholder="请输入您要搜索的内容..." />
+          <input
+            type="text"
+            placeholder="请输入您要搜索的内容..."
+          />
           <button type="submit"></button>
         </form>
       </div>
     </div>
     <div class="list">
       <p>热门推荐</p>
-      <span v-for="(item, index) in type" :key="index">{{
-        item.typeName
-      }}</span>
+      <span
+        v-for="(item, index) in type"
+        :key="index"
+        @click="getFleaType(item.subTypes,index)"
+        :class="{bgc:isShow ==index}"
+      >
+        {{item.typeName}}
+      </span>
     </div>
     <p>推荐</p>
     <div class="left">
       <div
         class="left-list"
-        v-for="(item, index) in type.subTypes"
+        v-for="(item, index) in typeList"
         :key="index"
       >
         <div>
-          <img :src="item.typeCoverUrl" alt="" />
+          <img
+            :src="item.typeCoverUrl"
+            alt=""
+          />
           <h5>{{ item.typeName }}</h5>
-        </div>
-      </div>
-    </div>
-    <p>数码</p>
-    <div class="left">
-      <div class="left-list" v-for="(item, index) in list" :key="index">
-        <div>
-          <img :src="item.image" alt="" />
-          <h5>{{ item.menu }}</h5>
         </div>
       </div>
     </div>
@@ -52,66 +54,24 @@ export default {
     return {
       type: [],
       typeList: [],
-      list: [
-        {
-          menu: "生活百货",
-          image:
-            "http://ww1.sinaimg.cn/large/0064QvQTgy1gfnibb1ygkj30qo0qoq4w.jpg"
-        },
-        {
-          menu: "女装",
-          image:
-            "http://ww1.sinaimg.cn/large/0064QvQTgy1gfnibb1ygkj30qo0qoq4w.jpg"
-        },
-        {
-          menu: "家用电器",
-          image:
-            "http://ww1.sinaimg.cn/large/0064QvQTgy1gfnibb1ygkj30qo0qoq4w.jpg"
-        },
-        {
-          menu: "美妆",
-          image:
-            "http://ww1.sinaimg.cn/large/0064QvQTgy1gfnibb1ygkj30qo0qoq4w.jpg"
-        },
-        {
-          menu: "运动户外",
-          image:
-            "http://ww1.sinaimg.cn/large/0064QvQTgy1gfnibb1ygkj30qo0qoq4w.jpg"
-        },
-        {
-          menu: "家具/饰品",
-          image:
-            "http://ww1.sinaimg.cn/large/0064QvQTgy1gfnibb1ygkj30qo0qoq4w.jpg"
-        },
-        {
-          menu: "儿童玩具",
-          image:
-            "http://ww1.sinaimg.cn/large/0064QvQTgy1gfnibb1ygkj30qo0qoq4w.jpg"
-        },
-        {
-          menu: "游戏装备",
-          image:
-            "http://ww1.sinaimg.cn/large/0064QvQTgy1gfnibb1ygkj30qo0qoq4w.jpg"
-        }
-      ]
+      isShow: 0
     };
   },
   components: {},
   created() {
     this.getAllType();
-    this.getAll();
   },
   mounted() {},
   methods: {
     async getAllType() {
       this.url = this.GLOBAL.baseUrl + "/flea/type/all";
       this.type = (await API.init(this.url, this.data, "post")).data.types;
-      console.log(this.type);
-    },
-    async getAll() {
-      this.url = this.GLOBAL.baseUrl + "/flea/type/all";
-      this.typeList = (await API.init(this.url, this.data, "post")).data.types;
+      this.typeList = this.type[0].subTypes;
       console.log(this.typeList);
+    },
+    getFleaType(subTypes, index) {
+      this.typeList = subTypes;
+      this.isShow = index;
     }
   },
   computed: {},
@@ -210,5 +170,8 @@ p {
 }
 h5 {
   text-align: center;
+}
+.bgc {
+  color: rgb(0, 130, 252);
 }
 </style>

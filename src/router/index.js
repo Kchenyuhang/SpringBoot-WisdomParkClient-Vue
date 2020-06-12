@@ -194,22 +194,22 @@ const routes = [
       },
       {
         path: '/reward',
-        name: '/Reward',
+        name: 'Reward',
         component: () => import('../views/fleamarket/Reward.vue'),
       },
       {
         path: '/list',
-        name: '/List',
+        name: 'List',
         component: () => import('../views/fleamarket/List.vue'),
       },
       {
         path: '/sell',
-        name: '/Sell',
+        name: 'Sell',
         component: () => import('../views/fleamarket/Sell.vue'),
       },
       {
         path: '/fleaMy',
-        name: '/FleaMy',
+        name: 'FleaMy',
         component: () => import('../views/fleamarket/FleaMy.vue'),
       },
     ],
