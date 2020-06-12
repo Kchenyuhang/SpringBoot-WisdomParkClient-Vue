@@ -299,6 +299,16 @@ const routes = [
     name: 'PersonaDetail',
     component: () => import('../views/fleamarket/personal/PersonalDetail.vue'),
   },
+  {
+    path: '/commoditydetails/:id',
+    name: 'CommodityDetails',
+    component: () => import('../views/fleamarket/commodity/CommodityDetails.vue'),
+  },
+  {
+    path: '/listdetail/:id',
+    name: 'ListDetail',
+    component: () => import('../views/fleamarket/commodity/ListDetail.vue'),
+  },
 ]
 const router = new VueRouter({
   routes,

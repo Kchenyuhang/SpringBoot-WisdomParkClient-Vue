@@ -13,7 +13,10 @@
     <!-- 搜索框 -->
     <div class="search bar">
       <form>
-        <input type="text" placeholder="请输入您要搜索的内容..." />
+        <input
+          type="text"
+          placeholder="请输入您要搜索的内容..."
+        />
         <button>搜索</button>
       </form>
     </div>
@@ -73,27 +76,41 @@
       <div class="reward-list">
         <div
           class="col-4"
-          v-for="(item, index) in list"
+          v-for="(item, index) in reward"
           :key="index"
           style="display:flex"
         >
-          <img :src="item.image" alt="分类图标" class="icon" />
-          <span>标题</span>
+          <img
+            :src="item.imageUrl"
+            alt="分类图标"
+            class="icon"
+          />
+          <span>{{item.title}}</span>
         </div>
       </div>
     </div>
     <!-- 推荐界面 -->
     <div class="r-list">
-      <div class="r-left" v-for="(item, index) in list" :key="index">
-        <div class="r-left-con">
-          <img :src="item.image" alt="" />
-          <span>{{ item.sub }}</span>
-          <p>$ {{ item.price }}</p>
+      <div
+        class="r-left"
+        v-for="(item, index) in list"
+        :key="index"
+      >
+        <div
+          class="r-left-con"
+          @click="gotoDetail(item.pkFleaGoodsId)"
+        >
+          <img :src="item.goodsImgUrl" />
+          <span>{{ item.goodsDescription }}</span>
+          <p>$ {{ item.goodsPrice }}</p>
           <div class="r-right">
             <div class="img-box">
-              <img :src="item.image" alt="" />
+              <img
+                src="https://kxingchen.oss-cn-shanghai.aliyuncs.com/develop/yhChen171427.jpg"
+                alt=""
+              />
             </div>
-            <p>旗靓店</p>
+            <p>{{item.nickname}}</p>
           </div>
         </div>
       </div>
@@ -106,42 +123,60 @@ export default {
   name: "HomePage",
   data() {
     return {
+      path: "/homePage",
       reward: [],
+      data: {
+        currentPage: 0,
+        pageSize: 100
+      },
       list: [
-        {
-          image:
-            "https://kxingchen.oss-cn-shanghai.aliyuncs.com/develop/yhChen171427.jpg",
-          sub: "天梭手表，高端人士",
-          price: "99999",
-          people: "天梭旗靓店"
-        },
-        {
-          image:
-            "https://kxingchen.oss-cn-shanghai.aliyuncs.com/develop/yhChen171406.jpg",
-          sub: "Vans，飞一般的感觉",
-          price: "8888",
-          people: "Vans旗靓店"
-        },
-        {
-          image:
-            "http://ww1.sinaimg.cn/large/0064QvQTly1gfo5f23z2lj30b60gon4z.jpg",
-          sub: "恭喜你获取一直拆家小能手",
-          price: "9999999",
-          people: "宠物卖坊"
-        }
+        // {
+        //   image:
+        //     "https://kxingchen.oss-cn-shanghai.aliyuncs.com/develop/yhChen171427.jpg",
+        //   sub: "天梭手表，高端人士",
+        //   price: "99999",
+        //   people: "天梭旗靓店"
+        // },
+        // {
+        //   image:
+        //     "https://kxingchen.oss-cn-shanghai.aliyuncs.com/develop/yhChen171406.jpg",
+        //   sub: "Vans，飞一般的感觉",
+        //   price: "8888",
+        //   people: "Vans旗靓店"
+        // },
+        // {
+        //   image:
+        //     "http://ww1.sinaimg.cn/large/0064QvQTly1gfo5f23z2lj30b60gon4z.jpg",
+        //   sub: "恭喜你获取一直拆家小能手",
+        //   price: "9999999",
+        //   people: "宠物卖坊"
+        // }
       ]
     };
   },
   components: {},
   created() {
     this.getTopReward();
+    this.getList();
   },
   mounted() {},
   methods: {
     async getTopReward() {
       this.url = this.GLOBAL.baseUrl + "/flea/reward/top";
-      this.reward = (await API.init(this.url, this.data, "post")).data;
-      console.log(this.reward);
+      this.reward = (await API.init(this.url, null, "post")).data;
+      // console.log(this.reward);
+    },
+    async getList() {
+      this.url = "http://101.37.31.188:8080/flea/goods/all";
+      this.list = (await API.init(this.url, this.data, "post")).data;
+      console.log(this.list);
+    },
+    gotoDetail(id) {
+      // localStorage.setItem("pkFleaGoodsId", JSON.stringify(id));
+      localStorage.setItem("path", JSON.stringify(this.path));
+      this.$router.push({
+        path: `/commoditydetails/${id}`
+      });
     }
   },
   computed: {},

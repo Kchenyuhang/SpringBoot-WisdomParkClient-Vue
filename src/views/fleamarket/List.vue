@@ -22,10 +22,10 @@
       <span
         v-for="(item, index) in type"
         :key="index"
-        @click="getFleaType(item.subTypes,index)"
-        :class="{bgc:isShow ==index}"
+        @click="getFleaType(item.subTypes, index,item.typeName)"
+        :class="{ bgc: isShow == index }"
       >
-        {{item.typeName}}
+        {{ item.typeName }}
       </span>
     </div>
     <p>推荐</p>
@@ -35,7 +35,7 @@
         v-for="(item, index) in typeList"
         :key="index"
       >
-        <div>
+        <div @click="goListDetail(item.pkFleaTypeId)">
           <img
             :src="item.typeCoverUrl"
             alt=""
@@ -69,9 +69,15 @@ export default {
       this.typeList = this.type[0].subTypes;
       console.log(this.typeList);
     },
-    getFleaType(subTypes, index) {
+    getFleaType(subTypes, index, name) {
+      localStorage.setItem("ListName", JSON.stringify(name));
       this.typeList = subTypes;
       this.isShow = index;
+    },
+    goListDetail(id) {
+      this.$router.push({
+        path: `/listDetail/${id}`
+      });
     }
   },
   computed: {},
