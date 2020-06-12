@@ -1,31 +1,23 @@
 <template>
   <div class="bg">
     <div class="header">
-
       <img
         src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
         alt=""
         @click="out()"
-      >
+      />
       <p>设置地址</p>
     </div>
     <div class="cc-col card">
-      <div
-        v-for="(item,index) in citys"
-        :key="index"
-      >
-        <div
-          class="cc-df-between subCard"
-          @click="updateAddress(index)"
-        >
-          <p>{{item}}</p>
+      <div v-for="(item, index) in citys" :key="index">
+        <div class="cc-df-between subCard" @click="into(index)">
+          <p>{{ item }}</p>
         </div>
-        <hr class="line">
+        <hr class="line" />
       </div>
     </div>
   </div>
 </template>
-
 
 <script>
 const API = require("../../request/api");
@@ -37,10 +29,11 @@ export default {
       dis: true,
       user: this.$store.state.user,
       token: this.$store.state.token,
+      type: this.$store.state.type,
       nicknameInput: this.$store.state.user.nickname,
       url: "",
       data: {},
-      citys: []
+      citys: [],
     };
   },
   components: {},
@@ -57,9 +50,42 @@ export default {
         name: "City",
         params: {
           Id: this.$route.params.Id.split(",")[0],
-          Address: provinces[this.$route.params.Id.split(",")[0]].name
-        }
+          Address: provinces[this.$route.params.Id.split(",")[0]].name,
+        },
       });
+    },
+    into(index) {
+      if (this.type == 1) {
+        this.updateAddress(index);
+      }
+      if (this.type == 2) {
+        this.orgin(index);
+        this.$router.push("/originadress");
+      }
+       if (this.type == 3) {
+        this.orgin1(index);
+        this.$router.push("/destinationadress");
+      }
+    },
+    orgin1(index) {
+      localStorage.setItem(
+        "address1",
+        this.$route.params.City + "-" + this.citys[index]
+      );
+      this.$store.commit(
+        "setAddress1",
+        this.$route.params.City + "-" + this.citys[index]
+      );
+    },
+    orgin(index) {
+      localStorage.setItem(
+        "address",
+        this.$route.params.City + "-"+ this.citys[index]
+      );
+      this.$store.commit(
+        "setAddress",
+        this.$route.params.City + "-"+ this.citys[index]
+      );
     },
     async updateAddress(index) {
       this.url = this.GLOBAL.baseUrl + "/user/update/info";
@@ -68,7 +94,7 @@ export default {
         gender: this.user.gender,
         nickname: this.user.nickname,
         pkUserAccountId: this.user.pkUserAccountId,
-        address: this.$route.params.City + "-" + this.citys[index]
+        address: this.$route.params.City + "-" + this.citys[index],
       };
 
       this.result = await API.init(this.url, this.data, "post");
@@ -77,9 +103,9 @@ export default {
         this.$store.commit("setUser", this.result.data);
         this.$router.push("/base");
       }
-    }
+    },
   },
-  computed: {}
+  computed: {},
 };
 </script>
 

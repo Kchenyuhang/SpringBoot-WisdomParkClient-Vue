@@ -10,7 +10,7 @@
       <p>个人中心</p>
     </div>
     <div class="personDiv">
-        <div class="avatardiv"></div>
+      <div class="avatardiv"></div>
     </div>
     <div class="centerDiv"></div>
   </div>

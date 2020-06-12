@@ -10,10 +10,14 @@
       <p>订单列表</p>
     </div>
     <div class="topNav">
-      <p>全部</p>
-      <p>进行中</p>
+      <router-link to="/order/all"><p>全部</p></router-link>
+      <router-link to="/order/underway"><p>进行中</p></router-link>
       <p>待评价</p>
     </div>
+    <div class="content">
+      <!-- 二级路由入口 -->
+    </div>
+    <router-view></router-view>
   </div>
 </template>
 

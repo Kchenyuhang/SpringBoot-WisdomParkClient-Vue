@@ -58,7 +58,10 @@
               />
               <p class="cc-mtop font-size">图书馆</p>
             </div>
-            <div class="cc-col-center cc-coll-3 address2">
+            <div
+              class="cc-col-center cc-coll-3 address2"
+              @click="into(5)"
+            >
               <img
                 src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/jianzhi.png"
                 alt="兼职图标"
@@ -66,7 +69,10 @@
               />
               <p class="cc-mtop font-size">兼职</p>
             </div>
-            <div class="cc-col-center cc-coll-3 address2">
+            <div
+              class="cc-col-center cc-coll-3 address2"
+              @click="into(6)"
+            >
               <img
                 src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/xiaoyouquan.png"
                 alt="校友圈图标"
@@ -224,6 +230,12 @@ export default {
       }
       if (index == 4) {
         this.$router.push("/metrocard");
+      }
+      if (index == 5) {
+        this.$router.push("/position");
+      }
+      if (index == 6) {
+        this.$router.push("/alumnusindex");
       }
       if (index == 7) {
         this.$router.push("/errandshomepage");

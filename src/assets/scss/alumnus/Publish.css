@@ -1,0 +1,157 @@
+.bg {
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+.header {
+  background-color: #f8f8f8;
+  height: 55px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header .header-title {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .header-title img {
+  height: 16px;
+  width: 16px;
+  margin-top: 5px;
+  margin-left: 20px;
+}
+
+.header .header-title p {
+  font-size: 16px;
+  margin-left: 15px;
+  margin: auto;
+  color: black;
+}
+
+.article {
+  width: 90%;
+  height: 380px;
+  margin: auto;
+}
+
+.article .theme {
+  width: 94%;
+  outline-style: none;
+  border: 0px;
+  margin-left: 3%;
+  margin-top: 3%;
+  background-color: white;
+  padding: 14px 14px;
+  font-size: 16px;
+}
+
+.article .content {
+  width: 94%;
+  outline-style: none;
+  border: 0px;
+  margin-left: 3%;
+  margin-top: 5%;
+  background-color: white;
+  padding: 14px;
+  height: 180px;
+  resize: none;
+  font-size: 16px;
+}
+
+.article .image {
+  width: 100px;
+  height: 100px;
+  margin-left: 6%;
+  border: 1px solid #eaeaea;
+  padding-top: 20px;
+}
+
+.article .image img {
+  width: 30px;
+  height: 30px;
+}
+
+.article .image p {
+  color: #9f9f9f;
+  font-size: 14px;
+}
+
+.place {
+  height: 60px;
+  width: 85%;
+  margin: auto;
+}
+
+.place .left {
+  width: 35%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.place .left img {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+}
+
+.place .left p {
+  margin-left: 10px;
+  font-size: 18px;
+  font-weight: 550;
+}
+
+.place .right {
+  width: 20px;
+  height: 16px;
+}
+
+.tips {
+  width: 94%;
+  margin: auto;
+  margin-bottom: 40px;
+}
+
+.tips p {
+  font-size: 12px;
+  color: #938c8c;
+}
+
+.publish-btn {
+  width: 80%;
+  height: 45px;
+  background-color: #f16767;
+  margin: auto;
+  border-radius: 30px;
+}
+
+.publish-btn p {
+  color: white;
+}
+
+.line {
+  width: 85%;
+  border: none;
+  height: 2px;
+  background: #e8e8e8;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  font-size: 16px;
+}
+/*# sourceMappingURL=Publish.css.map */
