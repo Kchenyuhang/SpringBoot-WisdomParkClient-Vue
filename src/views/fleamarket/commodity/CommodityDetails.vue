@@ -1,15 +1,18 @@
 <template>
   <div class="bg">
-    <div class="header">
-      <router-link :to="path">
-        <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png" />
-      </router-link>
+    <div
+      class="header"
+      @click="backUp()"
+    >
+      <!-- <router-link :to="path"> -->
+      <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png" />
+      <!-- </router-link> -->
       <p>Back</p>
     </div>
     <div class="container">
       <div class="card">
         <div class="head">
-          <img src="https://kxingchen.oss-cn-shanghai.aliyuncs.com/develop/yhChen171427.jpg" />
+          <img :src="list[0].userAvatar" />
           <div class="word">
             <p class="title">{{ list[0].nickname }}</p>
             <p class="date">{{ list[0].goodsCreateTime }}</p>
@@ -36,7 +39,7 @@
           <div class="r-list">
             <div
               class="r-left"
-              v-for="(item, index) in splist"
+              v-for="(item, index) in likeList"
               :key="index"
             >
               <div
@@ -49,7 +52,7 @@
                 <div class="r-right">
                   <div class="img-box">
                     <img
-                      src="https://kxingchen.oss-cn-shanghai.aliyuncs.com/develop/yhChen171427.jpg"
+                      :src="item.userAvatar"
                       alt=""
                     />
                   </div>
@@ -80,22 +83,8 @@ export default {
           goodsImgUrl: ""
         }
       ],
-      splist: [
-        // {
-        //   nickname: "",
-        //   goodsCreateTime: "",
-        //   goodsDescription: "",
-        //   goodsImgUrl: ""
-        // }
-      ],
-      //   likeList: [
-      //     {
-      //       nickname: "",
-      //       goodsCreateTime: "",
-      //       goodsDescription: "",
-      //       goodsImgUrl: ""
-      //     }
-      //   ],
+      splist: [],
+      likeList: [],
       path: JSON.parse(localStorage.getItem("path")),
       data: {
         pkFleaGoodsId: ""
@@ -103,10 +92,23 @@ export default {
       spdata: {
         currentPage: 0,
         pageSize: 100
-      }
+      },
+      likeData: {
+        currentPage: 0,
+        pageSize: 100,
+        typeId: ""
+      },
+      page: JSON.parse(localStorage.getItem("page")),
+      count: JSON.parse(localStorage.getItem("count"))
     };
   },
   components: {},
+  watch: {
+    $route: function() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  },
   created() {
     this.getList();
     this.getSpList();
@@ -118,27 +120,57 @@ export default {
     window.removeEventListener("scroll", this.scrollToTop);
   },
   methods: {
+    backUp() {
+      if (this.count <= 1) {
+        this.count = 0;
+        localStorage.setItem("count", JSON.stringify(this.count));
+        // alert(this.path);
+        this.$router.push(this.path);
+      } else {
+        let count = this.page[this.count - 2];
+        this.$router.push({
+          path: `/commoditydetails/${count}`
+        });
+        --this.count;
+        localStorage.setItem("count", JSON.stringify(this.count));
+        window.location.reload();
+      }
+    },
     async getList() {
       let id = this.$route.params.id;
       this.data.pkFleaGoodsId = id;
-      console.log(this.data.pkFleaGoodsId);
       this.url = "http://101.37.31.188:8080/flea/goods/id";
       this.list = (await API.init(this.url, this.data, "post")).data;
-      //   this.likeList = (await API.init(this.url, this.data, "post")).data;
-      //   console.log(this.list);
+      this.getLikeList(this.list[0].pkFleaTypeId, id);
     },
     gotoDetail(id) {
-      this.backTop();
       localStorage.setItem("path", JSON.stringify(this.path));
       this.$router.push({
         path: `/commoditydetails/${id}`
       });
+      this.page[this.count] = id;
+      this.count++;
+      localStorage.setItem("page", JSON.stringify(this.page));
+      localStorage.setItem("count", JSON.stringify(this.count));
       this.getList();
+      // window.location.reload();
+      // this.backTop();
     },
     async getSpList() {
       this.url = "http://101.37.31.188:8080/flea/goods/all";
       this.splist = (await API.init(this.url, this.spdata, "post")).data;
-      console.log(this.splist);
+      // console.log(this.splist);
+    },
+    async getLikeList(id, goodsId) {
+      this.url = "http://101.37.31.188:8080/flea/goods/type";
+      this.likeData.typeId = id;
+      this.likeList = (await API.init(this.url, this.likeData, "post")).data;
+      for (let i = 0; i < this.likeList.length; i++) {
+        if (goodsId == this.likeList[i].pkFleaGoodsId) {
+          this.likeList.splice(i, 1);
+          console.log(this.likeList);
+        }
+      }
     },
     backTop() {
       // const that = this;
@@ -153,7 +185,6 @@ export default {
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
     }
-
     // 为了计算距离顶部的高度，当高度大于60显示回顶部图标，小于60则隐藏
     // scrollToTop() {
     //   const that = this;

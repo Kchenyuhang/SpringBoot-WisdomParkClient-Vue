@@ -106,7 +106,7 @@
           <div class="r-right">
             <div class="img-box">
               <img
-                src="https://kxingchen.oss-cn-shanghai.aliyuncs.com/develop/yhChen171427.jpg"
+                :src="item.userAvatar"
                 alt=""
               />
             </div>
@@ -151,13 +151,16 @@ export default {
         //   price: "9999999",
         //   people: "宠物卖坊"
         // }
-      ]
+      ],
+      page: [],
+      count: 0
     };
   },
   components: {},
   created() {
     this.getTopReward();
     this.getList();
+    localStorage.setItem("path", JSON.stringify(this.path));
   },
   mounted() {},
   methods: {
@@ -169,11 +172,13 @@ export default {
     async getList() {
       this.url = "http://101.37.31.188:8080/flea/goods/all";
       this.list = (await API.init(this.url, this.data, "post")).data;
-      console.log(this.list);
+      // console.log(this.list);
     },
     gotoDetail(id) {
-      // localStorage.setItem("pkFleaGoodsId", JSON.stringify(id));
-      localStorage.setItem("path", JSON.stringify(this.path));
+      this.page[this.count++] = id;
+      localStorage.setItem("page", JSON.stringify(this.page));
+      localStorage.setItem("count", JSON.stringify(this.count));
+
       this.$router.push({
         path: `/commoditydetails/${id}`
       });

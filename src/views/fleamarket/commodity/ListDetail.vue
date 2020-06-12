@@ -30,7 +30,7 @@
             <div class="r-right">
               <div class="img-box">
                 <img
-                  src="https://kxingchen.oss-cn-shanghai.aliyuncs.com/develop/yhChen171427.jpg"
+                  :src="item.userAvatar"
                   alt=""
                 />
               </div>
@@ -55,12 +55,16 @@ export default {
         typeId: ""
       },
       list: [],
-      listName: JSON.parse(localStorage.getItem("ListName"))
+      listName: JSON.parse(localStorage.getItem("ListName")),
+      page: [],
+      count: 0,
+      path: "/listDetail/"
     };
   },
   components: {},
   created() {
     this.getList();
+    // localStorage.setItem("path", JSON.stringify(this.path));
   },
   mounted() {},
   methods: {
@@ -68,12 +72,17 @@ export default {
       let id = this.$route.params.id;
       this.data.typeId = id;
       console.log(this.data.typeId);
+      let path = this.path + id;
       this.url = "http://101.37.31.188:8080/flea/goods/type";
       this.list = (await API.init(this.url, this.data, "post")).data;
       //   this.likeList = (await API.init(this.url, this.data, "post")).data;
+      localStorage.setItem("path", JSON.stringify(path));
       console.log(this.list);
     },
     gotoComDetail(id) {
+      this.page[this.count++] = id;
+      localStorage.setItem("page", JSON.stringify(this.page));
+      localStorage.setItem("count", JSON.stringify(this.count));
       this.$router.push({
         path: `/commoditydetails/${id}`
       });

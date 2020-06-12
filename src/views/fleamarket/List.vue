@@ -52,21 +52,28 @@ export default {
   name: "List",
   data() {
     return {
+      first: "学习用品",
       type: [],
       typeList: [],
-      isShow: 0
+      isShow: 0,
+      path: "/list",
+      page: [],
+      count: 1
     };
   },
   components: {},
   created() {
     this.getAllType();
+    localStorage.setItem("ListName", JSON.stringify(this.first));
+    localStorage.setItem("path", JSON.stringify(this.path));
   },
   mounted() {},
   methods: {
     async getAllType() {
-      this.url = this.GLOBAL.baseUrl + "/flea/type/all";
+      this.url = "http://101.37.31.188:8080/flea/type/all";
       this.type = (await API.init(this.url, this.data, "post")).data.types;
       this.typeList = this.type[0].subTypes;
+      localStorage.setItem("page", JSON.stringify(this.page));
       console.log(this.typeList);
     },
     getFleaType(subTypes, index, name) {
