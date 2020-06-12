@@ -10,7 +10,9 @@
         </router-link>
         <p>悬赏</p>
       </div>
-      <Carousel :slideList="slideList"></Carousel>
+      <div class="recomond">
+        <Carousel :slideList="slideList"></Carousel>
+      </div>
       <div class="list">
         <div class="left" v-for="(item, index) in slideList" :key="index">
           <div>
@@ -82,10 +84,10 @@ export default {
 }
 .left {
   height: 230px;
-  width: 42%;
-  margin-left: 20px;
+  width: 47%;
+  margin-left: 8px;
   margin-top: 40px;
-  background-color: #e5e5e5;
+  background-color: white;
   border-radius: 10px;
 }
 .left img {
@@ -103,5 +105,9 @@ export default {
   float: right;
   margin-right: 60px;
   margin-top: 34px;
+}
+.recomond {
+  width: 90%;
+  margin-left: 20px;
 }
 </style>

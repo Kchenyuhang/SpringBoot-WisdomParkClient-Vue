@@ -73,10 +73,11 @@
 .menu img {
   width: 40px;
   height: 40px;
+  padding-left: 10px;
 }
 
 .menu p {
-  padding-left: -2px;
+  padding-left: -5px;
 }
 
 .bottom {

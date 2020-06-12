@@ -1,0 +1,118 @@
+.bg {
+  background-color: #f7f7f7;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 60px;
+}
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: #63beba;
+  height: 55px;
+  display: flex;
+  .header-title {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    img {
+      height: 18px;
+      width: 18px;
+      margin-top: 5px;
+      margin-left: 5px;
+    }
+    p {
+      font-size: 18px;
+      font-weight: 550;
+      margin-left: 15px;
+      color: white;
+    }
+  }
+  .search-input {
+    width: 50%;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin-right: 5%;
+    border-radius: 20px;
+    display: flex;
+    .search {
+      margin-right: 15px;
+      img {
+        height: 24px;
+        width: 24px;
+        margin-top: 4px;
+        margin-left: 15px;
+      }
+    }
+    .inp {
+      width: 65%;
+      margin-top: 3px;
+      input {
+        width: 100%;
+        border: none;
+        background-color: rgba(255, 255, 255, 0);
+        color: white;
+      }
+    }
+  }
+}
+input::-webkit-input-placeholder {
+  color: white;
+}
+.company-card{
+    width: 100%;
+    height: 130px;
+    padding-top: 10px;
+    background-color: white;
+    border-bottom: 5px solid #f7f7f7;
+    .company-top{
+        width: 90%;
+        height: 60%;
+        margin: auto;
+        display: flex;
+        .company-avatar{
+            width: 20%;
+            height: 60%;
+            .avatar-box{
+                width: 60px;
+                height: 60px;
+                border-radius: 5px;
+                border: 1px solid #f5f6f6;
+            }
+        }
+        .company-information{
+            width: 70%;
+            height: 60%;
+            margin-left: 10px;
+            .company-name{
+                P{
+                    font-size: 18px;
+                    font-weight: 550;
+                }
+            }
+            .company-place{
+                margin-top: 10px;
+                P{
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+    .company-bottom{
+        width: 90%;
+        height: 30%;
+        margin: auto;
+        display: flex;
+        .company-type{
+            height: 20px;
+            margin-right: 10px;
+            padding: 3px 3px 3px 3px;
+            border-radius: 5px;
+            background-color: #ebebeb;
+            p{
+                font-size: 12px;
+            }
+        }
+    }
+    
+}

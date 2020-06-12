@@ -4,7 +4,7 @@
     <div class="header" style="color: #ffffff;">
       <p @click="go">取消</p>
       <p>新建好友</p>
-      <p>保存</p>
+      <p @click="insert">保存</p>
     </div>
     <img
       src="https://soft1851.oss-cn-beijing.aliyuncs.com/markdown/用户 (1).png"
@@ -12,12 +12,12 @@
     />
     <!-- 中间内容部分 -->
     <div class="content">
-    <div class="card">
-        <input type="text" placeholder="备注" />
+      <div class="card">
+        <input type="text" placeholder="备注" v-model="remark" />
         <hr class="line" />
       </div>
       <div class="card">
-        <input type="text" placeholder="手机号" />
+        <input type="text" placeholder="手机号" v-model="phoneNumber" />
         <hr class="line" />
       </div>
     </div>
@@ -25,14 +25,34 @@
 </template>
 
 <script>
+const API = require("../../request/api");
 export default {
   name: "InsertAddressBook",
   data() {
-    return {};
+    return {
+      userId: this.$store.state.user.pkUserAccountId,
+      remark: "",
+      phoneNumber: "",
+      result: [],
+    };
   },
-  created() {},
+  created() {
+    console.log(this.userId);
+  },
   methods: {
     go() {
+      this.$router.push("/addressbook");
+    },
+    async insert() {
+      this.data = {
+        avatar:
+          "https://soft1851.oss-cn-beijing.aliyuncs.com/markdown/用户 (1).png",
+        phoneNumber: this.phoneNumber,
+        remark: this.remark,
+        userId: this.userId,
+      };
+      this.url = this.GLOBAL.baseUrl + "/addressBook";
+      this.result = await API.init(this.url, this.data, "post");
       this.$router.push("/addressbook");
     },
   },

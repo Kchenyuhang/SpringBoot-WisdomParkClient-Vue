@@ -1,0 +1,39 @@
+.bg {
+    background-color: #f7f7f7;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 60px;
+  }
+  .header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: #63beba;
+    height: 55px;
+    display: flex;
+    .header-title {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      img {
+        height: 18px;
+        width: 18px;
+        margin-top: 5px;
+        margin-left: 5px;
+      }
+      p {
+        font-size: 18px;
+        font-weight: 550;
+        margin-left: 15px;
+        color: white;
+      }
+    }
+    .bell {
+        margin-right: 15px;
+        img {
+          height: 28px;
+          width: 28px;
+          margin-top: 8px;
+        }
+      }
+}

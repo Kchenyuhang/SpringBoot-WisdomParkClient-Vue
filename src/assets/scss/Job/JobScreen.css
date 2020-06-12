@@ -1,0 +1,115 @@
+.bg {
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+.header {
+  background-color: white;
+  height: 55px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header .header-title {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .header-title img {
+  height: 18px;
+  width: 18px;
+  margin-top: 5px;
+  margin-left: 20px;
+}
+
+.header .header-title p {
+  font-size: 18px;
+  margin-left: 15px;
+  font-weight: 550;
+  margin: auto;
+  color: black;
+}
+
+.screen-card {
+  width: 85%;
+  height: 300px;
+  margin: auto;
+}
+
+.screen-card .screen-title {
+  width: 100%;
+  height: 50px;
+}
+
+.screen-card .screen-title p {
+  font-size: 19px;
+  font-weight: 550;
+  margin-top: 20px;
+}
+
+.screen-card .screen-card {
+  width: 100%;
+  height: 250px;
+}
+
+.screen-card .screen-card .screen-type {
+  background-color: #f5f5f5;
+  width: 33%;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.screen-card .screen-card .screen-type p {
+  font-size: 14px;
+  font-weight: 550;
+}
+
+.footer {
+  background-color: white;
+  width: 100%;
+  height: 70px;
+  border-top: 1px solid #fafafa;
+  position: fixed;
+  bottom: 0;
+  padding-top: 15px;
+}
+
+.footer .footer-bin {
+  width: 85%;
+  margin: auto;
+  height: 85%;
+}
+
+.footer .footer-bin .footer-bin-clear {
+  height: 100%;
+  width: 30%;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+}
+
+.footer .footer-bin .footer-bin-clear p {
+  font-size: 16px;
+  font-weight: 550;
+  color: #6b6b6b;
+}
+
+.footer .footer-bin .footer-bin-sure {
+  height: 100%;
+  width: 65%;
+  border-radius: 5px;
+  background-color: #37c2bb;
+}
+
+.footer .footer-bin .footer-bin-sure p {
+  font-size: 16px;
+  color: white;
+}
+/*# sourceMappingURL=JobScreen.css.map */

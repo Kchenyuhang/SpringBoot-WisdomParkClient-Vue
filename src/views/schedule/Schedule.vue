@@ -2,7 +2,10 @@
   <div id="classSchedule" class="bg">
     <div class="header">
       <router-link to="/layout">
-        <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png" alt />
+        <img
+          src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
+          alt
+        />
       </router-link>
       <p>课程表</p>
     </div>
@@ -20,21 +23,26 @@
           <p @click="getDay(index)">{{ item }}</p>
         </div>
       </div>
-      <div v-if="show==true">
+      <div v-if="show == true">
         <div class="card cc-shadow cc-donghua">
           <div>
             <img :src="message.cover" />
             <div>
-              <p class="title">{{message.subjectName}}</p>
+              <p class="title">{{ message.subjectName }}</p>
               <div class="grey">
-                <p>教室：{{message.towerName}}</p>
-                <p>教师：{{message.teacherName}}</p>
-                <p>周次：{{message.weekDuration}}</p>
+                <p>教室：{{ message.towerName }}</p>
+                <p>教师：{{ message.teacherName }}</p>
+                <p>周次：{{ message.weekDuration }}</p>
               </div>
             </div>
           </div>
         </div>
-        <img class="close" src="../../assets/close.png" alt="123" @click="show=false" />
+        <img
+          class="close"
+          src="../../assets/close.png"
+          alt="123"
+          @click="show = false"
+        />
       </div>
     </div>
     <!--课程表-->
@@ -44,27 +52,31 @@
         <td v-for="(item, index) in weekends" :key="index">{{ item }}</td>
       </tr>
       <tr class="am" style="height:70px">
-        <td rowspan="2" @click="show=true">上午</td>
+        <td rowspan="2" @click="show = true">上午</td>
 
         <td>1-2</td>
         <td
-          v-for="(item,index) in subjects[0]"
+          v-for="(item, index) in subjects[0]"
           :key="index"
           :rowspan="sum[0][index]"
           v-bind:style="{ backgroundColor: item.backgroundColor }"
           @click="getMessage(item)"
-        >{{item.subjectName}}</td>
+        >
+          {{ item.subjectName }}
+        </td>
       </tr>
       <tr style="height:70px">
         <td>3-4</td>
         <td
-          v-for="(item,index) in subjects[1]"
+          v-for="(item, index) in subjects[1]"
           :key="index"
           :rowspan="sum[0][index]"
-          v-show="sum[0][index]==1"
+          v-show="sum[0][index] == 1"
           v-bind:style="{ backgroundColor: item.backgroundColor }"
           @click="getMessage(item)"
-        >{{item.subjectName}}</td>
+        >
+          {{ item.subjectName }}
+        </td>
       </tr>
       <tr class="noon" style="height:20px">
         <td colspan="9" class="blank"></td>
@@ -75,20 +87,28 @@
         <td
           v-for="item in 7"
           :key="item.id"
-          :rowspan="sum[1][item-1]"
-          @click="getMessage(subjects[2][item-1])"
-          v-bind:style="{ backgroundColor: subjects[2][item-1].backgroundColor }"
-        >{{subjects[2][item-1].subjectName}}</td>
+          :rowspan="sum[1][item - 1]"
+          @click="getMessage(subjects[2][item - 1])"
+          v-bind:style="{
+            backgroundColor: subjects[2][item - 1].backgroundColor
+          }"
+        >
+          {{ subjects[2][item - 1].subjectName }}
+        </td>
       </tr>
       <tr class="pm" style="height:70px">
         <td>7-8</td>
         <td
           v-for="item in 7"
           :key="item.id"
-          v-show="sum[1][item-1]==1"
-          @click="getMessage(subjects[3][item-1])"
-          v-bind:style="{ backgroundColor: subjects[3][item-1].backgroundColor }"
-        >{{subjects[3][item-1].subjectName}}</td>
+          v-show="sum[1][item - 1] == 1"
+          @click="getMessage(subjects[3][item - 1])"
+          v-bind:style="{
+            backgroundColor: subjects[3][item - 1].backgroundColor
+          }"
+        >
+          {{ subjects[3][item - 1].subjectName }}
+        </td>
       </tr>
       <tr style="height:20px">
         <td colspan="9" class="blank"></td>
@@ -99,11 +119,16 @@
         <td
           v-for="item in 7"
           :key="item.id"
-          @click="getMessage(subjects[4][item-1])"
-          v-bind:style="{ backgroundColor: subjects[4][item-1].backgroundColor }"
-        >{{subjects[4][item-1].subjectName}}</td>
+          @click="getMessage(subjects[4][item - 1])"
+          v-bind:style="{
+            backgroundColor: subjects[4][item - 1].backgroundColor
+          }"
+        >
+          {{ subjects[4][item - 1].subjectName }}
+        </td>
       </tr>
     </table>
+
     <div class="text" v-if="show3"></div>
     <div class="text" v-if="!show3"></div>
   </div>
@@ -293,14 +318,14 @@ export default {
       this.semesterId = this.exam.pkSemesterId;
       this.semester = this.exam.name;
       this.show1 = false;
-      this.show2=false;
+      this.show2 = false;
       this.getAll();
     },
     getDay(index) {
       this.dayId = index + 1;
       this.day = this.weeks[index];
       this.show1 = false;
-      this.show2=false;
+      this.show2 = false;
       this.getAll();
     },
     change(index) {

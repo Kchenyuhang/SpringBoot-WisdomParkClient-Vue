@@ -2,7 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../views/Login.vue'
 import Layout from '../views/Layout.vue'
-import FleaNav from '../views/fleamarket/FleaNav.vue'
+import JobNav from '../views/Job/JobNav.vue'
+import FleaNav from '../views/fleamarket/FleaNav'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -53,6 +55,63 @@ const routes = [
         component: () => import('../views/main/My.vue'),
       },
     ],
+  },
+  {
+    path: '/jobnav',
+    name: 'JobNav',
+    component: JobNav,
+    children: [
+      {
+        path: '/position',
+        name: 'Position',
+        component: () => import('../views/Job/Position.vue'),
+      },
+      {
+        path: '/company',
+        name: 'Company',
+        component: () => import('../views/Job/Company.vue'),
+      },
+      {
+        path: '/jobmessage',
+        name: 'JobMessage',
+        component: () => import('../views/Job/JobMessage.vue'),
+      },
+      {
+        path: '/jobmy',
+        name: 'JobMy',
+        component: () => import('../views/Job/JobMy.vue'),
+      },
+    ],
+  },
+  {
+    path: '/jobsearch',
+    name: 'JobSearch',
+    component: () => import('../views/Job/JobSearch.vue'),
+  },
+  {
+    path: '/jobscreen',
+    name: 'JobScreen',
+    component: () => import('../views/Job/JobScreen.vue'),
+  },
+  {
+    path: '/alumnusindex',
+    name: 'AlumnusIndex',
+    component: () => import('../views/Alumnus/AlumnusIndex.vue'),
+  },
+  {
+    path: '/alumnusmessage',
+    name: 'AlumnusMessage',
+    component: () => import('../views/Alumnus/AlumnusMessage.vue'),
+  },
+  {
+    path: '/alumnuscollect',
+    name: 'AlumnusCollect',
+    component: () => import('../views/Alumnus/AlumnusCollect.vue'),
+  },
+  {
+    path: '/publish',
+    name: 'Publish',
+    component: () => import('../views/Alumnus/Publish.vue'),
   },
   {
     path: '/metrocard',
@@ -171,12 +230,28 @@ const routes = [
     component: () => import('../views/errand/Order.vue'),
     children: [
       {
-        path: '/order',
-        name: 'Order',
-        component: () => import('../views/errand/Order.vue'),
+        path: 'all',
+        name: 'All',
+        component: () => import('../views/errand/orders/All.vue'),
+      },
+      {
+        path: 'underway',
+        name: 'Underway',
+        component: () => import('../views/errand/orders/Underway.vue'),
       },
     ],
   },
+  {
+    path: '/originadress',
+    name: 'OriginAdress',
+    component: () => import('../views/errand/adressorder/OriginAdress.vue'),
+  },
+  {
+    path: '/destinationadress',
+    name: 'DestinationAdress',
+    component: () => import('../views/errand/adressorder/DestinationAdress.vue'),
+  },
+  // 跳蚤市场路由
   {
     path: '/fleaNav',
     name: 'FleaNav',
@@ -225,7 +300,6 @@ const routes = [
     component: () => import('../views/fleamarket/personal/PersonalDetail.vue'),
   },
 ]
-
 const router = new VueRouter({
   routes,
 })

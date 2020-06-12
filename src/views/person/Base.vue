@@ -35,7 +35,7 @@
       </router-link>
       <hr class="line" />
       <router-link to="/address">
-        <div class="cc-df-between row1">
+        <div class="cc-df-between row1" @click="into(1)">
           <div class="address">
             <p class="nick">地址</p>
           </div>
@@ -94,7 +94,12 @@ export default {
   components: {},
   created() {},
   mounted() {},
-  methods: {},
+  methods: {
+    into(index){
+      localStorage.setItem("type", index);
+      this.$store.commit("setType", index);
+    }
+  },
   computed: {}
 };
 </script>
