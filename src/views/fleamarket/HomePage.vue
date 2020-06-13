@@ -129,30 +129,10 @@ export default {
         currentPage: 0,
         pageSize: 100
       },
-      list: [
-        // {
-        //   image:
-        //     "https://kxingchen.oss-cn-shanghai.aliyuncs.com/develop/yhChen171427.jpg",
-        //   sub: "天梭手表，高端人士",
-        //   price: "99999",
-        //   people: "天梭旗靓店"
-        // },
-        // {
-        //   image:
-        //     "https://kxingchen.oss-cn-shanghai.aliyuncs.com/develop/yhChen171406.jpg",
-        //   sub: "Vans，飞一般的感觉",
-        //   price: "8888",
-        //   people: "Vans旗靓店"
-        // },
-        // {
-        //   image:
-        //     "http://ww1.sinaimg.cn/large/0064QvQTly1gfo5f23z2lj30b60gon4z.jpg",
-        //   sub: "恭喜你获取一直拆家小能手",
-        //   price: "9999999",
-        //   people: "宠物卖坊"
-        // }
-      ],
+      list: [],
       page: [],
+      users: JSON.parse(localStorage.getItem("user")),
+      user: [],
       count: 0
     };
   },
@@ -160,6 +140,7 @@ export default {
   created() {
     this.getTopReward();
     this.getList();
+    this.reInto();
     localStorage.setItem("path", JSON.stringify(this.path));
   },
   mounted() {},
@@ -182,6 +163,16 @@ export default {
       this.$router.push({
         path: `/commoditydetails/${id}`
       });
+    },
+    async reInto() {
+      this.url = "http://101.37.31.188:8080/flea/users/saving";
+      this.data = {
+        jobNumber: this.users.jobNumber
+      };
+      this.user = (await API.init(this.url, this.data, "post")).data;
+      console.log(this.user);
+
+      localStorage.setItem("FleaUser", JSON.stringify(this.user));
     }
   },
   computed: {},

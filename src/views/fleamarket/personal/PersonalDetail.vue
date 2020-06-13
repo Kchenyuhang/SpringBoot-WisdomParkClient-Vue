@@ -83,7 +83,7 @@
           </div>
           <div class="right">
             <p>
-              {{ user.name }}
+              {{ user.username }}
             </p>
             <img
               class="nickimg"
@@ -100,7 +100,7 @@
             v-show="!show"
           >
             <p>
-              {{ user.gender }}
+              {{ user.sex }}
             </p>
             <img
               class="nickimg"
@@ -113,8 +113,8 @@
           >
             <input
               type="text"
-              v-model="users.gender"
-              :placeholder="user.gender"
+              v-model="users.sex"
+              :placeholder="user.sex"
               align="right"
               readonly
               v-clickoutside="handleClose"
@@ -122,17 +122,35 @@
             />
           </div>
         </div>
-        <div class="text">
+        <div
+          class="text"
+          v-show="!show"
+        >
           <div class="left">
             <p>联系方式</p>
           </div>
           <div class="right">
             <p>
-              {{ user.tel }}
+              {{ user.phoneNumber}}
             </p>
             <img
               class="nickimg"
               src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/youjiantou.png"
+            />
+          </div>
+        </div>
+        <div
+          class="text"
+          v-show="show"
+        >
+          <div class="left">
+            <p>联系方式</p>
+          </div>
+          <div class="right">
+            <input
+              type="text"
+              v-model="users.phoneNumber"
+              :placeholder="user.phoneNumber"
             />
           </div>
         </div>
@@ -142,7 +160,7 @@
           </div>
           <div class="right">
             <p>
-              {{ user.jobNum }}
+              {{ user.jobNumber }}
             </p>
             <img
               class="nickimg"
@@ -179,6 +197,7 @@
 </template>
 
 <script>
+const API = require("../../../request/api.js");
 const clickoutside = {
   // 初始化指令
   bind(el, binding) {
@@ -208,21 +227,14 @@ export default {
   name: "PersonalDetail",
   data() {
     return {
-      user: {
-        avatar: "https://student-m.oss-cn-hangzhou.aliyuncs.com/img/pic.png",
-        nickname: "hn`巴德尔",
-        name: "吴家浩",
-        gender: "男",
-        tel: "18851697931",
-        jobNum: "1802333120"
-      },
+      user: JSON.parse(localStorage.getItem("FleaUser")),
       users: {
         avatar: "",
         nickname: "",
-        name: "",
-        gender: "",
-        tel: "",
-        jobNum: ""
+        username: "",
+        sex: "",
+        phoneNumber: "",
+        jobNumber: ""
       },
       width: 50,
       show: false,
@@ -286,27 +298,38 @@ export default {
       if (this.user.nickname != "") {
         this.count = this.count + 1;
       }
-      if (this.user.name != "") {
+      if (this.user.username != "") {
         this.count = this.count + 1;
       }
-      if (this.user.gender != "") {
+      if (this.user.sex != "") {
         this.count = this.count + 1;
       }
-      if (this.user.tel != "") {
+      if (this.user.phoneNumber != "") {
         this.count = this.count + 1;
       }
-      if (this.user.jobNum != "") {
+      if (this.user.jobNumber != "") {
         this.count = this.count + 1;
       }
       //   parseInt(this.count / 6);
       this.width = ((this.count / 6) * 100).toFixed(2);
       this.count = 0;
     },
-    update() {
+    async update() {
       this.getRd();
       this.user = this.users;
-      console.log(this.users.avatar);
+      // console.log(this.users.avatar);
+      localStorage.setItem("FleaUser", JSON.stringify(this.user));
       this.show = false;
+      this.url = "http://101.37.31.188:8080/flea/users/flushing";
+      this.data = {
+        avatar: this.users.avatar,
+        nickname: this.users.nickname,
+        phoneNumber: this.users.phoneNumber,
+        pkFleaUserId: this.user.pkFleaUserId,
+        sex: this.users.sex
+      };
+      await API.init(this.url, this.data, "post");
+      console.log(this.user);
     },
     getUser() {
       this.users = this.user;
@@ -315,7 +338,7 @@ export default {
       this.zzc = true;
     },
     getSex(index) {
-      this.users.gender = this.gender[index].sec;
+      this.users.sex = this.gender[index].sec;
     }
   },
   computed: {}
