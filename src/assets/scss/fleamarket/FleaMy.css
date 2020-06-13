@@ -69,6 +69,9 @@
 }
 
 .bg .header .count {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   bottom: 0;
   margin-top: 10%;
   margin-left: 8%;
@@ -77,14 +80,10 @@
 
 .bg .header .count .tab {
   margin-top: 20%;
-  margin-left: -10px;
   margin-right: 0px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 
 .bg .container {
@@ -101,5 +100,73 @@
   margin-bottom: -4px;
   border-bottom: 4px #46abf1 solid;
   color: #46abf1;
+}
+
+.r-inform {
+  width: 95%;
+  height: 100px;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-left: 10px;
+  background-color: white;
+  -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.r-left {
+  width: 40%;
+  height: 100px;
+  float: left;
+}
+
+.r-left img {
+  border-radius: 10px;
+}
+
+.r-right {
+  float: right;
+  width: 58%;
+  margin-left: 5px;
+}
+
+.r-right h5 {
+  font-weight: bold;
+}
+
+.r-right p {
+  font-size: 10px;
+  color: #b9b7c9;
+  margin-top: 3px;
+}
+
+.r-right span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 13px;
+  color: red;
+  margin-top: 30px;
+}
+
+.r-right img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 20px;
+  width: 20px;
+  margin-left: 150px;
+  margin-top: -10px;
+}
+
+.r-right img .r-right h6 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 160px;
+}
+
+li {
+  list-style-type: none;
+  margin-left: 40px;
 }
 /*# sourceMappingURL=FleaMy.css.map */

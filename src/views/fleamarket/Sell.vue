@@ -12,10 +12,28 @@
       placeholder="品牌型号，新旧程度，入手渠道，转手原因..."
     ></textarea>
     <div class="rec">
+      <input type="file" />
       <img
         src="http://ww1.sinaimg.cn/large/0064QvQTgy1gfnibb1ygkj30qo0qoq4w.jpg"
         alt=""
       />
+    </div>
+    <hr class="line" />
+    <div class="list">
+      <img
+        src="http://ww1.sinaimg.cn/large/0064QvQTly1gfo1zn152nj305k05kmx6.jpg"
+        alt=""
+      />
+      <span>价格</span>
+      <input type="text" class="input" />
+    </div>
+    <hr class="line" />
+    <div class="list">
+      <img
+        src="http://ww1.sinaimg.cn/large/0064QvQTly1gfo1zn152nj305k05kmx6.jpg"
+        alt=""
+      />
+      <span>价格</span>
     </div>
     <hr class="line" />
     <div class="list">
@@ -84,5 +102,9 @@ h4 {
   font-size: 14px;
   margin-right: 255px;
   margin-top: 17px;
+}
+.input {
+  float: right;
+  max-width: -60px;
 }
 </style>

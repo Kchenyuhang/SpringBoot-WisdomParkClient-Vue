@@ -270,17 +270,12 @@ const routes = [
       {
         path: '/reward',
         name: 'Reward',
-        component: () => import('../views/fleamarket/Reward.vue'),
+        component: () => import('../views/fleamarket/reward/Reward.vue'),
       },
       {
         path: '/list',
         name: 'List',
         component: () => import('../views/fleamarket/List.vue'),
-      },
-      {
-        path: '/sell',
-        name: 'Sell',
-        component: () => import('../views/fleamarket/Sell.vue'),
       },
       {
         path: '/fleaMy',
@@ -290,14 +285,14 @@ const routes = [
     ],
   },
   {
+    path: '/sell',
+    name: 'Sell',
+    component: () => import('../views/fleamarket/Sell.vue'),
+  },
+  {
     path: '/personal',
     name: 'Personal',
     component: () => import('../views/fleamarket/personal/Personal.vue'),
-  },
-  {
-    path: '/personaldetail',
-    name: 'PersonaDetail',
-    component: () => import('../views/fleamarket/personal/PersonalDetail.vue'),
   },
   {
     path: '/commoditydetails/:id',
@@ -308,6 +303,16 @@ const routes = [
     path: '/listdetail/:id',
     name: 'ListDetail',
     component: () => import('../views/fleamarket/commodity/ListDetail.vue'),
+  },
+  {
+    path: '/personaldetail',
+    name: 'PersonalDetail',
+    component: () => import('../views/fleamarket/personal/PersonalDetail.vue'),
+  },
+  {
+    path: '/search',
+    name: 'Search',
+    component: () => import('../views/fleamarket/Search.vue'),
   },
 ]
 const router = new VueRouter({

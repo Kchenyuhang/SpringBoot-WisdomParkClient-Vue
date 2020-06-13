@@ -22,37 +22,120 @@
       margin-top: 3%;
     }
   }
-  .listAll {
-   background:green;
-   padding-right: 10px;
-  
-    .row {
-      width: 90%;
-      display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    
-    align-items: center;
-    
-    
-    .list {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
-      
-      img {
-       width: 30px;
-       height: 30px;
-      }
-     
-      p{
-        text-align: center;
-      
-        margin:5px 1px;
-      }
-    }
-  
-    
-    }
+  .container {
+    background-color: #e6e6e6;
   }
+  .header {
+    background-color: #e6e6e6;
+  }
+  input {
+    width: 300px;
+    height: 38px;
+    margin-top: 6px;
+    margin-left: 10px;
+    border-radius: 10px;
+    border: none;
+    border: 1px solid #ffffff;
+  }
+  .header img {
+    margin-top: 17px;
+  }
+  .list {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex: 0 0 0 20%;
+    // background-color: black;
+  }
+  .list img {
+    margin-left: 34px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-top: 25px;
+  }
+  .list h5 {
+    margin-left: 45px;
+    font-weight: bold;
+  }
+  .inform {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    // height: 100px;
+    margin-top: 10px;
+    // background-color: #f3f3f3;
+  }
+  .right {
+    width: 50%;
+    margin-top: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+    // background-color: blue;
+  }
+  .right img {
+    width: 60px;
+    height: 60px;
+    float: right;
+    margin-right: 4px;
+    // border-radius: 10px;
+  }
+  .left h3 {
+    margin-left: 10px;
+    font-weight: bold;
+  }
+  .left span {
+    margin-left: 10px;
+    color: red;
+  }
+  .reward {
+    height: 100px;
+    // background-color: blue;
+  }
+  .ward {
+    height: 100px;
+  }
+  .release {
+    margin-top: 25px;
+    height: 600px;
+    // background-color: red;
+  }
+  .footer {
+    height: 340px;
+    width: 98%;
+    margin-left: 4px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+    // background-color: black;
+  }
+  .goods {
+    height: 65px;
+    // background-color: royalblue;
+  }
+  .goods img {
+    height: 50px;
+    width: 50px;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 50%;
+  }
+  .goods span {
+    float: right;
+    margin-right: 237px;
+    margin-top: 10px;
+  }
+  .goods p {
+    float: right;
+    margin-top: -30px;
+    margin-right: 30px;
+  }
+  .pic img {
+    height: 200px;
+    width: 200px;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  .pic p {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  

@@ -28,40 +28,96 @@
         </div>
       </div>
       <div class="count">
-        <div class="tab">
-          <div @click="isShow = 1">
-            <p :class="{ blueLine: isShow == 1 }">发布1</p>
-          </div>
-          <div @click="isShow = 2">
+        <div
+          class="tab"
+          v-for="(item, index) in navList"
+          :key="index"
+          :class="{ active: !(index - menuIndex) }"
+          @click="menuShow(index)"
+        >
+          <li>{{ item }}</li>
+          <!-- <div @click="isShow = 1" class="tp">
+            <p :class="{ blueLine: isShow == 1 }">{{ item }}</p>
+          </div> -->
+          <!-- <div @click="isShow = 2">
             <p :class="{ blueLine: isShow == 2 }">购买0</p>
-          </div>
-          <div @click="isShow = 3">
+          </div> -->
+          <!--<div @click="isShow = 3">
             <p :class="{ blueLine: isShow == 3 }">评价0</p>
           </div>
           <div @click="isShow = 4">
             <p :class="{ blueLine: isShow == 4 }">收藏0</p>
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+    <div v-show="menuIndex == 0">
+      <div class="container">
+        <div class="r-inform">
+          <div class="r-left">
+            <img
+              src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/3.jpg"
+              alt=""
+            />
+          </div>
+          <div class="r-right">
+            <h5>我是你爸爸</h5>
+            <p>描述</p>
+            <span>¥ 价格</span>
+            <img
+              src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/cc-message.png"
+              alt=""
+            />
           </div>
         </div>
       </div>
     </div>
-    <div class="container">
-      <div class="r-inform">
-        <div class="r-left">
-          <img
-            src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/3.jpg"
-            alt=""
-          />
-        </div>
-        <div class="r-right">
-          <h5>我是你爸爸</h5>
-          <p>描述</p>
-          <span>¥ 价格</span>
-          <img
-            src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/cc-message.png"
-            alt=""
-          />
+    <div v-show="menuIndex == 1">
+      <div class="container">
+        <div class="r-inform">
+          <div class="r-left">
+            <img
+              src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/3.jpg"
+              alt=""
+            />
+          </div>
+          <div class="r-right">
+            <h5>我是</h5>
+            <p>描述</p>
+            <span>¥ 价格</span>
+            <img
+              src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/cc-message.png"
+              alt=""
+            />
+          </div>
         </div>
       </div>
+    </div>
+    <div v-show="menuIndex == 2">
+      <div class="container">
+        <div class="r-inform">
+          <div class="r-left">
+            <img
+              src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/3.jpg"
+              alt=""
+            />
+          </div>
+          <div class="r-right">
+            <h5>我是你</h5>
+            <p>描述</p>
+            <span>¥ 价格</span>
+            <img
+              src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/cc-message.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div v-show="menuIndex == 3">
+      内容四
+      <!--此处可以换成子组件-->
     </div>
   </div>
 </template>
@@ -70,13 +126,19 @@ export default {
   name: "FleaMy",
   data() {
     return {
-      isShow: 1
+      menuIndex: 0,
+      navList: ["购买", "评价", "收藏", "历史"]
     };
   },
   components: {},
   created() {},
   mounted() {},
-  methods: {},
+  methods: {
+    menuShow(index) {
+      this.menuIndex = index;
+      console.log(this.menuIndex);
+    }
+  },
   computed: {},
   watch: {}
 };
@@ -84,52 +146,4 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/scss/fleamarket/FleaMy.scss";
-.r-inform {
-  width: 95%;
-  height: 100px;
-  border-radius: 10px;
-  margin-top: 20px;
-  margin-left: 10px;
-  background-color: white;
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
-}
-.r-left {
-  width: 40%;
-  height: 100px;
-  float: left;
-  // background-color: black;
-}
-.r-left img {
-  border-radius: 10px;
-}
-.r-right {
-  float: right;
-  width: 58%;
-  margin-left: 5px;
-}
-.r-right h5 {
-  font-weight: bold;
-}
-.r-right p {
-  font-size: 10px;
-  color: #b9b7c9;
-  margin-top: 3px;
-}
-.r-right span {
-  display: flex;
-  font-size: 13px;
-  color: red;
-  margin-top: 30px;
-}
-.r-right img {
-  display: flex;
-  height: 20px;
-  width: 20px;
-  margin-left: 150px;
-  margin-top: -10px;
-.r-right h6 {
-  display: flex;
-  margin-left: 160px;
-  }
-}
 </style>

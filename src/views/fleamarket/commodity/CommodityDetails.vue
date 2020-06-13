@@ -139,7 +139,7 @@ export default {
     async getList() {
       let id = this.$route.params.id;
       this.data.pkFleaGoodsId = id;
-      this.url = "http://101.37.31.188:8080/flea/goods/id";
+      this.url = this.GLOBAL.baseUrl + "/flea/goods/id";
       this.list = (await API.init(this.url, this.data, "post")).data;
       this.getLikeList(this.list[0].pkFleaTypeId, id);
     },
@@ -157,12 +157,12 @@ export default {
       // this.backTop();
     },
     async getSpList() {
-      this.url = "http://101.37.31.188:8080/flea/goods/all";
+      this.url = this.GLOBAL.baseUrl + "/flea/goods/all";
       this.splist = (await API.init(this.url, this.spdata, "post")).data;
       // console.log(this.splist);
     },
     async getLikeList(id, goodsId) {
-      this.url = "http://101.37.31.188:8080/flea/goods/type";
+      this.url =this.GLOBAL.baseUrl + "flea/goods/type";
       this.likeData.typeId = id;
       this.likeList = (await API.init(this.url, this.likeData, "post")).data;
       for (let i = 0; i < this.likeList.length; i++) {

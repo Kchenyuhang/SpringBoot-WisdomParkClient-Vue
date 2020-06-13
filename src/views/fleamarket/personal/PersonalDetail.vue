@@ -320,7 +320,7 @@ export default {
       // console.log(this.users.avatar);
       localStorage.setItem("FleaUser", JSON.stringify(this.user));
       this.show = false;
-      this.url = "http://101.37.31.188:8080/flea/users/flushing";
+      this.url = this.GLOBAL.baseUrl + "/flea/users/flushing";
       this.data = {
         avatar: this.users.avatar,
         nickname: this.users.nickname,
