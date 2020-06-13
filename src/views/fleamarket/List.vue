@@ -9,10 +9,7 @@
       </router-link>
       <div class="search bar">
         <form>
-          <input
-            type="text"
-            placeholder="请输入您要搜索的内容..."
-          />
+          <input type="text" placeholder="请输入您要搜索的内容..." />
           <button type="submit">搜索</button>
         </form>
       </div>
@@ -22,24 +19,17 @@
       <span
         v-for="(item, index) in type"
         :key="index"
-        @click="getFleaType(item.subTypes,index)"
-        :class="{bgc:isShow ==index}"
+        @click="getFleaType(item.subTypes, index)"
+        :class="{ bgc: isShow == index }"
       >
-        {{item.typeName}}
+        {{ item.typeName }}
       </span>
     </div>
     <p>推荐</p>
     <div class="left">
-      <div
-        class="left-list"
-        v-for="(item, index) in typeList"
-        :key="index"
-      >
+      <div class="left-list" v-for="(item, index) in typeList" :key="index">
         <div>
-          <img
-            :src="item.typeCoverUrl"
-            alt=""
-          />
+          <img :src="item.typeCoverUrl" alt="" />
           <h5>{{ item.typeName }}</h5>
         </div>
       </div>

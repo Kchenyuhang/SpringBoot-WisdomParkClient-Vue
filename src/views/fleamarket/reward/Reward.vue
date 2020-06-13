@@ -15,16 +15,18 @@
       </div>
       <div class="list">
         <div class="left" v-for="(item, index) in slideList" :key="index">
-          <div>
-            <img :src="item.image" alt="" />
-            <p>#标签#</p>
-            <span>标题</span>
-            <p>¥价格</p>
-            <div class="right">
+          <router-link to="/rewardetail">
+            <div>
               <img :src="item.image" alt="" />
-              <p>名称</p>
+              <p>#标签#</p>
+              <span>标题</span>
+              <p>¥价格</p>
+              <div class="right">
+                <img :src="item.image" alt="" />
+                <p>名称</p>
+              </div>
             </div>
-          </div>
+          </router-link>
         </div>
       </div>
     </div>
@@ -60,7 +62,7 @@ export default {
     };
   },
   components: {
-    Carousel: require("../../components/Carousel").default
+    Carousel: require("../../../components/Carousel.vue").default
   },
   created() {},
   mounted() {},
@@ -71,7 +73,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/scss/fleamarket/reward.scss";
+@import "../../../assets/scss/fleamarket/reward.scss";
 .container {
   padding: 0;
   height: 1000px;
@@ -89,6 +91,7 @@ export default {
   margin-top: 40px;
   background-color: white;
   border-radius: 10px;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
 }
 .left img {
   height: 100px;

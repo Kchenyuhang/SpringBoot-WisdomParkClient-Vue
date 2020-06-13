@@ -123,5 +123,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/scss/fleamarket/Nav.scss";
+@import "../../assets/scss/fleamarket/FleaNav.scss";
 </style>
