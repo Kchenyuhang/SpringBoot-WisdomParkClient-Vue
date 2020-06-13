@@ -295,19 +295,15 @@ const routes = [
     component: () => import("../views/fleamarket/personal/Personal.vue")
   },
   {
-    path: "/personaldetail",
-    name: "PersonaDetail",
-    component: () => import("../views/fleamarket/personal/PersonalDetail.vue")
+    path: "/commoditydetails/:id",
+    name: "CommodityDetails",
+    component: () =>
+      import("../views/fleamarket/commodity/CommodityDetails.vue")
   },
   {
-    path: "/rewardetail",
-    name: "RewardDetail",
-    component: () => import("../views/fleamarket/reward/RewardDetail.vue")
-  },
-  {
-    path: "/search",
-    name: "Search",
-    component: () => import("../views/fleamarket/Search.vue")
+    path: "/listdetail/:id",
+    name: "ListDetail",
+    component: () => import("../views/fleamarket/commodity/ListDetail.vue")
   }
 ];
 const router = new VueRouter({

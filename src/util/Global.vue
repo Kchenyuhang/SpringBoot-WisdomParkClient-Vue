@@ -1,10 +1,10 @@
 <script>
-const baseUrl = 'http://118.31.21.206:8080'
-const token = ''
+const baseUrl = "http://118.31.21.206:8080";
+const token = "";
 const user = {};
 export default {
-	baseUrl,
-	token,
-	user
+  baseUrl,
+  token,
+  user
 };
 </script>
