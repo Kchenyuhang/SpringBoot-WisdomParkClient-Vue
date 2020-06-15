@@ -295,6 +295,26 @@ const routes = [
     component: () => import('../views/fleamarket/personal/Personal.vue'),
   },
   {
+    path: '/pay',
+    name: 'Pay',
+    component: () => import('../views/fleamarket/sell/Pay.vue'),
+  },
+  {
+    path: '/search',
+    name: 'Search',
+    component: () => import('../views/fleamarket/Search.vue'),
+  },
+  {
+    path: '/personal',
+    name: 'Personal',
+    component: () => import('../views/fleamarket/personal/Personal.vue'),
+  },
+  {
+    path: '/personaldetail',
+    name: 'PersonalDetail',
+    component: () => import('../views/fleamarket/personal/PersonalDetail.vue'),
+  },
+  {
     path: '/commoditydetails/:id',
     name: 'CommodityDetails',
     component: () => import('../views/fleamarket/commodity/CommodityDetails.vue'),

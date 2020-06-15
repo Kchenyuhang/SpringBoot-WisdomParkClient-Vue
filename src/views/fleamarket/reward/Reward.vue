@@ -14,16 +14,15 @@
         <Carousel :slideList="slideList"></Carousel>
       </div>
       <div class="list">
-        <div class="left" v-for="(item, index) in slideList" :key="index">
+        <div class="left" v-for="(item, index) in reward" :key="index">
           <router-link to="/rewardetail">
             <div>
-              <img :src="item.image" alt="" />
-              <p>#标签#</p>
-              <span>标题</span>
+              <img :src="item.imageUrl" alt="" />
+              <p>{{ item.description }}</p>
+              <span>{{ item.title }}</span>
               <p>¥价格</p>
               <div class="right">
-                <img :src="item.image" alt="" />
-                <p>名称</p>
+                <!-- <img :src="item.avatar" alt="" /> -->
               </div>
             </div>
           </router-link>
@@ -33,10 +32,18 @@
   </div>
 </template>
 <script>
+const API = require("../../../request/api.js");
 export default {
   name: "Reward",
   data() {
     return {
+      test: [],
+      reward: [],
+      data: {
+        currentPage: 1,
+        field: 2,
+        pageSize: 6
+      },
       slideList: [
         {
           url: "#",
@@ -64,9 +71,21 @@ export default {
   components: {
     Carousel: require("../../../components/Carousel.vue").default
   },
-  created() {},
+  created() {
+    this.getReward();
+  },
   mounted() {},
-  methods: {},
+  methods: {
+    async getReward() {
+      this.url = this.GLOBAL.baseUrl + "/flea/reward/all";
+      this.reward = (await API.init(this.url, this.data, "post")).data.content;
+      for (let i = 0; i < this.reward.length; i++) {
+        this.test = this.reward[i].fleaUser;
+      }
+      console.log(this.test);
+      console.log(this.reward);
+    }
+  },
   computed: {},
   watch: {}
 };
@@ -79,6 +98,7 @@ export default {
   height: 1000px;
 }
 .list {
+  height: 1000px;
   width: 90%;
   margin-left: 5%;
   display: flex;
