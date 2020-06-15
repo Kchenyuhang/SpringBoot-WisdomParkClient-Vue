@@ -61,7 +61,7 @@
             />
           </div>
           <div class="r-right">
-            <h5>我是你爸爸</h5>
+            <h5>title</h5>
             <p>描述</p>
             <span>¥ 价格</span>
             <img
@@ -82,8 +82,8 @@
             />
           </div>
           <div class="r-right">
-            <h5>我是</h5>
-            <p>描述</p>
+            <h5>title</h5>
+            <p>des</p>
             <span>¥ 价格</span>
             <img
               src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/cc-message.png"
@@ -103,9 +103,9 @@
             />
           </div>
           <div class="r-right">
-            <h5>我是你</h5>
+            <h5>title</h5>
             <p>描述</p>
-            <span>¥ 价格</span>
+            <span>¥ price</span>
             <img
               src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/cc-message.png"
               alt=""

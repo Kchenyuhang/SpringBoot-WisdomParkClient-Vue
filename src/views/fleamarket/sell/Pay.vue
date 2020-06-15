@@ -18,7 +18,7 @@
           />
         </div>
         <div class="r-right">
-          <h5>我是你</h5>
+          <h5>title</h5>
           <p>描述</p>
           <span>¥ 价格</span>
         </div>
@@ -27,7 +27,10 @@
     <div class="address">
       <hr class="line" />
       <router-link to="/address">
-        <div class="cc-df-between row1" @click="into(1)">
+        <div
+          class="cc-df-between row1"
+          @click="into(1)"
+        >
           <div class="address">
             <p class="nick">地址</p>
           </div>

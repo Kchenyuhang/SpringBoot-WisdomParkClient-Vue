@@ -9,10 +9,12 @@
     <textarea
       style="border: 0;border-radius:5px;background-color:#ffffff;width: 375px;height: 50px;padding: 10px;resize: none;"
       placeholder="标题，品牌，型号"
+      v-model="data.goodsName"
     ></textarea>
     <textarea
       style="border:0;border-radius:5px;background-color:#ffffff;width: 375px;height: 50px;padding: 10px;resize: none;"
       placeholder="描述下你的商品"
+      v-model="data.goodsDescription"
     ></textarea>
     <!-- 图片上传区域 -->
     <div class="upload">
@@ -21,21 +23,34 @@
     </div>
     <div class="list">
       <div class="price">
-        <input type="number" placeholder="请输入价格" />
-        <input type="number" placeholder="请输入原价" />
-        <select name="bbxb" id="selecte1" class="longselect">
+        <input
+          type="number"
+          placeholder="请输入价格"
+          v-model="data.goodsPrice"
+        />
+        <input
+          type="text"
+          placeholder="请输入类型"
+          v-model="data.goodsMark"
+        />
+        <select
+          name="bbxb"
+          id="selecte1"
+          class="longselect"
+          v-model="id"
+          @click="get(id)"
+        >
           <option value="">---请选择--</option>
           <option
-            value="0"
+            :value="item.pkFleaTypeId"
             selected="selected"
             v-for="(item, index) in type"
             :key="index"
-            >{{ item.typeName }}</option
-          >
+          >{{ item.typeName }}</option>
         </select>
-        <router-link to="/pay">
-          <button>确认发布</button>
-        </router-link>
+        <!-- <router-link to="/pay"> -->
+        <button @click="getSell">确认发布</button>
+        <!-- </router-link> -->
       </div>
     </div>
   </div>
@@ -46,7 +61,19 @@ export default {
   name: "Sell",
   data() {
     return {
-      type: []
+      type: [],
+      id: "",
+      user: JSON.parse(localStorage.getItem("FleaUser")),
+      data: {
+        goodsDescription: "",
+        goodsImgUrl:
+          "https://kxingchen.oss-cn-shanghai.aliyuncs.com/develop/d3a18c6b45844b14.jpg",
+        goodsMark: "",
+        goodsName: "",
+        goodsPrice: 0,
+        pkFleaTypeId: 0,
+        pkFleaUserId: 0
+      }
     };
   },
   components: {},
@@ -55,8 +82,19 @@ export default {
   },
   mounted() {},
   methods: {
+    get(id) {
+      this.data.pkFleaTypeId = id;
+      this.data.pkFleaUserId = this.user.pkFleaUserId;
+    },
     async getAllType() {
       this.url = "http://101.37.31.188:8080/flea/type/all";
+      this.type = (await API.init(this.url, this.data, "post")).data.types;
+      console.log(this.type);
+    },
+    async getSell() {
+      this.url = "http://101.37.31.188:8080/flea/goods/increased";
+      console.log(this.data);
+
       this.type = (await API.init(this.url, this.data, "post")).data.types;
       console.log(this.type);
     }
