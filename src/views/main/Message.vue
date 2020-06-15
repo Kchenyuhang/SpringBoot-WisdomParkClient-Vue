@@ -62,4 +62,10 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/scss/main/message.scss";
+.line {
+  width: 100%;
+}
+.time p {
+  margin-top: 100px;
+}
 </style>
