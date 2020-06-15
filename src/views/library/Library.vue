@@ -72,9 +72,7 @@ export default {
       show: false,
       result: [],
       count: 0,
-      data: {
-        jobNumber: "1802333101"
-      }
+      user: JSON.parse(localStorage.getItem("user"))
     };
   },
   components: {},
@@ -85,7 +83,10 @@ export default {
   methods: {
     async getList() {
       this.url = this.GLOBAL.baseUrl + "/book/borrow";
-      this.result = (await API.init(this.url, this.data, "post")).data;
+      (this.data = {
+        jobNumber: this.user.jobNumber
+      }),
+        (this.result = (await API.init(this.url, this.data, "post")).data);
       this.count = this.result.borrowCount;
       console.log(this.result);
     }

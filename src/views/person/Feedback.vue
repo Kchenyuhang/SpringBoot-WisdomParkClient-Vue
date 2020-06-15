@@ -10,7 +10,12 @@
       <p>意见反馈</p>
     </div>
     <div class="card cc-shadow cc-donghua">
-      <input type="text" class="theme" placeholder="反馈主题" v-model="title" />
+      <input
+        type="text"
+        class="theme"
+        placeholder="反馈主题"
+        v-model="title"
+      />
 
       <textarea
         cols="5"
@@ -25,7 +30,10 @@
         v-model="contactWay"
       />
     </div>
-    <div class="btn" @click="feedback()">
+    <div
+      class="btn"
+      @click="feedback()"
+    >
       <p>
         反馈
       </p>
@@ -41,7 +49,7 @@ export default {
     return {
       title: "",
       content: "",
-      contactWay: "",
+      contactWay: ""
     };
   },
   components: {},
@@ -53,16 +61,16 @@ export default {
       this.data = {
         contactWay: this.contactWay,
         content: this.content,
-        title: this.title,
+        title: this.title
       };
       this.result = await API.init(this.url, this.data, "post");
       console.log(this.result.msg);
       if (this.result.msg == "成功") {
         this.$router.push("/my");
       }
-    },
+    }
   },
-  computed: {},
+  computed: {}
 };
 </script>
 

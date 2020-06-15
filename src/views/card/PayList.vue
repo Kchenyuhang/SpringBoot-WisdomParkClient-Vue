@@ -10,7 +10,10 @@
       <p>消费明细</p>
     </div>
     <hr class="line" />
-    <div v-for="item in customers" :key="item">
+    <div
+      v-for="item in customers"
+      :key="item"
+    >
       <div class="card cc-df-between">
         <div class="cc-df-warp pay">
           <div>
@@ -50,14 +53,14 @@ export default {
   methods: {
     async customer() {
       this.data = {
-        job_number: this.userCard
+        field: this.userCard
       };
       this.url = this.GLOBAL.baseUrl + "/card/consume";
-      this.result = await API.init(this.url, this.data, "get");
+      this.result = await API.init(this.url, this.data, "post");
       this.customers = this.result.data;
     }
   },
-  computed: {},
+  computed: {}
 };
 </script>
 

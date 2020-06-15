@@ -11,18 +11,28 @@
         <p>{{ listName }}</p>
       </div>
       <div class="r-list">
-        <div class="r-left" v-for="(item, index) in list" :key="index">
+        <div
+          class="r-left"
+          v-for="(item, index) in list"
+          :key="index"
+        >
           <!-- <div
           class="r-left-con"
           @click="gotoDetail(item.pkFleaGoodsId)"
         >  -->
-          <div class="r-left-con" @click="gotoComDetail(item.pkFleaGoodsId)">
+          <div
+            class="r-left-con"
+            @click="gotoComDetail(item.pkFleaGoodsId)"
+          >
             <img :src="item.goodsImgUrl" />
             <span>{{ item.goodsDescription }}</span>
             <p>$ {{ item.goodsPrice }}</p>
             <div class="r-right">
               <div class="img-box">
-                <img :src="item.userAvatar" alt="" />
+                <img
+                  :src="item.userAvatar"
+                  alt=""
+                />
               </div>
               <p>{{ item.nickname }}</p>
             </div>
@@ -61,13 +71,13 @@ export default {
     async getList() {
       let id = this.$route.params.id;
       this.data.typeId = id;
-      console.log(this.data.typeId);
+      // console.log(this.data.typeId);
       let path = this.path + id;
       this.url = this.GLOBAL.baseUrl + "/flea/goods/type";
       this.list = (await API.init(this.url, this.data, "post")).data;
       //   this.likeList = (await API.init(this.url, this.data, "post")).data;
       localStorage.setItem("path", JSON.stringify(path));
-      console.log(this.list);
+      // console.log(this.list);
     },
     gotoComDetail(id) {
       this.page[this.count++] = id;

@@ -3,7 +3,10 @@
     <div class="title">
       <p>智慧校园</p>
     </div>
-    <div class="login cc-col-center" v-if="isShow == 1">
+    <div
+      class="login cc-col-center"
+      v-if="isShow == 1"
+    >
       <div
         class="alsrtInfo"
         :style="{ display: displayStsates }"
@@ -49,7 +52,10 @@
           <p>{{ aletMsg }}</p>
         </div>
       </div>
-      <div class="cc-df" style="margin-left:8%">
+      <div
+        class="cc-df"
+        style="margin-left:8%"
+      >
         <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_yanzhengma.png"
           alt="输入验证码图表"
@@ -61,24 +67,39 @@
           placeholder="请输入验证码"
           v-model="phoneForm.code"
         />
-        <div class="btn-sms" @click="sendMessage()">
+        <div
+          class="btn-sms"
+          @click="sendMessage()"
+        >
           <p>获取验证码</p>
         </div>
       </div>
       <hr class="line" />
       <div class="cc-df">
         <div>
-          <p class="fontSize" @click="tabIsShow(2)">账号密码登录</p>
+          <p
+            class="fontSize"
+            @click="tabIsShow(2)"
+          >账号密码登录</p>
         </div>
         <div class="cc-mllleft">
-          <p class="fontSize" @click="tabIsShow(3)">忘记密码</p>
+          <p
+            class="fontSize"
+            @click="tabIsShow(3)"
+          >忘记密码</p>
         </div>
       </div>
-      <div class="login-btn" @click="messageSignIn()">
+      <div
+        class="login-btn"
+        @click="messageSignIn()"
+      >
         <p>确认登录</p>
       </div>
     </div>
-    <div class="login cc-col-center" v-if="isShow == 2">
+    <div
+      class="login cc-col-center"
+      v-if="isShow == 2"
+    >
       <div
         class="alsrtInfo"
         :style="{ display: displayStsates }"
@@ -127,17 +148,29 @@
       <hr class="line" />
       <div class="cc-df">
         <div>
-          <p class="fontSize" @click="tabIsShow(1)">手机快捷登录</p>
+          <p
+            class="fontSize"
+            @click="tabIsShow(1)"
+          >手机快捷登录</p>
         </div>
         <div class="cc-mllleft">
-          <p class="fontSize" @click="tabIsShow(3)">忘记密码</p>
+          <p
+            class="fontSize"
+            @click="tabIsShow(3)"
+          >忘记密码</p>
         </div>
       </div>
-      <div class="login-btn" @click="passwordSignIn()">
+      <div
+        class="login-btn"
+        @click="passwordSignIn()"
+      >
         <p>确认登录</p>
       </div>
     </div>
-    <div class="login cc-col-center" v-if="isShow == 3">
+    <div
+      class="login cc-col-center"
+      v-if="isShow == 3"
+    >
       <div
         class="alsrtInfo"
         :style="{ display: displayStsates }"
@@ -183,7 +216,10 @@
           <p>{{ aletMsg }}</p>
         </div>
       </div>
-      <div class="cc-df" style="margin-left:8%">
+      <div
+        class="cc-df"
+        style="margin-left:8%"
+      >
         <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_yanzhengma.png"
           alt="输入验证码图表"
@@ -195,7 +231,10 @@
           placeholder="请输入验证码"
           v-model="phoneForm.code"
         />
-        <div class="btn-sms" @click="sendMessage()">
+        <div
+          class="btn-sms"
+          @click="sendMessage()"
+        >
           <p>获取验证码</p>
         </div>
       </div>
@@ -225,13 +264,22 @@
       <hr class="line" />
       <div class="cc-df">
         <div>
-          <p class="fontSize" @click="tabIsShow(2)">账号密码登录</p>
+          <p
+            class="fontSize"
+            @click="tabIsShow(2)"
+          >账号密码登录</p>
         </div>
         <div class="cc-mllleft">
-          <p class="fontSize" @click="tabIsShow(1)">手机验证登录</p>
+          <p
+            class="fontSize"
+            @click="tabIsShow(1)"
+          >手机验证登录</p>
         </div>
       </div>
-      <div class="login-btn" @click="forgetSignIn()">
+      <div
+        class="login-btn"
+        @click="forgetSignIn()"
+      >
         <p>确认登录</p>
       </div>
     </div>
@@ -412,7 +460,7 @@ export default {
         password: this.phoneForm.passWord
       };
       this.url = this.GLOBAL.baseUrl + "/user/password";
-      this.result = await API.init(this.url, this.data, "put");
+      this.result = await API.init(this.url, this.data, "post");
       console.log(this.result);
       this.isShow = 2;
       this.clean();
