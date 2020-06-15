@@ -63,7 +63,7 @@ export default {
       this.data.typeId = id;
       console.log(this.data.typeId);
       let path = this.path + id;
-      this.url = "http://101.37.31.188:8080/flea/goods/type";
+      this.url = this.GLOBAL.baseUrl + "/flea/goods/type";
       this.list = (await API.init(this.url, this.data, "post")).data;
       //   this.likeList = (await API.init(this.url, this.data, "post")).data;
       localStorage.setItem("path", JSON.stringify(path));

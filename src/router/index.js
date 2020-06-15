@@ -319,6 +319,16 @@ const routes = [
     path: "/listdetail/:id",
     name: "ListDetail",
     component: () => import("../views/fleamarket/commodity/ListDetail.vue")
+  },
+  {
+    path: "/personaldetail",
+    name: "PersonalDetail",
+    component: () => import("../views/fleamarket/personal/PersonalDetail.vue")
+  },
+  {
+    path: "/search",
+    name: "Search",
+    component: () => import("../views/fleamarket/Search.vue")
   }
 ];
 const router = new VueRouter({
