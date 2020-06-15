@@ -1,28 +1,30 @@
 <template>
   <div class="bg">
     <div class="header">
-      <router-link to="/fleaMy">
-        <img
-          class="icon"
-          src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
-          alt=""
-        />
-      </router-link>
+      <img
+        class="icon"
+        src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
+        alt=""
+        @click="backTo()"
+      />
       <div class="inform">
         <div class="top">
           <div class="left">
             <div class="card">
               <img
                 class="img"
-                src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/3.jpg"
+                :src="list.avatar"
               />
               <div class="mes">
-                <p class="wid">用户名称</p>
-                <p class="nickname">用户昵称：xxxx</p>
+                <p class="wid">{{list.username}}</p>
+                <p class="nickname">用户昵称：{{list.nickname}}</p>
               </div>
             </div>
           </div>
-          <div class="right">
+          <div
+            class="right"
+            v-show="show"
+          >
             <router-link to="/personaldetail">
               <div class="btn">
                 <p>编辑资料</p>
@@ -67,7 +69,10 @@
           </div>
         </div>
       </div>
-      <div class="send">
+      <div
+        class="send"
+        v-show="show"
+      >
         <div class="round">
           <img
             class="icon"
@@ -81,17 +86,47 @@
 </template>
 
 <script>
+const API = require("../../../request/api.js");
 export default {
   name: "Personal",
   data() {
     return {
-      isShow: 1
+      isShow: 1,
+      show: true,
+      user: JSON.parse(localStorage.getItem("FleaUser")),
+      path1: JSON.parse(localStorage.getItem("path1")),
+      list: []
     };
   },
   components: {},
-  created() {},
+  created() {
+    this.ifUser();
+    this.getUserInfor();
+  },
   mounted() {},
-  methods: {},
+  methods: {
+    backTo() {
+      this.$router.push(this.path1);
+    },
+    async getUserInfor() {
+      let id = this.$route.params.id;
+      this.data = {
+        currentPage: 0,
+        pageSize: 0,
+        pkFleaUserId: id
+      };
+      this.url = this.GLOBAL.baseUrl + "/flea/user/userMain";
+      this.list = (await API.init(this.url, this.data, "post")).data;
+      //   this.likeList = (await API.init(this.url, this.data, "post")).data;
+      // localStorage.setItem("path", JSON.stringify(path));
+      console.log(this.list);
+    },
+    ifUser() {
+      if (this.$route.params.id == this.user.pkFleaUserId) {
+        this.show = true;
+      } else this.show = false;
+    }
+  },
   computed: {}
 };
 </script>

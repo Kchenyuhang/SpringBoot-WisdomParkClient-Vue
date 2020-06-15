@@ -290,7 +290,7 @@ const routes = [
     component: () => import('../views/fleamarket/Sell.vue'),
   },
   {
-    path: '/personal',
+    path: '/personal/:id',
     name: 'Personal',
     component: () => import('../views/fleamarket/personal/Personal.vue'),
   },

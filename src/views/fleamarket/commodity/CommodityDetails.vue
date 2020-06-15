@@ -12,7 +12,10 @@
     <div class="container">
       <div class="card">
         <div class="head">
-          <img :src="list[0].userAvatar" />
+          <img
+            :src="list[0].userAvatar"
+            @click="gotoUserDetail(list[0].pkFleaUserId)"
+          />
           <div class="word">
             <p class="title">{{ list[0].nickname }}</p>
             <p class="date">{{ list[0].goodsCreateTime }}</p>
@@ -64,7 +67,35 @@
         </div>
       </div>
     </div>
-    <div class="bottom"></div>
+    <div class="bottom">
+      <div
+        class="home"
+        @click="gotoUserDetail(list[0].pkFleaUserId)"
+      >
+        <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/shop.png" />
+        <p>商家主页</p>
+      </div>
+      <div
+        class="collect"
+        v-show="like"
+        @click="dolike(list[0].pkFleaGoodsId, user.pkFleaUserId)"
+      >
+        <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/star.png" />
+        <p>收藏</p>
+      </div>
+      <div
+        class="collect"
+        v-show="!like"
+        @click="unlike(list[0].pkFleaGoodsId, user.pkFleaUserId)"
+      >
+        <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/Star.png" />
+
+        <p>取消收藏</p>
+      </div>
+      <div class="want">
+        <p class="btn">我想要</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -86,6 +117,7 @@ export default {
       splist: [],
       likeList: [],
       path: JSON.parse(localStorage.getItem("path")),
+      path1: "/commoditydetails/",
       data: {
         pkFleaGoodsId: ""
       },
@@ -96,10 +128,13 @@ export default {
       likeData: {
         currentPage: 0,
         pageSize: 100,
-        typeId: ""
+        typeId: 0
       },
       page: JSON.parse(localStorage.getItem("page")),
-      count: JSON.parse(localStorage.getItem("count"))
+      count: JSON.parse(localStorage.getItem("count")),
+      user: JSON.parse(localStorage.getItem("FleaUser")),
+      like: true,
+      islike: 1
     };
   },
   components: {},
@@ -120,6 +155,24 @@ export default {
     window.removeEventListener("scroll", this.scrollToTop);
   },
   methods: {
+    async dolike(gId, uId) {
+      this.url = this.GLOBAL.baseUrl + "/flea/collection/increased";
+      this.data = {
+        goodsId: gId,
+        userId: uId
+      };
+      await API.init(this.url, this.data, "post");
+      this.like = false;
+    },
+    async unlike(gId, uId) {
+      this.url = this.GLOBAL.baseUrl + "/flea/collection/deleted";
+      this.data = {
+        goodsId: gId,
+        userId: uId
+      };
+      await API.init(this.url, this.data, "post");
+      this.like = true;
+    },
     backUp() {
       if (this.count <= 1) {
         this.count = 0;
@@ -139,8 +192,12 @@ export default {
     async getList() {
       let id = this.$route.params.id;
       this.data.pkFleaGoodsId = id;
+      this.path1 = this.path1 + id;
+      localStorage.setItem("path1", JSON.stringify(this.path1));
       this.url = this.GLOBAL.baseUrl + "/flea/goods/id";
       this.list = (await API.init(this.url, this.data, "post")).data;
+      console.log(this.list);
+
       this.getLikeList(this.list[0].pkFleaTypeId, id);
     },
     gotoDetail(id) {
@@ -162,15 +219,20 @@ export default {
       // console.log(this.splist);
     },
     async getLikeList(id, goodsId) {
-      this.url =this.GLOBAL.baseUrl + "flea/goods/type";
+      this.url = this.GLOBAL.baseUrl + "/flea/goods/type";
       this.likeData.typeId = id;
       this.likeList = (await API.init(this.url, this.likeData, "post")).data;
       for (let i = 0; i < this.likeList.length; i++) {
         if (goodsId == this.likeList[i].pkFleaGoodsId) {
           this.likeList.splice(i, 1);
-          console.log(this.likeList);
+          // console.log(this.likeList);
         }
       }
+    },
+    gotoUserDetail(id) {
+      this.$router.push({
+        path: `/personal/${id}`
+      });
     },
     backTop() {
       // const that = this;

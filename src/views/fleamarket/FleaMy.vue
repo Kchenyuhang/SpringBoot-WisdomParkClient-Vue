@@ -2,29 +2,28 @@
   <div class="bg">
     <div class="header">
       <div class="icon">
-        <img
-          src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/settings.png"
-        />
+        <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/settings.png" />
       </div>
       <div class="inform">
         <div class="left">
           <div class="card">
             <img
               class="img"
-              src="http://ww1.sinaimg.cn/large/0064QvQTly1gfmxh6zrflj305k05k3yc.jpg"
+              :src="user.avatar"
             />
             <div class="mes">
-              <p class="wid">用户名称</p>
-              <p>昵称：xxxx</p>
+              <p class="wid">{{user.username}}</p>
+              <p>昵称：{{user.nickname}}</p>
             </div>
           </div>
         </div>
         <div class="right">
-          <router-link to="/personal">
-            <div class="btn">
-              <p>个人主页></p>
-            </div>
-          </router-link>
+          <div
+            class="btn"
+            @click=" gotoUserDetail(user.pkFleaUserId)"
+          >
+            <p>个人主页></p>
+          </div>
         </div>
       </div>
       <div class="count">
@@ -127,7 +126,9 @@ export default {
   data() {
     return {
       menuIndex: 0,
-      navList: ["购买", "评价", "收藏", "历史"]
+      navList: ["购买", "收藏", "历史"],
+      user: JSON.parse(localStorage.getItem("FleaUser")),
+      path: "/fleaMy"
     };
   },
   components: {},
@@ -137,6 +138,13 @@ export default {
     menuShow(index) {
       this.menuIndex = index;
       console.log(this.menuIndex);
+    },
+    gotoUserDetail(id) {
+      this.$router.push({
+        path: `/personal/${id}`
+      });
+      localStorage.setItem("path", JSON.stringify(this.path));
+      localStorage.setItem("path1", JSON.stringify(this.path));
     }
   },
   computed: {},

@@ -4,9 +4,10 @@
       class="header"
       :style="{ width: width + '%' }"
     >
-      <router-link to="/personal">
-        <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png" />
-      </router-link>
+      <img
+        src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
+        @click="backTo(user.pkFleaUserId)"
+      />
       <p class="title">我的资料</p>
       <p class="jdt">完整度{{ width }}%</p>
     </div>
@@ -262,6 +263,11 @@ export default {
   },
   mounted() {},
   methods: {
+    backTo(id) {
+      this.$router.push({
+        path: `/personal/${id}`
+      });
+    },
     handleClose() {
       this.zzc = false;
     },

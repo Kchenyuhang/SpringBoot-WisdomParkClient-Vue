@@ -8,12 +8,11 @@
             alt=""
           />
         </router-link>
-        <router-link to="/search">
-          <input
-            type="text "
-            placeholder="请输入您要搜索的内容..."
-          />
-        </router-link>
+        <input
+          type="text "
+          placeholder="请输入您要搜索的内容..."
+          @click="gotoSearch(id)"
+        />
         <router-link to="/list">
           <img
             src="../../assets/images/更多.png"
@@ -37,15 +36,16 @@
     <div class="inform">
       <div
         class="right"
-        v-for="(item, index) in slideList"
-        :key="index"
+        v-for="item in list"
+        :key="item.pkFleaGoodsId"
+        @click="gotoDetail(item.pkFleaGoodsId)"
       >
-        <img :src="item.img" />
+        <img :src="item.goodsImgUrl" />
         <div class="left">
           <!-- 商品描述 -->
-          <h3>{{ item.sub }}</h3>
+          <h3>{{ item.goodsName }}</h3>
           <!-- 价格 -->
-          <span>¥{{ item.description }}</span>
+          <span>¥{{ item.goodsPrice }}</span>
         </div>
       </div>
     </div>
@@ -125,7 +125,8 @@ export default {
           img:
             "http://ww1.sinaimg.cn/large/0064QvQTgy1gfqyqxjycdj308u04f747.jpg"
         }
-      ]
+      ],
+      id: "1"
     };
   },
   components: { Carousel: require("../../components/Carousel.vue").default },
@@ -144,7 +145,13 @@ export default {
     },
     async getList() {
       this.url = this.GLOBAL.baseUrl + "/flea/goods/all";
+      this.data = {
+        currentPage: 0,
+        pageSize: 4
+      };
       this.list = (await API.init(this.url, this.data, "post")).data;
+      // this.count = this.list.length - 4;
+      // this.list.splice(0, this.count);
       // console.log(this.list);
     },
     gotoDetail(id) {
@@ -156,13 +163,18 @@ export default {
         path: `/commoditydetails/${id}`
       });
     },
+    gotoSearch() {
+      this.$router.push({
+        path: "/search"
+      });
+    },
     async reInto() {
       this.url = this.GLOBAL.baseUrl + "/flea/users/saving";
       this.data = {
         jobNumber: this.users.jobNumber
       };
       this.user = (await API.init(this.url, this.data, "post")).data;
-      console.log(this.user);
+      // console.log(this.user);
 
       localStorage.setItem("FleaUser", JSON.stringify(this.user));
     }
