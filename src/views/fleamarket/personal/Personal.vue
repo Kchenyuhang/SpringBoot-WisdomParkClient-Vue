@@ -52,12 +52,55 @@
       </div>
     </div>
     <div class="container">
-      <div class="box">
+      <div
+        class="box"
+        v-show="isShow ==1"
+      >
         <div class="left">
           <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/3.jpg" />
         </div>
         <div class="right">
           <p class="title">商品名</p>
+          <p class="des">描述</p>
+          <p class="price">￥价格</p>
+          <div class="com">
+            <img
+              class="icon"
+              src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/cc-message.png"
+            />
+            <p class="mes">10</p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="box"
+        v-show="isShow ==2"
+      >
+        <div class="left">
+          <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/3.jpg" />
+        </div>
+        <div class="right">
+          <p class="title">商品名</p>
+          <p class="des">描述</p>
+          <p class="price">￥价</p>
+          <div class="com">
+            <img
+              class="icon"
+              src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/cc-message.png"
+            />
+            <p class="mes">10</p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="box"
+        v-show="isShow ==3"
+      >
+        <div class="left">
+          <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/3.jpg" />
+        </div>
+        <div class="right">
+          <p class="title">商品</p>
           <p class="des">描述</p>
           <p class="price">￥价格</p>
           <div class="com">

@@ -190,7 +190,7 @@ export default {
     async getTopReward() {
       this.url = this.GLOBAL.baseUrl + "/flea/reward/top";
       this.reward = (await API.init(this.url, this.data, "post")).data;
-      console.log(this.reward);
+      // console.log(this.reward);
     },
     async getGodList() {
       this.url = this.GLOBAL.baseUrl + "/flea/goods/all";

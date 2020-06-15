@@ -95,12 +95,13 @@ export default {
       flag: true,
       url: "",
       data: {
-        field: "1802333118"
+        field: ""
       },
       semesters: [],
       result: [],
       semester: "",
-      exam: []
+      exam: [],
+      user: JSON.parse(localStorage.getItem("user"))
     };
   },
   components: {},
@@ -114,7 +115,10 @@ export default {
     },
     async selectExam() {
       this.url = this.GLOBAL.baseUrl + "/examination/list/semester";
-      this.result = await API.init(this.url, this.data, "post");
+      (this.data = {
+        field: "user.jobNumber"
+      }),
+        (this.result = await API.init(this.url, this.data, "post"));
       // console.log(this.result);
       this.semester = this.result[0].semester;
       this.getSeme(0);
