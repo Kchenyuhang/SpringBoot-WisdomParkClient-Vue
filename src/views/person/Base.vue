@@ -2,7 +2,10 @@
   <div class="bg">
     <div class="header">
       <router-link to="/my">
-        <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png" alt />
+        <img
+          src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
+          alt
+        />
       </router-link>
       <p>基本信息</p>
     </div>
@@ -13,7 +16,7 @@
             <p class="nick">昵称</p>
           </div>
           <div>
-            <p class="nickname">{{user.nickname}}</p>
+            <p class="nickname">{{ user.nickname }}</p>
           </div>
         </div>
       </router-link>
@@ -24,7 +27,7 @@
             <p class="nick">性别</p>
           </div>
           <div class="cc-df-right">
-            <p class="nickname cc-mright">{{user.gender}}</p>
+            <p class="nickname cc-mright">{{ user.gender }}</p>
             <img
               src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/youjiantou.png"
               alt="右箭头"
@@ -40,7 +43,7 @@
             <p class="nick">地址</p>
           </div>
           <div class="cc-df-right">
-            <p class="nickname cc-mright">{{user.address}}</p>
+            <p class="nickname cc-mright">{{ user.address }}</p>
             <img
               src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/youjiantou.png"
               alt="右箭头"
@@ -49,14 +52,14 @@
           </div>
         </div>
       </router-link>
-      <hr class="line">
+      <hr class="line" />
       <router-link to="/olderphone">
         <div class="cc-df-between row1">
           <div>
             <p class="nick">手机号</p>
           </div>
           <div>
-            <p class="nickname">{{user.phoneNumber}}</p>
+            <p class="nickname">{{ user.phoneNumber }}</p>
           </div>
         </div>
       </router-link>
@@ -66,7 +69,7 @@
           <p class="nick">学号</p>
         </div>
         <div>
-          <p class="nickname">{{user.jobNumber}}</p>
+          <p class="nickname">{{ user.jobNumber }}</p>
         </div>
       </div>
       <hr class="line" />
@@ -75,7 +78,7 @@
           <p class="nick">班级</p>
         </div>
         <div>
-          <p class="nickname">{{user.clazzId}}</p>
+          <p class="nickname">{{ user.clazzId }}</p>
         </div>
       </div>
     </div>
@@ -95,7 +98,7 @@ export default {
   created() {},
   mounted() {},
   methods: {
-    into(index){
+    into(index) {
       localStorage.setItem("type", index);
       this.$store.commit("setType", index);
     }

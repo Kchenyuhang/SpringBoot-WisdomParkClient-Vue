@@ -23,13 +23,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /*margin-left: 5%;  1 */
+  // margin-left: -2px;
   margin-top: 25px;
 }
 p {
   display: block;
   color: #929292;
   font-size: 12px;
+  margin-top: 1px;
 }
 .icon2 {
   margin-top: 25px;
@@ -39,8 +40,6 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-/*  margin-left: 7%;
-  margin-top: 13px;*/
 }
 .icon3 {
   margin-top: 15px;
@@ -66,9 +65,6 @@ p {
   align-items: center;
   height: 60px;
   width: 60px;
-  
- /* margin-left: 1%;
-  margin-top: 13px;*/
 }
 .icon5 {
   margin-top: 25px;
@@ -78,11 +74,9 @@ p {
   align-items: center;
   height: 60px;
   width: 60px;
-  
-  /*margin-left: 5%;
-  margin-top: 13px;*/
 }
 .icon {
-  height: 20px;
-  width: 20px;
+  height: 25px;
+  width: 25px;
+  margin-left: 1px;
 }

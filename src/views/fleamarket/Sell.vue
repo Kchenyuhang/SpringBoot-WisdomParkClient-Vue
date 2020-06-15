@@ -4,58 +4,63 @@
       <router-link to="/homePage">
         <h4>取消</h4>
       </router-link>
-      <p>悬赏</p>
-      <button class="btn">悬赏</button>
+      <p>发布</p>
     </div>
     <textarea
-      style="border:0;border-radius:5px;background-color:#ffffff;width: 375px;height: 150px;padding: 10px;resize: none;"
-      placeholder="品牌型号，新旧程度，入手渠道，转手原因..."
+      style="border: 0;border-radius:5px;background-color:#ffffff;width: 375px;height: 50px;padding: 10px;resize: none;"
+      placeholder="标题，品牌，型号"
     ></textarea>
-    <div class="rec">
+    <textarea
+      style="border:0;border-radius:5px;background-color:#ffffff;width: 375px;height: 50px;padding: 10px;resize: none;"
+      placeholder="描述下你的商品"
+    ></textarea>
+    <!-- 图片上传区域 -->
+    <div class="upload">
+      <p>图片上传样式。。。。待定</p>
       <input type="file" />
-      <img
-        src="http://ww1.sinaimg.cn/large/0064QvQTgy1gfnibb1ygkj30qo0qoq4w.jpg"
-        alt=""
-      />
     </div>
-    <hr class="line" />
     <div class="list">
-      <img
-        src="http://ww1.sinaimg.cn/large/0064QvQTly1gfo1zn152nj305k05kmx6.jpg"
-        alt=""
-      />
-      <span>价格</span>
-      <input type="text" class="input" />
+      <div class="price">
+        <input type="number" placeholder="请输入价格" />
+        <input type="number" placeholder="请输入原价" />
+        <select name="bbxb" id="selecte1" class="longselect">
+          <option value="">---请选择--</option>
+          <option
+            value="0"
+            selected="selected"
+            v-for="(item, index) in type"
+            :key="index"
+            >{{ item.typeName }}</option
+          >
+        </select>
+        <router-link to="/pay">
+          <button>确认发布</button>
+        </router-link>
+      </div>
     </div>
-    <hr class="line" />
-    <div class="list">
-      <img
-        src="http://ww1.sinaimg.cn/large/0064QvQTly1gfo1zn152nj305k05kmx6.jpg"
-        alt=""
-      />
-      <span>价格</span>
-    </div>
-    <hr class="line" />
-    <div class="list">
-      <img
-        src="http://ww1.sinaimg.cn/large/0064QvQTly1gfo1zn152nj305k05kmx6.jpg"
-        alt=""
-      />
-      <span>价格</span>
-    </div>
-    <hr class="line" />
   </div>
 </template>
 <script>
+const API = require("../../request/api.js");
 export default {
   name: "Sell",
   data() {
-    return {};
+    return {
+      type: []
+    };
   },
   components: {},
-  created() {},
+  created() {
+    this.getAllType();
+  },
   mounted() {},
-  methods: {},
+  methods: {
+    async getAllType() {
+      this.url = "http://101.37.31.188:8080/flea/type/all";
+      this.type = (await API.init(this.url, this.data, "post")).data.types;
+      console.log(this.type);
+    }
+  },
   computed: {},
   watch: {}
 };
@@ -69,42 +74,33 @@ h4 {
   margin-left: 10px;
   font-size: 13px;
 }
-.btn {
-  height: 20px;
-  width: 40px;
-  margin-left: 120px;
-  border-radius: 10px;
-  margin-top: 10px;
-  background-color: #f4d53a;
-  border: none;
-}
-.rec img {
+.upload {
   height: 100px;
-  width: 100px;
-  margin-left: 30px;
-}
-.line {
-  margin-top: 30px;
-  background-color: #f8f8f8;
+  background-color: blue;
 }
 .list {
-  height: 20px;
-  // background-color: violet;
+  height: 200px;
+  margin-top: 10px;
+  // background-color: brown;
 }
-.list img {
-  height: 25px;
-  width: 25px;
-  margin-left: 50px;
-  margin-top: 13px;
+.price input {
+  height: 30px;
+  width: 100%;
+  margin-top: 5px;
+  border-radius: 10px;
+  border: none;
 }
-.list span {
-  float: right;
-  font-size: 14px;
-  margin-right: 255px;
-  margin-top: 17px;
+select {
+  height: 30px;
+  width: 100%;
+  border: none;
 }
-.input {
-  float: right;
-  max-width: -60px;
+button {
+  height: 40px;
+  width: 100%;
+  margin-top: 80px;
+  background-color: red;
+  border: none;
+  border-radius: 5px;
 }
 </style>
