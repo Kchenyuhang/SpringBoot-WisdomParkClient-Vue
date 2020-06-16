@@ -10,12 +10,7 @@
       <p>意见反馈</p>
     </div>
     <div class="card cc-shadow cc-donghua">
-      <input
-        type="text"
-        class="theme"
-        placeholder="反馈主题"
-        v-model="title"
-      />
+      <input type="text" class="theme" placeholder="反馈主题" v-model="title" />
 
       <textarea
         cols="5"
@@ -30,10 +25,7 @@
         v-model="contactWay"
       />
     </div>
-    <div
-      class="btn"
-      @click="feedback()"
-    >
+    <div class="btn" @click="feedback()">
       <p>
         反馈
       </p>

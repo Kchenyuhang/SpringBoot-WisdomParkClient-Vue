@@ -5,7 +5,7 @@
         <img :src="user.avatar" alt="" />
       </div>
       <div class="r-right">
-        <h5>{{ user.name }}</h5>
+        <h5>{{ user.username }}</h5>
         <p>个人简介</p>
       </div>
     </div>

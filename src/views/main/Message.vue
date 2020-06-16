@@ -48,7 +48,7 @@ export default {
     async selectMessage() {
       this.data = {
         currentPage: this.page,
-        pageSize: 5,
+        pageSize: 5
       };
       this.url = this.GLOBAL.baseUrl + "/message/all";
       this.result = await API.init(this.url, this.data, "post");

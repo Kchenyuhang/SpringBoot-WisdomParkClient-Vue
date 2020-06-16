@@ -34,7 +34,7 @@
       <div class="r-list">
         <div class="r-left" v-for="(item, index) in list" :key="index">
           <div class="r-left-con" @click="gotoDetail(item.pkFleaGoodsId)">
-            <img :src="item.goodsImgUrl" />
+            <img :src="item.goodsImgUrl.split('--**--')[0]" />
             <span>{{ item.goodsName }}</span>
             <p>$ {{ item.goodsPrice }}</p>
             <div class="r-right">

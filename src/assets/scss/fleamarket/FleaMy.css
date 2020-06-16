@@ -1,113 +1,80 @@
-.bg {
-  background-color: white;
-  height: 100vh;
-  width: 100%;
+.info {
+  width: 93%;
+  margin-top: 11%;
+  margin-left: 3%;
+  background-color: balck;
+  z-index: 1000000;
 }
 
-.bg .header {
-  background-color: #f4d53a;
-  height: auto;
-}
-
-.bg .header .icon {
-  width: 6%;
-  height: 3%;
-  position: absolute;
-  top: 5px;
-  right: 15px;
-}
-
-.bg .header .inform {
+.info-left1 img {
+  width: 17%;
+  height: 17%;
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  top: 35px;
-  margin-left: 20px;
+  top: 2px;
 }
 
-.bg .header .inform .left {
-  height: 20%;
-}
-
-.bg .header .inform .left .card {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  height: 100%;
-}
-
-.bg .header .inform .left .card .img {
-  width: 40px;
-  height: 40px;
-}
-
-.bg .header .inform .left .card .mes {
+.info-left1 p {
   margin-left: 10px;
-  margin-top: -1%;
+  font-size: 16px;
+  color: #666666;
 }
 
-.bg .header .inform .left .card .mes .wid {
-  font-weight: 700;
+.info-left2 img {
+  width: 17%;
+  height: 17%;
+  position: relative;
+  top: 2px;
 }
 
-.bg .header .inform .right {
-  margin-top: 10px;
-  position: absolute;
-  right: 15px;
+.info-left2 p {
+  margin-left: 10px;
+  font-size: 16px;
+  color: #666666;
 }
 
-.bg .header .inform .right .btn {
-  background-color: #fff;
-  border-radius: 50px;
-  padding: 2px 10px 2px 10px;
+.info-left3 img {
+  width: 17%;
+  height: 17%;
+  position: relative;
+  top: 4px;
 }
 
-.bg .header .inform .right .btn p {
-  font-size: 12px;
-  font-weight: 700;
+.info-left3 p {
+  margin-left: 10px;
+  font-size: 16px;
+  color: #666666;
 }
 
-.bg .header .count {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  bottom: 0;
-  margin-top: 10%;
-  margin-left: 8%;
-  margin-right: 10%;
+.info-left4 img {
+  width: 17%;
+  height: 17%;
+  position: relative;
+  top: 0px;
 }
 
-.bg .header .count .tab {
-  margin-top: 20%;
-  margin-right: 0px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+.info-left4 p {
+  margin-left: 10px;
+  font-size: 16px;
+  color: #666666;
 }
 
-.bg .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  height: 80%;
+.info-right img {
+  width: 15px;
+  height: 15px;
+}
+
+.line {
   width: 100%;
-  background-color: #f2f2f2;
-}
-
-.blueLine {
-  padding-bottom: 50%;
-  margin-bottom: -4px;
-  border-bottom: 4px #46abf1 solid;
-  color: #46abf1;
+  border: none;
+  height: 1px;
+  background: #ececec;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .r-inform {
-  width: 95%;
-  height: 100px;
-  border-radius: 10px;
-  margin-top: 20px;
-  margin-left: 10px;
+  width: 100%;
+  height: 130px;
   background-color: white;
   -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
@@ -120,53 +87,29 @@
 }
 
 .r-left img {
-  border-radius: 10px;
+  height: 80px;
+  width: 65%;
+  margin-top: 20px;
+  margin-left: 20px;
+  border-radius: 50%;
 }
 
 .r-right {
   float: right;
   width: 58%;
-  margin-left: 5px;
 }
 
 .r-right h5 {
+  margin-top: 30px;
+  margin-left: 30px;
   font-weight: bold;
+  font-size: 15px;
 }
 
 .r-right p {
-  font-size: 10px;
-  color: #b9b7c9;
-  margin-top: 3px;
-}
-
-.r-right span {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   font-size: 13px;
-  color: red;
-  margin-top: 30px;
-}
-
-.r-right img {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  height: 20px;
-  width: 20px;
-  margin-left: 150px;
-  margin-top: -10px;
-}
-
-.r-right img .r-right h6 {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin-left: 160px;
-}
-
-li {
-  list-style-type: none;
-  margin-left: 40px;
+  color: #b9b7c9;
+  margin-top: 15px;
+  margin-left: 30px;
 }
 /*# sourceMappingURL=FleaMy.css.map */

@@ -18,13 +18,18 @@
         </router-link>
       </div>
       <Carousel :slideList="slideList"></Carousel>
-      <div class="list">
-        <div class="con" v-for="(item, index) in slideList" :key="index">
+      <div class="cc-df">
+        <div
+          class="cc-col-center cc-coll-3 address2"
+          v-for="(item, index) in slideList"
+          :key="index"
+        >
           <div @click="goListDetail(item.pkFleaTypeId)">
-            <img :src="item.img" />
-            <h5>
+            <img :src="item.img" class="icon" />
+            <p class="cc-mtop font-size">{{ item.sub }}</p>
+            <!-- <h5>
               宠物
-            </h5>
+            </h5> -->
           </div>
         </div>
       </div>
@@ -36,7 +41,7 @@
         :key="item.pkFleaGoodsId"
         @click="gotoDetail(item.pkFleaGoodsId)"
       >
-        <img :src="item.goodsImgUrl" />
+        <img :src="item.goodsImgUrl.split('--**--')[0]" />
         <div class="left">
           <!-- 商品描述 -->
           <h3>{{ item.goodsName }}</h3>
@@ -51,14 +56,19 @@
     </div> -->
     <!-- 发布信息 -->
     <div class="release">
-      <div class="footer" v-for="(item, index) in list" :key="index">
+      <div
+        class="footer"
+        v-for="item in list"
+        :key="item.pkFleaGoodsId"
+        @click="gotoDetail(item.pkFleaGoodsId)"
+      >
         <div class="goods">
           <img :src="item.userAvatar" alt="" />
           <span>{{ item.username }}</span>
           <p>¥ {{ item.goodsPrice }}</p>
         </div>
         <div class="pic">
-          <img :src="item.goodsImgUrl" />
+          <img :src="item.goodsImgUrl.split('--**--')[0]" />
           <p>{{ item.goodsDescription }}</p>
         </div>
       </div>
@@ -88,34 +98,38 @@ export default {
         {
           url: "#",
           pkFleaTypeId: "7",
+          sub: "文具",
           description: "one",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/1.jpg",
           img:
-            "http://ww1.sinaimg.cn/large/0064QvQTgy1gfqyllenrej306s05qdfp.jpg"
+            "http://ww1.sinaimg.cn/large/0064QvQTgy1gftd623nrij30jg0jg3zq.jpg"
         },
         {
           url: "#",
           pkFleaTypeId: "9",
+          sub: "游戏",
           description: "two",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/2.jpg",
           img:
-            "http://ww1.sinaimg.cn/large/0064QvQTgy1gfqypwycczj308u04f749.jpg"
+            "http://ww1.sinaimg.cn/large/0064QvQTgy1gftd3wn5m8j3046046dfq.jpg"
         },
         {
           url: "#",
           pkFleaTypeId: "3",
+          sub: "衣服",
           description: "three",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg",
           img:
-            "http://ww1.sinaimg.cn/large/0064QvQTgy1gfqyqle5n3j309q09qjro.jpg"
+            "http://ww1.sinaimg.cn/large/0064QvQTgy1gftcvo32gzj30b40b474o.jpg"
         },
         {
           url: "#",
           pkFleaTypeId: "4",
+          sub: "数码",
           description: "three",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg",
           img:
-            "http://ww1.sinaimg.cn/large/0064QvQTgy1gfqyqxjycdj308u04f747.jpg"
+            "http://ww1.sinaimg.cn/large/0064QvQTgy1gftcyt7vj1j30go0got9d.jpg"
         }
       ],
       id: "1"
@@ -172,13 +186,13 @@ export default {
     async getTopReward() {
       this.url = this.GLOBAL.baseUrl + "/flea/reward/top";
       this.reward = (await API.init(this.url, this.data, "post")).data;
-      // console.log(this.reward);
+      console.log(this.reward);
     },
     async getGodList() {
       this.url = this.GLOBAL.baseUrl + "/flea/goods/all";
       this.data = {
         currentPage: 0,
-        pageSize: 4
+        pageSize: 6
       };
       this.list = (await API.init(this.url, this.data, "post")).data;
       // this.count = this.list.length - 4;
@@ -203,4 +217,17 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/scss/fleamarket/HomePage.scss";
+.icon {
+  height: 55px;
+  width: 55px;
+  margin-top: 20px;
+}
+.cc-df {
+  margin-top: 10px;
+  background-color: white;
+}
+.cc-df p {
+  margin-left: 12px;
+  margin-top: -3px;
+}
 </style>

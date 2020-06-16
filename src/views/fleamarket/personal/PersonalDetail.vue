@@ -1,9 +1,6 @@
 <template>
   <div class="bg">
-    <div
-      class="header"
-      :style="{ width: width + '%' }"
-    >
+    <div class="header" :style="{ width: width + '%' }">
       <img
         src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
         @click="backTo(user.pkFleaUserId)"
@@ -22,15 +19,8 @@
             <p>头像</p>
           </div>
           <div class="right">
-            <div
-              id="fileBox"
-              v-show="show"
-            >
-              <img
-                class="up-pic"
-                :src="users.avatar"
-                @click="avatarClick()"
-              />
+            <div id="fileBox" v-show="show">
+              <img class="up-pic" :src="users.avatar" @click="avatarClick()" />
               <input
                 type="file"
                 @change="uploadAvatar($event)"
@@ -40,10 +30,7 @@
               />
             </div>
             <div v-show="!show">
-              <img
-                class="pic"
-                :src="user.avatar"
-              />
+              <img class="pic" :src="user.avatar" />
               <img
                 class="nickimg"
                 src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/youjiantou.png"
@@ -55,10 +42,7 @@
           <div class="left">
             <p>昵称</p>
           </div>
-          <div
-            class="right"
-            v-show="!show"
-          >
+          <div class="right" v-show="!show">
             <p>
               {{ user.nickname }}
             </p>
@@ -67,10 +51,7 @@
               src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/youjiantou.png"
             />
           </div>
-          <div
-            class="right"
-            v-show="show"
-          >
+          <div class="right" v-show="show">
             <input
               type="text"
               v-model="users.nickname"
@@ -96,10 +77,7 @@
           <div class="left">
             <p>性别</p>
           </div>
-          <div
-            class="right"
-            v-show="!show"
-          >
+          <div class="right" v-show="!show">
             <p>
               {{ user.sex }}
             </p>
@@ -108,10 +86,7 @@
               src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/youjiantou.png"
             />
           </div>
-          <div
-            class="right"
-            v-show="show"
-          >
+          <div class="right" v-show="show">
             <input
               type="text"
               v-model="users.sex"
@@ -123,16 +98,13 @@
             />
           </div>
         </div>
-        <div
-          class="text"
-          v-show="!show"
-        >
+        <div class="text" v-show="!show">
           <div class="left">
             <p>联系方式</p>
           </div>
           <div class="right">
             <p>
-              {{ user.phoneNumber}}
+              {{ user.phoneNumber }}
             </p>
             <img
               class="nickimg"
@@ -140,10 +112,7 @@
             />
           </div>
         </div>
-        <div
-          class="text"
-          v-show="show"
-        >
+        <div class="text" v-show="show">
           <div class="left">
             <p>联系方式</p>
           </div>
@@ -170,27 +139,14 @@
           </div>
         </div>
         <div style="text-align:center">
-          <p
-            @click="show = true"
-            v-show="!show"
-          >修改</p>
-          <p
-            @click="update"
-            v-show="show"
-          >确认修改</p>
+          <p @click="show = true" v-show="!show">修改</p>
+          <p @click="update" v-show="show">确认修改</p>
         </div>
       </div>
     </div>
-    <div
-      class="zhezhaoceng"
-      v-show="zzc"
-    >
+    <div class="zhezhaoceng" v-show="zzc">
       <div class="choice-line"></div>
-      <div
-        v-for="(item, index) in gender"
-        :key="index"
-        @mouseout="zzc = false"
-      >
+      <div v-for="(item, index) in gender" :key="index" @mouseout="zzc = false">
         <p @click="getSex(index)">{{ item.sec }}</p>
       </div>
     </div>

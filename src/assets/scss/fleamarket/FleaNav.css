@@ -43,7 +43,6 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  /*margin-left: 5%;  1 */
   margin-top: 25px;
 }
 
@@ -51,6 +50,7 @@ p {
   display: block;
   color: #929292;
   font-size: 12px;
+  margin-top: 1px;
 }
 
 .icon2 {
@@ -70,8 +70,6 @@ p {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  /*  margin-left: 7%;
-  margin-top: 13px;*/
 }
 
 .icon3 {
@@ -117,8 +115,6 @@ p {
           align-items: center;
   height: 60px;
   width: 60px;
-  /* margin-left: 1%;
-  margin-top: 13px;*/
 }
 
 .icon5 {
@@ -138,12 +134,11 @@ p {
           align-items: center;
   height: 60px;
   width: 60px;
-  /*margin-left: 5%;
-  margin-top: 13px;*/
 }
 
 .icon {
-  height: 20px;
-  width: 20px;
+  height: 25px;
+  width: 25px;
+  margin-left: 1px;
 }
 /*# sourceMappingURL=FleaNav.css.map */

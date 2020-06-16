@@ -169,6 +169,11 @@ const routes = [
     component: () => import("../views/other/Address.vue")
   },
   {
+    path: "/about",
+    name: "About",
+    component: () => import("../views/other/About.vue")
+  },
+  {
     path: "/city/:Id/:Address",
     name: "City",
     component: () => import("../views/other/City.vue")

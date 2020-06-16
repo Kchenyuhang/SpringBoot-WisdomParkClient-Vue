@@ -33,9 +33,7 @@
             >{{ item.typeName }}</option
           >
         </select>
-        <router-link to="/pay">
-          <button>确认发布</button>
-        </router-link>
+        <button>确认发布</button>
       </div>
     </div>
   </div>

@@ -45,7 +45,7 @@
     </div>
     <div class="footer">
       <p>实付款：125.1</p>
-      <p>优惠：0000</p>
+      <p>优惠：0.00</p>
     </div>
     <button>确定</button>
   </div>

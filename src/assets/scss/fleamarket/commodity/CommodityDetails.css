@@ -25,6 +25,11 @@
   margin-top: 3%;
 }
 
+.bg .container {
+  position: absolute;
+  margin-bottom: 100px;
+}
+
 .bg .container .card {
   border: 1px solid #e3e3e3;
   background-color: #fff;
@@ -40,6 +45,7 @@
 .bg .container .card .head img {
   width: 40px;
   height: 40px;
+  margin-left: 10px;
 }
 
 .bg .container .card .head .word .title {
@@ -188,5 +194,41 @@
 
 .r-left-con span {
   font-size: 0.8rem;
+}
+
+.bottom {
+  width: 100%;
+  height: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  position: fixed;
+  background-color: white;
+  bottom: 0;
+}
+
+.bottom .home img {
+  width: 25px;
+  height: 25px;
+  margin-left: 15px;
+}
+
+.bottom .collect img {
+  width: 25px;
+  height: 25px;
+}
+
+.bottom .want {
+  margin-top: 10px;
+}
+
+.bottom .want .btn {
+  border: 1px solid grey;
+  color: white;
+  background-color: red;
+  border-radius: 20px;
+  padding: 5px 10px 5px 10px;
 }
 /*# sourceMappingURL=CommodityDetails.css.map */
