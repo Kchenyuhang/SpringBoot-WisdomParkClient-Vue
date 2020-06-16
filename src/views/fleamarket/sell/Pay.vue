@@ -53,6 +53,38 @@
     <button>确定</button>
   </div>
 </template>
+<script>
+const API = require("../../../request/api.js");
+export default {
+  name: "Pay",
+  data() {
+    return {};
+  },
+  components: {},
+  created() {
+    this.getRandow();
+  },
+  mounted() {},
+  methods: {
+    async doList() {
+      this.url = this.GLOBAL.baseUrl + "/flea/order/increased";
+      this.data = {
+        fleaGoodsPkFleaGoodsId: Math.ceil(Math.random() * 1000000000000),
+        fleaUserBuyerPkFleaUserId: 0,
+        fleaUserSellerPkFleaUserId: 0,
+        pkFleaOrderId: ""
+      };
+      await API.init(this.url, this.data, "post");
+      this.like = false;
+    },
+    getRandow() {
+      Math.ceil(Math.random() * 1000000000000);
+    }
+  },
+  computed: {}
+};
+</script>
+
 <style scoped lang="scss">
 @import "../../../assets/scss/fleamarket/pay/pay.scss";
 @import "../../../assets/scss/person/Base.scss";

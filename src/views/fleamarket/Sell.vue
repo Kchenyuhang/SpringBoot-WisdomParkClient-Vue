@@ -17,9 +17,21 @@
       v-model="data.goodsDescription"
     ></textarea>
     <!-- 图片上传区域 -->
+    <p>点击上传图片</p>
     <div class="upload">
-      <p>图片上传样式。。。。待定</p>
-      <input type="file" />
+      <img
+        class="up-pic"
+        :src="data.goodsImgUrl"
+        @click="avatarClick()"
+      />
+      <input
+        @click="avatarClick()"
+        type="file"
+        @change="uploadAvatar($event)"
+        ref="file"
+        style="display: none;"
+        id="file"
+      />
     </div>
     <div class="list">
       <div class="price">
@@ -67,10 +79,10 @@ export default {
       data: {
         goodsDescription: "",
         goodsImgUrl:
-          "https://kxingchen.oss-cn-shanghai.aliyuncs.com/develop/d3a18c6b45844b14.jpg",
+          "https://student-m.oss-cn-hangzhou.aliyuncs.com/img/add.png",
         goodsMark: "",
         goodsName: "",
-        goodsPrice: 0,
+        goodsPrice: "",
         pkFleaTypeId: 0,
         pkFleaUserId: 0
       }
@@ -87,16 +99,45 @@ export default {
       this.data.pkFleaUserId = this.user.pkFleaUserId;
     },
     async getAllType() {
-      this.url = "http://101.37.31.188:8080/flea/type/all";
+      this.url = this.GLOBAL.baseUrl + "/flea/type/all";
       this.type = (await API.init(this.url, this.data, "post")).data.types;
-      console.log(this.type);
+      // console.log(this.type);
     },
     async getSell() {
-      this.url = "http://101.37.31.188:8080/flea/goods/increased";
-      console.log(this.data);
+      this.url = this.GLOBAL.baseUrl + "/flea/goods/increased";
+      // console.log(this.data);
 
       this.type = (await API.init(this.url, this.data, "post")).data.types;
-      console.log(this.type);
+      // console.log(this.type);
+      this.$router.push({
+        path: `/personal/${this.data.pkFleaUserId}`
+      });
+    },
+    uploadAvatar(event) {
+      const OSS = require("ali-oss");
+      let client = new OSS({
+        region: "oss-cn-hangzhou",
+        accessKeyId: "LTAI4FcUiGZb75XGwiCC7Yzu",
+        accessKeySecret: "ZX0hbGsO2aOAWUfGJlrL48Tkp0bfFQ",
+        bucket: "student-m"
+      });
+      let timestamp = Date.parse(new Date());
+      let imgUrl = "img/" + timestamp + "." + "jpeg";
+      var file = event.target.files[0]; //获取文件流
+      var _this = this;
+      client.multipartUpload(imgUrl, file).then(function(result) {
+        _this.avatar = result.res.requestUrls[0];
+        _this.updateAdminInfo(_this.avatar);
+        console.log(_this.avatar);
+      });
+    },
+    avatarClick() {
+      this.$refs.file.click();
+    },
+    updateAdminInfo(url) {
+      this.imgDataUrl = url.substring(0, url.indexOf("?"));
+      this.data.goodsImgUrl = url;
+      // this.updateAvatar();
     }
   },
   computed: {},
@@ -112,9 +153,14 @@ h4 {
   margin-left: 10px;
   font-size: 13px;
 }
+.up-pic {
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+}
 .upload {
   height: 100px;
-  background-color: blue;
+  // background-color: blue;
 }
 .list {
   height: 200px;
@@ -137,7 +183,7 @@ button {
   height: 40px;
   width: 100%;
   margin-top: 80px;
-  background-color: red;
+  // background-color: red;
   border: none;
   border-radius: 5px;
 }

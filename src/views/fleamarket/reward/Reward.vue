@@ -21,7 +21,7 @@
               <p>{{ item.description }}</p>
               <span>{{ item.title }}</span>
               <p>¥价格</p>
-              <div class="right">
+              <div class="right" v-for="(item, index) in test" :key="index">
                 <!-- <img :src="item.avatar" alt="" /> -->
               </div>
             </div>
@@ -81,8 +81,8 @@ export default {
       this.reward = (await API.init(this.url, this.data, "post")).data.content;
       for (let i = 0; i < this.reward.length; i++) {
         this.test = this.reward[i].fleaUser;
+        console.log(this.test);
       }
-      console.log(this.test);
       console.log(this.reward);
     }
   },

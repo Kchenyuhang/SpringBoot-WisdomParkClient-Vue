@@ -12,15 +12,15 @@
               :src="user.avatar"
             />
             <div class="mes">
-              <p class="wid">{{user.username}}</p>
-              <p>昵称：{{user.nickname}}</p>
+              <p class="wid">{{ user.username }}</p>
+              <p>昵称：{{ user.nickname }}</p>
             </div>
           </div>
         </div>
         <div class="right">
           <div
             class="btn"
-            @click=" gotoUserDetail(user.pkFleaUserId)"
+            @click="gotoUserDetail(user.pkFleaUserId)"
           >
             <p>个人主页></p>
           </div>

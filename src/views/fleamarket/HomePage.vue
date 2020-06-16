@@ -14,20 +14,12 @@
           @click="gotoSearch(id)"
         />
         <router-link to="/list">
-          <img
-            src="../../assets/images/更多.png"
-            alt=""
-            class="imgs"
-          />
+          <img src="../../assets/images/更多.png" alt="" class="imgs" />
         </router-link>
       </div>
       <Carousel :slideList="slideList"></Carousel>
       <div class="list">
-        <div
-          class="con"
-          v-for="(item, index) in slideList"
-          :key="index"
-        >
+        <div class="con" v-for="(item, index) in slideList" :key="index">
           <div @click="goListDetail(item.pkFleaTypeId)">
             <img :src="item.img" />
             <h5>
@@ -54,24 +46,14 @@
       </div>
     </div>
     <!-- 悬赏 -->
-    <div class="reward">
-      <Carousel
-        :slideList="slideList"
-        class="ward"
-      ></Carousel>
-    </div>
+    <!-- <div class="reward">
+      <Carousel :slideList="slideList" class="ward"></Carousel>
+    </div> -->
     <!-- 发布信息 -->
     <div class="release">
-      <div
-        class="footer"
-        v-for="(item, index) in list"
-        :key="index"
-      >
+      <div class="footer" v-for="(item, index) in list" :key="index">
         <div class="goods">
-          <img
-            :src="item.userAvatar"
-            alt=""
-          />
+          <img :src="item.userAvatar" alt="" />
           <span>{{ item.username }}</span>
           <p>¥ {{ item.goodsPrice }}</p>
         </div>

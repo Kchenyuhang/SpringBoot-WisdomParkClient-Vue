@@ -45,7 +45,7 @@
     height: 100px;
     display: flex;
     flex: 0 0 0 20%;
-    // background-color: black;
+    background-color: #f5f5f5;
   }
   .list img {
     margin-left: 34px;
@@ -61,15 +61,17 @@
   .inform {
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
+    width: 95%;
     // height: 100px;
     margin-top: 10px;
+    margin-left: 10px;
     // background-color: #f3f3f3;
   }
   .right {
     width: 50%;
     margin-top: 10px;
-    border-radius: 10px;
+    // margin-left: 2px;
+    // border-radius: 10px;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
     // background-color: blue;
   }
@@ -82,7 +84,7 @@
   }
   .left h3 {
     margin-left: 10px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
   }
   .left span {
@@ -104,13 +106,15 @@
   }
   .footer {
     height: 340px;
-    width: 98%;
-    margin-left: 4px;
+    width: 95%;
+    margin-left: 10px;
+    border-radius: 3%;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
     // background-color: black;
   }
   .goods {
     height: 65px;
+    margin-top: 10px;
     // background-color: royalblue;
   }
   .goods img {

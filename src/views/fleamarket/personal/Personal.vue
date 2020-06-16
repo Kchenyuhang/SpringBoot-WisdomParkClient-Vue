@@ -16,8 +16,8 @@
                 :src="list.avatar"
               />
               <div class="mes">
-                <p class="wid">{{list.username}}</p>
-                <p class="nickname">用户昵称：{{list.nickname}}</p>
+                <p class="wid">{{ list.username }}</p>
+                <p class="nickname">用户昵称：{{ list.nickname }}</p>
               </div>
             </div>
           </div>
@@ -40,13 +40,13 @@
       <div class="count">
         <div class="tab">
           <div @click="isShow = 1">
-            <p :class="{ blueLine: isShow == 1 }">发布1</p>
+            <p :class="{ blueLine: isShow == 1 }">发布{{send.length}}</p>
           </div>
           <div @click="isShow = 2">
             <p :class="{ blueLine: isShow == 2 }">评价0</p>
           </div>
           <div @click="isShow = 3">
-            <p :class="{ blueLine: isShow == 3 }">收藏0</p>
+            <p :class="{ blueLine: isShow == 3 }">收藏{{like.length}}</p>
           </div>
         </div>
       </div>
@@ -54,27 +54,29 @@
     <div class="container">
       <div
         class="box"
-        v-show="isShow ==1"
+        v-show="isShow == 1"
+        v-for="(item, index) in send"
+        :key="index"
       >
         <div class="left">
-          <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/3.jpg" />
+          <img :src="item.goodsImgUrl" />
         </div>
         <div class="right">
-          <p class="title">商品名</p>
-          <p class="des">描述</p>
-          <p class="price">￥价格</p>
-          <div class="com">
+          <p class="title">{{ item.goodsName }}</p>
+          <p class="des">{{ item.goodsDescription }}</p>
+          <p class="price">￥{{ item.goodsPrice }}</p>
+          <!-- <div class="com">
             <img
               class="icon"
               src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/cc-message.png"
             />
-            <p class="mes">10</p>
-          </div>
+            <p class="mes">0</p>
+          </div> -->
         </div>
       </div>
       <div
         class="box"
-        v-show="isShow ==2"
+        v-show="isShow == 2"
       >
         <div class="left">
           <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/3.jpg" />
@@ -83,46 +85,50 @@
           <p class="title">商品名</p>
           <p class="des">描述</p>
           <p class="price">￥价</p>
-          <div class="com">
+          <!-- <div class="com">
             <img
               class="icon"
               src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/cc-message.png"
             />
             <p class="mes">10</p>
-          </div>
+          </div> -->
         </div>
       </div>
       <div
         class="box"
-        v-show="isShow ==3"
+        v-show="isShow == 3"
+        v-for="(item, index) in like"
+        :key="index"
       >
         <div class="left">
-          <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/3.jpg" />
+          <img :src="item.goodsImgUrl" />
         </div>
         <div class="right">
-          <p class="title">商品</p>
-          <p class="des">描述</p>
-          <p class="price">￥价格</p>
-          <div class="com">
+          <p class="title">{{ item.goodsName }}</p>
+          <p class="des">{{ item.goodsDescription }}</p>
+          <p class="price">￥{{ item.goodsPrice }}</p>
+          <!-- <div class="com">
             <img
               class="icon"
               src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/cc-message.png"
             />
-            <p class="mes">10</p>
-          </div>
+            <p class="mes">0</p>
+          </div> -->
         </div>
       </div>
       <div
         class="send"
         v-show="show"
       >
-        <div class="round">
-          <img
-            class="icon"
-            src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/add.png"
-          />
-          <p>发布</p>
-        </div>
+        <router-link to="/sell">
+          <div class="round">
+            <img
+              class="icon"
+              src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/add.png"
+            />
+            <p>发布</p>
+          </div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -138,13 +144,18 @@ export default {
       show: true,
       user: JSON.parse(localStorage.getItem("FleaUser")),
       path1: JSON.parse(localStorage.getItem("path1")),
-      list: []
+      list: [],
+      count: 10,
+      send: [],
+      like: []
     };
   },
   components: {},
   created() {
     this.ifUser();
     this.getUserInfor();
+    this.getSend();
+    this.getLike();
   },
   mounted() {},
   methods: {
@@ -168,6 +179,41 @@ export default {
       if (this.$route.params.id == this.user.pkFleaUserId) {
         this.show = true;
       } else this.show = false;
+    },
+    async getSend() {
+      let id = this.$route.params.id;
+      this.url = this.GLOBAL.baseUrl + "/flea/users/release";
+      this.data = {
+        currentPage: 1,
+        pageSize: this.count,
+        pkFleaUserId: id
+      };
+      this.send = (await API.init(this.url, this.data, "post")).data.content;
+      console.log(this.send);
+    },
+    async getLike() {
+      let id = this.$route.params.id;
+      this.url = this.GLOBAL.baseUrl + "/flea/collection/all";
+      this.data = {
+        currentPage: 1,
+        pageSize: this.count,
+        pkFleaUserId: id
+      };
+      this.like = (await API.init(this.url, this.data, "post")).data;
+      // console.log(this.like);
+    },
+    gotoDetail(id) {
+      localStorage.setItem("path", JSON.stringify(this.path));
+      this.$router.push({
+        path: `/commoditydetails/${id}`
+      });
+      this.page[this.count] = id;
+      this.count++;
+      localStorage.setItem("page", JSON.stringify(this.page));
+      localStorage.setItem("count", JSON.stringify(this.count));
+      this.getList();
+      // window.location.reload();
+      // this.backTop();
     }
   },
   computed: {}

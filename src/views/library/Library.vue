@@ -20,14 +20,8 @@
         <p>待还书记</p>
       </div>
     </div>
-    <div
-      v-for="(item, index) in result.sysBorrowNoReturnList"
-      :key="index"
-    >
-      <div
-        class="card"
-        v-if="item.isReturned === false"
-      >
+    <div v-for="(item, index) in result.sysBorrowNoReturnList" :key="index">
+      <div class="card" v-if="item.isReturned === false">
         <div class="card1">
           <div>
             <p class="mid">{{ item.borrowBookName }}</p>
@@ -48,10 +42,7 @@
     <div class="title">
       <p>历史借阅</p>
     </div>
-    <div
-      v-for="item in result.sysBorrowReturnList"
-      :key="item.pkBorrowId"
-    >
+    <div v-for="item in result.sysBorrowReturnList" :key="item.pkBorrowId">
       <div class="card">
         <div class="card1">
           <div>
