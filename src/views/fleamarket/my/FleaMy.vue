@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <div class="r-inform">
+      <div class="bgi"></div>
       <div class="r-left">
         <img
           :src="user.avatar"

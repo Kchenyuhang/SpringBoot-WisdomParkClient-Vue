@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg">
     <div class="container">
       <div class="header">
         <router-link to="/layout">
@@ -14,18 +14,29 @@
           @click="gotoSearch(id)"
         />
         <router-link to="/list">
-          <img src="../../assets/images/更多.png" alt="" class="imgs" />
+          <img
+            src="../../assets/images/更多.png"
+            alt=""
+            class="imgs"
+          />
         </router-link>
       </div>
       <Carousel :slideList="slideList"></Carousel>
       <div class="list">
-        <div class="con" v-for="(item, index) in slideList" :key="index">
-          <div @click="goListDetail(item.pkFleaTypeId)">
-            <img :src="item.img" />
-            <h5>
-              宠物
-            </h5>
-          </div>
+        <div
+          class="con"
+          v-for="(item, index) in slideList"
+          :key="index"
+        >
+          <router-link :to="'/listDetail/'+item.pkFleaTypeId">
+            <div @click="goListDetail(item.pkFleaTypeId)">
+              <img :src="item.img" />
+              <h5>
+                {{item.name}}
+              </h5>
+            </div>
+          </router-link>
+
         </div>
       </div>
     </div>
@@ -51,9 +62,16 @@
     </div> -->
     <!-- 发布信息 -->
     <div class="release">
-      <div class="footer" v-for="(item, index) in list" :key="index">
+      <div
+        class="footer"
+        v-for="(item, index) in hotList"
+        :key="index"
+      >
         <div class="goods">
-          <img :src="item.userAvatar" alt="" />
+          <img
+            :src="item.userAvatar"
+            alt=""
+          />
           <span>{{ item.username }}</span>
           <p>¥ {{ item.goodsPrice }}</p>
         </div>
@@ -79,6 +97,7 @@ export default {
       user: [],
       count: 0,
       type: [],
+      hotList: [],
       data: {
         currentPage: 1,
         field: 4,
@@ -89,30 +108,34 @@ export default {
           url: "#",
           pkFleaTypeId: "7",
           description: "one",
+          name: "宠物",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/1.jpg",
           img:
             "http://ww1.sinaimg.cn/large/0064QvQTgy1gfqyllenrej306s05qdfp.jpg"
         },
         {
           url: "#",
-          pkFleaTypeId: "9",
+          pkFleaTypeId: "33",
           description: "two",
+          name: "手机数码",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/2.jpg",
           img:
             "http://ww1.sinaimg.cn/large/0064QvQTgy1gfqypwycczj308u04f749.jpg"
         },
         {
           url: "#",
-          pkFleaTypeId: "3",
+          pkFleaTypeId: "13",
           description: "three",
+          name: "游戏交易",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg",
           img:
             "http://ww1.sinaimg.cn/large/0064QvQTgy1gfqyqle5n3j309q09qjro.jpg"
         },
         {
           url: "#",
-          pkFleaTypeId: "4",
+          pkFleaTypeId: "19",
           description: "three",
+          name: "女装",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg",
           img:
             "http://ww1.sinaimg.cn/large/0064QvQTgy1gfqyqxjycdj308u04f747.jpg"
@@ -129,6 +152,7 @@ export default {
     this.getGodList();
     this.getList();
     this.reInto();
+    this.getHotList();
     localStorage.setItem("path", JSON.stringify(this.path));
     // this.getAllType();
   },
@@ -141,6 +165,17 @@ export default {
         pageSize: 4
       };
       this.list = (await API.init(this.url, this.data, "post")).data;
+      // this.count = this.list.length - 4;
+      // this.list.splice(0, this.count);
+      // console.log(this.list);
+    },
+    async getHotList() {
+      this.url = this.GLOBAL.baseUrl + "/flea/goods/all";
+      this.data = {
+        currentPage: 0,
+        pageSize: 100
+      };
+      this.hotList = (await API.init(this.url, this.data, "post")).data;
       // this.count = this.list.length - 4;
       // this.list.splice(0, this.count);
       // console.log(this.list);

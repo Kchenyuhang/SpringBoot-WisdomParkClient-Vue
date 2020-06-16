@@ -202,6 +202,7 @@ export default {
       if (this.count <= 1) {
         this.count = 0;
         localStorage.setItem("count", JSON.stringify(this.count));
+
         // alert(this.path);
         this.$router.push(this.path);
       } else {

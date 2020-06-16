@@ -1,30 +1,28 @@
 <template>
   <div>
     <div class="header">
-      <router-link to="/sell">
-        <img
-          src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
-          alt=""
-        />
-      </router-link>
+      <img
+        src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
+        alt=""
+        @click="backto()"
+      />
       <p>购买宝贝</p>
     </div>
     <div class="container">
       <div class="r-inform">
         <div class="r-left">
-          <img
-            src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/3.jpg"
-            alt=""
-          />
+          <img :src="seller[0].goodsImgUrl" />
         </div>
         <div class="r-right">
-          <h5>title</h5>
-          <p>描述</p>
-          <span>¥ 价格</span>
+          <h5>{{ seller[0].goodsName }}</h5>
+          <p>{{ seller[0].username }}</p>
+          <p>{{ seller[0].goodsMark }}</p>
+          <p>{{ seller[0].goodsDescription }}</p>
+          <span>¥ {{ seller[0].goodsPrice }}</span>
         </div>
       </div>
     </div>
-    <div class="address">
+    <!-- <div class="address">
       <hr class="line" />
       <router-link to="/address">
         <div
@@ -45,40 +43,87 @@
         </div>
       </router-link>
       <hr class="line" />
-    </div>
+    </div> -->
     <div class="footer">
-      <p>实付款：125.1</p>
-      <p>优惠：0000</p>
+      <p>实付款：{{ seller[0].goodsPrice }}</p>
+      <!-- <p>优惠：0000</p> -->
     </div>
-    <button>确定</button>
+    <button @click="doList">确定</button>
   </div>
 </template>
 <script>
+// import { get } from "../../../request/http";
 const API = require("../../../request/api.js");
 export default {
   name: "Pay",
   data() {
-    return {};
+    return {
+      user: JSON.parse(localStorage.getItem("FleaUser")),
+      page: JSON.parse(localStorage.getItem("page")),
+      count: JSON.parse(localStorage.getItem("count")),
+      seller: [
+        {
+          goodsImgUrl: "",
+          goodsName: "",
+          goodsDescription: "",
+          goodsPrice: 0,
+          username: "",
+          goodsMark: ""
+        }
+      ]
+    };
   },
   components: {},
   created() {
-    this.getRandow();
+    // this.getRandow();
+    this.getSeller();
   },
   mounted() {},
   methods: {
     async doList() {
       this.url = this.GLOBAL.baseUrl + "/flea/order/increased";
+      this.url1 = this.GLOBAL.baseUrl + "/flea/goods/delete";
+      let rand = Math.ceil(Math.random() * 100000000);
       this.data = {
-        fleaGoodsPkFleaGoodsId: Math.ceil(Math.random() * 1000000000000),
-        fleaUserBuyerPkFleaUserId: 0,
-        fleaUserSellerPkFleaUserId: 0,
-        pkFleaOrderId: ""
+        fleaGoodsPkFleaGoodsId: this.page[0],
+        fleaUserBuyerPkFleaUserId: this.user.pkFleaUserId,
+        fleaUserSellerPkFleaUserId: this.seller[0].pkFleaUserId,
+        pkFleaOrderId: rand
       };
-      await API.init(this.url, this.data, "post");
-      this.like = false;
+      this.result = (await API.init(this.url, this.data, "post")).data;
+
+      this.goodData = {
+        pkFleaGoodsId: this.page[0]
+      };
+      this.return = (await API.init(this.url1, this.goodData, "post")).data;
+      if (this.result == "OK") {
+        this.$router.push({
+          path: `/personal/${this.user.pkFleaUserId}`
+        });
+      } else this.doList();
+      // console.log(this.result);
     },
-    getRandow() {
-      Math.ceil(Math.random() * 1000000000000);
+    async getSeller() {
+      this.url = this.GLOBAL.baseUrl + "/flea/goods/id";
+      if (this.count <= 0) {
+        this.count == 0;
+        this.data = {
+          pkFleaGoodsId: this.page[this.count]
+        };
+      } else
+        this.data = {
+          pkFleaGoodsId: this.page[--this.count]
+        };
+      this.seller = (await API.init(this.url, this.data, "post")).data;
+      // console.log(this.seller);
+    },
+    // getRandow() {
+    //   Math.ceil(Math.random() * 1000000000000);
+    // },
+    backto() {
+      this.$router.push("/commoditydetails/" + this.page);
+      let c = [];
+      localStorage.setItem("page", JSON.stringify(c));
     }
   },
   computed: {}
@@ -147,7 +192,7 @@ export default {
 .footer {
   width: 75%;
   height: 60px;
-  margin-top: 350px;
+  margin-top: 450px;
   //   background-color: gray;
 }
 button {
@@ -155,7 +200,7 @@ button {
   width: 25%;
   float: right;
   border: none;
-  margin-top: -60px;
+  margin-top: -90px;
   background-color: red;
 }
 </style>
