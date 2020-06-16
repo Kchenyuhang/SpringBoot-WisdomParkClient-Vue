@@ -166,8 +166,7 @@ export default {
         pkUserAccountId: this.user.pkUserAccountId,
         address: this.user.address
       };
-      console.log(this.data);
-      this.result = API.init(this.url, this.data, "post");
+      this.result = await API.init(this.url, this.data, "post");
       console.log(this.result.msg);
 
       if (this.result.msg == "成功") {

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg">
     <div class="container">
       <div class="header">
         <router-link to="/layout">
@@ -89,6 +89,7 @@ export default {
       user: [],
       count: 0,
       type: [],
+      hotList: [],
       data: {
         currentPage: 1,
         field: 4,
@@ -100,6 +101,7 @@ export default {
           pkFleaTypeId: "7",
           sub: "文具",
           description: "one",
+          name: "宠物",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/1.jpg",
           img:
             "http://ww1.sinaimg.cn/large/0064QvQTgy1gftd623nrij30jg0jg3zq.jpg"
@@ -109,6 +111,7 @@ export default {
           pkFleaTypeId: "9",
           sub: "游戏",
           description: "two",
+          name: "手机数码",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/2.jpg",
           img:
             "http://ww1.sinaimg.cn/large/0064QvQTgy1gftd3wn5m8j3046046dfq.jpg"
@@ -118,6 +121,7 @@ export default {
           pkFleaTypeId: "3",
           sub: "衣服",
           description: "three",
+          name: "游戏交易",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg",
           img:
             "http://ww1.sinaimg.cn/large/0064QvQTgy1gftcvo32gzj30b40b474o.jpg"
@@ -127,6 +131,7 @@ export default {
           pkFleaTypeId: "4",
           sub: "数码",
           description: "three",
+          name: "女装",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg",
           img:
             "http://ww1.sinaimg.cn/large/0064QvQTgy1gftcyt7vj1j30go0got9d.jpg"
@@ -143,6 +148,7 @@ export default {
     this.getGodList();
     this.getList();
     this.reInto();
+    this.getHotList();
     localStorage.setItem("path", JSON.stringify(this.path));
     // this.getAllType();
   },
@@ -155,6 +161,17 @@ export default {
         pageSize: 4
       };
       this.list = (await API.init(this.url, this.data, "post")).data;
+      // this.count = this.list.length - 4;
+      // this.list.splice(0, this.count);
+      // console.log(this.list);
+    },
+    async getHotList() {
+      this.url = this.GLOBAL.baseUrl + "/flea/goods/all";
+      this.data = {
+        currentPage: 0,
+        pageSize: 100
+      };
+      this.hotList = (await API.init(this.url, this.data, "post")).data;
       // this.count = this.list.length - 4;
       // this.list.splice(0, this.count);
       // console.log(this.list);

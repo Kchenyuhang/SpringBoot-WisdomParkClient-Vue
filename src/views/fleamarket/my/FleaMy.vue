@@ -1,11 +1,12 @@
 <template>
   <div class="container">
     <div class="r-inform">
+      <div class="bgi"></div>
       <div class="r-left">
         <img :src="user.avatar" alt="" />
       </div>
       <div class="r-right">
-        <h5>{{ user.username }}</h5>
+        <h5>{{ user.nickname }}</h5>
         <p>个人简介</p>
       </div>
     </div>

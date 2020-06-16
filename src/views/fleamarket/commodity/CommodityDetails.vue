@@ -86,11 +86,11 @@
 
         <p>取消收藏</p>
       </div>
-      <div class="want">
-        <router-link to="/pay">
+      <router-link to="/pay">
+        <div class="want">
           <p class="btn">我想要</p>
-        </router-link>
-      </div>
+        </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -129,8 +129,7 @@ export default {
       page: JSON.parse(localStorage.getItem("page")),
       count: JSON.parse(localStorage.getItem("count")),
       user: JSON.parse(localStorage.getItem("FleaUser")),
-      like: true,
-      islike: 1
+      like: true
     };
   },
   components: {},
@@ -143,6 +142,7 @@ export default {
   created() {
     this.getList();
     this.getSpList();
+    this.iflike();
   },
   mounted() {
     window.addEventListener("scroll", this.scrollToTop);
@@ -169,10 +169,33 @@ export default {
       await API.init(this.url, this.data, "post");
       this.like = true;
     },
+    async iflike() {
+      this.url = this.GLOBAL.baseUrl + "/flea/collection/all";
+      this.data = {
+        currentPage: 1,
+        pageSize: 100,
+        pkFleaUserId: this.user.pkFleaUserId
+      };
+      this.result = (await API.init(this.url, this.data, "post")).data;
+      // this.like = true;
+      // console.log(this.result[4].goodsId);
+      // console.log(this.list[0].pkFleaGoodsId);
+      for (let i = 0; i < this.result.length; i++) {
+        // console.log(this.result[i].userId);
+        // console.log(this.$route.params.id);
+        console.log(this.result[i].userId == this.$route.params.id);
+
+        if (this.result[i].userId == this.$route.params.id) {
+          this.like = false;
+          i = this.result.length;
+        } else this.like = true;
+      }
+    },
     backUp() {
       if (this.count <= 1) {
         this.count = 0;
         localStorage.setItem("count", JSON.stringify(this.count));
+
         // alert(this.path);
         this.$router.push(this.path);
       } else {

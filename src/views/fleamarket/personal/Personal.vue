@@ -1,6 +1,10 @@
 <template>
   <div class="bg">
     <div class="header">
+      <div
+        class="bgi"
+        :style="{ backgroundImage: 'url(' + this.list.avatar + ')' }"
+      ></div>
       <img
         class="icon"
         src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
@@ -16,8 +20,8 @@
                 :src="list.avatar"
               />
               <div class="mes">
-                <p class="wid">{{list.username}}</p>
-                <p class="nickname">用户昵称：{{list.nickname}}</p>
+                <p class="wid">{{ list.username }}</p>
+                <p class="nickname">用户昵称：{{ list.nickname }}</p>
               </div>
             </div>
           </div>
@@ -40,89 +44,133 @@
       <div class="count">
         <div class="tab">
           <div @click="isShow = 1">
-            <p :class="{ blueLine: isShow == 1 }">发布1</p>
+            <p :class="{ blueLine: isShow == 1 }">发布{{ send.length }}</p>
           </div>
-          <div @click="isShow = 2">
-            <p :class="{ blueLine: isShow == 2 }">评价0</p>
+          <div
+            @click="isShow = 2"
+            v-show="show"
+          >
+            <p :class="{ blueLine: isShow == 2 }">订单{{ buy.length }}</p>
           </div>
           <div @click="isShow = 3">
-            <p :class="{ blueLine: isShow == 3 }">收藏0</p>
+            <p :class="{ blueLine: isShow == 3 }">收藏{{ like.length }}</p>
           </div>
         </div>
       </div>
     </div>
     <div class="container">
       <div
-        class="box"
-        v-show="isShow ==1"
+        class="zhezhaoceng cc-shadow"
+        v-show="zzc"
       >
-        <div class="left">
-          <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/3.jpg" />
+        <p>是否想要下架这件商品</p>
+        <div class="b-pos">
+          <span @click="zzc = false">取消</span>
+          <span @click="deleteSend">确认</span>
         </div>
-        <div class="right">
-          <p class="title">商品名</p>
-          <p class="des">描述</p>
-          <p class="price">￥价格</p>
-          <div class="com">
-            <img
-              class="icon"
-              src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/cc-message.png"
-            />
-            <p class="mes">10</p>
-          </div>
+      </div>
+      <div
+        class="zhezhaoceng cc-shadow"
+        v-show="zzc1"
+      >
+        <p>成功下架商品</p>
+        <div class="b-pos">
+          <span @click="zzc1=false">确认</span>
         </div>
       </div>
       <div
         class="box"
-        v-show="isShow ==2"
+        v-show="isShow == 1"
+        v-for="item in send"
+        :key="item.id"
       >
         <div class="left">
-          <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/3.jpg" />
+          <img :src="item.goodsImgUrl" />
         </div>
         <div class="right">
-          <p class="title">商品名</p>
-          <p class="des">描述</p>
-          <p class="price">￥价</p>
-          <div class="com">
+          <p class="title">{{ item.goodsName }}</p>
+          <p class="des">{{ item.goodsDescription }}</p>
+          <div class="price">
+            <span class="red">￥{{ item.goodsPrice }}</span>
+            <img
+              v-show="show"
+              class="del"
+              src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/delete.png"
+              @click="showzzc(item.goodsId)"
+            />
+          </div>
+          <!-- <div class="com">
             <img
               class="icon"
               src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/cc-message.png"
             />
-            <p class="mes">10</p>
-          </div>
+            <p class="mes">0</p>
+          </div> -->
         </div>
       </div>
       <div
         class="box"
-        v-show="isShow ==3"
+        v-show="isShow == 2"
+        v-for="item in buy"
+        :key="item.id"
       >
         <div class="left">
-          <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/3.jpg" />
+          <!-- <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/3.jpg" /> -->
         </div>
         <div class="right">
-          <p class="title">商品</p>
-          <p class="des">描述</p>
-          <p class="price">￥价格</p>
-          <div class="com">
+          <p class="title">订单号：{{ item.orderId }}</p>
+          <p class="title">商品名：{{ item.goodsName }}</p>
+          <p class="des">{{ item.goodsDescription }}</p>
+          <p class="des">卖家：{{ item.goodsSeller }}</p>
+          <div class="price">
+            <span class="red"> ￥{{ item.goodsPrice }}</span>
+            <span class="right"> {{ item.orderCreateTime }}</span>
+          </div>
+          <!-- <div class="com">
             <img
               class="icon"
               src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/cc-message.png"
             />
             <p class="mes">10</p>
-          </div>
+          </div> -->
+        </div>
+      </div>
+      <div
+        class="box"
+        v-show="isShow == 3"
+        v-for="(item, index) in like"
+        :key="index"
+        @click="gotoDetail(item.userId)"
+      >
+        <div class="left">
+          <img :src="item.goodsImgUrl" />
+        </div>
+        <div class="right">
+          <p class="title">{{ item.goodsName }}</p>
+          <p class="des">{{ item.goodsDescription }}</p>
+          <p class="price">￥{{ item.goodsPrice }}</p>
+          <!-- <div class="com">
+            <img
+              class="icon"
+              src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/cc-message.png"
+            />
+            <p class="mes">0</p>
+          </div> -->
         </div>
       </div>
       <div
         class="send"
         v-show="show"
       >
-        <div class="round">
-          <img
-            class="icon"
-            src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/add.png"
-          />
-          <p>发布</p>
-        </div>
+        <router-link to="/sell">
+          <div class="round">
+            <img
+              class="icon"
+              src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/add.png"
+            />
+            <p>发布</p>
+          </div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -134,22 +182,35 @@ export default {
   name: "Personal",
   data() {
     return {
+      path: "/personal/",
       isShow: 1,
       show: true,
       user: JSON.parse(localStorage.getItem("FleaUser")),
       path1: JSON.parse(localStorage.getItem("path1")),
-      list: []
+      page: JSON.parse(localStorage.getItem("page")),
+      pageCount: JSON.parse(localStorage.getItem("count")),
+      list: [],
+      count: 10,
+      send: [],
+      like: [],
+      buy: [],
+      zzc: false,
+      zzc1: false,
+      goodsId: 0
     };
   },
   components: {},
   created() {
     this.ifUser();
     this.getUserInfor();
+    this.getSend();
+    this.getLike();
+    this.getBuy();
   },
   mounted() {},
   methods: {
     backTo() {
-      this.$router.push(this.path1);
+      this.$router.push("/fleaMy");
     },
     async getUserInfor() {
       let id = this.$route.params.id;
@@ -162,12 +223,75 @@ export default {
       this.list = (await API.init(this.url, this.data, "post")).data;
       //   this.likeList = (await API.init(this.url, this.data, "post")).data;
       // localStorage.setItem("path", JSON.stringify(path));
-      console.log(this.list);
+      // console.log(this.list);
+    },
+    showzzc(id) {
+      this.zzc = true;
+      this.goodsId = id;
+      console.log(id);
     },
     ifUser() {
       if (this.$route.params.id == this.user.pkFleaUserId) {
         this.show = true;
       } else this.show = false;
+    },
+    async getSend() {
+      let id = this.$route.params.id;
+      this.url = this.GLOBAL.baseUrl + "/flea/users/release";
+      this.data = {
+        currentPage: 1,
+        pageSize: this.count,
+        pkFleaUserId: id
+      };
+      this.send = (await API.init(this.url, this.data, "post")).data.content;
+      console.log(this.send);
+    },
+    async getBuy() {
+      let id = this.$route.params.id;
+      this.url = this.GLOBAL.baseUrl + "/flea/users/orders";
+      this.data = {
+        currentPage: 1,
+        pageSize: this.count,
+        pkFleaUserId: id
+      };
+      this.buy = (await API.init(this.url, this.data, "post")).data.content;
+      // console.log(this.buy);
+    },
+    async getLike() {
+      let id = this.$route.params.id;
+      this.url = this.GLOBAL.baseUrl + "/flea/collection/all";
+      this.data = {
+        currentPage: 1,
+        pageSize: this.count,
+        pkFleaUserId: id
+      };
+      this.like = (await API.init(this.url, this.data, "post")).data;
+      console.log(this.like);
+    },
+    gotoDetail(id) {
+      let now = this.path + this.user.pkFleaUserId;
+      localStorage.setItem("path", JSON.stringify(now));
+      this.$router.push({
+        path: `/commoditydetails/${id}`
+      });
+      this.page[this.pageCount] = id;
+      this.pageCount++;
+      localStorage.setItem("page", JSON.stringify(this.page));
+      localStorage.setItem("count", JSON.stringify(this.pageCount));
+      // this.getList();
+      // window.location.reload();
+      // this.backTop();
+    },
+    async deleteSend() {
+      this.zzc = false;
+      this.zzc1 = true;
+      this.url = this.GLOBAL.baseUrl + "/flea/goods/delete";
+      this.data = {
+        // isDeleted: true,
+        pkFleaGoodsId: this.goodsId
+      };
+      this.result = await API.init(this.url, this.data, "post");
+      console.log(this.result);
     }
   },
   computed: {}
