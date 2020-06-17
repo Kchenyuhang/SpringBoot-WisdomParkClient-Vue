@@ -14,7 +14,11 @@
           @click="gotoSearch(id)"
         />
         <router-link to="/list">
-          <img src="../../assets/images/更多.png" alt="" class="imgs" />
+          <img
+            src="../../assets/images/更多.png"
+            alt=""
+            class="imgs"
+          />
         </router-link>
       </div>
       <Carousel :slideList="slideList"></Carousel>
@@ -25,7 +29,10 @@
           :key="index"
         >
           <div @click="goListDetail(item.pkFleaTypeId)">
-            <img :src="item.img" class="icon" />
+            <img
+              :src="item.img"
+              class="icon"
+            />
             <p class="cc-mtop font-size">{{ item.sub }}</p>
             <!-- <h5>
               宠物
@@ -58,12 +65,15 @@
     <div class="release">
       <div
         class="footer"
-        v-for="item in list"
+        v-for="item in hotList"
         :key="item.pkFleaGoodsId"
         @click="gotoDetail(item.pkFleaGoodsId)"
       >
         <div class="goods">
-          <img :src="item.userAvatar" alt="" />
+          <img
+            :src="item.userAvatar"
+            alt=""
+          />
           <span>{{ item.username }}</span>
           <p>¥ {{ item.goodsPrice }}</p>
         </div>
