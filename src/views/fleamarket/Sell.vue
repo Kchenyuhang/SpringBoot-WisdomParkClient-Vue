@@ -17,7 +17,6 @@
       v-model="data.goodsDescription"
     ></textarea>
     <!-- 图片上传区域 -->
-    <p>点击上传图片</p>
     <div class="upload">
       <img class="up-pic" :src="data.goodsImgUrl" @click="avatarClick()" />
       <input
@@ -53,9 +52,7 @@
             >{{ item.typeName }}</option
           >
         </select>
-        <!-- <router-link to="/pay"> -->
         <button @click="getSell">确认发布</button>
-        <!-- </router-link> -->
       </div>
     </div>
   </div>
@@ -72,7 +69,7 @@ export default {
       data: {
         goodsDescription: "",
         goodsImgUrl:
-          "https://student-m.oss-cn-hangzhou.aliyuncs.com/img/add.png",
+          "http://ww1.sinaimg.cn/large/0064QvQTly1gfv2m80e6jj30jg0jg3z4.jpg",
         goodsMark: "",
         goodsName: "",
         goodsPrice: "",
@@ -147,9 +144,10 @@ h4 {
   font-size: 13px;
 }
 .up-pic {
-  width: 50px;
-  height: 50px;
-  border: 1px solid black;
+  width: 90px;
+  height: 90px;
+  margin-left: 140px;
+  border: none;
 }
 .upload {
   height: 100px;

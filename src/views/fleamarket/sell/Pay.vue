@@ -11,7 +11,7 @@
     <div class="container">
       <div class="r-inform">
         <div class="r-left">
-          <img :src="seller[0].goodsImgUrl" />
+          <img :src="seller[0].goodsImgUrl.split('--**--')[0]" />
         </div>
         <div class="r-right">
           <h5>{{ seller[0].goodsName }}</h5>
@@ -90,8 +90,8 @@ export default {
         fleaUserSellerPkFleaUserId: this.seller[0].pkFleaUserId,
         pkFleaOrderId: rand
       };
+      console.log(this.data);
       this.result = (await API.init(this.url, this.data, "post")).data;
-
       this.goodData = {
         pkFleaGoodsId: this.page[0]
       };
@@ -101,7 +101,6 @@ export default {
           path: `/personal/${this.user.pkFleaUserId}`
         });
       } else this.doList();
-      // console.log(this.result);
     },
     async getSeller() {
       this.url = this.GLOBAL.baseUrl + "/flea/goods/id";

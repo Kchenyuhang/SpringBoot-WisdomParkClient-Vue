@@ -3,7 +3,7 @@
   height: 100vh;
   .header {
     height: auto;
-    // background-color: white;
+    background-color: rgba($color: grey, $alpha: 0.2);
     // background-size: cover;
     .bgi {
       height: 300px;
@@ -38,14 +38,17 @@
             .mes {
               margin-left: 10px;
               margin-top: -1%;
-              mix-blend-mode: screen;
+              font-weight: 900;
               .wid {
                 font-weight: 700;
+                color: white;
               }
               .nickname {
                 font-size: 12px;
                 // color: rgb(204, 201, 202);
-                color: black;
+
+                font-weight: 900;
+                color: white;
               }
             }
           }
@@ -71,11 +74,16 @@
       margin-top: 80px;
       margin-left: 5%;
       margin-bottom: 100px;
+      font-weight: 900;
+      p {
+        color: white;
+      }
     }
     .count {
       bottom: 0;
-      margin-left: 8%;
-      margin-right: 10%;
+      background-color: white;
+      margin-bottom: 20px;
+      padding-top: 10px;
       .tab {
         margin-left: -10px;
         margin-right: 0px;

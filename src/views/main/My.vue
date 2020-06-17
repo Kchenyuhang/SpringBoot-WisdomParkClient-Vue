@@ -172,11 +172,12 @@ export default {
         nickname: this.user.nickname,
         address: this.user.address
       };
+      console.log(this.data);
       this.result = await API.init(this.url, this.data, "post");
       console.log(this.result.msg);
       if (this.result.msg == "成功") {
-        localStorage.setItem("user", JSON.stringify(this.result.data));
-        this.$store.commit("setUser", this.result.data);
+        localStorage.setItem("user", JSON.stringify(this.user));
+        this.$store.commit("setUser", this.user);
       }
     }
   },

@@ -118,6 +118,12 @@
 [0616/100350.050:ERROR:crash_report_database_win.cc(469)] failed to stat report
 [0616/100350.050:ERROR:crash_report_database_win.cc(469)] failed to stat report
 [0616/100350.050:ERROR:crash_report_database_win.cc(469)] failed to stat report
+<<<<<<< HEAD
 [0617/133425.590:ERROR:crash_report_database_win.cc(469)] failed to stat report
 [0617/133425.591:ERROR:crash_report_database_win.cc(469)] failed to stat report
 [0617/133425.591:ERROR:crash_report_database_win.cc(469)] failed to stat report
+=======
+[0617/113237.010:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0617/113237.012:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0617/113237.012:ERROR:crash_report_database_win.cc(469)] failed to stat report
+>>>>>>> 2ff07e841fdb334c381ad221fae6348fb94f896e

@@ -35,21 +35,29 @@
         <div class="like">
           <div class="head">
             <div class="pos">
-              <img
-                src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/like.png"
-              />
+              <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/like.png" />
               <span>猜你喜欢</span>
             </div>
           </div>
           <div class="r-list">
-            <div class="r-left" v-for="(item, index) in likeList" :key="index">
-              <div class="r-left-con" @click="gotoDetail(item.pkFleaGoodsId)">
+            <div
+              class="r-left"
+              v-for="(item, index) in likeList"
+              :key="index"
+            >
+              <div
+                class="r-left-con"
+                @click="gotoDetail(item.pkFleaGoodsId)"
+              >
                 <img :src="item.goodsImgUrl.split('--**--')[0]" />
                 <span>{{ item.goodsDescription }}</span>
                 <p>$ {{ item.goodsPrice }}</p>
                 <div class="r-right">
                   <div class="img-box">
-                    <img :src="item.userAvatar" alt="" />
+                    <img
+                      :src="item.userAvatar"
+                      alt=""
+                    />
                   </div>
                   <p>{{ item.nickname }}</p>
                 </div>
@@ -60,10 +68,11 @@
       </div>
     </div>
     <div class="bottom">
-      <div class="home" @click="gotoUserDetail(list[0].pkFleaUserId)">
-        <img
-          src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/shop.png"
-        />
+      <div
+        class="home"
+        @click="gotoUserDetail(list[0].pkFleaUserId)"
+      >
+        <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/shop.png" />
         <p>商家主页</p>
       </div>
       <div
@@ -71,9 +80,7 @@
         v-show="like"
         @click="dolike(list[0].pkFleaGoodsId, user.pkFleaUserId)"
       >
-        <img
-          src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/star.png"
-        />
+        <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/star.png" />
         <p>收藏</p>
       </div>
       <div
@@ -81,9 +88,7 @@
         v-show="!like"
         @click="unlike(list[0].pkFleaGoodsId, user.pkFleaUserId)"
       >
-        <img
-          src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/Star.png"
-        />
+        <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/Star.png" />
 
         <p>取消收藏</p>
       </div>
@@ -184,7 +189,7 @@ export default {
       for (let i = 0; i < this.result.length; i++) {
         // console.log(this.result[i].userId);
         // console.log(this.$route.params.id);
-        console.log(this.result[i].userId == this.$route.params.id);
+        // console.log(this.result[i].userId == this.$route.params.id);
 
         if (this.result[i].userId == this.$route.params.id) {
           this.like = false;

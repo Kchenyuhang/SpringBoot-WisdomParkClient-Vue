@@ -114,6 +114,31 @@ const routes = [
     component: () => import("../views/Alumnus/Publish.vue")
   },
   {
+    path: '/alumnuscomment',
+    name: 'AlumnusComment',
+    component: () => import('../views/Alumnus/AlumnusComment.vue'),
+  },
+  {
+    path: '/alumnusawesome',
+    name: 'AlumnusAwesome',
+    component: () => import('../views/Alumnus/AlumnusAwesome.vue'),
+  },
+  {
+    path: '/privatechat',
+    name: 'PrivateChat',
+    component: () => import('../views/Alumnus/PrivateChat.vue'),
+  },
+  {
+    path: '/alumnussetting',
+    name: 'AlumnusSetting',
+    component: () => import('../views/Alumnus/AlumnusSetting.vue'),
+  },
+  {
+    path: '/publish',
+    name: 'Publish',
+    component: () => import('../views/Alumnus/Publish.vue'),
+  },
+  {
     path: "/metrocard",
     name: "MetroCard",
     component: () => import("../views/card/MetroCard.vue")
@@ -298,6 +323,11 @@ const routes = [
     path: "/personal/:id",
     name: "Personal",
     component: () => import("../views/fleamarket/personal/Personal.vue")
+  },
+  {
+    path:"/chatting/:UserId",
+    name: "Chatting",
+    component: () => import("../views/Alumnus/Chatting.vue")
   },
   {
     path: "/pay",

@@ -134,7 +134,7 @@ export default {
       this.result = (await API.init(this.url, this.data, "post")).data;
       for (let i = 0; i < this.result.length; i++) {
         this.slideList[i].image = this.result[i].cover;
-        // console.log(this.slideList[i].image);
+        console.log(this.slideList[i].image);
       }
     },
     async getDoList() {

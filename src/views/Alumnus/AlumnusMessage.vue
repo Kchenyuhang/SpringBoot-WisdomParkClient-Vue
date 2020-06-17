@@ -13,7 +13,7 @@
     </div>
     <div class="message-card">
         <div class="message-icon">
-            <div class="cc-col-center cc-col-4">
+            <div class="cc-col-center cc-col-4" @click="into(1)">
                 <div class="icon1 cc-df-center">
                     <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/alumnus/pinglun_icon.png" alt="">
                 </div>
@@ -21,7 +21,7 @@
                     <p>评论</p>
                 </div>
             </div>
-            <div class="cc-col-center cc-col-4">
+            <div class="cc-col-center cc-col-4" @click="into(2)">
                 <div class="icon2 cc-df-center">
                     <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/alumnus/dianzan_icon.png" alt="">
                 </div>
@@ -29,7 +29,7 @@
                     <p>赞</p>
                 </div>
             </div>
-            <div class="cc-col-center cc-col-4">
+            <div class="cc-col-center cc-col-4" @click="into(3)">
                 <div class="icon3 cc-df-center">
                     <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/alumnus/xiaoxi_icon.png" alt="">
                 </div>
@@ -68,7 +68,19 @@ export default {
   components: {},
   created() {},
   mounted() {},
-  methods: {},
+  methods: {
+      into(index) {
+      if (index == 1) {
+        this.$router.push("/alumnuscomment");
+      }
+      if (index == 2) {
+        this.$router.push("/alumnusawesome");
+      }
+      if (index == 3) {
+        this.$router.push("/privatechat");
+      }
+  }
+  },
   computed: {}
 }
 </script>
