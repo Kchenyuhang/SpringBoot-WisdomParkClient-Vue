@@ -287,11 +287,11 @@ const routes = [
     name: "FleaNav",
     component: FleaNav,
     children: [
-      {
-        path: "/",
-        name: "HomePage",
-        component: () => import("../views/fleamarket/HomePage.vue")
-      },
+      // {
+      //   path: "/",
+      //   name: "HomePage",
+      //   component: () => import("../views/fleamarket/HomePage.vue")
+      // },
       {
         path: "/homePage",
         name: "HomePage",
