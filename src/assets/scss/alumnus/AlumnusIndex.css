@@ -1,5 +1,5 @@
 .bg {
-  background-color: #f8f8f8;
+  background-color: white;
   height: 100%;
   width: 100%;
   margin-bottom: 60px;
@@ -98,7 +98,6 @@
 .dongtai-card {
   width: 90%;
   margin: auto;
-  height: 280px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -114,6 +113,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50px;
+  margin-right: 10px;
 }
 
 .dongtai-card .dongtai-content {
@@ -164,7 +164,7 @@
 
 .dongtai-card .dongtai-content .image {
   margin-top: 10px;
-  width: 70%;
+  width: 95%;
 }
 
 .dongtai-card .dongtai-content .row2 {
@@ -208,5 +208,9 @@
   font-weight: 550;
   color: #787474;
   margin-top: 5px;
+}
+
+.avatar-2 {
+  width: 100%;
 }
 /*# sourceMappingURL=AlumnusIndex.css.map */

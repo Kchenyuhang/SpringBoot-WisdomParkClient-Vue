@@ -87,8 +87,9 @@ export default {
         this.result = await API.init(this.url, this.data, "post");
         console.log(this.result.msg);
         if (this.result.msg == "成功") {
-          localStorage.setItem("user", JSON.stringify(this.result.data));
-          this.$store.commit("setUser", this.result.data);
+          this.user.gender = this.isShow;
+          localStorage.setItem("user", JSON.stringify(this.user));
+          this.$store.commit("setUser", this.user);
           this.$router.push("/base");
         }
       }

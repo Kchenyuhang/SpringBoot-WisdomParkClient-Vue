@@ -49,12 +49,14 @@ export default {
         pkUserAccountId: this.user.pkUserAccountId,
         address: this.user.address
       };
+
       if (this.nicknameInput != this.user.nickname) {
         this.result = await API.init(this.url, this.data, "post");
         console.log(this.result.msg);
         if (this.result.msg == "成功") {
-          localStorage.setItem("user", JSON.stringify(this.result.data));
-          this.$store.commit("setUser", this.result.data);
+          this.user.nickname = this.nicknameInput;
+          localStorage.setItem("user", JSON.stringify(this.user));
+          this.$store.commit("setUser", this.user);
           this.$router.push("/base");
         }
       }
