@@ -149,7 +149,9 @@
 
 .bg .container {
   height: 80%;
-  background-color: #c4bebe;
+  width: 90%;
+  margin-left: 15px;
+  border-radius: 10px;
   margin-top: 4px;
 }
 
@@ -161,16 +163,20 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 .bg .container .box .left img {
   width: 130px;
   height: 90px;
+  border-radius: 10px;
   margin: 10px 10px 10px 10px;
 }
 
 .bg .container .box .right .title {
   font-weight: 700;
+  margin-top: 8px;
 }
 
 .bg .container .box .right .des {
@@ -187,7 +193,7 @@
 
 .bg .container .box .right .com {
   position: absolute;
-  right: 4%;
+  right: 6%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

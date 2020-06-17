@@ -5,24 +5,20 @@
         <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
           alt=""
-        >
+        />
       </router-link>
       <p>设置名字</p>
       <div class="save">
         <button
           @click="updateNickname()"
           class="color"
-          :class="{'changeColor':nicknameInput!=user.nickname}"
+          :class="{ changeColor: nicknameInput != user.nickname }"
         >
           <p>保存</p>
         </button>
       </div>
     </div>
-    <input
-      type="text"
-      class="name cc-shadow"
-      v-model="nicknameInput"
-    >
+    <input type="text" class="name cc-shadow" v-model="nicknameInput" />
   </div>
 </template>
 

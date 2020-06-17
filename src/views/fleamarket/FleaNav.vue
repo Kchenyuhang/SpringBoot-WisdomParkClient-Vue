@@ -16,7 +16,7 @@
       </div>
       <div class="icon1" v-if="iconIsshow1 == 1">
         <img
-          src="http://ww1.sinaimg.cn/large/0064QvQTly1gfmwd5fycjj305k05k3yc.jpg"
+          src="http://ww1.sinaimg.cn/large/0064QvQTly1gfso0a3w3gj308c08c0sn.jpg"
           alt
           class="icon"
         />
@@ -35,7 +35,7 @@
       </div>
       <div class="icon2" v-if="iconIsshow1 == 2">
         <img
-          src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_zixun1.png"
+          src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_zixun.png"
           alt
           class="icon"
         />
@@ -75,7 +75,7 @@
       </div>
       <div class="icon4" v-if="iconIsshow1 == 4">
         <img
-          src="http://ww1.sinaimg.cn/large/0064QvQTgy1gfmeysdryej3082082glp.jpg"
+          src="http://ww1.sinaimg.cn/large/0064QvQTly1gfsnzbx45hj308c08cwem.jpg"
           alt
           class="icon"
         />
@@ -94,7 +94,7 @@
       </div>
       <div class="icon5" v-if="iconIsshow1 == 5">
         <img
-          src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_wode.png"
+          src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_wode2.png"
           alt
           class="icon"
         />
@@ -123,5 +123,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/scss/fleamarket/Nav.scss";
+@import "../../assets/scss/fleamarket/FleaNav.scss";
 </style>

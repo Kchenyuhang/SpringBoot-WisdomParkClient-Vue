@@ -27,7 +27,7 @@
 }
 .left-letter {
   position: fixed;
-  color: #828fa0;
+  color: red;
   top: 88px;
   left: 350px;
   width: 20px;
@@ -57,9 +57,9 @@
       height: 25px;
       width: 100%;
       border: none;
-      background-color: #f2f2f4;
+      // background-color: #f2f2f4;
       .selected {
-        color: #0d858e;
+        // color: #0d858e;
       }
     }
 

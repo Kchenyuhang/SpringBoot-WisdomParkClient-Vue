@@ -1,0 +1,97 @@
+.bg {
+  background-color: #f9f9f9;
+  width: 100%;
+}
+
+.header {
+  background-color: #ffffff;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header img {
+  height: 20px;
+  width: 20px;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.header p {
+  font-size: 16px;
+  font-weight: 550;
+  margin-left: 34%;
+  margin-top: 3%;
+}
+
+.card {
+  width: 100%;
+  margin: auto;
+  margin-top: 10px;
+  background: white;
+  height: 360px;
+}
+
+.address {
+  width: 30%;
+}
+
+.nick {
+  font-size: 16px;
+}
+
+.nickname {
+  font-size: 16px;
+  color: #ababab;
+}
+
+.nickimg {
+  height: 5%;
+  width: 5%;
+  color: #ababab;
+}
+
+.row {
+  width: 92%;
+  height: 40px;
+  padding-top: 5px;
+  margin: auto;
+}
+
+.row1 {
+  width: 92%;
+  height: 30px;
+  padding-top: 5px;
+  margin: auto;
+}
+
+.line {
+  width: 100%;
+  border: none;
+  height: 1px;
+  background: #fbfbfb;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.btn {
+  width: 60%;
+  height: 40px;
+  background-color: #46abf1;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+  margin: auto;
+  margin-top: 20%;
+  position: relative;
+}
+
+.btn p {
+  font-size: 14px;
+  color: #ffffff;
+  position: absolute;
+  left: 42%;
+  top: 22%;
+}
+/*# sourceMappingURL=pay.css.map */

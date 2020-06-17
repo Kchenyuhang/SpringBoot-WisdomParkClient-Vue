@@ -58,10 +58,7 @@
               />
               <p class="cc-mtop font-size">图书馆</p>
             </div>
-            <div
-              class="cc-col-center cc-coll-3 address2"
-              @click="into(5)"
-            >
+            <div class="cc-col-center cc-coll-3 address2" @click="into(5)">
               <img
                 src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/jianzhi.png"
                 alt="兼职图标"
@@ -69,10 +66,7 @@
               />
               <p class="cc-mtop font-size">兼职</p>
             </div>
-            <div
-              class="cc-col-center cc-coll-3 address2"
-              @click="into(6)"
-            >
+            <div class="cc-col-center cc-coll-3 address2" @click="into(6)">
               <img
                 src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/xiaoyouquan.png"
                 alt="校友圈图标"

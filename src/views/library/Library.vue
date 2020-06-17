@@ -12,7 +12,7 @@
     <hr class="line" />
     <div class="book cc-df">
       <p class="font">已阅读</p>
-      <p class="num">{{ count }}</p>
+      <p class="num">{{ result.sysBorrowReturnList.length+result.sysBorrowNoReturnList.length }}</p>
       <p class="font">本</p>
     </div>
     <div>
@@ -81,9 +81,7 @@ export default {
       show: false,
       result: [],
       count: 0,
-      data: {
-        jobNumber: "1802343116"
-      }
+      user: JSON.parse(localStorage.getItem("user"))
     };
   },
   components: {},
@@ -94,7 +92,10 @@ export default {
   methods: {
     async getList() {
       this.url = this.GLOBAL.baseUrl + "/book/borrow";
-      this.result = (await API.init(this.url, this.data, "post")).data;
+      (this.data = {
+        jobNumber: this.user.jobNumber
+      }),
+        (this.result = (await API.init(this.url, this.data, "post")).data);
       this.count = this.result.borrowCount;
       console.log(this.result);
     }

@@ -31,7 +31,7 @@
           class="size"
         />
         <input
-          type="text"
+          type="number"
           maxlength="11"
           oninput="value=value.replace(/[^\d]/g,'')"
           placeholder="请输入手机号"
@@ -89,6 +89,16 @@
           <p>{{ aletMsg }}</p>
         </div>
       </div>
+      <div
+        class="alsrtInfo"
+        :style="{ display: displayStsates }"
+        ref="alertMsg"
+        v-if="phoneForm.tips == '账号错误'"
+      >
+        <div class="profPrompt_test">
+          <p>{{ aletMsg }}</p>
+        </div>
+      </div>
       <div class="cc-df">
         <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_shouji.png"
@@ -96,7 +106,7 @@
           class="size"
         />
         <input
-          type="text"
+          type="number"
           placeholder="请输入学号"
           v-model="phoneForm.studentId"
         />
@@ -165,7 +175,7 @@
           class="size"
         />
         <input
-          type="text"
+          type="number"
           maxlength="11"
           oninput="value=value.replace(/[^\d]/g,'')"
           placeholder="请输入手机号"
@@ -358,7 +368,7 @@ export default {
           password: this.phoneForm.passWord
         };
         this.url = this.GLOBAL.baseUrl + "/user/login";
-        // this.$axios.defaults.headers.post['token'] = null;
+        // this.$axios.defaults.headers.post["token"] = null;
         this.result = await API.init(this.url, this.data, "post");
         console.log(this.result);
         if (this.result.msg == "成功") {
@@ -412,7 +422,7 @@ export default {
         password: this.phoneForm.passWord
       };
       this.url = this.GLOBAL.baseUrl + "/user/password";
-      this.result = await API.init(this.url, this.data, "put");
+      this.result = await API.init(this.url, this.data, "post");
       console.log(this.result);
       this.isShow = 2;
       this.clean();

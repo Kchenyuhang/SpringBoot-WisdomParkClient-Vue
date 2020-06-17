@@ -4,40 +4,135 @@
       <router-link to="/homePage">
         <h4>取消</h4>
       </router-link>
-      <p>悬赏</p>
-      <button class="btn">悬赏</button>
+      <p>发布</p>
     </div>
     <textarea
-      style="border:0;border-radius:5px;background-color:#ffffff;width: 375px;height: 150px;padding: 10px;resize: none;"
-      placeholder="品牌型号，新旧程度，入手渠道，转手原因..."
+      style="border: 0;border-radius:5px;background-color:#ffffff;width: 375px;height: 50px;padding: 10px;resize: none;"
+      placeholder="标题，品牌，型号"
+      v-model="data.goodsName"
     ></textarea>
-    <div class="rec">
-      <img
-        src="http://ww1.sinaimg.cn/large/0064QvQTgy1gfnibb1ygkj30qo0qoq4w.jpg"
-        alt=""
+    <textarea
+      style="border:0;border-radius:5px;background-color:#ffffff;width: 375px;height: 50px;padding: 10px;resize: none;"
+      placeholder="描述下你的商品"
+      v-model="data.goodsDescription"
+    ></textarea>
+    <!-- 图片上传区域 -->
+    <p>点击上传图片</p>
+    <div class="upload">
+      <img class="up-pic" :src="data.goodsImgUrl" @click="avatarClick()" />
+      <input
+        @click="avatarClick()"
+        type="file"
+        @change="uploadAvatar($event)"
+        ref="file"
+        style="display: none;"
+        id="file"
       />
     </div>
-    <hr class="line" />
     <div class="list">
-      <img
-        src="http://ww1.sinaimg.cn/large/0064QvQTly1gfo1zn152nj305k05kmx6.jpg"
-        alt=""
-      />
-      <span>价格</span>
+      <div class="price">
+        <input
+          type="number"
+          placeholder="请输入价格"
+          v-model="data.goodsPrice"
+        />
+        <input type="text" placeholder="请输入类型" v-model="data.goodsMark" />
+        <select
+          name="bbxb"
+          id="selecte1"
+          class="longselect"
+          v-model="id"
+          @click="get(id)"
+        >
+          <option value="">---请选择--</option>
+          <option
+            :value="item.pkFleaTypeId"
+            selected="selected"
+            v-for="(item, index) in type"
+            :key="index"
+            >{{ item.typeName }}</option
+          >
+        </select>
+        <!-- <router-link to="/pay"> -->
+        <button @click="getSell">确认发布</button>
+        <!-- </router-link> -->
+      </div>
     </div>
-    <hr class="line" />
   </div>
 </template>
 <script>
+const API = require("../../request/api.js");
 export default {
   name: "Sell",
   data() {
-    return {};
+    return {
+      type: [],
+      id: "",
+      user: JSON.parse(localStorage.getItem("FleaUser")),
+      data: {
+        goodsDescription: "",
+        goodsImgUrl:
+          "https://student-m.oss-cn-hangzhou.aliyuncs.com/img/add.png",
+        goodsMark: "",
+        goodsName: "",
+        goodsPrice: "",
+        pkFleaTypeId: 0,
+        pkFleaUserId: 0
+      }
+    };
   },
   components: {},
-  created() {},
+  created() {
+    this.getAllType();
+  },
   mounted() {},
-  methods: {},
+  methods: {
+    get(id) {
+      this.data.pkFleaTypeId = id;
+      this.data.pkFleaUserId = this.user.pkFleaUserId;
+    },
+    async getAllType() {
+      this.url = this.GLOBAL.baseUrl + "/flea/type/all";
+      this.type = (await API.init(this.url, this.data, "post")).data.types;
+      // console.log(this.type);
+    },
+    async getSell() {
+      this.url = this.GLOBAL.baseUrl + "/flea/goods/increased";
+      // console.log(this.data);
+
+      this.type = (await API.init(this.url, this.data, "post")).data.types;
+      // console.log(this.type);
+      this.$router.push({
+        path: `/personal/${this.data.pkFleaUserId}`
+      });
+    },
+    uploadAvatar(event) {
+      const OSS = require("ali-oss");
+      let client = new OSS({
+        region: "oss-cn-hangzhou",
+        accessKeyId: "LTAI4FcUiGZb75XGwiCC7Yzu",
+        accessKeySecret: "ZX0hbGsO2aOAWUfGJlrL48Tkp0bfFQ",
+        bucket: "student-m"
+      });
+      let timestamp = Date.parse(new Date());
+      let imgUrl = "img/" + timestamp + "." + "jpeg";
+      var file = event.target.files[0]; //获取文件流
+      var _this = this;
+      client.multipartUpload(imgUrl, file).then(function(result) {
+        _this.avatar = result.res.requestUrls[0];
+        _this.updateAdminInfo(_this.avatar);
+        console.log(_this.avatar);
+      });
+    },
+    avatarClick() {
+      this.$refs.file.click();
+    },
+    updateAdminInfo(url) {
+      this.imgDataUrl = url.substring(0, url.indexOf("?"));
+      this.data.goodsImgUrl = url;
+      // this.updateAvatar();
+    }
+  },
   computed: {},
   watch: {}
 };
@@ -51,38 +146,38 @@ h4 {
   margin-left: 10px;
   font-size: 13px;
 }
-.btn {
-  height: 20px;
-  width: 40px;
-  margin-left: 120px;
-  border-radius: 10px;
-  margin-top: 10px;
-  background-color: #f4d53a;
-  border: none;
+.up-pic {
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
 }
-.rec img {
+.upload {
   height: 100px;
-  width: 100px;
-  margin-left: 30px;
-}
-.line {
-  margin-top: 30px;
-  background-color: #f8f8f8;
+  // background-color: blue;
 }
 .list {
-  height: 20px;
-  // background-color: violet;
+  height: 200px;
+  margin-top: 10px;
+  // background-color: brown;
 }
-.list img {
-  height: 25px;
-  width: 25px;
-  margin-left: 50px;
-  margin-top: 13px;
+.price input {
+  height: 30px;
+  width: 100%;
+  margin-top: 5px;
+  border-radius: 10px;
+  border: none;
 }
-.list span {
-  float: right;
-  font-size: 14px;
-  margin-right: 255px;
-  margin-top: 17px;
+select {
+  height: 30px;
+  width: 100%;
+  border: none;
+}
+button {
+  height: 40px;
+  width: 100%;
+  margin-top: 80px;
+  // background-color: red;
+  border: none;
+  border-radius: 5px;
 }
 </style>

@@ -3,7 +3,17 @@
   height: 100vh;
   .header {
     height: auto;
-    background-color: white;
+    // background-color: white;
+    // background-size: cover;
+    .bgi {
+      height: 300px;
+      width: 100%;
+      position: absolute;
+      z-index: -1;
+      background-size: cover;
+      background-repeat: no-repeat;
+      filter: blur(5px);
+    }
     .icon {
       width: 6%;
       height: 3%;
@@ -28,12 +38,14 @@
             .mes {
               margin-left: 10px;
               margin-top: -1%;
+              mix-blend-mode: screen;
               .wid {
                 font-weight: 700;
               }
               .nickname {
                 font-size: 12px;
-                color: rgb(204, 201, 202);
+                // color: rgb(204, 201, 202);
+                color: black;
               }
             }
           }
@@ -68,7 +80,7 @@
         margin-left: -10px;
         margin-right: 0px;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
       }
     }
   }
@@ -110,39 +122,54 @@
   }
   .container {
     height: 80%;
-    background-color: rgb(196, 190, 190);
+    width: 90%;
+    margin-left: 15px;
+    border-radius: 10px;
+    // background-color: rgb(196, 190, 190);
     margin-top: 4px;
     .box {
       margin-top: 5%;
       width: 100%;
       // height: 15%;
       background-color: #fff;
-      position: absolute;
+      // position: absolute;
       display: flex;
+      box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
       .left {
         img {
           width: 130px;
           height: 90px;
+          border-radius: 10px;
           margin: 10px 10px 10px 10px;
         }
       }
       .right {
+        margin-left: 10px;
         .title {
           font-weight: 700;
+          margin-top: 8px;
         }
         .des {
           font-size: 14px;
           color: rgb(183, 182, 182);
         }
         .price {
-          margin-top: 35%;
-          font-size: 14px;
-          font-weight: 600;
-          color: rgb(245, 105, 105);
+          margin-top: 20%;
+          // color: rgb(245, 105, 105);
+          justify-content: space-between;
+          .red {
+            font-weight: 600;
+            font-size: 14px;
+            color: rgb(245, 105, 105);
+          }
+          .right {
+            position: absolute;
+            right: 10%;
+          }
         }
         .com {
           position: absolute;
-          right: 4%;
+          right: 6%;
           display: flex;
 
           .icon {
@@ -182,4 +209,35 @@
   padding-bottom: 50%;
   border-bottom: 4px #46abf1 solid;
   color: #46abf1;
+}
+.del {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  // top: 100px;
+  right: 30px;
+}
+.zhezhaoceng {
+  z-index: 999;
+  position: fixed;
+  width: 50%;
+  height: 100px;
+  background-color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  left: 25%;
+  p {
+    font-size: 14px;
+    color: black;
+    text-align: center;
+  }
+  .b-pos {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+    span {
+      width: 50%;
+      text-align: center;
+    }
+  }
 }

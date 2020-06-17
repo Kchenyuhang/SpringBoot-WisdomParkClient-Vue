@@ -17,7 +17,12 @@
         <hr class="line" />
       </div>
       <div class="card">
-        <input type="text" placeholder="手机号" v-model="phoneNumber" />
+        <input
+          type="number"
+          placeholder="手机号"
+          v-model="phoneNumber"
+          maxlength="11"
+        />
         <hr class="line" />
       </div>
     </div>
@@ -33,7 +38,7 @@ export default {
       userId: this.$store.state.user.pkUserAccountId,
       remark: "",
       phoneNumber: "",
-      result: [],
+      result: []
     };
   },
   created() {
@@ -49,14 +54,14 @@ export default {
           "https://soft1851.oss-cn-beijing.aliyuncs.com/markdown/用户 (1).png",
         phoneNumber: this.phoneNumber,
         remark: this.remark,
-        userId: this.userId,
+        userId: this.userId
       };
       this.url = this.GLOBAL.baseUrl + "/addressBook";
       this.result = await API.init(this.url, this.data, "post");
       this.$router.push("/addressbook");
-    },
+    }
   },
-  components: {},
+  components: {}
 };
 </script>
 

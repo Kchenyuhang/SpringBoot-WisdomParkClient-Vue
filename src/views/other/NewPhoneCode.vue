@@ -5,7 +5,7 @@
         <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
           alt=""
-        >
+        />
       </router-link>
       <p>填写验证码</p>
     </div>
@@ -17,7 +17,7 @@
       <div>
         <div class="phone">
           <p>手机号:</p>
-          <p class="phonenum">{{phoneInput}}</p>
+          <p class="phonenum">{{ phoneInput }}</p>
         </div>
         <hr class="line1" />
         <div class="codenum">
@@ -27,14 +27,11 @@
             class="codenumber"
             placeholder="请输入验证码"
             v-model="code"
-          >
+          />
         </div>
         <hr class="line1" />
       </div>
-      <div
-        class="btn"
-        @click="checkCode()"
-      >
+      <div class="btn" @click="checkCode()">
         <p>提交</p>
       </div>
     </div>

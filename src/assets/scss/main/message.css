@@ -52,13 +52,17 @@
 
 .card .time {
   position: absolute;
-  bottom: 0;
   right: 0;
+  top: -60px;
   margin-bottom: 8px;
 }
 
+.card .time p {
+  margin-left: 100px;
+}
+
 .line {
-  width: 90%;
+  width: 100%;
   border: none;
   height: 1px;
   background: #dcdcde;
