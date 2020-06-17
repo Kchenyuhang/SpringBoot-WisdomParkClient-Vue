@@ -105,7 +105,7 @@ export default {
         job_number: this.jobNumber
       };
       this.url = this.GLOBAL.baseUrl + "/card/balance";
-      this.result = await API.init(this.url, this.data, "get");
+      this.result = await API.init(this.url, this.data, "post");
       this.balance = this.result.data;
     }
   },
