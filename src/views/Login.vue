@@ -175,7 +175,7 @@
           class="size"
         />
         <input
-          type="number"
+          type="text"
           maxlength="11"
           oninput="value=value.replace(/[^\d]/g,'')"
           placeholder="请输入手机号"
@@ -273,6 +273,10 @@ export default {
           {
             regex: /^1[3|4|5|6|7|8][0-9]{9}$/,
             error: "手机号格式不对"
+          },
+          {
+            regex: /^[0-9]+$/,
+            error: "其输入纯数字"
           }
         ],
         code: [{ required: true, error: "验证码不能为空" }],

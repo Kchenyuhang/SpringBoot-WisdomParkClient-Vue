@@ -15,17 +15,15 @@
       </div>
       <div class="list">
         <div class="left" v-for="(item, index) in reward" :key="index">
-          <router-link to="/rewardetail">
-            <div>
-              <img :src="item.imageUrl" alt="" />
-              <p>{{ item.description }}</p>
-              <span>{{ item.title }}</span>
-              <p>¥价格</p>
-              <div class="right" v-for="(item, index) in test" :key="index">
-                <!-- <img :src="item.avatar" alt="" /> -->
-              </div>
+          <div>
+            <img :src="item.imageUrl" alt="" />
+            <p>{{ item.description }}</p>
+            <span>{{ item.title }}</span>
+            <p>¥价格</p>
+            <div class="right" v-for="(item, index) in test" :key="index">
+              <!-- <img :src="item.avatar" alt="" /> -->
             </div>
-          </router-link>
+          </div>
         </div>
       </div>
     </div>

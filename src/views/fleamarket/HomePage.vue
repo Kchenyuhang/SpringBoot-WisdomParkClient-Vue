@@ -78,7 +78,7 @@
 <script>
 const API = require("../../request/api.js");
 export default {
-  name: "Reward",
+  name: "HomePage",
   data() {
     return {
       path: "/homePage",

@@ -1,12 +1,13 @@
 <template>
   <div class="bg">
-    <div class="header" @click="backUp()">
+    <div class="header">
       <!-- <router-link :to="path"> -->
       <img
         src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
+        @click="backUp()"
       />
       <!-- </router-link> -->
-      <p>Back</p>
+      <p>商品详情</p>
     </div>
     <div class="container">
       <div class="card">

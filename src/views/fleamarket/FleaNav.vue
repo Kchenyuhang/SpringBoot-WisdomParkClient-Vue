@@ -109,7 +109,7 @@ export default {
   name: "Layout",
   data() {
     return {
-      iconIsshow1: 3,
+      iconIsshow1: 1,
       transitionName1: ""
     };
   },
