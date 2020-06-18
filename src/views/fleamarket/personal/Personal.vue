@@ -152,6 +152,12 @@
         <div class="left">
           <img :src="item.goodsImgUrl.split('--**--')[0]" />
         </div>
+        <div
+          class="solder"
+          v-show="ifDelete[index] ==true"
+        >
+          <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/0ac2e928674ff8e5bd0c0a9c00542b3f.png" />
+        </div>
         <div class="right">
           <p class="title">{{ item.goodsName }}</p>
           <p class="des">{{ item.goodsDescription }}</p>
@@ -197,7 +203,7 @@ export default {
       page: JSON.parse(localStorage.getItem("page")),
       pageCount: JSON.parse(localStorage.getItem("count")),
       list: [],
-      count: 10,
+      count: 100,
       send: [],
       like: [],
       buy: [],
@@ -205,7 +211,8 @@ export default {
       zzc1: false,
       goodsId: 0,
       deleteCount: 0,
-      xiabiao: 0
+      xiabiao: 0,
+      ifDelete: []
     };
   },
   components: {},
@@ -238,7 +245,7 @@ export default {
       this.zzc = true;
       this.goodsId = id;
       this.xiabiao = index;
-      console.log(id);
+      // console.log(id);
     },
     ifUser() {
       if (this.$route.params.id == this.user.pkFleaUserId) {
@@ -259,7 +266,7 @@ export default {
       //     this.deleteCount += 1;
       //   }
       // }
-      console.log(this.send);
+      // console.log(this.send);
     },
     async getBuy() {
       let id = this.$route.params.id;
@@ -281,7 +288,10 @@ export default {
         pkFleaUserId: id
       };
       this.like = (await API.init(this.url, this.data, "post")).data;
-      // console.log(this.like);
+      for (let i = 0; i < this.like.length; i++) {
+        this.getIfDelete(this.like[i].userId, i);
+        // console.log(this.like[i].goodsId);
+      }
     },
     gotoDetail(id) {
       let now = this.path + this.user.pkFleaUserId;
@@ -309,9 +319,21 @@ export default {
 
       this.send.splice(1, this.xiabiao);
       this.getSend();
-      console.log(this.send.length);
+      // console.log(this.send.length);
 
       // console.log(this.result);
+    },
+    async getIfDelete(id, i) {
+      // console.log(id);
+
+      this.url = this.GLOBAL.baseUrl + "/flea/goods/id";
+      this.data = {
+        // isDeleted: true,
+        pkFleaGoodsId: id
+      };
+      this.likeDetail = (await API.init(this.url, this.data, "post")).data;
+      this.ifDelete[i] = this.likeDetail[0].isDeleted;
+      console.log(this.ifDelete);
     }
   },
   computed: {}

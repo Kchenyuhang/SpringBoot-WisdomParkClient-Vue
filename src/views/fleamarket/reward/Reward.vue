@@ -14,13 +14,25 @@
         <Carousel :slideList="slideList"></Carousel>
       </div>
       <div class="list">
-        <div class="left" v-for="(item, index) in reward" :key="index">
+        <div
+          class="left"
+          v-for="(item, index) in reward"
+          :key="index"
+          @click="gotoDetail(item.pkRewardId)"
+        >
           <div>
-            <img :src="item.imageUrl" alt="" />
-            <p>{{ item.description }}</p>
-            <span>{{ item.title }}</span>
+            <img
+              :src="item.imageUrl"
+              alt=""
+            /> <span>{{ item.title }}</span>
+            <p>{{ item.description.slice(0, 30) }}...</p>
+
             <p>¥价格</p>
-            <div class="right" v-for="(item, index) in test" :key="index">
+            <div
+              class="right"
+              v-for="(item, index) in test"
+              :key="index"
+            >
               <!-- <img :src="item.avatar" alt="" /> -->
             </div>
           </div>
@@ -37,11 +49,6 @@ export default {
     return {
       test: [],
       reward: [],
-      data: {
-        currentPage: 1,
-        field: 2,
-        pageSize: 6
-      },
       slideList: [
         {
           url: "#",
@@ -76,12 +83,22 @@ export default {
   methods: {
     async getReward() {
       this.url = this.GLOBAL.baseUrl + "/flea/reward/all";
+      this.data = {
+        currentPage: 0,
+        // field: 2,
+        pageSize: 10
+      };
       this.reward = (await API.init(this.url, this.data, "post")).data.content;
       for (let i = 0; i < this.reward.length; i++) {
         this.test = this.reward[i].fleaUser;
         console.log(this.test);
       }
       console.log(this.reward);
+    },
+    gotoDetail(id) {
+      this.$router.push({
+        path: `/rewarddetail/${id}`
+      });
     }
   },
   computed: {},
@@ -96,16 +113,18 @@ export default {
   height: 1000px;
 }
 .list {
-  height: 1000px;
+  height: auto;
   width: 90%;
   margin-left: 5%;
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 100px;
+  justify-content: space-around;
 }
 .left {
   height: 230px;
-  width: 47%;
-  margin-left: 8px;
+  width: 40%;
+  // margin-left: 18px;
   margin-top: 40px;
   background-color: white;
   border-radius: 10px;

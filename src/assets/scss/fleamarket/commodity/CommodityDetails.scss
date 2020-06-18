@@ -20,10 +20,17 @@
       margin-top: 3%;
     }
   }
+  .solder {
+    position: absolute;
+    z-index: 999;
+    // transform: rotate(70deg);
+    // right: 0;
+  }
   .container {
     // height: 80%;
     position: absolute;
     margin-bottom: 100px;
+    width: 100%;
     .card {
       border: 1px solid rgb(227, 227, 227);
       background-color: #fff;
@@ -197,6 +204,10 @@
       background-color: red;
       border-radius: 20px;
       padding: 5px 10px 5px 10px;
+    }
+    .none {
+      color: black;
+      background-color: #fff;
     }
   }
 }
