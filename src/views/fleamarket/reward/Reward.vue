@@ -28,12 +28,11 @@
             <p>{{ item.description.slice(0, 30) }}...</p>
 
             <p>¥价格</p>
-            <div
-              class="right"
-              v-for="(item, index) in test"
-              :key="index"
-            >
-              <!-- <img :src="item.avatar" alt="" /> -->
+            <div class="right">
+              <img
+                :src="item.fleaUser.avatar"
+                alt=""
+              />
             </div>
           </div>
         </div>
@@ -90,10 +89,10 @@ export default {
       };
       this.reward = (await API.init(this.url, this.data, "post")).data.content;
       for (let i = 0; i < this.reward.length; i++) {
-        this.test = this.reward[i].fleaUser;
-        console.log(this.test);
+        this.test[i] = this.reward[i].fleaUser;
+        // console.log(this.test);
       }
-      console.log(this.reward);
+      // console.log(this.reward);
     },
     gotoDetail(id) {
       this.$router.push({
@@ -110,7 +109,7 @@ export default {
 @import "../../../assets/scss/fleamarket/reward.scss";
 .container {
   padding: 0;
-  height: 1000px;
+  height: auto;
 }
 .list {
   height: auto;
@@ -119,11 +118,11 @@ export default {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 100px;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .left {
-  height: 230px;
-  width: 40%;
+  height: auto;
+  width: 45%;
   // margin-left: 18px;
   margin-top: 40px;
   background-color: white;

@@ -20,16 +20,16 @@
               />
             </div>
             <div class="right">
-              <p>{{user.nickname}}</p>
-              <span>{{reward.createTime}}</span>
+              <p>{{ user.nickname }}</p>
+              <span>{{ reward.createTime }}</span>
             </div>
           </div>
           <!-- <hr class="line" /> -->
           <div class="inform">
             <!-- <p>¥ 100</p> -->
             <!-- <span>#标签#</span> -->
-            <h5>{{reward.title}}</h5>
-            <h6>{{reward.description}}</h6>
+            <h5>{{ reward.title }}</h5>
+            <h6>{{ reward.description }}</h6>
             <img
               :src="reward.imageUrl"
               alt="图片未能加载"
@@ -39,18 +39,27 @@
         <div class="content">
           <strong>全部评论</strong>
           <!-- <hr class="line" /> -->
-          <div class="ds-post-main">
-            <div class="ds-avatar">
-              <img
-                src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/1.jpg"
-                alt=""
-              />
-            </div>
-            <div class="ds-comment-body">
-              <h5>用户昵称</h5>
-              <p>内容</p>
-              <p>内容</p>
-              <span>评论时间</span>
+          <div v-if="comments.length==0">
+            <p>暂无评论</p>
+          </div>
+          <div
+            class="ds-post-main"
+            v-for="(item, index) in comments"
+            :key="index"
+          >
+            <div v-if="item.title == reward.title">
+              <div class="ds-avatar">
+                <img
+                  src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/1.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="ds-comment-body">
+                <h5>{{item.commentByName}}</h5>
+                <p>{{item.comment}}</p>
+                <!-- <p>内容</p> -->
+                <span>{{item.createTime}}</span>
+              </div>
             </div>
           </div>
           <!-- <hr class="line" /> -->
@@ -67,12 +76,15 @@ export default {
     return {
       reward: [],
       count: 0,
-      user: []
+      user: [],
+      comments: []
     };
   },
   components: {},
   created() {
     this.getReward();
+    this.getComment();
+    this.backTop();
   },
   mounted() {},
   methods: {
@@ -91,13 +103,32 @@ export default {
       }
       this.reward = this.result[this.count];
       this.user = this.reward.fleaUser;
-      console.log(this.reward);
-      console.log(this.user);
+    },
+    async getComment() {
+      this.url = this.GLOBAL.baseUrl + "/flea/comment/getByRewardId";
+      this.data = {
+        pkRewardId: this.$route.params.id
+      };
+      this.comments = (await API.init(this.url, this.data, "post")).data;
+      // console.log(this.result);
     },
     gotoPerson(id) {
       this.$router.push({
         path: `/personal/${id}`
       });
+    },
+    backTop() {
+      // const that = this;
+      // let timer = setInterval(() => {
+      //   let ispeed = Math.floor(-that.scrollTop / 5);
+      //   document.documentElement.scrollTop = document.body.scrollTop =
+      //     that.scrollTop + ispeed;
+      //   if (that.scrollTop === 0) {
+      //     clearInterval(timer);
+      //   }
+      // }, 16);
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
     }
   },
   computed: {}

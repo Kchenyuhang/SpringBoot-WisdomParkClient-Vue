@@ -165,6 +165,9 @@
         .title {
           font-weight: 700;
           margin-top: 8px;
+          display: flex;
+          justify-content: space-between;
+          width: 170px;
         }
         .des {
           font-size: 14px;
@@ -230,9 +233,17 @@
 .del {
   width: 20px;
   height: 20px;
-  position: absolute;
+  position: relative;
+  display: flex;
+  // top: -70px;
+  // left: 150px;
+  // margin-top: 20px;
+}
+.options {
+  width: 20px;
+  height: 20px;
+  position: relative;
   // top: 100px;
-  right: 30px;
 }
 .zhezhaoceng {
   z-index: 999;
@@ -257,4 +268,9 @@
       text-align: center;
     }
   }
+}
+.zzc {
+  width: 20%;
+  height: auto;
+  background-color: yellow;
 }

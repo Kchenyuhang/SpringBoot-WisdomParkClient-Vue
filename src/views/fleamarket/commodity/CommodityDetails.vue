@@ -34,8 +34,12 @@
             <p class="name">{{ list[0].goodsName }}</p>
             <p class="desc">{{ list[0].goodsDescription }}</p>
           </div>
-          <div class="img">
-            <img :src="list[0].goodsImgUrl.split('--**--')[0]" />
+          <div
+            class="img"
+            v-for="(item, index) in list[0].goodsImgUrl.split('--**--')"
+            :key="index"
+          >
+            <img :src="list[0].goodsImgUrl.split('--**--')[index]" />
           </div>
         </div>
         <!-- <div class="comment">
@@ -45,21 +49,29 @@
         <div class="like">
           <div class="head">
             <div class="pos">
-              <img
-                src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/like.png"
-              />
+              <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/like.png" />
               <span>猜你喜欢</span>
             </div>
           </div>
           <div class="r-list">
-            <div class="r-left" v-for="(item, index) in likeList" :key="index">
-              <div class="r-left-con" @click="gotoDetail(item.pkFleaGoodsId)">
+            <div
+              class="r-left"
+              v-for="(item, index) in likeList"
+              :key="index"
+            >
+              <div
+                class="r-left-con"
+                @click="gotoDetail(item.pkFleaGoodsId)"
+              >
                 <img :src="item.goodsImgUrl.split('--**--')[0]" />
                 <span>{{ item.goodsDescription }}</span>
                 <p class="price">$ {{ item.goodsPrice }}</p>
                 <div class="r-right">
                   <div class="img-box">
-                    <img :src="item.userAvatar" alt="" />
+                    <img
+                      :src="item.userAvatar"
+                      alt=""
+                    />
                   </div>
                   <p>{{ item.nickname }}</p>
                 </div>
@@ -70,10 +82,11 @@
       </div>
     </div>
     <div class="bottom">
-      <div class="home" @click="gotoUserDetail(list[0].pkFleaUserId)">
-        <img
-          src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/shop.png"
-        />
+      <div
+        class="home"
+        @click="gotoUserDetail(list[0].pkFleaUserId)"
+      >
+        <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/shop.png" />
         <p>商家主页</p>
       </div>
       <div
@@ -81,9 +94,7 @@
         v-show="like"
         @click="dolike(list[0].pkFleaGoodsId, user.pkFleaUserId)"
       >
-        <img
-          src="http://ww1.sinaimg.cn/large/0064QvQTly1gfw77tsfzej30jg0jg0t5.jpg"
-        />
+        <img src="http://ww1.sinaimg.cn/large/0064QvQTly1gfw77tsfzej30jg0jg0t5.jpg" />
         <p>收藏</p>
       </div>
       <div
@@ -91,25 +102,30 @@
         v-show="!like"
         @click="unlike(list[0].pkFleaGoodsId, user.pkFleaUserId)"
       >
-        <img
-          src="http://ww1.sinaimg.cn/large/0064QvQTly1gfw77dim76j30jg0jggm1.jpg"
-        />
+        <img src="http://ww1.sinaimg.cn/large/0064QvQTly1gfw77dim76j30jg0jggm1.jpg" />
 
         <p>取消</p>
       </div>
-      <router-link to="/pay">
+      <div v-show="list[0].isDeleted!=true">
+        <router-link to="/pay">
+          <div
+            class="want"
+            v-show="list[0].pkFleaUserId!=user.pkFleaUserId"
+          >
+            <p class="btn">我想要</p>
+          </div>
+        </router-link>
         <div
           class="want"
-          v-show="list[0].pkFleaUserId!=user.pkFleaUserId"
+          v-show="list[0].pkFleaUserId==user.pkFleaUserId"
         >
-          <p class="btn">我想要</p>
+          <p class="btn none">我的商品</p>
         </div>
-      </router-link>
-      <div
-        class="want"
-        v-show="list[0].pkFleaUserId==user.pkFleaUserId"
-      >
-        <p class="btn none">我的商品</p>
+      </div>
+      <div v-show="list[0].isDeleted==true">
+        <div class="want">
+          <p class="btn none">已卖出</p>
+        </div>
       </div>
     </div>
   </div>
@@ -164,6 +180,8 @@ export default {
     this.getSpList();
     this.iflike();
     this.AddComment();
+    this.backTop();
+    console.log(this.list[0].goodsImgUrl.split("--**--").length);
   },
   mounted() {
     window.addEventListener("scroll", this.scrollToTop);
@@ -246,7 +264,7 @@ export default {
       localStorage.setItem("path1", JSON.stringify(this.path1));
       this.url = this.GLOBAL.baseUrl + "/flea/goods/id";
       this.list = (await API.init(this.url, this.data, "post")).data;
-      console.log(this.list);
+      console.log(this.list[0].goodsImgUrl);
 
       this.getLikeList(this.list[0].pkFleaTypeId, id);
     },
@@ -319,8 +337,8 @@ export default {
 <style scoped lang="scss">
 @import "../../../assets/scss/fleamarket/commodity/CommodityDetails.scss";
 .img-box {
-  } 
+}
 .price {
   margin-top: 13px;
-}  
+}
 </style>
