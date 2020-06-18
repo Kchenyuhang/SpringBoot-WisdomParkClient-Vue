@@ -39,7 +39,7 @@
         <div class="content">
           <strong>全部评论</strong>
           <!-- <hr class="line" /> -->
-          <div v-if="comments.length==0">
+          <div v-if="comments.length == 0">
             <p>暂无评论</p>
           </div>
           <div
@@ -55,16 +55,43 @@
                 />
               </div>
               <div class="ds-comment-body">
-                <h5>{{item.commentByName}}</h5>
-                <p>{{item.comment}}</p>
+                <h5>{{ item.commentByName }}</h5>
+                <p>{{ item.comment }}</p>
                 <!-- <p>内容</p> -->
-                <span>{{item.createTime}}</span>
+                <span>{{ item.createTime }}</span>
               </div>
             </div>
           </div>
           <!-- <hr class="line" /> -->
         </div>
       </div>
+    </div>
+    <div class="liuyan">
+      <div
+        class="btn"
+        @click="show = !show"
+        v-show="!show"
+      >
+        <img
+          class="icon"
+          src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/cc-message.png"
+        />
+        <p>留言</p>
+      </div>
+    </div>
+    <div
+      class="zhezhaoceng"
+      v-show="show"
+    >
+      <textarea
+        id="ta"
+        rows="1"
+        v-model="send.comment"
+      ></textarea>
+      <img
+        src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/send.png"
+        @click="doSend"
+      />
     </div>
   </div>
 </template>
@@ -75,9 +102,17 @@ export default {
   data() {
     return {
       reward: [],
+      userInfor: JSON.parse(localStorage.getItem("FleaUser")),
       count: 0,
       user: [],
-      comments: []
+      comments: [],
+      send: {
+        comment: "",
+        reviewerId: 0,
+        rewardId: 0,
+        userId: 0
+      },
+      show: false
     };
   },
   components: {},
@@ -86,13 +121,21 @@ export default {
     this.getComment();
     this.backTop();
   },
-  mounted() {},
+  mounted() {
+    function $(id) {
+      return document.getElementById(id);
+    }
+
+    $("ta").onkeyup = function() {
+      this.style.height = "auto";
+      this.style.height = this.scrollHeight + "px";
+    };
+  },
   methods: {
     async getReward() {
       this.url = this.GLOBAL.baseUrl + "/flea/reward/all";
       this.data = {
         currentPage: 0,
-        // field: 2,
         pageSize: 10
       };
       this.result = (await API.init(this.url, this.data, "post")).data.content;
@@ -103,6 +146,7 @@ export default {
       }
       this.reward = this.result[this.count];
       this.user = this.reward.fleaUser;
+      console.log(this.user);
     },
     async getComment() {
       this.url = this.GLOBAL.baseUrl + "/flea/comment/getByRewardId";
@@ -129,6 +173,17 @@ export default {
       // }, 16);
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
+    },
+    async doSend() {
+      this.url = this.GLOBAL.baseUrl + "/flea/comment/increased";
+      this.send.reviewerId = this.user.pkFleaUserId;
+      this.send.userId = this.userInfor.pkFleaUserId;
+      this.send.rewardId = this.$route.params.id;
+      this.result = (await API.init(this.url, this.send, "post")).data;
+      this.show = false;
+      this.send.comment = "";
+      this.getComment();
+      // console.log(this.result);
     }
   },
   computed: {}
@@ -276,5 +331,69 @@ export default {
   padding: 10px 10px 10px 30px;
   height: auto;
   background: rgb(249, 204, 157);
+}
+.liuyan {
+  position: fixed;
+  z-index: 999;
+  bottom: 5%;
+  left: 45%;
+  .btn {
+    width: 60px;
+    height: 60px;
+    border: 3px solid white;
+    border-radius: 50%;
+    background-color: rgb(244, 213, 58);
+    text-align: center;
+    padding: 5px 5px 5px 5px;
+    .icon {
+      width: 20px;
+      height: 20px;
+    }
+    p {
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+}
+.zhezhaoceng {
+  z-index: 999;
+  position: fixed;
+  width: 100%;
+  height: auto;
+  background-color: white;
+  border: none;
+  bottom: 0;
+  display: flex;
+  textarea {
+    display: block;
+    width: 300px;
+    height: 34px;
+    overflow: hidden;
+    padding: 5px 10px;
+    margin: 0px auto 0;
+    resize: none;
+    line-height: 24px;
+    font-size: 16px;
+    color: #666;
+    border: 1px solid #ccc;
+    outline: 0 none;
+    box-shadow: 0 0 5px #999;
+    border-radius: 3px;
+    box-sizing: border-box;
+    transition: all 200ms linear;
+  }
+  textarea:focus {
+    color: #277fe4;
+    border-color: #2196f3;
+    box-shadow: 0 0 5px #03a9f4;
+  }
+  img {
+    width: 30px;
+    height: 30px;
+    // margin-bottom: -10px;
+    margin-top: 33px;
+    margin-left: -10px;
+    margin-right: 10px;
+  }
 }
 </style>
