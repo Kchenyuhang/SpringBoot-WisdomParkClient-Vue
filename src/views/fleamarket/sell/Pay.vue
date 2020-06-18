@@ -11,7 +11,7 @@
     <div class="container">
       <div class="r-inform">
         <div class="r-left">
-          <img :src="seller[0].goodsImgUrl" />
+          <img :src="seller[0].goodsImgUrl.split('--**--')[0]" />
         </div>
         <div class="r-right">
           <h5>{{ seller[0].goodsName }}</h5>
@@ -22,28 +22,6 @@
         </div>
       </div>
     </div>
-    <!-- <div class="address">
-      <hr class="line" />
-      <router-link to="/address">
-        <div
-          class="cc-df-between row1"
-          @click="into(1)"
-        >
-          <div class="address">
-            <p class="nick">地址</p>
-          </div>
-          <div class="cc-df-right">
-            <p class="nickname cc-mright"></p>
-            <img
-              src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/youjiantou.png"
-              alt="右箭头"
-              class="nickimg"
-            />
-          </div>
-        </div>
-      </router-link>
-      <hr class="line" />
-    </div> -->
     <div class="footer">
       <p>实付款：{{ seller[0].goodsPrice }}</p>
       <!-- <p>优惠：0000</p> -->
@@ -90,8 +68,8 @@ export default {
         fleaUserSellerPkFleaUserId: this.seller[0].pkFleaUserId,
         pkFleaOrderId: rand
       };
+      console.log(this.data);
       this.result = (await API.init(this.url, this.data, "post")).data;
-
       this.goodData = {
         pkFleaGoodsId: this.page[0]
       };
@@ -101,7 +79,6 @@ export default {
           path: `/personal/${this.user.pkFleaUserId}`
         });
       } else this.doList();
-      // console.log(this.result);
     },
     async getSeller() {
       this.url = this.GLOBAL.baseUrl + "/flea/goods/id";
@@ -144,7 +121,8 @@ export default {
   height: 140px;
   margin-left: 4px;
   background-color: white;
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  box-shadow: 0px 1px 4px rgba(223, 27, 27, 0.6);
 }
 .r-left {
   width: 40%;
@@ -152,9 +130,9 @@ export default {
   float: left;
   // background-color: black;
 }
-// .r-left img {
-//   border-radius: 10px;
-// }
+.r-left img {
+  border-radius: 10px;
+}
 .r-right {
   float: right;
   width: 58%;

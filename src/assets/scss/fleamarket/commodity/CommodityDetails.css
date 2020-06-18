@@ -14,7 +14,7 @@
 .bg .header img {
   height: 20px;
   width: 20px;
-  margin-top: 10px;
+  margin-top: 15px;
   margin-left: 5px;
 }
 
@@ -22,7 +22,7 @@
   font-size: 16px;
   font-weight: 550;
   margin-left: 34%;
-  margin-top: 3%;
+  margin-top: 4%;
 }
 
 .bg .container {
@@ -50,9 +50,12 @@
 
 .bg .container .card .head .word .title {
   font-weight: 700;
+  margin-left: 12px;
 }
 
 .bg .container .card .head .word .date {
+  margin-left: 12px;
+  margin-top: 10px;
   font-size: 10px;
   color: #c8bbb5;
 }
@@ -121,6 +124,9 @@
 }
 
 .bg .container .card .like .head .pos span {
+  float: right;
+  margin-right: 10px;
+  margin-top: 3px;
   color: red;
 }
 
@@ -161,6 +167,8 @@
   border-radius: 10px;
   padding-left: 10px;
   padding-right: 10px;
+  -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 .r-left img {
@@ -193,7 +201,7 @@
 }
 
 .r-left-con span {
-  font-size: 0.8rem;
+  font-size: 14px;
 }
 
 .bottom {
@@ -206,18 +214,29 @@
       justify-content: space-around;
   position: fixed;
   background-color: white;
+  -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
   bottom: 0;
 }
 
 .bottom .home img {
   width: 25px;
   height: 25px;
-  margin-left: 15px;
+  margin-top: 10px;
+  margin-left: 19px;
 }
 
 .bottom .collect img {
+  position: absolute;
   width: 25px;
   height: 25px;
+  margin-left: 5px;
+  margin-top: 10px;
+}
+
+.bottom .collect p {
+  margin-top: 40px;
+  margin-right: 10px;
 }
 
 .bottom .want {
@@ -225,6 +244,7 @@
 }
 
 .bottom .want .btn {
+  margin-top: 20px;
   border: 1px solid grey;
   color: white;
   background-color: red;

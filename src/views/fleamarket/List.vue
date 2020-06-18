@@ -7,12 +7,14 @@
           alt=""
         />
       </router-link>
-      <div class="search bar">
-        <form>
-          <input type="text" placeholder="请输入您要搜索的内容..." />
-          <button type="submit">搜索</button>
-        </form>
-      </div>
+      <router-link to="/search">
+        <div class="search bar">
+          <form>
+            <input type="text" placeholder="请输入您要搜索的内容..." />
+            <button type="submit">搜索</button>
+          </form>
+        </div>
+      </router-link>
     </div>
     <div class="list">
       <p>热门推荐</p>

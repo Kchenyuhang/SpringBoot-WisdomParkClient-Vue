@@ -149,7 +149,7 @@
               ></div>
               <div class="right cc-col">
                 <div class="right-top">
-                  <p>{{ item.text.slice(0, 40) }}..</p>
+                  <p>{{ item.title }}</p>
                 </div>
                 <div class="right-bottom">
                   <p>{{ item.gmtCreate }}</p>

@@ -72,6 +72,13 @@
         </div>
         <div class="cc-mllleft">
           <p class="fontSize" @click="tabIsShow(3)">忘记密码</p>
+          <p>
+            <img
+              src="http://ww1.sinaimg.cn/large/0064QvQTly1gfw4z74vpyj302400omwx.jpg"
+              alt=""
+              @click="qq"
+            />
+          </p>
         </div>
       </div>
       <div class="login-btn" @click="messageSignIn()">
@@ -433,16 +440,28 @@ export default {
     },
     updatePassword() {
       // this.$axios({
-      //   method: 'put',
-      //   url:this.GLOBAL.baseUrl+'/user/user/password?userAccount=' +this.phoneForm.phoneNumber,
+      //   method: "put",
+      //   url:
+      //     this.GLOBAL.baseUrl +
+      //     "/user/user/password?userAccount=" +
+      //     this.phoneForm.phoneNumber
       // })
-      //   .then((res) => {
-      //     console.log(this.phoneForm)
-      //     console.log(res)
+      //   .then(res => {
+      //     console.log(this.phoneForm);
+      //     console.log(res);
       //   })
       //   .catch(function(error) {
-      //     console.log(error)
-      //   })
+      //     console.log(error);
+      //   });
+    },
+    qq() {
+      // API.init("/qq/oauth", null, "get");
+      this.$axios({
+        method: "get",
+        url: "http://www.ntt1914866205.xyz/qq/oauth"
+      }).then(res => {
+        console.log(res);
+      });
     }
   },
   computed: {}
@@ -451,4 +470,10 @@ export default {
 
 <style scoped lang="scss">
 @import "../assets/scss/login.scss";
+.footer {
+  height: 200px;
+  width: 200px;
+  background-color: black;
+  margin-top: 200px;
+}
 </style>

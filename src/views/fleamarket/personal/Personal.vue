@@ -15,20 +15,14 @@
         <div class="top">
           <div class="left">
             <div class="card">
-              <img
-                class="img"
-                :src="list.avatar"
-              />
+              <img class="img" :src="list.avatar" />
               <div class="mes">
                 <p class="wid">{{ list.username }}</p>
                 <p class="nickname">用户昵称：{{ list.nickname }}</p>
               </div>
             </div>
           </div>
-          <div
-            class="right"
-            v-show="show"
-          >
+          <div class="right" v-show="show">
             <router-link to="/personaldetail">
               <div class="btn">
                 <p>编辑资料</p>
@@ -44,12 +38,9 @@
       <div class="count">
         <div class="tab">
           <div @click="isShow = 1">
-            <p :class="{ blueLine: isShow == 1 }">发布{{ send.length }}</p>
+            <p :class="{ blueLine: isShow == 1 }">发布</p>
           </div>
-          <div
-            @click="isShow = 2"
-            v-show="show"
-          >
+          <div @click="isShow = 2" v-show="show">
             <p :class="{ blueLine: isShow == 2 }">订单{{ buy.length }}</p>
           </div>
           <div @click="isShow = 3">
@@ -59,35 +50,29 @@
       </div>
     </div>
     <div class="container">
-      <div
-        class="zhezhaoceng cc-shadow"
-        v-show="zzc"
-      >
+      <div class="zhezhaoceng" v-show="zzc">
         <p>是否想要下架这件商品</p>
         <div class="b-pos">
           <span @click="zzc = false">取消</span>
-          <span @click="deleteSend">确认</span>
+          <span @click="deleteSend()">确认</span>
         </div>
       </div>
-      <div
-        class="zhezhaoceng cc-shadow"
-        v-show="zzc1"
-      >
+      <div class="zhezhaoceng" v-show="zzc1">
         <p>成功下架商品</p>
         <div class="b-pos">
-          <span @click="zzc1=false">确认</span>
+          <span @click="zzc1 = false">确认</span>
         </div>
       </div>
       <div
         class="box"
         v-show="isShow == 1"
-        v-for="item in send"
+        v-for="(item, index) in send"
         :key="item.id"
       >
-        <div class="left">
-          <img :src="item.goodsImgUrl" />
+        <div class="left" v-if="item.isDeleted == false">
+          <img :src="item.goodsImgUrl.split('--**--')[0]" />
         </div>
-        <div class="right">
+        <div class="right" v-if="item.isDeleted == false">
           <p class="title">{{ item.goodsName }}</p>
           <p class="des">{{ item.goodsDescription }}</p>
           <div class="price">
@@ -96,24 +81,19 @@
               v-show="show"
               class="del"
               src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/delete.png"
-              @click="showzzc(item.goodsId)"
+              @click="showzzc(item.goodsId, index)"
             />
-          </div>
-          <!-- <div class="com">
+            <!-- <div class="com">
             <img
               class="icon"
               src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/cc-message.png"
             />
             <p class="mes">0</p>
           </div> -->
+          </div>
         </div>
       </div>
-      <div
-        class="box"
-        v-show="isShow == 2"
-        v-for="item in buy"
-        :key="item.id"
-      >
+      <div class="box" v-show="isShow == 2" v-for="item in buy" :key="item.id">
         <div class="left">
           <!-- <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/3.jpg" /> -->
         </div>
@@ -143,25 +123,15 @@
         @click="gotoDetail(item.userId)"
       >
         <div class="left">
-          <img :src="item.goodsImgUrl" />
+          <img :src="item.goodsImgUrl.split('--**--')[0]" />
         </div>
         <div class="right">
           <p class="title">{{ item.goodsName }}</p>
           <p class="des">{{ item.goodsDescription }}</p>
           <p class="price">￥{{ item.goodsPrice }}</p>
-          <!-- <div class="com">
-            <img
-              class="icon"
-              src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/cc-message.png"
-            />
-            <p class="mes">0</p>
-          </div> -->
         </div>
       </div>
-      <div
-        class="send"
-        v-show="show"
-      >
+      <div class="send" v-show="show">
         <router-link to="/sell">
           <div class="round">
             <img
@@ -196,7 +166,9 @@ export default {
       buy: [],
       zzc: false,
       zzc1: false,
-      goodsId: 0
+      goodsId: 0,
+      deleteCount: 0,
+      xiabiao: 0
     };
   },
   components: {},
@@ -221,13 +193,11 @@ export default {
       };
       this.url = this.GLOBAL.baseUrl + "/flea/user/userMain";
       this.list = (await API.init(this.url, this.data, "post")).data;
-      //   this.likeList = (await API.init(this.url, this.data, "post")).data;
-      // localStorage.setItem("path", JSON.stringify(path));
-      // console.log(this.list);
     },
-    showzzc(id) {
+    showzzc(id, index) {
       this.zzc = true;
       this.goodsId = id;
+      this.xiabiao = index;
       console.log(id);
     },
     ifUser() {
@@ -266,7 +236,7 @@ export default {
         pkFleaUserId: id
       };
       this.like = (await API.init(this.url, this.data, "post")).data;
-      console.log(this.like);
+      // console.log(this.like);
     },
     gotoDetail(id) {
       let now = this.path + this.user.pkFleaUserId;
@@ -291,7 +261,12 @@ export default {
         pkFleaGoodsId: this.goodsId
       };
       this.result = await API.init(this.url, this.data, "post");
-      console.log(this.result);
+
+      this.send.splice(1, this.xiabiao);
+      this.getSend();
+      console.log(this.send.length);
+
+      // console.log(this.result);
     }
   },
   computed: {}

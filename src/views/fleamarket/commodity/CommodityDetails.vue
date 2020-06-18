@@ -32,6 +32,10 @@
             <img :src="list[0].goodsImgUrl.split('--**--')[0]" />
           </div>
         </div>
+        <!-- <div class="comment">
+          <p>评论</p>
+          <button @click="AddComment">评论</button>
+        </div> -->
         <div class="like">
           <div class="head">
             <div class="pos">
@@ -46,7 +50,7 @@
               <div class="r-left-con" @click="gotoDetail(item.pkFleaGoodsId)">
                 <img :src="item.goodsImgUrl.split('--**--')[0]" />
                 <span>{{ item.goodsDescription }}</span>
-                <p>$ {{ item.goodsPrice }}</p>
+                <p class="price">$ {{ item.goodsPrice }}</p>
                 <div class="r-right">
                   <div class="img-box">
                     <img :src="item.userAvatar" alt="" />
@@ -72,7 +76,7 @@
         @click="dolike(list[0].pkFleaGoodsId, user.pkFleaUserId)"
       >
         <img
-          src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/star.png"
+          src="http://ww1.sinaimg.cn/large/0064QvQTly1gfw77tsfzej30jg0jg0t5.jpg"
         />
         <p>收藏</p>
       </div>
@@ -82,10 +86,10 @@
         @click="unlike(list[0].pkFleaGoodsId, user.pkFleaUserId)"
       >
         <img
-          src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/Star.png"
+          src="http://ww1.sinaimg.cn/large/0064QvQTly1gfw77dim76j30jg0jggm1.jpg"
         />
 
-        <p>取消收藏</p>
+        <p>取消</p>
       </div>
       <router-link to="/pay">
         <div class="want">
@@ -144,6 +148,7 @@ export default {
     this.getList();
     this.getSpList();
     this.iflike();
+    this.AddComment();
   },
   mounted() {
     window.addEventListener("scroll", this.scrollToTop);
@@ -170,6 +175,16 @@ export default {
       await API.init(this.url, this.data, "post");
       this.like = true;
     },
+    async AddComment() {
+      this.url = this.GLOBAL.baseUrl + "/flea/comment/increased";
+      this.data = {
+        comment: "我是",
+        reviewerId: 1,
+        rewardId: 1,
+        userId: 1
+      };
+      await API.init(this.url, this.data, "post");
+    },
     async iflike() {
       this.url = this.GLOBAL.baseUrl + "/flea/collection/all";
       this.data = {
@@ -184,7 +199,7 @@ export default {
       for (let i = 0; i < this.result.length; i++) {
         // console.log(this.result[i].userId);
         // console.log(this.$route.params.id);
-        console.log(this.result[i].userId == this.$route.params.id);
+        // console.log(this.result[i].userId == this.$route.params.id);
 
         if (this.result[i].userId == this.$route.params.id) {
           this.like = false;
@@ -288,4 +303,9 @@ export default {
 
 <style scoped lang="scss">
 @import "../../../assets/scss/fleamarket/commodity/CommodityDetails.scss";
+.img-box {
+  } 
+.price {
+  margin-top: 13px;
+}  
 </style>

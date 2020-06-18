@@ -50,21 +50,17 @@
         </div>
       </div>
     </div>
-    <!-- 悬赏 -->
-    <!-- <div class="reward">
-      <Carousel :slideList="slideList" class="ward"></Carousel>
-    </div> -->
-    <!-- 发布信息 -->
-    <div class="release">
+    <div class="release" @scroll="doload()">
       <div
         class="footer"
-        v-for="item in list"
+        v-for="item in hotList"
         :key="item.pkFleaGoodsId"
         @click="gotoDetail(item.pkFleaGoodsId)"
       >
         <div class="goods">
           <img :src="item.userAvatar" alt="" />
           <span>{{ item.username }}</span>
+          <h5>{{ item.goodsCreateTime }}</h5>
           <p>¥ {{ item.goodsPrice }}</p>
         </div>
         <div class="pic">
@@ -137,7 +133,8 @@ export default {
             "http://ww1.sinaimg.cn/large/0064QvQTgy1gftcyt7vj1j30go0got9d.jpg"
         }
       ],
-      id: "1"
+      id: "1",
+      num: 5
     };
   },
   components: {
@@ -150,6 +147,25 @@ export default {
     this.reInto();
     this.getHotList();
     localStorage.setItem("path", JSON.stringify(this.path));
+    let that = this;
+    window.onscroll = function() {
+      // scrollTop 滚动条滚动时，距离顶部的距离
+      var scrollTop =
+        document.documentElement.scrollTop || document.body.scrollTop;
+
+      // windowHeight 可视区的高度
+      var windowHeight =
+        document.documentElement.clientHeight || document.body.clientHeight;
+      // scrollHeight 滚动条的总高度
+      var scrollHeight =
+        document.documentElement.scrollHeight || document.body.scrollHeight;
+      // 滚动条到底部的条件
+      if (scrollTop + windowHeight >= scrollHeight - 50) {
+        // 加载数据
+
+        that.loadmore();
+      }
+    };
     // this.getAllType();
   },
   mounted() {},
@@ -169,12 +185,16 @@ export default {
       this.url = this.GLOBAL.baseUrl + "/flea/goods/all";
       this.data = {
         currentPage: 0,
-        pageSize: 100
+        pageSize: this.num
       };
       this.hotList = (await API.init(this.url, this.data, "post")).data;
       // this.count = this.list.length - 4;
       // this.list.splice(0, this.count);
       // console.log(this.list);
+    },
+    loadmore() {
+      this.num += 5;
+      this.getHotList();
     },
     gotoDetail(id) {
       this.page[this.count++] = id;
@@ -225,6 +245,19 @@ export default {
       this.$router.push({
         path: `/listDetail/${id}`
       });
+    },
+    handleScroll() {
+      //scrollTop为滚动条在Y轴上的滚动距离。
+      //clientHeight为内容可视区域的高度。
+      //scrollHeight为内容可视区域的高度加上溢出（滚动）的距离。
+      console.log(this.$el.scrollTop);
+      if (this.$el.scrollTop + this.$el.offsetHeight > this.$el.scrollHeight) {
+        this.num += 10;
+        this.scloll = true;
+        this.getHotList();
+      } else {
+        this.scloll = false;
+      }
     }
   },
   computed: {},
