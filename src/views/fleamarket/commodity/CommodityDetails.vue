@@ -9,6 +9,12 @@
       <!-- </router-link> -->
       <p>商品详情</p>
     </div>
+    <div
+      class="solder"
+      v-show="list[0].isDeleted==true"
+    >
+      <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/0ac2e928674ff8e5bd0c0a9c00542b3f.png" />
+    </div>
     <div class="container">
       <div class="card">
         <div class="head">
@@ -92,10 +98,19 @@
         <p>取消</p>
       </div>
       <router-link to="/pay">
-        <div class="want">
+        <div
+          class="want"
+          v-show="list[0].pkFleaUserId!=user.pkFleaUserId"
+        >
           <p class="btn">我想要</p>
         </div>
       </router-link>
+      <div
+        class="want"
+        v-show="list[0].pkFleaUserId==user.pkFleaUserId"
+      >
+        <p class="btn none">我的商品</p>
+      </div>
     </div>
   </div>
 </template>

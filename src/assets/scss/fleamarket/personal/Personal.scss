@@ -150,6 +150,16 @@
           margin: 10px 10px 10px 10px;
         }
       }
+      .solder {
+        position: absolute;
+        z-index: 999;
+        transform: rotate(50deg);
+        width: 100px;
+        height: 100px;
+        right: 20px;
+        // top: 200px;
+        margin-top: -10px;
+      }
       .right {
         margin-left: 10px;
         .title {
