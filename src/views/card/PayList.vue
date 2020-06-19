@@ -50,14 +50,14 @@ export default {
   methods: {
     async customer() {
       this.data = {
-        job_number: this.userCard
+        field: this.userCard
       };
       this.url = this.GLOBAL.baseUrl + "/card/consume";
-      this.result = await API.init(this.url, this.data, "get");
+      this.result = await API.init(this.url, this.data, "post");
       this.customers = this.result.data;
     }
   },
-  computed: {},
+  computed: {}
 };
 </script>
 

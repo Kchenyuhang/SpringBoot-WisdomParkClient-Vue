@@ -1,0 +1,101 @@
+.bg {
+  background-color: #f9f9f9;
+  width: 100%;
+}
+
+.header {
+  background-color: #ffffff;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header img {
+  height: 20px;
+  width: 20px;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.header p {
+  font-size: 16px;
+  font-weight: 550;
+  margin-left: 34%;
+  margin-top: 3%;
+}
+
+.container {
+  height: 80%;
+  width: 90%;
+  margin-left: 15px;
+  border-radius: 10px;
+  margin-top: 4px;
+}
+
+.container .box {
+  margin-top: 5%;
+  width: 100%;
+  background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.container .box .left img {
+  width: 130px;
+  height: 90px;
+  border-radius: 10px;
+  margin: 10px 10px 10px 10px;
+}
+
+.container .box .right {
+  margin-left: 10px;
+}
+
+.container .box .right .title {
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.container .box .right .des {
+  font-size: 14px;
+  color: #b7b6b6;
+}
+
+.container .box .right .price {
+  margin-top: 20%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.container .box .right .price .red {
+  font-weight: 600;
+  font-size: 14px;
+  color: #f56969;
+}
+
+.container .box .right .price .right {
+  position: absolute;
+  right: 10%;
+}
+
+.container .box .right .com {
+  position: absolute;
+  right: 6%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.container .box .right .com .icon {
+  width: 18px;
+}
+
+.container .box .right .com .mes {
+  font-size: 13px;
+}
+/*# sourceMappingURL=MyRealease.css.map */

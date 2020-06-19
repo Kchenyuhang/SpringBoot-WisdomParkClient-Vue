@@ -111,7 +111,6 @@ export default {
       };
       this.url = this.GLOBAL.baseUrl + "/addressBook/list/userId";
       this.result = await API.init(this.url, this.data, "post");
-      // console.log(this.result);
       this.transition();
     },
     transition() {
@@ -166,4 +165,20 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/scss/main/AdressBook.scss";
+// .li-img img {
+//   width: 20px;
+//   height: 20px;
+// }
+// .left-letter {
+//   background-color: blue;
+// }
+// .selected {
+//   background-color: brown;
+// }
+// .mylist {
+//   background-color: cadetblue;
+// }
+// .leftDiv img{
+//   background-color: darkblue;
+// }
 </style>

@@ -10,29 +10,19 @@
       <p>考务查询</p>
     </div>
     <hr class="line" />
-    <div
-      class="container"
-      @click="show = !show"
-    >
+    <div class="container" @click="show = !show">
       <p>{{ semester }}</p>
-      <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/xiajiantou.png" />
+      <img
+        src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/xiajiantou.png"
+      />
     </div>
-    <div
-      class="zhezhaoceng"
-      v-if="show"
-    >
-      <div
-        v-for="(item, index) in result"
-        :key="index"
-      >
+    <div class="zhezhaoceng" v-if="show">
+      <div v-for="(item, index) in result" :key="index">
         <p @click="getSeme(index)">{{ item.semester }}</p>
       </div>
     </div>
 
-    <div
-      v-for="(item, index) in exam.examinations"
-      :key="index"
-    >
+    <div v-for="(item, index) in exam.examinations" :key="index">
       <div class="card">
         <div class="cc-df-between">
           <div>
@@ -46,14 +36,8 @@
             >
               {{ item.score }}分
             </p>
-            <p
-              class="small1"
-              v-if="item.endTime === 0"
-            >考试中</p>
-            <p
-              class="small1"
-              v-if="item.endTime > 0"
-            >
+            <p class="small1" v-if="item.endTime === 0">考试中</p>
+            <p class="small1" v-if="item.endTime > 0">
               距离还有{{ item.endTime }}天
             </p>
           </div>
@@ -68,18 +52,12 @@
         </div>
       </div>
     </div>
-    <div
-      class="btn"
-      v-show="flag"
-    >
+    <div class="btn" v-show="flag">
       <p>
         成绩报告单
       </p>
     </div>
-    <div
-      v-show="!flag"
-      class="none"
-    >
+    <div v-show="!flag" class="none">
       <p>此页无成绩</p>
     </div>
   </div>
@@ -95,12 +73,13 @@ export default {
       flag: true,
       url: "",
       data: {
-        field: "1802333118"
+        field: ""
       },
       semesters: [],
       result: [],
       semester: "",
-      exam: []
+      exam: [],
+      user: JSON.parse(localStorage.getItem("user"))
     };
   },
   components: {},
@@ -114,7 +93,10 @@ export default {
     },
     async selectExam() {
       this.url = this.GLOBAL.baseUrl + "/examination/list/semester";
-      this.result = await API.init(this.url, this.data, "post");
+      (this.data = {
+        field: "user.jobNumber"
+      }),
+        (this.result = await API.init(this.url, this.data, "post"));
       // console.log(this.result);
       this.semester = this.result[0].semester;
       this.getSeme(0);

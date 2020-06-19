@@ -1,11 +1,12 @@
 .bg {
+  overflow-x: hidden;
   background-color: #ffffff;
   height: 100vh;
   width: 100%;
 }
 
 .bg img {
-  width: 100%;
+  width: 99.9%;
   height: 250px;
 }
 
@@ -22,9 +23,19 @@
 }
 
 .inputDiv .inputTop {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   margin-top: 15px;
   width: 80%;
   height: 40px;
+}
+
+.inputDiv .inputTop .helpd {
+  margin-left: 30px;
+  width: 40px;
+  height: 2px;
+  background-color: #fed403;
 }
 
 .inputDiv .inputCenter {
@@ -55,10 +66,10 @@
 }
 
 .menu {
-  width: 96%;
+  width: 97%;
   position: absolute;
+  left: 2px;
   top: 416px;
-  left: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -66,30 +77,49 @@
       justify-content: space-around;
 }
 
-.menu div {
-  padding-left: 25px;
-}
-
 .menu img {
+<<<<<<< HEAD
+  width: 35px;
+  height: 30px;
+=======
   width: 40px;
   height: 40px;
+>>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
   padding-left: 10px;
 }
 
 .menu p {
+<<<<<<< HEAD
+  padding-left: -15px;
+}
+
+.wz {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 98%;
+  position: absolute;
+  top: 456px;
+  left: 10px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+=======
   padding-left: -5px;
+>>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
 }
 
 .bottom {
+  background-color: #fff;
   width: 94%;
   height: 180px;
+  display: inline-block;
   position: absolute;
   top: 500px;
-  left: 10px;
+  left: -5px;
 }
 
 .bottom .card {
-  border: 1px solid #c4c4c4;
+  border: 1px solid #f4f4f4;
   margin: 1px 1px 1px 1px;
   margin-bottom: 15px;
   border-radius: 10px;
@@ -127,5 +157,31 @@
   width: 100px;
   height: 100px;
   border-radius: 50%;
+}
+
+.citydiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.citydiv p {
+  color: #ffffff;
+}
+
+.citydiv img {
+  width: 20px;
+  height: 20px;
+}
+
+#layout {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 20px;
+  height: 20px;
 }
 /*# sourceMappingURL=Errandshomepage.css.map */

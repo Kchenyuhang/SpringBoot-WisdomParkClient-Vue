@@ -34,7 +34,7 @@
 
 .left-letter {
   position: fixed;
-  color: #828fa0;
+  color: red;
   top: 88px;
   left: 350px;
   width: 20px;
@@ -70,11 +70,6 @@
   height: 25px;
   width: 100%;
   border: none;
-  background-color: #f2f2f4;
-}
-
-.student-container li .content .selected {
-  color: #0d858e;
 }
 
 .student-container li .ccard {

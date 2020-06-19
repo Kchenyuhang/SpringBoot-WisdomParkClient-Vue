@@ -28,7 +28,8 @@
             >
               <img :src="item.cover" />
               <div class="cc-col-between cc-mleft">
-                <p class="file">{{ item.text.slice(0, 35) }}...</p>
+                <p class="file">{{ item.title }}...</p>
+                <!-- <p v-html="item.text.slice(0, 35)"></p> -->
                 <p class="time">{{ item.gmtCreate.slice(0, 10) }}</p>
               </div>
             </div>
@@ -125,25 +126,11 @@ export default {
       result: [],
       teachResult: [],
       data: {
-        currentPage: 1,
-        field: "1",
-        pageSize: 3
-      },
-      pageData: {
         currentPage: 0,
         field: "1",
         pageSize: 5
       },
-      studentData: {
-        currentPage: 0,
-        field: "2",
-        pageSize: 5
-      },
-      AllData: {
-        currentPage: 0,
-        field: "1",
-        pageSize: 5
-      }
+      count: 5
     };
   },
   components: {
@@ -154,7 +141,9 @@ export default {
     this.getList();
     this.getAll();
   },
-  mounted() {},
+  mounted() {
+    // this.loadMore();
+  },
   methods: {
     into(index) {
       this.$router.push({
@@ -168,29 +157,51 @@ export default {
         params: { Id: index }
       });
     },
+    loadMore() {
+      this.data.pageSize = this.data.pageSize + 10;
+    },
     async getList() {
       this.url = this.GLOBAL.baseUrl + "/info/isTap";
+      this.data = {
+        currentPage: 0,
+        field: "1",
+        pageSize: this.count
+      };
       this.result = (await API.init(this.url, this.data, "post")).data;
       for (let i = 0; i < this.result.length; i++) {
         this.slideList[i].image = this.result[i].cover;
         this.slideList[i].id = this.result[i].pkInfoManageId;
+        console.log(this.slideList[i].image);
       }
     },
     async getDoList() {
       this.url = this.GLOBAL.baseUrl + "/info/type/page";
-      this.teachResult = (await API.init(this.url, this.pageData, "post")).data;
+      this.data = {
+        currentPage: 0,
+        field: "1",
+        pageSize: this.count
+      };
+      this.teachResult = (await API.init(this.url, this.data, "post")).data;
       // console.log(this.teachResult);
     },
     async getStudentList() {
       this.url = this.GLOBAL.baseUrl + "/info/type/page";
-      this.teachResult = (
-        await API.init(this.url, this.studentData, "post")
-      ).data;
+      this.data = {
+        currentPage: 0,
+        field: "2",
+        pageSize: this.count
+      };
+      this.teachResult = (await API.init(this.url, this.data, "post")).data;
       // console.log(this.teachResult);
     },
     async getAll() {
       this.url = this.GLOBAL.baseUrl + "/info/allInfo";
-      this.teachResult = (await API.init(this.url, this.AllData, "post")).data;
+      this.data = {
+        currentPage: 1,
+        field: "1",
+        pageSize: this.count
+      };
+      this.teachResult = (await API.init(this.url, this.data, "post")).data;
       // console.log(this.teachResult);
     }
   },

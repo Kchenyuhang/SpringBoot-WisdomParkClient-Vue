@@ -1,0 +1,64 @@
+.bg {
+  background-color: #fbfbfb;
+  height: 100vh;
+  width: 100%;
+}
+
+.bg .header {
+  background-color: #ffffff;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.bg .header img {
+  height: 20px;
+  width: 20px;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.bg .header p {
+  font-size: 18px;
+  font-weight: 550;
+  margin-left: 3%;
+  margin-top: 2%;
+}
+
+.bg .userdiv {
+  background-color: #ffffff;
+  width: 100%;
+  height: 50px;
+}
+
+.bg .userdiv p {
+  padding: 10px 0 0 10px;
+}
+
+.bg .center {
+  margin-top: 10px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 40px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.bg .center img {
+  width: 25px;
+  height: 25px;
+}
+
+.bg .btn {
+  position: absolute;
+  bottom: 0;
+  border: none;
+  width: 100%;
+  height: 50px;
+  background-color: #ffffff;
+}
+/*# sourceMappingURL=Set.css.map */

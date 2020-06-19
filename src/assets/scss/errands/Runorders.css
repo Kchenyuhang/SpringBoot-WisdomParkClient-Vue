@@ -1,0 +1,49 @@
+.bg {
+  background-color: #fefefe;
+  height: 100vh;
+  width: 100%;
+}
+
+.header {
+  background-color: #ffffff;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header img {
+  height: 20px;
+  width: 20px;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.header p {
+  font-size: 18px;
+  font-weight: 550;
+  margin-left: 3%;
+  margin-top: 2%;
+}
+
+.topNav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+  height: 55px;
+}
+
+.topNav p {
+  padding-top: 20px;
+}
+
+.topNav .xline {
+  margin: auto;
+  width: 32px;
+  height: 3px;
+  background-color: #007acc;
+}
+/*# sourceMappingURL=Runorders.css.map */

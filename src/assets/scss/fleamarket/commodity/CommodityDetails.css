@@ -1,0 +1,254 @@
+.bg {
+  width: 100%;
+  height: 100vh;
+  background-color: #f9f9f9;
+}
+
+.bg .header {
+  height: 8%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.bg .header img {
+  height: 20px;
+  width: 20px;
+  margin-top: 15px;
+  margin-left: 5px;
+}
+
+.bg .header p {
+  font-size: 16px;
+  font-weight: 550;
+  margin-left: 34%;
+  margin-top: 4%;
+}
+
+.bg .container {
+  position: absolute;
+  margin-bottom: 100px;
+}
+
+.bg .container .card {
+  border: 1px solid #e3e3e3;
+  background-color: #fff;
+}
+
+.bg .container .card .head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10px 10px 10px 10px;
+}
+
+.bg .container .card .head img {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+}
+
+.bg .container .card .head .word .title {
+  font-weight: 700;
+  margin-left: 12px;
+}
+
+.bg .container .card .head .word .date {
+  margin-left: 12px;
+  margin-top: 10px;
+  font-size: 10px;
+  color: #c8bbb5;
+}
+
+.bg .container .card hr {
+  width: 90%;
+  margin-bottom: 20px;
+}
+
+.bg .container .card .des {
+  border-bottom: 1px solid #e3e3e3;
+  margin-bottom: 20px;
+}
+
+.bg .container .card .des .inform {
+  margin: 0px 0px 10px 10px;
+}
+
+.bg .container .card .des .inform p {
+  margin-top: 15px;
+}
+
+.bg .container .card .des .inform .price {
+  color: #da3232;
+  font-size: 20px;
+}
+
+.bg .container .card .des .inform .name {
+  font-weight: 600;
+}
+
+.bg .container .card .des .inform .desc {
+  font-weight: 400;
+}
+
+.bg .container .card .des .img {
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.bg .container .card .des .img img {
+  height: 400px;
+  margin-bottom: 10px;
+}
+
+.bg .container .card .like {
+  border-top: 1px solid #e3e3e3;
+  width: 100%;
+}
+
+.bg .container .card .like .head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.bg .container .card .like .head .pos {
+  margin: 0 auto;
+}
+
+.bg .container .card .like .head .pos img {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.bg .container .card .like .head .pos span {
+  float: right;
+  margin-right: 10px;
+  margin-top: 3px;
+  color: red;
+}
+
+.bg .container .card .sp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.bg .container .card .sp .content {
+  width: 50%;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.bg .container .card .sp .content .sp-card .user img {
+  width: 40px;
+  height: 40px;
+}
+
+.r-list {
+  width: 90%;
+  margin-left: 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.r-left {
+  height: 230px;
+  width: 46%;
+  margin-left: 8px;
+  margin-top: 15px;
+  background-color: white;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.r-left img {
+  height: 100px;
+  border: none;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.r-right p {
+  color: red;
+}
+
+.r-right img {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  margin-top: 30px;
+}
+
+.r-right p {
+  float: right;
+  margin-right: 60px;
+  margin-top: -24px;
+  color: red;
+}
+
+.r-left-con p {
+  font-size: 0.7rem;
+  color: red;
+}
+
+.r-left-con span {
+  font-size: 14px;
+}
+
+.bottom {
+  width: 100%;
+  height: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  position: fixed;
+  background-color: white;
+  -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+  bottom: 0;
+}
+
+.bottom .home img {
+  width: 25px;
+  height: 25px;
+  margin-top: 10px;
+  margin-left: 19px;
+}
+
+.bottom .collect img {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  margin-left: 5px;
+  margin-top: 10px;
+}
+
+.bottom .collect p {
+  margin-top: 40px;
+  margin-right: 10px;
+}
+
+.bottom .want {
+  margin-top: 10px;
+}
+
+.bottom .want .btn {
+  margin-top: 20px;
+  border: 1px solid grey;
+  color: white;
+  background-color: red;
+  border-radius: 20px;
+  padding: 5px 10px 5px 10px;
+}
+/*# sourceMappingURL=CommodityDetails.css.map */
