@@ -99,6 +99,11 @@ const routes = [
     component: () => import("../views/Alumnus/AlumnusIndex.vue")
   },
   {
+    path: "/dongtaidetails/:Id",
+    name: "DongtaiDetails",
+    component: () => import("../views/Alumnus/DongtaiDetails.vue")
+  },
+  {
     path: "/alumnusmessage",
     name: "AlumnusMessage",
     component: () => import("../views/Alumnus/AlumnusMessage.vue")

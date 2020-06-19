@@ -1,5 +1,6 @@
 <template>
   <div class="bg">
+    <Loading v-if="show"></Loading>
     <div class="header">
       <div class="header-title">
         <router-link to="/layout">
@@ -49,7 +50,7 @@
             </div>
           </div>
 
-          <div class="dongtai-content">
+          <div class="dongtai-content" @click="into(item1.pkDynamicId)">
             <div class="row cc-df-between">
               <div class="row">
                 <div v-for="(item2,index2) in users[index]" :key="index2">
@@ -130,6 +131,34 @@
                 </div>
               </div>
             </div>
+            <div v-for="(item3,index3) in comments[index][index1]" :key="index3">
+              <div class="comment-row cc-df-between">
+                <div class="dis">
+                  <img :src="item3.userId.avatar" alt />
+                  <div class="comment-content">
+                    <div class="row3">
+                      <p class="nickname">{{item3.userId.nickname}}</p>
+                      <p class="dian">·</p>
+                      <p class="time">{{item3.gmtCreate}}</p>
+                    </div>
+                    <div class="row4">
+                      <p>{{item3.content}}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="zan">
+                  <img
+                    src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/alumnus/icon_dianzan.png"
+                    alt
+                  />
+                </div>
+              </div>
+              <div v-for="(item4,index4) in item3.replyComments" :key="index4">
+                <p
+                  class="fontSize"
+                >{{item4.userId.nickname}}回复了{{item3.userId.nickname}}：{{item4.content}}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -148,20 +177,38 @@ export default {
       users: [],
       people: {},
       data: {},
-      page: 1
+      page: 1,
+      comments: [],
+      msg: "",
+      show: true
     };
   },
-  components: {},
+  components: {
+    Loading: require("../../components/Loading").default
+  },
   async created() {
     await this.selectDongtai();
   },
-  mounted() {},
+  mounted() {
+    setTimeout(() => {
+      this.show=false
+      this.msg = "加载完辽！";
+    }, 10000);
+  },
   methods: {
     chattting(index, index1) {
       this.$router.push({
         name: "Chatting",
         params: { UserId: this.users[index][index1].pkUserAccountId }
       });
+    },
+    async selectComment(index) {
+      this.data = {
+        id: index
+      };
+      this.url = this.GLOBAL.baseUrl + "/dynamic/";
+      this.result = await API.init(this.url, this.data, "post");
+      this.comments[this.page - 1].push(this.result.data.commentVoList);
     },
     async selectImg(index) {
       this.data = {
@@ -170,6 +217,39 @@ export default {
       this.url = this.GLOBAL.baseUrl + "/dynamic/photo";
       this.result = await API.init(this.url, this.data, "post");
       this.imgs[this.page - 1].push(this.result.data);
+    },
+    async selectReplyUser() {
+      for (let i = 0; i < this.comments[this.page - 1].length; i++) {
+        for (let j = 0; j < this.comments[this.page - 1][i].length; j++) {
+          for (
+            let k = 0;
+            k < this.comments[this.page - 1][i][j].replyComments.length;
+            k++
+          ) {
+            this.data = {
+              field: this.comments[this.page - 1][i][j].replyComments[k].userId
+            };
+            this.url = this.GLOBAL.baseUrl + "/user/single/id";
+            this.result = await API.init(this.url, this.data, "post");
+            this.comments[this.page - 1][i][j].replyComments[
+              k
+            ].userId = this.result;
+          }
+        }
+      }
+    },
+    async selectCommentUser() {
+      // console.log(index,commentUsers)
+      for (let i = 0; i < this.comments[this.page - 1].length; i++) {
+        for (let j = 0; j < this.comments[this.page - 1][i].length; j++) {
+          this.data = {
+            field: this.comments[this.page - 1][i][j].userId
+          };
+          this.url = this.GLOBAL.baseUrl + "/user/single/id";
+          this.result = await API.init(this.url, this.data, "post");
+          this.comments[this.page - 1][i][j].userId = this.result;
+        }
+      }
     },
     async selectUser(index) {
       this.data = {
@@ -190,22 +270,29 @@ export default {
       console.log(this.Dongtais);
       this.users.push([]);
       this.imgs.push([]);
+      this.comments.push([]);
       this.data1 = this.Dongtais[this.page - 1];
       for (let i = 0; i < this.data1.length; i++) {
         await this.selectUser(this.data1[i].userId);
         await this.selectImg(this.data1[i].pkDynamicId);
+        await this.selectComment(this.data1[i].pkDynamicId);
       }
-      console.log(this.imgs);
+      await this.selectCommentUser();
+      await this.selectReplyUser();
+      console.log(this.comments);
     },
     into(index) {
       if (index == 1) {
         this.$router.push("/publish");
-      }
-      if (index == 2) {
+      } else if (index == 2) {
         this.$router.push("/alumnusmessage");
-      }
-      if (index == 3) {
+      } else if (index == 3) {
         this.$router.push("/alumnuscollect");
+      } else {
+        this.$router.push({
+          name: "DongtaiDetails",
+          params: { Id: index }
+        });
       }
     }
   },
