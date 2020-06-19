@@ -162,6 +162,7 @@ export default {
     this.getHotList();
     localStorage.setItem("path", JSON.stringify(this.path));
     localStorage.setItem("repath", JSON.stringify(this.repath));
+    localStorage.setItem("mypath", JSON.stringify(this.path));
     let that = this;
     window.onscroll = function() {
       // scrollTop 滚动条滚动时，距离顶部的距离

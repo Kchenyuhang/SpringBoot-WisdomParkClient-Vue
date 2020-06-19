@@ -2,12 +2,10 @@
   <div>
     <div class="container">
       <div class="header">
-        <router-link to="/layout">
-          <img
-            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
-            alt=""
-          />
-        </router-link>
+        <img
+          src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
+          alt=""
+        />
         <p>悬赏</p>
       </div>
       <div class="recomond">
@@ -110,6 +108,7 @@ export default {
 .container {
   padding: 0;
   height: auto;
+  // text-align: center;
 }
 .list {
   height: auto;
