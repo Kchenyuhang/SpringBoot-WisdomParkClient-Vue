@@ -1,0 +1,88 @@
+.bg {
+  background-color: #f7f7f7;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+.header {
+  background-color: #11aca8;
+  height: 55px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header .header-title {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .header-title img {
+  height: 18px;
+  width: 18px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.header .header-title p {
+  font-size: 18px;
+  font-weight: 550;
+  margin-left: 15px;
+  color: white;
+}
+
+.header .header-title .inp {
+  width: 70%;
+  height: 35px;
+  border-radius: 20px;
+  margin-left: 20px;
+  background-color: white;
+  padding-top: 5px;
+}
+
+.header .header-title .inp input {
+  width: 100%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  color: #636363;
+  font-size: 16px;
+  margin-left: 20px;
+}
+
+.faxian {
+  width: 100%;
+  height: 400px;
+  background-color: white;
+  padding-top: 30px;
+}
+
+.faxian .faxian-card {
+  width: 85%;
+  margin: auto;
+}
+
+.faxian .faxian-card .row {
+  font-size: 22px;
+}
+
+.faxian .faxian-card .faxian-title-card {
+  margin-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.faxian .faxian-card .faxian-title-card .faxian-title {
+  width: 80px;
+  height: 40px;
+  margin-right: 20px;
+  border-radius: 10px;
+  background-color: #ebebeb;
+}
+/*# sourceMappingURL=JobSearch.css.map */

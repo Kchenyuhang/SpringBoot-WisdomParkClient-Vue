@@ -12,44 +12,56 @@
       </div>
     </div>
     <div class="screen-card">
-        <div class="screen-title">
-            <p>工作地点</p>
+      <div class="screen-title">
+        <p>工作类型</p>
+      </div>
+      <div class="screen-body cc-df-warp">
+        <div
+          v-for="(item,index) in types"
+          :key="index"
+        >
+          <div class="screen-type cc-mright cc-df-center">
+            <p>{{item.name}}</p>
+          </div>
         </div>
-        <div class="screen-card">
-        <div v-for="item in 9" :key="item.id">
-            <div class="screen-type cc-df-center" >
-                <p>筛选标签</p>
-            </div>
-        </div>
-        </div>
+      </div>
     </div>
     <div class="footer">
-        <div class="footer-bin cc-df-between">
-            <div class="footer-bin-clear cc-df-center">
-                <p>清除</p>
-            </div>
-            <div class="footer-bin-sure cc-df-center">
-                <p>确定</p>
-            </div>
+      <div class="footer-bin cc-df-between">
+        <div class="footer-bin-clear cc-df-center">
+          <p>清除</p>
         </div>
+        <div class="footer-bin-sure cc-df-center">
+          <p>确定</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+const API = require("../../request/api");
 export default {
- name: 'JobScreen',
+  name: "JobScreen",
   data() {
     return {
-
-    }
+      types: []
+    };
   },
   components: {},
-  created() {},
+  created() {
+    this.selectType();
+  },
   mounted() {},
-  methods: {},
+  methods: {
+    async selectType() {
+      this.url = this.GLOBAL.baseUrl + "/jobType/list";
+      this.result = await API.init(this.url, null, "post");
+      this.types = this.result.data;
+    }
+  },
   computed: {}
-}
+};
 </script>
 
 <style scoped lang="scss">

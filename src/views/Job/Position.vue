@@ -10,7 +10,10 @@
         </router-link>
         <p>校园聘</p>
       </div>
-      <div class="search" @click="into(1)">
+      <div
+        class="search"
+        @click="into(1)"
+      >
         <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/position/sousuo.png"
           alt=""
@@ -42,160 +45,186 @@
       <hr class="line" />
       <div class="choose-between cc-df-between">
         <div class="choose-title">
-          <p @click="isFalse=true" :class="{'fontBlack1':isFalse}">推荐</p>
-          <p @click="isFalse=false" :class="{'fontBlack1':!isFalse}">最新</p>
+          <p>排序：</p>
+          <div>
+            <Select
+              @changeOption="changeOption"
+              :selectData="selectData"
+            ></Select>
+          </div>
         </div>
-        
-        <div class="choose-all" @click="into(2)">
-          <img
-            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/position/gengduo.png"
-            alt=""
+
+        <div class="cc-df">
+
+          <div
+            class="choose-all"
+            @click="into(2)"
           >
+            <img
+              src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/position/gengduo.png"
+              alt=""
+            >
+          </div>
         </div>
+
       </div>
       <hr class="line1" />
     </div>
     <div
-      v-for="item in 7"
-      :key="item.id"
-      v-show="isTrue&&isFalse"
+      v-for="(item3,index3) in partJobs"
+      :key="index3"
     >
-      <div class="job-card">
-        <div class="job-card-wide">
-          <div class="job-title cc-df-between">
-            <p class="job-name">校园兼职</p>
-            <p class="salary">￥99/天</p>
-          </div>
-          <div class="job-time">
-            <p>不限工作日期</p>
-            <p>14:00~18:00</p>
-          </div>
-          <div class="job-number">
-            <p>2人</p>
-          </div>
-          <div class="job-place cc-df-between">
-            <p class="boss">负责人信息</p>
-            <p class="place">快递站</p>
+      <div
+        v-for="(item,index) in partJobs[index3]"
+        :key="index"
+        v-show="isTrue"
+      >
+        <div
+          class="job-card"
+          @click="intoDetail(item.pkPartJobId)"
+        >
+          <div class="job-card-wide">
+            <div class="job-title cc-df-between">
+              <p class="job-name">{{item.name}}</p>
+              <p class="salary">￥{{item.pay}}/天</p>
+            </div>
+            <div class="job-time">
+              <p>{{item.workingDate}}</p>
+              <p>{{item.workingTime}}</p>
+            </div>
+            <div class="job-number">
+              <p>{{item.have}}/{{item.number}}人</p>
+            </div>
+            <div class="job-place cc-df-between">
+              <p class="boss">{{item.bossName}}</p>
+              <p class="place">{{item.workplace}}</p>
+            </div>
           </div>
         </div>
-
       </div>
     </div>
     <div
-      v-for="item in 7"
-      :key="item.id"
-      v-show="isTrue&&(!isFalse)"
+      class="cc-df-center cc-donghua bottom"
+      v-if="isBottom"
     >
-      <div class="job-card">
-        <div class="job-card-wide">
-          <div class="job-title cc-df-between">
-            <p class="job-name">兼职</p>
-            <p class="salary">￥99/天</p>
-          </div>
-          <div class="job-time">
-            <p>不限工作日期</p>
-            <p>14:00~18:00</p>
-          </div>
-          <div class="job-number">
-            <p>2人</p>
-          </div>
-          <div class="job-place cc-df-between">
-            <p class="boss">负责人信息</p>
-            <p class="place">快递站</p>
-          </div>
-        </div>
-
-      </div>
+      <p>--------已经到底了---------</p>
     </div>
+
     <div
       class="choose"
       v-if="!isTrue"
     >
       <hr class="line" />
       <div class="choose-between cc-df-between">
+        <div></div>
         <div class="choose-title">
-          <p @click="isFalse=true" :class="{'fontBlack1':isFalse}">推荐</p>
-          <p @click="isFalse=false" :class="{'fontBlack1':!isFalse}">热门</p>
-        </div>
-        <div class="choose-all">
-          <img
-            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/position/gengduo.png"
-            alt=""
-          >
+          <p>排序：</p>
+          <Select
+            @changeOption="changeOption1"
+            :selectData="selectData1"
+          ></Select>
         </div>
       </div>
       <hr class="line1" />
     </div>
-    <div
-      v-for="item in 7"
-      :key="item.id"
-      v-show="!isTrue&&isFalse"
+    <div v-for="(item,index) in jobs" :key="index">
+      <div
+      v-for="(item1,index1) in jobs[index]"
+      :key="index1"
+      v-show="!isTrue"
     >
-      <div class="job-card">
-        <div class="job-card-wide">
-          <div class="job-title cc-df-between">
-            <p class="job-name">校园兼职</p>
-            <p class="salary">￥99/天</p>
+      <div class="job-card2">
+        <div class="job-card-wide2">
+          <div class="job-title2 cc-df-between">
+            <p class="job-name2">{{item1.name}}</p>
+            <p class="salary2">￥{{item1.min}}K~{{item1.max}}K</p>
           </div>
-          <div class="job-time">
-            <p>不限工作日期</p>
-            <p>14:00~18:00</p>
+          <div class="type-row">
+          <div v-for="item in 3" :key="item.id">
+             <div class="job-type cc-df-center">
+                 <p>职位类型</p>
+            </div>
           </div>
-          <div class="job-number">
-            <p>2人</p>
           </div>
-          <div class="job-place cc-df-between">
-            <p class="boss">负责人信息</p>
-            <p class="place">快递站</p>
+         
+          <div class="job-number2">
+            <p>公司名字</p>
+            <p>99人</p>
+          </div>
+          <div class="job-place2 cc-df-between">
+            <p class="boss">{{item1.boss}}</p>
+            <p class="place">地址</p>
           </div>
         </div>
-
       </div>
     </div>
+    </div>
+    
     <div
-      v-for="item in 7"
-      :key="item.id"
-      v-show="!isTrue&&(!isFalse)"
+      class="top-btn cc-donghua"
+      @click="top()"
+      v-if="isTop"
     >
-      <div class="job-card">
-        <div class="job-card-wide">
-          <div class="job-title cc-df-between">
-            <p class="job-name">兼职</p>
-            <p class="salary">￥99/天</p>
-          </div>
-          <div class="job-time">
-            <p>不限工作日期</p>
-            <p>14:00~18:00</p>
-          </div>
-          <div class="job-number">
-            <p>2人</p>
-          </div>
-          <div class="job-place cc-df-between">
-            <p class="boss">负责人信息</p>
-            <p class="place">快递站</p>
-          </div>
-        </div>
-
-      </div>
+      <p>置顶</p>
     </div>
   </div>
 </template>
 
 <script>
+const API = require("../../request/api");
 export default {
   name: "Position",
   data() {
     return {
       isTrue: true,
-      isFalse: true,
-      isBackground: false
+      isBackground: false,
+      isBottom: false,
+      isTop: false,
+      field: "gmt_create",
+      page: 1,
+      partJobs: [],
+      jobs: [],
+      selectData: {
+        defaultIndex: 0, //默认选中的是第几个
+        selectStatus: false, // 通过selectStatus来控制下拉框的显示/隐藏
+        selectOptions: [
+          // 下拉框中的数据 name这样的参数，看项目是否有需求，可自行修改
+          {
+            name: "gmt_create",
+            context: "时间"
+          },
+          {
+            name: "pay",
+            context: "薪资"
+          }
+        ]
+      },
+      selectData1: {
+        defaultIndex: 0, //默认选中的是第几个
+        selectStatus: false, // 通过selectStatus来控制下拉框的显示/隐藏
+        selectOptions: [
+          // 下拉框中的数据 name这样的参数，看项目是否有需求，可自行修改
+          {
+            name: "gmt_create",
+            context: "时间"
+          },
+          {
+            name: "max",
+            context: "薪资"
+          }
+        ]
+      }
     };
   },
-  components: {},
-  created() {},
+  components: {
+    Select: require("../../components/select").default
+  },
+  created() {
+    this.selectPartJob();
+    this.selectJob();
+  },
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
-    
   },
   destroy() {
     // 必须移除监听器，不然当该vue组件被销毁了，监听器还在就会出错
@@ -203,13 +232,74 @@ export default {
   },
 
   methods: {
+    changeisTrue() {
+      alert(2);
+    },
+    intoDetail(index) {
+      console.log(index);
+      this.$router.push({
+        name: "PositionDetails",
+        params: { Id: index }
+      });
+    },
+    top() {
+      document.documentElement.scrollTop = 0;
+    },
+    async selectPartJob() {
+      this.url = this.GLOBAL.baseUrl + "/partJob/list";
+      this.data = {
+        currentPage: this.page,
+        field: this.field,
+        pageSize: 5
+      };
+      this.result = await API.init(this.url, this.data, "post");
+      this.partJobs.push(this.result.data);
+      if (this.result.data.length == 0) {
+        this.isBottom = true;
+      }
+    },
+    async selectJob() {
+      this.url = this.GLOBAL.baseUrl + "/job/list";
+      this.data = {
+        currentPage: this.page,
+        field: this.field,
+        pageSize: 5
+      };
+      this.result = await API.init(this.url, this.data, "post");
+      this.jobs.push(this.result.data);
+      console.log(this.jobs);
+      if (this.result.data.length == 0) {
+        this.isBottom = true;
+      }
+    },
+    onChangeOption(index) {
+      //子组件通过一个事件来触发onChangeOption方法，从而传递一系列参数，这里的index就是传过来的
+      this.selectData.defaultIndex = index;
+      //触发过后，动态改变了需要值
+      this.selectPartJob();
+    },
     handleScroll() {
-      let scrollTop = document.documentElement.scrollTop; //滚动条的高
-      console.log(scrollTop);
+      let scrollTop = document.documentElement.scrollTop;
+      let documentTop = document.body.scrollHeight; //全部内容的高
+      let screenHeight = window.screen.availHeight; //当前屏幕的高
+      if (scrollTop + screenHeight >= documentTop - 1) {
+        this.page++;
+        this.selectPartJob();
+        //干你想干的事儿
+        /* console.log(screenTop)
+				console.log(documentTop)
+				console.log(screenHeight) */
+      }
+      //滚动条的高
       if (scrollTop > 54) {
         this.isBackground = true;
       } else {
         this.isBackground = false;
+      }
+      if (scrollTop > 588) {
+        this.isTop = true;
+      } else {
+        this.isTop = false;
       }
     },
     into(index) {
@@ -220,6 +310,18 @@ export default {
         this.$router.push("/jobscreen");
       }
     },
+    changeOption1(index) {
+      this.jobs = [];
+      this.page = 1;
+      this.field = this.selectData1.selectOptions[index].name;
+      this.selectJob();
+    },
+    changeOption(index) {
+      this.partJobs = [];
+      this.page = 1;
+      this.field = this.selectData.selectOptions[index].name;
+      this.selectPartJob();
+    }
   },
   computed: {}
 };

@@ -1,0 +1,190 @@
+.bg {
+    background-image: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592214318177&di=60c82fc925014f5a95917810cd1b8028&imgtype=0&src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170306%2Fc95155a9b4bb4dd48faee1792c87c7f1_th.jpg");
+    height: 100vh;
+    width: 100%;
+    filter: blur(4px);
+    
+    .bg1{
+    background-color:black;
+    opacity: 0.55;
+    height: 100vh;
+    width: 100%; 
+    }
+  }
+  .container{
+      width: 100%;
+      position: absolute;
+      top: 0;
+      .header{
+        height: 55px;
+        width: 100%;
+        z-index:2000;
+        display: flex;
+        .header-row{
+            width: 90%;
+            margin: auto;
+            .back {
+                height: 18px;
+                width: 18px;
+                
+              }
+              .shoucang{
+                height: 26px;
+                width: 26px;
+              }
+        }
+        
+      }
+      .company{
+            width: 90%;
+            margin: auto;
+            .company-name{
+                font-size: 28px;
+                color: white;
+                font-weight: 550;
+            }
+            .company-information{
+                color: #e6e6e6;
+                margin-top: 5px;
+                font-size: 12px;
+            }
+            .company-avatar{
+                img{
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 5px;
+                }
+            }
+        }
+        .details{
+            width: 90%;
+            margin: auto;
+            display: flex;
+            img{
+                    width: 15px;
+                    height: 15px;
+                }
+                p{
+                    font-size: 12px;
+                    color: white;
+                    margin-left: 8px;
+                }
+            .time{
+                display: flex;  
+                margin-top: 15px;
+                margin-right: 20px;
+            }
+        }
+        .position{
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 20px;
+            background-color: #ffffff;
+            .position-header{
+                width: 100%;
+                height: 80px;
+                border-top-left-radius:20px ;
+                border-top-right-radius:20px ;
+                border-bottom: 2px solid #f6f6f6;
+                background-color: white;
+                .bar{
+                    width: 100%;
+                    height: 20px;
+                    .icon{
+                        width: 40px;
+                        height: 5px;
+                        margin-top: 5px;
+                        border-radius: 5px;
+                        background-color: #e0e0e0;
+                    }
+                }
+                .position-bar{
+                    width: 90%;
+                    margin: auto;
+                    height: 39px;
+                    margin-top: 20px;
+                    .position-nav{
+                        height: 100%;
+                        width: 45px;
+                        border-bottom: 3px solid #3ac1bc;
+                        p{
+                            color: #92908f;
+                        }
+                    }
+                }
+            }
+            .position-card{
+                width: 90%;
+                margin: auto;
+                height: 100%;
+                margin-top: 20px;
+                .card-content{
+                    width: 100%;
+                    height: 100px;
+                    .row1{
+                        width: 100%;
+                        .position-name{
+                            p{
+                                font-size: 16px;
+                                font-weight: 550;
+                            }
+                        }
+                        .position-pay{
+                            p{
+                                color: #2eb6b3;
+                                font-size: 15px;
+                                font-weight: 550;
+                            }
+                        }
+                    }
+                    .row2{
+                        margin-top: 10px;
+                        .position-title{
+                            width: auto;
+                            padding-left: 5px;
+                            padding-right: 5px;
+                            height: 20px;
+                            margin-right: 5px;
+                            border-radius: 3px;
+                            background-color: #f5f5f5;
+                            p{
+                                font-size: 12px;
+                                color: #9f9f9e;
+                            }
+                        }
+                    }
+                    .row3{
+                        width: 100%;
+                        margin-top: 10px;
+                        display: flex;
+                        .avatar{
+                            width: 30px;
+                            height: 30px;
+                            img{
+                                width: 30px;
+                                height: 30px;
+                                border-radius: 20px;
+                            }
+                        }
+                        .boss{
+                            display: flex;
+                            margin-left: 5px;
+                            margin-top: 6px;
+                            p{
+                                font-size: 12px;
+                                font-weight: 550;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+  }
+  .line {
+    width: 100%;
+    border: none;
+    height: 1px;
+    margin-bottom: 10px;
+    background: #f6f6f6;
+  }
+ 

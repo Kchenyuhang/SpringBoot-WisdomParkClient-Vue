@@ -44,7 +44,7 @@ const store = new Vuex.Store({
     },
     setaddressinfo(state, data) {
       state.addressinfo = data;
-    },
+    }
   },
   actions: {}
 });

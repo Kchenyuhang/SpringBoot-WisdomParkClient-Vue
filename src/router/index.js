@@ -83,6 +83,21 @@ const routes = [
     ],
   },
   {
+    path: '/positiondetails/:Id',
+    name: 'PositionDetails',
+    component: () => import('../views/Job/PositionDetails.vue'),
+  },
+  {
+    path: '/companydetails/:Id',
+    name: 'CompanyDetails',
+    component: () => import('../views/Job/CompanyDetails.vue'),
+  },
+  {
+    path: '/fulltimejob',
+    name: 'FullTimeJob',
+    component: () => import('../views/Job/FullTimeJob.vue'),
+  },
+  {
     path: '/jobsearch',
     name: 'JobSearch',
     component: () => import('../views/Job/JobSearch.vue'),
@@ -250,6 +265,11 @@ const routes = [
     name: "DestinationAdress",
     component: () => import("../views/errand/adressorder/DestinationAdress.vue"),
   },
+  {
+    path: '/informationDetail/:Id',
+    name: 'InformationDetail',
+    component: () => import('../views/main/InformationDetail.vue'),
+  }
 ];
 const router = new VueRouter({
   routes,

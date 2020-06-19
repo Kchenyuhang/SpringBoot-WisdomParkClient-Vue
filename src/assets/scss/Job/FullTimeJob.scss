@@ -1,0 +1,42 @@
+.bg{
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+}
+.header {
+    background-color: white;
+    height: 55px;
+    display: flex;
+    .header-title {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      img {
+        height: 18px;
+        width: 18px;
+        margin-top: 5px;
+        margin-left: 5px;
+      }
+    }
+  }
+  .body{
+      width: 100%;
+      height: 100vh;
+  }
+.bottom{
+    width: 100%;
+      position: fixed;
+      bottom: 0;
+      height: 55px;
+    .btn{
+        width: 90%;
+        margin: auto;
+        height: 40px;
+        background-color: #11aca8;
+        p{
+            font-size: 18px;
+            font-weight: 550;
+            color: white;
+        }
+    }
+}
