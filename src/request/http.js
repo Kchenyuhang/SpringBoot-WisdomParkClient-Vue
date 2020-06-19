@@ -1,6 +1,5 @@
 // 引入
 import axios from "axios";
-// import store from '../store'
 //  axios.defaults.headers.post['token'] = null;
 
 /**

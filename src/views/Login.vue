@@ -31,7 +31,7 @@
           class="size"
         />
         <input
-          type="text"
+          type="number"
           maxlength="11"
           oninput="value=value.replace(/[^\d]/g,'')"
           placeholder="请输入手机号"
@@ -72,6 +72,13 @@
         </div>
         <div class="cc-mllleft">
           <p class="fontSize" @click="tabIsShow(3)">忘记密码</p>
+          <p>
+            <img
+              src="http://ww1.sinaimg.cn/large/0064QvQTly1gfw4z74vpyj302400omwx.jpg"
+              alt=""
+              @click="qq"
+            />
+          </p>
         </div>
       </div>
       <div class="login-btn" @click="messageSignIn()">
@@ -89,6 +96,16 @@
           <p>{{ aletMsg }}</p>
         </div>
       </div>
+      <div
+        class="alsrtInfo"
+        :style="{ display: displayStsates }"
+        ref="alertMsg"
+        v-if="phoneForm.tips == '账号错误'"
+      >
+        <div class="profPrompt_test">
+          <p>{{ aletMsg }}</p>
+        </div>
+      </div>
       <div class="cc-df">
         <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_shouji.png"
@@ -96,7 +113,7 @@
           class="size"
         />
         <input
-          type="text"
+          type="number"
           placeholder="请输入学号"
           v-model="phoneForm.studentId"
         />
@@ -263,6 +280,10 @@ export default {
           {
             regex: /^1[3|4|5|6|7|8][0-9]{9}$/,
             error: "手机号格式不对"
+          },
+          {
+            regex: /^[0-9]+$/,
+            error: "其输入纯数字"
           }
         ],
         code: [{ required: true, error: "验证码不能为空" }],
@@ -358,7 +379,7 @@ export default {
           password: this.phoneForm.passWord
         };
         this.url = this.GLOBAL.baseUrl + "/user/login";
-        // this.$axios.defaults.headers.post['token'] = null;
+        // this.$axios.defaults.headers.post["token"] = null;
         this.result = await API.init(this.url, this.data, "post");
         console.log(this.result);
         if (this.result.msg == "成功") {
@@ -412,23 +433,35 @@ export default {
         password: this.phoneForm.passWord
       };
       this.url = this.GLOBAL.baseUrl + "/user/password";
-      this.result = await API.init(this.url, this.data, "put");
+      this.result = await API.init(this.url, this.data, "post");
       console.log(this.result);
       this.isShow = 2;
       this.clean();
     },
     updatePassword() {
       // this.$axios({
-      //   method: 'put',
-      //   url:this.GLOBAL.baseUrl+'/user/user/password?userAccount=' +this.phoneForm.phoneNumber,
+      //   method: "put",
+      //   url:
+      //     this.GLOBAL.baseUrl +
+      //     "/user/user/password?userAccount=" +
+      //     this.phoneForm.phoneNumber
       // })
-      //   .then((res) => {
-      //     console.log(this.phoneForm)
-      //     console.log(res)
+      //   .then(res => {
+      //     console.log(this.phoneForm);
+      //     console.log(res);
       //   })
       //   .catch(function(error) {
-      //     console.log(error)
-      //   })
+      //     console.log(error);
+      //   });
+    },
+    qq() {
+      // API.init("/qq/oauth", null, "get");
+      this.$axios({
+        method: "get",
+        url: "http://www.ntt1914866205.xyz/qq/oauth"
+      }).then(res => {
+        console.log(res);
+      });
     }
   },
   computed: {}
@@ -437,4 +470,10 @@ export default {
 
 <style scoped lang="scss">
 @import "../assets/scss/login.scss";
+.footer {
+  height: 200px;
+  width: 200px;
+  background-color: black;
+  margin-top: 200px;
+}
 </style>

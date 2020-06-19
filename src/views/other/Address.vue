@@ -35,7 +35,7 @@ export default {
       nicknameInput: this.$store.state.user.nickname,
       url: "",
       data: {},
-      citys: [],
+      citys: []
     };
   },
   components: {},
@@ -58,11 +58,11 @@ export default {
     into(index) {
       this.$router.push({
         name: "City",
-        params: { Id: index, Address: this.citys[index].name },
+        params: { Id: index, Address: this.citys[index].name }
       });
-    },
+    }
   },
-  computed: {},
+  computed: {}
 };
 </script>
 

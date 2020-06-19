@@ -7,14 +7,8 @@
         </div>
       </router-link>
       <p>更换手机号</p>
-      <div
-        class="save"
-        @click="into()"
-      >
-        <button
-          class="color"
-          :class="{'changeColor':isTrue()}"
-        >
+      <div class="save" @click="into()">
+        <button class="color" :class="{ changeColor: isTrue() }">
           <p>下一步</p>
         </button>
       </div>
@@ -22,7 +16,11 @@
     <hr class="line" />
     <div class="card">
       <div class="phone">
-        <p>更换手机后，下次登陆可使用新手机号登陆。当前手机号：{{user.phoneNumber}}</p>
+        <p>
+          更换手机后，下次登陆可使用新手机号登陆。当前手机号：{{
+            user.phoneNumber
+          }}
+        </p>
       </div>
       <hr class="line1" />
       <div class="newphone">
@@ -32,7 +30,7 @@
           class="phonenumber"
           placeholder="请填写手机号码"
           v-model="phoneInput"
-        >
+        />
       </div>
       <hr class="line1" />
     </div>

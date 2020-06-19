@@ -152,4 +152,20 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/scss/main/AdressBook.scss";
+// .li-img img {
+//   width: 20px;
+//   height: 20px;
+// }
+// .left-letter {
+//   background-color: blue;
+// }
+// .selected {
+//   background-color: brown;
+// }
+// .mylist {
+//   background-color: cadetblue;
+// }
+// .leftDiv img{
+//   background-color: darkblue;
+// }
 </style>

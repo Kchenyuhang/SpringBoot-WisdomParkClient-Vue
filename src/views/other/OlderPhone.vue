@@ -1,20 +1,25 @@
 <template>
   <div class="bg cc-donghua-top">
     <div class="header">
-      <router-link to="/base"><img
+      <router-link to="/base"
+        ><img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
           alt=""
-        ></router-link>
+      /></router-link>
+
       <p>绑定手机号</p>
     </div>
     <hr class="line" />
     <div class="card">
-      <div class="pic"><img
+      <div class="pic">
+        <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/iPhone-X.png"
           alt=""
-        ></div>
+        />
+      </div>
+
       <div class="phone">
-        <p>您的手机号：{{user.phoneNumber}}</p>
+        <p>您的手机号：{{ user.phoneNumber }}</p>
       </div>
       <router-link to="/newphone">
         <div class="btn">
@@ -49,6 +54,7 @@ export default {
 
   computed: {}
 };
-</script><style scoped lang="scss">
+</script>
+<style scoped lang="scss">
 @import "../../assets/scss/other/olderphone.scss";
 </style>

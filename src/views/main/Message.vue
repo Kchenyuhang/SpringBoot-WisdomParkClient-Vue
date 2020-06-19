@@ -48,7 +48,7 @@ export default {
     async selectMessage() {
       this.data = {
         currentPage: this.page,
-        pageSize: 5,
+        pageSize: 5
       };
       this.url = this.GLOBAL.baseUrl + "/message/all";
       this.result = await API.init(this.url, this.data, "post");
@@ -62,4 +62,10 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/scss/main/message.scss";
+.line {
+  width: 100%;
+}
+.time p {
+  margin-top: 100px;
+}
 </style>

@@ -12,6 +12,7 @@ Vue.prototype.GLOBAL1 = global1_;
 // axios
 import axios from "axios";
 Vue.prototype.$axios = axios;
+
 import VueJsonp from "vue-jsonp";
 Vue.use(VueJsonp);
 // 高德地图
@@ -25,11 +26,15 @@ Amap.initAMapApiLoader({
     "AMap.Autocomplete",
     "AMap.PlaceSearch",
     "AMap.Scale",
-    "AMap.OverView",
+    "AMap.OverView"
   ],
   // 默认高德 sdk 版本为 1.4.4
-  v: "1.4.4",
+  v: "1.4.4"
 });
+
+//缩略图
+import VuePreview from "vue-preview";
+Vue.use(VuePreview);
 // 引入Vant
 // import Vant from "vant";
 // import "vant/lib/index.css";
@@ -45,5 +50,5 @@ Vue.config.productionTip = false;
 new Vue({
   router,
   store,
-  render: (h) => h(App),
+  render: h => h(App)
 }).$mount("#app");

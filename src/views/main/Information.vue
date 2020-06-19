@@ -19,7 +19,8 @@
             <div class="cc-df">
               <img :src="item.cover" />
               <div class="cc-col-between cc-mleft">
-                <p class="file">{{ item.text.slice(0, 35) }}...</p>
+                <p class="file">{{ item.title }}...</p>
+                <!-- <p v-html="item.text.slice(0, 35)"></p> -->
                 <p class="time">{{ item.gmtCreate.slice(0, 10) }}</p>
               </div>
             </div>
@@ -86,25 +87,11 @@ export default {
       result: [],
       teachResult: [],
       data: {
-        currentPage: 1,
-        field: "1",
-        pageSize: 3
-      },
-      pageData: {
         currentPage: 0,
         field: "1",
         pageSize: 5
       },
-      studentData: {
-        currentPage: 0,
-        field: "2",
-        pageSize: 5
-      },
-      AllData: {
-        currentPage: 0,
-        field: "1",
-        pageSize: 5
-      }
+      count: 5
     };
   },
   components: {
@@ -115,30 +102,69 @@ export default {
     this.getList();
     this.getAll();
   },
-  mounted() {},
+  mounted() {
+    // this.loadMore();
+  },
   methods: {
+    loadMore() {
+      // window.onscroll = () => {
+      /**
+       * document.documentElement.offsetHeight：网页可见区域高，获取元素自身的高度（包含边框）
+       * document.documentElement.scrollTop; 获取当前页面的滚动条纵坐标位置，网页被卷去的高
+       * window.innerHeight：获取浏览器页面可用高度
+       */
+      // console.log(document.documentElement.offsetHeight);
+      // console.log(document.documentElement.scrollTop);
+      // console.log(window.innerHeight);
+      this.data.pageSize = this.data.pageSize + 10;
+      //注：只有距离满足条件，允许加载下一页数据，且当前page为1,2,3时，才允许滚动加载
+      // if (bottomOfWindow && this.loadMore === true && this.page <= 3) {
+      // console.log("请求加载数据，请求page为", this.page);
+      // this.get_article_list(this.page);
+      // }
+      // };
+    },
     async getList() {
       this.url = this.GLOBAL.baseUrl + "/info/isTap";
+      this.data = {
+        currentPage: 0,
+        field: "1",
+        pageSize: this.count
+      };
       this.result = (await API.init(this.url, this.data, "post")).data;
       for (let i = 0; i < this.result.length; i++) {
         this.slideList[i].image = this.result[i].cover;
+        console.log(this.slideList[i].image);
       }
     },
     async getDoList() {
       this.url = this.GLOBAL.baseUrl + "/info/type/page";
-      this.teachResult = (await API.init(this.url, this.pageData, "post")).data;
+      this.data = {
+        currentPage: 0,
+        field: "1",
+        pageSize: this.count
+      };
+      this.teachResult = (await API.init(this.url, this.data, "post")).data;
       // console.log(this.teachResult);
     },
     async getStudentList() {
       this.url = this.GLOBAL.baseUrl + "/info/type/page";
-      this.teachResult = (
-        await API.init(this.url, this.studentData, "post")
-      ).data;
+      this.data = {
+        currentPage: 0,
+        field: "2",
+        pageSize: this.count
+      };
+      this.teachResult = (await API.init(this.url, this.data, "post")).data;
       // console.log(this.teachResult);
     },
     async getAll() {
       this.url = this.GLOBAL.baseUrl + "/info/allInfo";
-      this.teachResult = (await API.init(this.url, this.AllData, "post")).data;
+      this.data = {
+        currentPage: 1,
+        field: "1",
+        pageSize: this.count
+      };
+      this.teachResult = (await API.init(this.url, this.data, "post")).data;
       // console.log(this.teachResult);
     }
   },

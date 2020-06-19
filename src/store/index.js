@@ -50,7 +50,6 @@ const store = new Vuex.Store({
     setaddressinfo(state, data) {
       state.addressinfo = data;
     },
-
     setdestdesinfo(state, data) {
       state.desinfo = data;
     },
@@ -62,7 +61,7 @@ const store = new Vuex.Store({
     },
     setbdAdress(state, data) {
       state.bdAdress = data;
-    },
+    }
   },
   actions: {}
 });
