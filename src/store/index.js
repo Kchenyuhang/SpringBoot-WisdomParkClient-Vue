@@ -7,12 +7,17 @@ const store = new Vuex.Store({
     user: JSON.parse(localStorage.getItem("user")),
     mvUrl: JSON.stringify(localStorage.getItem("mvUrl")),
     transitionName: JSON.stringify(localStorage.getItem("transitionName")),
+    //跑腿缓存
     type: JSON.stringify(localStorage.getItem("type")),
     address: JSON.stringify(localStorage.getItem("address")),
     address1: JSON.stringify(localStorage.getItem("address1")),
     originname: JSON.stringify(localStorage.getItem("originname")),
     originnumber: JSON.stringify(localStorage.getItem("originnumber")),
-    addressinfo: JSON.stringify(localStorage.getItem("addressinfo"))
+    addressinfo: JSON.stringify(localStorage.getItem("addressinfo")),
+    desinfo: JSON.stringify(localStorage.getItem("desinfo")),
+    desname: JSON.stringify(localStorage.getItem("desname")),
+    desnumber: JSON.stringify(localStorage.getItem("desnumber")),
+    bdAdress: JSON.stringify(localStorage.getItem("bdAdress"))
   },
   mutations: {
     setToken(state, data) {
@@ -44,6 +49,19 @@ const store = new Vuex.Store({
     },
     setaddressinfo(state, data) {
       state.addressinfo = data;
+    },
+
+    setdestdesinfo(state, data) {
+      state.desinfo = data;
+    },
+    setdestdesname(state, data) {
+      state.origindesname = data;
+    },
+    setdestdesnumber(state, data) {
+      state.desnumber = data;
+    },
+    setbdAdress(state, data) {
+      state.bdAdress = data;
     },
   },
   actions: {}

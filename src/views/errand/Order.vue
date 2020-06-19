@@ -10,12 +10,18 @@
       <p>订单列表</p>
     </div>
     <div class="topNav">
-      <router-link to="/order/all"><p>全部</p></router-link>
-      <router-link to="/order/underway"><p>进行中</p></router-link>
-      <p>待评价</p>
-    </div>
-    <div class="content">
-      <!-- 二级路由入口 -->
+      <div @click="all">
+        <p>全部</p>
+        <div class="xline" v-if="ashow"></div>
+      </div>
+      <div @click="underway">
+        <p>已完成</p>
+        <div class="xline" v-if="ushow"></div>
+      </div>
+       <div @click="cancle">
+        <p>已取消</p>
+        <div class="xline" v-if="cshow"></div>
+      </div>
     </div>
     <router-view></router-view>
   </div>
@@ -25,11 +31,34 @@
 export default {
   name: "Order",
   data() {
-    return {};
+    return {
+      ashow: true,
+      ushow: false,
+      cshow: false
+    };
   },
   created() {},
   components: {},
-  methods: {},
+  methods: {
+    all() {
+      this.ushow = false;
+      this.ashow = true;
+      this.cshow = false;
+      this.$router.push("/order/all");
+    },
+    underway() {
+      this.ushow = true;
+      this.ashow = false;
+      this.cshow = false;
+      this.$router.push("/order/underway");
+    },
+    cancle() {
+      this.ushow = false;
+      this.ashow = false;
+      this.cshow = true;
+      this.$router.push("/order/cancle");
+    },
+  },
 };
 </script>
 

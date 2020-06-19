@@ -17,7 +17,13 @@
         <hr class="line" />
       </div>
       <div class="card">
-        <input type="text" placeholder="手机号" v-model="phoneNumber" />
+        <input
+          type="number"
+          placeholder="手机号"
+          v-model="phoneNumber"
+          oninput="if(value.length>5)value=value.slice(0,11)"
+          maxlength="11"
+        />
         <hr class="line" />
       </div>
     </div>

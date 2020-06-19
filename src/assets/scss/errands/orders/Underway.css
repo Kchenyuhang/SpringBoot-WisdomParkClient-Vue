@@ -1,0 +1,181 @@
+.contain {
+  min-height: 300px;
+  width: 100%;
+  margin-top: 10px;
+  background-color: #f5f5f5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.top {
+  margin: 15px 0 5px 10px;
+  width: 94%;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.origin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 5px 0 10px 10px;
+  width: 94%;
+  height: 55px;
+}
+
+.bluediv {
+  width: 8px;
+  height: 8px;
+  border: 2px solid #009aff;
+  border-radius: 4px;
+  margin: 15px 20px 0 10px;
+}
+
+address {
+  color: #000000;
+  font-weight: 600;
+}
+
+.origindiv {
+  width: 90%;
+  height: 40px;
+}
+
+.destin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 5px 0 10px 10px;
+  width: 94%;
+  height: 55px;
+}
+
+.yellodiv {
+  width: 8px;
+  height: 8px;
+  border: 2px solid #ffd300;
+  border-radius: 4px;
+  margin: 15px 20px 0 10px;
+}
+
+.destindiv {
+  width: 90%;
+  height: 40px;
+}
+
+.line {
+  border: 0.7px solid #f4f4f4;
+  width: 94%;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin: 15px 0 10px 12px;
+  width: 94%;
+  height: 240px;
+}
+
+.top {
+  margin: 15px 0 5px 10px;
+  width: 94%;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.origin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 5px 0 10px 10px;
+  width: 94%;
+  height: 55px;
+}
+
+.bluediv {
+  width: 8px;
+  height: 8px;
+  border: 2px solid #009aff;
+  border-radius: 4px;
+  margin: 15px 20px 0 10px;
+}
+
+address {
+  color: #000000;
+  font-weight: 600;
+}
+
+.origindiv {
+  width: 90%;
+  height: 40px;
+}
+
+.destin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 5px 0 10px 10px;
+  width: 94%;
+  height: 55px;
+}
+
+.yellodiv {
+  width: 8px;
+  height: 8px;
+  border: 2px solid #ffd300;
+  border-radius: 4px;
+  margin: 15px 20px 0 10px;
+}
+
+.destindiv {
+  width: 90%;
+  height: 40px;
+}
+
+.line {
+  border: 0.7px solid #f4f4f4;
+  width: 94%;
+}
+
+.bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 20px 0 0 15px;
+}
+
+.time {
+  position: absolute;
+  margin-left: 5px;
+}
+
+.botdiv {
+  text-align: center;
+  margin-top: 5px;
+  width: 94%;
+  height: 40px;
+  margin-left: 10px;
+}
+
+.cbtn {
+  border-radius: 20px;
+  width: 60px;
+  height: 30px;
+  background-color: #009aff;
+  color: #ffffff;
+  border: none;
+}
+/*# sourceMappingURL=Underway.css.map */

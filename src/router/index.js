@@ -2,6 +2,13 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Login from "../views/Login.vue";
 import Layout from "../views/Layout.vue";
+import Order from "../views/errand/Order.vue";
+import All from "../views/errand/orders/All.vue";
+import Runorders from "../views/errand/Runorders.vue";
+import Orderreceiving from "../views/errand/Orderreceiving.vue";
+import Receiveall from "../views/errand/orders/Receiveall.vue";
+import Receivegoods from "../views/errand/orders/Receivegoods.vue";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -153,32 +160,65 @@ const routes = [
     name: "InsertAddressBook",
     component: () => import("../views/main/InsertAddressBook.vue"),
   },
-   // 跑腿路由搭建
-   {
+  // 跑腿路由搭建
+  {
     path: "/errandshomepage",
     name: "Errandshomepage",
-    component: () => import("../views/errand/Errandshomepage.vue")
+    component: () => import("../views/errand/Errandshomepage.vue"),
   },
   {
     path: "/personalcenter",
     name: "Personalcenter",
-    component: () => import("../views/errand/Personalcenter.vue")
+    component: () => import("../views/errand/Personalcenter.vue"),
+  },
+  {
+    path: "/wallet",
+    name: "Wallet",
+    component: () => import("../views/errand/user/Wallet.vue"),
+  },
+  {
+    path: "/set",
+    name: "Set",
+    component: () => import("../views/errand/user/Set.vue"),
   },
   {
     path: "/order",
     name: "Order",
-    component:  () => import("../views/errand/Order.vue"),
+    component: Order,
     children: [
       {
         path: "all",
         name: "All",
-        component:  () => import("../views/errand/orders/All.vue")
+        component: All,
       },
       {
         path: "underway",
         name: "Underway",
         component: () => import("../views/errand/orders/Underway.vue"),
       },
+      {
+        path: "cancle",
+        name: "Runcancle",
+        component: () => import("../views/errand/orders/Runcancle.vue"),
+      }
+    ],
+  },
+  {
+    path: "/run",
+    name: "Runorders",
+    redirect: "/run/all",
+    component: Runorders,
+    children: [
+      {
+        path: "all",
+        name: "Runall",
+        component: () => import("../views/errand/orders/Runall.vue"),
+      },
+      {
+        path: "filish",
+        name: "Runfilish",
+        component: () => import("../views/errand/orders/Runfilish.vue"),
+      }
     ],
   },
   {
@@ -190,6 +230,34 @@ const routes = [
     path: "/destinationadress",
     name: "DestinationAdress",
     component: () => import("../views/errand/adressorder/DestinationAdress.vue"),
+  },
+  {
+    path: "/orderconfirmation",
+    name: "Orderconfirmation",
+    component: () => import("../views/errand/orders/Orderconfirmation.vue"),
+  },
+  {
+    path: "/apply",
+    name: "Apply",
+    component: () => import("../views/errand/user/Apply.vue"),
+  },
+  {
+    path: "/orderreceiving",
+    name: "Orderreceiving",
+    redirect: "/orderreceiving/all",
+    component: Orderreceiving,
+    children: [
+      {
+        path: "all",
+        name: "Receiveall",
+        component: Receiveall
+      },
+      {
+        path: "goods",
+        name: "Receivegoods",
+        component: Receivegoods
+      },
+    ],
   },
 ];
 

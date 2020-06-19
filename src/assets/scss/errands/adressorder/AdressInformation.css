@@ -1,0 +1,84 @@
+.bg {
+  width: 100%;
+}
+
+.header {
+  background-color: #ffffff;
+  height: 40px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header img {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  margin-top: 10px;
+  margin-left: 5px;
+  left: 0;
+}
+
+.header p {
+  font-size: 16px;
+  font-weight: 550;
+  margin-left: 40%;
+  margin-top: 2%;
+}
+
+.header .save {
+  height: 25px;
+  width: 50px;
+  position: absolute;
+  margin-top: 8px;
+  margin-right: 5px;
+  right: 0;
+}
+
+.color {
+  border: none;
+  width: 100%;
+  height: 100%;
+  background-color: #46abf1;
+  opacity: 0.5;
+  position: relative;
+}
+
+.color p {
+  font-size: 13px;
+  position: absolute;
+  color: white;
+  left: -12%;
+  top: 12%;
+}
+
+.changeColor {
+  opacity: 1;
+}
+
+.card {
+  width: 100%;
+  margin: auto;
+  background: white;
+}
+
+.subCard {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-top: 10px;
+}
+
+.subCard img {
+  width: 15px;
+}
+
+.line {
+  width: 90%;
+  border: none;
+  margin-top: 20px;
+  height: 1px;
+  background: #ececec;
+  margin-bottom: 20px;
+}
+/*# sourceMappingURL=AdressInformation.css.map */
