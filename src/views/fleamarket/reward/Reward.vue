@@ -21,18 +21,11 @@
           @click="gotoDetail(item.pkRewardId)"
         >
           <div>
-            <img
-              :src="item.imageUrl"
-              alt=""
-            /> <span>{{ item.title }}</span>
+            <img :src="item.imageUrl" alt="" /> <span>{{ item.title }}</span>
             <p>{{ item.description.slice(0, 30) }}...</p>
 
             <p>¥价格</p>
-            <div
-              class="right"
-              v-for="(item, index) in test"
-              :key="index"
-            >
+            <div class="right" v-for="(item, index) in test" :key="index">
               <!-- <img :src="item.avatar" alt="" /> -->
             </div>
           </div>

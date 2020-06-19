@@ -65,22 +65,9 @@
         </div>
       </router-link>
       <hr class="line" />
-      <router-link to="/mysell">
-        <div class="cc-df-between">
-          <div class="cc-df info-left4">
-            <img
-              src="http://ww1.sinaimg.cn/large/0064QvQTly1gft3ise6juj301c01cdfl.jpg"
-              alt="我卖出的"
-            />
-            <p>我卖出的</p>
-          </div>
-          <div class="info-right">
-            <img
-              src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/youjiantou.png"
-              alt="右箭头"
-            />
-          </div>
-        </div>
+      <div class="white"></div>
+      <router-link to="/layout">
+        <button><p>退出跳蚤市场</p></button>
       </router-link>
     </div>
   </div>
@@ -118,4 +105,20 @@ export default {
 
 <style scoped lang="scss">
 @import "../../../assets/scss/fleamarket/FleaMy.scss";
+button {
+  height: 40px;
+  width: 60%;
+  margin-left: 70px;
+  margin-top: 130px;
+  border: none;
+  border-radius: 10px;
+  background-color: red;
+}
+button p {
+  font-size: 16px;
+  color: white;
+}
+.white {
+  height: 10px;
+}
 </style>

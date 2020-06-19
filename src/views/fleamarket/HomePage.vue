@@ -27,9 +27,6 @@
           <div @click="goListDetail(item.pkFleaTypeId)">
             <img :src="item.img" class="icon" />
             <p class="cc-mtop font-size">{{ item.sub }}</p>
-            <!-- <h5>
-              宠物
-            </h5> -->
           </div>
         </div>
       </div>
@@ -61,7 +58,7 @@
           <img :src="item.userAvatar" alt="" />
           <span>{{ item.username }}</span>
           <h5>{{ item.goodsCreateTime }}</h5>
-          <p>¥ {{ item.goodsPrice }}</p>
+          <!-- <p>¥ {{ item.goodsPrice }}</p> -->
         </div>
         <div class="pic">
           <img :src="item.goodsImgUrl.split('--**--')[0]" />
@@ -100,17 +97,17 @@ export default {
           name: "宠物",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/1.jpg",
           img:
-            "http://ww1.sinaimg.cn/large/0064QvQTgy1gftd623nrij30jg0jg3zq.jpg"
+            "http://ww1.sinaimg.cn/large/0064QvQTly1gfxa4t8zypj30jg0jg3zb.jpg"
         },
         {
           url: "#",
-          pkFleaTypeId: "9",
+          pkFleaTypeId: "13",
           sub: "游戏",
           description: "two",
           name: "手机数码",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/2.jpg",
           img:
-            "http://ww1.sinaimg.cn/large/0064QvQTgy1gftd3wn5m8j3046046dfq.jpg"
+            "http://ww1.sinaimg.cn/large/0064QvQTly1gfxa54zfyoj30jg0jg0tn.jpg"
         },
         {
           url: "#",
@@ -120,7 +117,7 @@ export default {
           name: "游戏交易",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg",
           img:
-            "http://ww1.sinaimg.cn/large/0064QvQTgy1gftcvo32gzj30b40b474o.jpg"
+            "http://ww1.sinaimg.cn/large/0064QvQTly1gfxa3xyg8mj30jg0jgq3l.jpg"
         },
         {
           url: "#",
@@ -130,7 +127,7 @@ export default {
           name: "女装",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg",
           img:
-            "http://ww1.sinaimg.cn/large/0064QvQTgy1gftcyt7vj1j30go0got9d.jpg"
+            "http://ww1.sinaimg.cn/large/0064QvQTly1gfxa4f62waj30jg0jg751.jpg"
         }
       ],
       id: "1",
