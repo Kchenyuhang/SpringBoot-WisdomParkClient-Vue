@@ -150,6 +150,7 @@ export default {
       likeList: [],
       path: JSON.parse(localStorage.getItem("path")),
       path1: "/commoditydetails/",
+      mypath: "/commoditydetails/",
       data: {
         pkFleaGoodsId: ""
       },
@@ -298,6 +299,8 @@ export default {
       }
     },
     gotoUserDetail(id) {
+      this.mypath = this.mypath + this.$route.params.id;
+      localStorage.setItem("mypath", JSON.stringify(this.mypath));
       this.$router.push({
         path: `/personal/${id}`
       });

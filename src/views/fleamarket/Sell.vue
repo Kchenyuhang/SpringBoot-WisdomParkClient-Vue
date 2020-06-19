@@ -60,15 +60,17 @@
           placeholder="请输入类型"
           v-model="data.goodsMark"
         />
+
         <select
+          class="option"
           name="bbxb"
           id="selecte1"
-          class="longselect"
           v-model="id"
           @click="get(id)"
         >
           <option value="">---请选择--</option>
           <option
+            class="option"
             :value="item.pkFleaTypeId"
             selected="selected"
             v-for="(item, index) in type"
@@ -210,5 +212,10 @@ button {
   // background-color: red;
   border: none;
   border-radius: 5px;
+}
+.option {
+  width: auto;
+  position: absolute;
+  left: 50%;
 }
 </style>

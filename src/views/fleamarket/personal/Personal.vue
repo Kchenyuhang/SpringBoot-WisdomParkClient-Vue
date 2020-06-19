@@ -126,7 +126,7 @@
       <div
         v-show="isShow == 1"
         v-for="item in send"
-        :key="item.id"
+        :key="item.goodsId"
         @click="gotoDetail(item.goodsId)"
       >
 
@@ -270,6 +270,7 @@ export default {
       user: JSON.parse(localStorage.getItem("FleaUser")),
       path1: JSON.parse(localStorage.getItem("path1")),
       page: JSON.parse(localStorage.getItem("page")),
+      mypath: JSON.parse(localStorage.getItem("mypath")),
       pageCount: JSON.parse(localStorage.getItem("count")),
       list: [],
       count: 100,
@@ -342,7 +343,7 @@ export default {
       this.ifopt = 2;
     },
     backTo() {
-      this.$router.push("/fleaMy");
+      this.$router.push(this.mypath);
     },
     async getUserInfor() {
       let id = this.$route.params.id;

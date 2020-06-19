@@ -50,7 +50,7 @@
             <div>
               <div class="ds-avatar">
                 <img
-                  src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/1.jpg"
+                  :src="item.commentAvatar"
                   alt=""
                 />
               </div>
@@ -120,7 +120,8 @@ export default {
         userId: 0
       },
       show: false,
-      num: 5
+      num: 5,
+      path: "/rewarddetail/"
     };
   },
   components: {},
@@ -188,6 +189,8 @@ export default {
       this.comments = this.comments.slice(0, this.num).reverse();
       // this.comments.slice(0, this.num);
       // console.log(this.result);
+      this.path = this.path + this.$route.params.id;
+      localStorage.setItem("mypath", JSON.stringify(this.path));
     },
     gotoPerson(id) {
       this.$router.push({

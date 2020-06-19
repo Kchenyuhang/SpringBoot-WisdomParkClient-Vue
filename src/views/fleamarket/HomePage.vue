@@ -147,7 +147,8 @@ export default {
         }
       ],
       id: "1",
-      num: 5
+      num: 5,
+      repath: "/homePage"
     };
   },
   components: {
@@ -160,12 +161,12 @@ export default {
     this.reInto();
     this.getHotList();
     localStorage.setItem("path", JSON.stringify(this.path));
+    localStorage.setItem("repath", JSON.stringify(this.repath));
     let that = this;
     window.onscroll = function() {
       // scrollTop 滚动条滚动时，距离顶部的距离
       var scrollTop =
         document.documentElement.scrollTop || document.body.scrollTop;
-
       // windowHeight 可视区的高度
       var windowHeight =
         document.documentElement.clientHeight || document.body.clientHeight;
@@ -175,7 +176,6 @@ export default {
       // 滚动条到底部的条件
       if (scrollTop + windowHeight >= scrollHeight - 50) {
         // 加载数据
-
         that.loadmore();
       }
     };
