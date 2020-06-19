@@ -11,7 +11,10 @@
         </router-link>
         <p>资讯</p>
       </div>
-      <Carousel :slideList="slideList"></Carousel>
+      <Carousel
+        :slideList="slideList"
+        @into="into"
+      ></Carousel>
       <div class="Top">
         <p class="title">置顶帖</p>
         <div>
@@ -19,10 +22,14 @@
             v-for="(item, index) in result"
             :key="index"
           >
-            <div class="cc-df">
+            <div
+              class="cc-df"
+              @click="intoDetail(item.pkInfoManageId)"
+            >
               <img :src="item.cover" />
               <div class="cc-col-between cc-mleft">
-                <p class="file">{{ item.text.slice(0, 35) }}...</p>
+                <p class="file">{{ item.title }}...</p>
+                <!-- <p v-html="item.text.slice(0, 35)"></p> -->
                 <p class="time">{{ item.gmtCreate.slice(0, 10) }}</p>
               </div>
             </div>
@@ -66,7 +73,10 @@
             v-for="(item, index) in teachResult"
             :key="index"
           >
-            <div class="cc-df cc-mtop cc-mleft">
+            <div
+              class="cc-df cc-mtop cc-mleft"
+              @click="intoDetail(item.pkInfoManageId)"
+            >
               <img
                 :src="item.cover"
                 alt=""
@@ -96,17 +106,20 @@ export default {
         {
           url: "#",
           description: "one",
-          image: ""
+          image: "",
+          id: ""
         },
         {
           url: "#",
           description: "two",
-          image: ""
+          image: "",
+          id: ""
         },
         {
           url: "#",
           description: "three",
-          image: ""
+          image: "",
+          id: ""
         }
       ],
       isShow: 1,
@@ -132,30 +145,33 @@ export default {
     // this.loadMore();
   },
   methods: {
+    into(index) {
+      this.$router.push({
+        name: "InformationDetail",
+        params: { Id:  this.slideList[index].id }
+      });
+    },
+    intoDetail(index) {
+      this.$router.push({
+        name: "InformationDetail",
+        params: { Id: index }
+      });
+    },
     loadMore() {
-      // window.onscroll = () => {
-      /**
-       * document.documentElement.offsetHeight：网页可见区域高，获取元素自身的高度（包含边框）
-       * document.documentElement.scrollTop; 获取当前页面的滚动条纵坐标位置，网页被卷去的高
-       * window.innerHeight：获取浏览器页面可用高度
-       */
-      // console.log(document.documentElement.offsetHeight);
-      // console.log(document.documentElement.scrollTop);
-      // console.log(window.innerHeight);
       this.data.pageSize = this.data.pageSize + 10;
-      //注：只有距离满足条件，允许加载下一页数据，且当前page为1,2,3时，才允许滚动加载
-      // if (bottomOfWindow && this.loadMore === true && this.page <= 3) {
-      // console.log("请求加载数据，请求page为", this.page);
-      // this.get_article_list(this.page);
-      // }
-      // };
     },
     async getList() {
       this.url = this.GLOBAL.baseUrl + "/info/isTap";
+      this.data = {
+        currentPage: 0,
+        field: "1",
+        pageSize: this.count
+      };
       this.result = (await API.init(this.url, this.data, "post")).data;
       for (let i = 0; i < this.result.length; i++) {
         this.slideList[i].image = this.result[i].cover;
-        // console.log(this.slideList[i].image);
+        this.slideList[i].id = this.result[i].pkInfoManageId;
+        console.log(this.slideList[i].image);
       }
     },
     async getDoList() {

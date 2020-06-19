@@ -3,8 +3,14 @@
     <div class="bg">
       <!-- <Dialog v-bind.sync="showBombTips" :tipsContent="tipsContent"></Dialog> -->
       <div class="header cc-col-center">
-        <div class="cc-df cc-mltop" id="fileBox">
-          <img :src="user.avatar" @click="avatarClick()" />
+        <div
+          class="cc-df cc-mltop"
+          id="fileBox"
+        >
+          <img
+            :src="user.avatar"
+            @click="avatarClick()"
+          />
           <input
             type="file"
             @change="uploadAvatar($event)"
@@ -77,13 +83,16 @@
           </div>
         </router-link>
         <hr class="line" />
-        <div class="cc-df-between" @click="logout()">
+        <div
+          class="cc-df-between"
+          @click="logout()"
+        >
           <div class="cc-df info-left4">
             <img
               src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_qinlihuncun.png"
-              alt="清理缓存"
+              alt="退出登录"
             />
-            <p>清理缓存</p>
+            <p>退出登录</p>
           </div>
           <div class="info-right">
             <img
@@ -112,6 +121,13 @@ export default {
         visible: true
       },
       tipsContent: "成功"
+      // users: {
+      //   avatar: "",
+      //   nickname: "",
+      //   address: "",
+      //   gender: "",
+      //   pkUserAccountId: ""
+      // }
     };
   },
   components: {
@@ -137,13 +153,13 @@ export default {
         bucket: "niit-cmj"
       });
       let timestamp = Date.parse(new Date());
-      let imgUrl = "img/" + timestamp + "." + "jpeg";
+      let imgUrl = "img/" + timestamp + "." + "jpg";
       var file = event.target.files[0]; //获取文件流
       var _this = this;
       client.multipartUpload(imgUrl, file).then(function(result) {
         _this.avatar = result.res.requestUrls[0];
         _this.updateAdminInfo(_this.avatar);
-        // console.log(_this.avatar);
+        console.log(_this.avatar);
       });
     },
     updateAdminInfo(url) {
@@ -159,19 +175,18 @@ export default {
       this.url = this.GLOBAL.baseUrl + "/user/update/info";
       console.log(this.user.avatar);
       this.data = {
-        // avatar: this.imgDataUrl,
-        avatar: this.user.avatar,
-        gender: this.user.gender,
-        nickname: this.nicknameInput,
         pkUserAccountId: this.user.pkUserAccountId,
+        gender: this.user.gender,
+        avatar: this.user.avatar,
+        nickname: this.user.nickname,
         address: this.user.address
       };
+      console.log(this.data);
       this.result = await API.init(this.url, this.data, "post");
       console.log(this.result.msg);
-
       if (this.result.msg == "成功") {
-        localStorage.setItem("user", JSON.stringify(this.result.data));
-        this.$store.commit("setUser", this.result.data);
+        localStorage.setItem("user", JSON.stringify(this.user));
+        this.$store.commit("setUser", this.user);
       }
     }
   },

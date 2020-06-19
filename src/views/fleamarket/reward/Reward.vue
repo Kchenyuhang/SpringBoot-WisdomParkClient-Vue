@@ -2,30 +2,31 @@
   <div>
     <div class="container">
       <div class="header">
-        <router-link to="/layout">
-          <img
-            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
-            alt=""
-          />
-        </router-link>
+        <img
+          src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
+          alt=""
+        />
         <p>悬赏</p>
       </div>
       <div class="recomond">
         <Carousel :slideList="slideList"></Carousel>
       </div>
       <div class="list">
-        <div class="left" v-for="(item, index) in reward" :key="index">
-          <router-link to="/rewardetail">
-            <div>
-              <img :src="item.imageUrl" alt="" />
-              <p>{{ item.description }}</p>
-              <span>{{ item.title }}</span>
-              <p>¥价格</p>
-              <div class="right" v-for="(item, index) in test" :key="index">
-                <!-- <img :src="item.avatar" alt="" /> -->
-              </div>
+        <div
+          class="left"
+          v-for="(item, index) in reward"
+          :key="index"
+          @click="gotoDetail(item.pkRewardId)"
+        >
+          <div>
+            <img :src="item.imageUrl" alt="" /> <span>{{ item.title }}</span>
+            <p>{{ item.description.slice(0, 30) }}...</p>
+
+            <p>¥价格</p>
+            <div class="right">
+              <img :src="item.fleaUser.avatar" alt="" />
             </div>
-          </router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -39,11 +40,6 @@ export default {
     return {
       test: [],
       reward: [],
-      data: {
-        currentPage: 1,
-        field: 2,
-        pageSize: 6
-      },
       slideList: [
         {
           url: "#",
@@ -78,12 +74,22 @@ export default {
   methods: {
     async getReward() {
       this.url = this.GLOBAL.baseUrl + "/flea/reward/all";
+      this.data = {
+        currentPage: 0,
+        // field: 2,
+        pageSize: 10
+      };
       this.reward = (await API.init(this.url, this.data, "post")).data.content;
       for (let i = 0; i < this.reward.length; i++) {
-        this.test = this.reward[i].fleaUser;
-        console.log(this.test);
+        this.test[i] = this.reward[i].fleaUser;
+        // console.log(this.test);
       }
-      console.log(this.reward);
+      // console.log(this.reward);
+    },
+    gotoDetail(id) {
+      this.$router.push({
+        path: `/rewarddetail/${id}`
+      });
     }
   },
   computed: {},
@@ -95,19 +101,22 @@ export default {
 @import "../../../assets/scss/fleamarket/reward.scss";
 .container {
   padding: 0;
-  height: 1000px;
+  height: auto;
+  // text-align: center;
 }
 .list {
-  height: 1000px;
+  height: auto;
   width: 90%;
   margin-left: 5%;
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 100px;
+  justify-content: space-between;
 }
 .left {
-  height: 230px;
-  width: 47%;
-  margin-left: 8px;
+  height: auto;
+  width: 45%;
+  // margin-left: 18px;
   margin-top: 40px;
   background-color: white;
   border-radius: 10px;

@@ -14,7 +14,11 @@
           @click="gotoSearch(id)"
         />
         <router-link to="/list">
-          <img src="../../assets/images/更多.png" alt="" class="imgs" />
+          <img
+            src="../../assets/images/更多.png"
+            alt=""
+            class="imgs"
+          />
         </router-link>
       </div>
       <Carousel :slideList="slideList"></Carousel>
@@ -25,11 +29,11 @@
           :key="index"
         >
           <div @click="goListDetail(item.pkFleaTypeId)">
-            <img :src="item.img" class="icon" />
+            <img
+              :src="item.img"
+              class="icon"
+            />
             <p class="cc-mtop font-size">{{ item.sub }}</p>
-            <!-- <h5>
-              宠物
-            </h5> -->
           </div>
         </div>
       </div>
@@ -50,22 +54,24 @@
         </div>
       </div>
     </div>
-    <!-- 悬赏 -->
-    <!-- <div class="reward">
-      <Carousel :slideList="slideList" class="ward"></Carousel>
-    </div> -->
-    <!-- 发布信息 -->
-    <div class="release">
+    <div
+      class="release"
+      @scroll="doload()"
+    >
       <div
         class="footer"
-        v-for="item in list"
+        v-for="item in hotList"
         :key="item.pkFleaGoodsId"
         @click="gotoDetail(item.pkFleaGoodsId)"
       >
         <div class="goods">
-          <img :src="item.userAvatar" alt="" />
+          <img
+            :src="item.userAvatar"
+            alt=""
+          />
           <span>{{ item.username }}</span>
-          <p>¥ {{ item.goodsPrice }}</p>
+          <h5>{{ item.goodsCreateTime }}</h5>
+          <!-- <p>¥ {{ item.goodsPrice }}</p> -->
         </div>
         <div class="pic">
           <img :src="item.goodsImgUrl.split('--**--')[0]" />
@@ -78,7 +84,7 @@
 <script>
 const API = require("../../request/api.js");
 export default {
-  name: "Reward",
+  name: "HomePage",
   data() {
     return {
       path: "/homePage",
@@ -93,7 +99,7 @@ export default {
       data: {
         currentPage: 1,
         field: 4,
-        pageSize: 4
+        pageSize: 6
       },
       slideList: [
         {
@@ -104,17 +110,17 @@ export default {
           name: "宠物",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/1.jpg",
           img:
-            "http://ww1.sinaimg.cn/large/0064QvQTgy1gftd623nrij30jg0jg3zq.jpg"
+            "http://ww1.sinaimg.cn/large/0064QvQTly1gfxa4t8zypj30jg0jg3zb.jpg"
         },
         {
           url: "#",
-          pkFleaTypeId: "9",
+          pkFleaTypeId: "13",
           sub: "游戏",
           description: "two",
           name: "手机数码",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/2.jpg",
           img:
-            "http://ww1.sinaimg.cn/large/0064QvQTgy1gftd3wn5m8j3046046dfq.jpg"
+            "http://ww1.sinaimg.cn/large/0064QvQTly1gfxa54zfyoj30jg0jg0tn.jpg"
         },
         {
           url: "#",
@@ -124,7 +130,7 @@ export default {
           name: "游戏交易",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg",
           img:
-            "http://ww1.sinaimg.cn/large/0064QvQTgy1gftcvo32gzj30b40b474o.jpg"
+            "http://ww1.sinaimg.cn/large/0064QvQTly1gfxa3xyg8mj30jg0jgq3l.jpg"
         },
         {
           url: "#",
@@ -134,10 +140,12 @@ export default {
           name: "女装",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg",
           img:
-            "http://ww1.sinaimg.cn/large/0064QvQTgy1gftcyt7vj1j30go0got9d.jpg"
+            "http://ww1.sinaimg.cn/large/0064QvQTly1gfxa4f62waj30jg0jg751.jpg"
         }
       ],
-      id: "1"
+      id: "1",
+      num: 5,
+      repath: "/homePage"
     };
   },
   components: {
@@ -150,6 +158,25 @@ export default {
     this.reInto();
     this.getHotList();
     localStorage.setItem("path", JSON.stringify(this.path));
+    localStorage.setItem("repath", JSON.stringify(this.repath));
+    localStorage.setItem("mypath", JSON.stringify(this.path));
+    let that = this;
+    window.onscroll = function() {
+      // scrollTop 滚动条滚动时，距离顶部的距离
+      var scrollTop =
+        document.documentElement.scrollTop || document.body.scrollTop;
+      // windowHeight 可视区的高度
+      var windowHeight =
+        document.documentElement.clientHeight || document.body.clientHeight;
+      // scrollHeight 滚动条的总高度
+      var scrollHeight =
+        document.documentElement.scrollHeight || document.body.scrollHeight;
+      // 滚动条到底部的条件
+      if (scrollTop + windowHeight >= scrollHeight - 50) {
+        // 加载数据
+        that.loadmore();
+      }
+    };
     // this.getAllType();
   },
   mounted() {},
@@ -158,7 +185,7 @@ export default {
       this.url = this.GLOBAL.baseUrl + "/flea/goods/all";
       this.data = {
         currentPage: 0,
-        pageSize: 4
+        pageSize: 6
       };
       this.list = (await API.init(this.url, this.data, "post")).data;
       // this.count = this.list.length - 4;
@@ -169,12 +196,16 @@ export default {
       this.url = this.GLOBAL.baseUrl + "/flea/goods/all";
       this.data = {
         currentPage: 0,
-        pageSize: 100
+        pageSize: this.num
       };
       this.hotList = (await API.init(this.url, this.data, "post")).data;
       // this.count = this.list.length - 4;
       // this.list.splice(0, this.count);
       // console.log(this.list);
+    },
+    loadmore() {
+      this.num += 5;
+      this.getHotList();
     },
     gotoDetail(id) {
       this.page[this.count++] = id;
@@ -225,6 +256,19 @@ export default {
       this.$router.push({
         path: `/listDetail/${id}`
       });
+    },
+    handleScroll() {
+      //scrollTop为滚动条在Y轴上的滚动距离。
+      //clientHeight为内容可视区域的高度。
+      //scrollHeight为内容可视区域的高度加上溢出（滚动）的距离。
+      console.log(this.$el.scrollTop);
+      if (this.$el.scrollTop + this.$el.offsetHeight > this.$el.scrollHeight) {
+        this.num += 10;
+        this.scloll = true;
+        this.getHotList();
+      } else {
+        this.scloll = false;
+      }
     }
   },
   computed: {},

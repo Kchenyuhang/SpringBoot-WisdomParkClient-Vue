@@ -33,14 +33,23 @@
         >
           {{ student.spell.toUpperCase().slice(0, 1) }}
         </div>
-        <div class="li-img" slot="img">
+        <div
+          class="li-img"
+          slot="img"
+        >
           <img
             src="https://soft1851.oss-cn-beijing.aliyuncs.com/markdown/用户 (1).png"
             alt=""
           />
         </div>
-        <h3 class="li-title" slot="title">{{ student.name }}</h3>
-        <p class="li-price" slot="price">{{ student.number }}</p>
+        <h3
+          class="li-title"
+          slot="title"
+        >{{ student.name }}</h3>
+        <p
+          class="li-price"
+          slot="price"
+        >{{ student.number }}</p>
       </delete-slider>
     </div>
     <!-- 右边字母 -->
@@ -49,9 +58,12 @@
         v-for="(letter, letterIndex) in letterList"
         :key="letterIndex"
         @click="toLetters(letter)"
-        >{{ letter }}
+      >{{ letter }}
       </span>
-      <button class="btn" @click="insert">+</button>
+      <button
+        class="btn"
+        @click="insert"
+      >+</button>
     </div>
   </div>
 </template>
@@ -99,7 +111,6 @@ export default {
       };
       this.url = this.GLOBAL.baseUrl + "/addressBook/list/userId";
       this.result = await API.init(this.url, this.data, "post");
-      // console.log(this.result);
       this.transition();
     },
     transition() {
@@ -143,6 +154,7 @@ export default {
     },
     deleteLine(list) {
       this.studentInfo = [];
+      this.letterList = [];
       this.result = list;
       this.transition();
     }

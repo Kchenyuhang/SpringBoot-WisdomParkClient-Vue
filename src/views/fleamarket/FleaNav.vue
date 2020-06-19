@@ -109,14 +109,34 @@ export default {
   name: "Layout",
   data() {
     return {
-      iconIsshow1: 3,
+      iconIsshow1: 1,
       transitionName1: ""
     };
   },
   components: {},
-  created() {},
+  created() {
+    this.choice();
+  },
   mounted() {},
-  methods: {},
+  methods: {
+    choice() {
+      if (this.$route.path == "/homePage") {
+        this.iconIsshow1 = 1;
+      }
+      if (this.$route.path == "/list") {
+        this.iconIsshow1 = 2;
+      }
+      if (this.$route.path == "/sell") {
+        this.iconIsshow1 = 3;
+      }
+      if (this.$route.path == "/reward") {
+        this.iconIsshow1 = 4;
+      }
+      if (this.$route.path == "/fleaMy") {
+        this.iconIsshow1 = 5;
+      }
+    }
+  },
   computed: {},
   watch: {}
 };

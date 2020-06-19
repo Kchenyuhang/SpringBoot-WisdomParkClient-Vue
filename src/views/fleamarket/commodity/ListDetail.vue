@@ -2,12 +2,11 @@
   <div>
     <div class="container">
       <div class="header">
-        <router-link to="/list">
-          <img
-            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
-            alt=""
-          />
-        </router-link>
+        <img
+          src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
+          alt=""
+          @click="goBack()"
+        />
         <p>{{ listName }}</p>
       </div>
       <div class="r-list">
@@ -17,7 +16,7 @@
           @click="gotoDetail(item.pkFleaGoodsId)"
         >  -->
           <div class="r-left-con" @click="gotoComDetail(item.pkFleaGoodsId)">
-            <img :src="item.goodsImgUrl" />
+            <img :src="item.goodsImgUrl.split('--**--')[0]" />
             <span>{{ item.goodsDescription }}</span>
             <p>$ {{ item.goodsPrice }}</p>
             <div class="r-right">
@@ -46,6 +45,7 @@ export default {
       },
       list: [],
       listName: JSON.parse(localStorage.getItem("ListName")),
+      repath: JSON.parse(localStorage.getItem("repath")),
       page: [],
       count: 0,
       path: "/listDetail/"
@@ -58,6 +58,9 @@ export default {
   },
   mounted() {},
   methods: {
+    goBack() {
+      this.$router.push(this.repath);
+    },
     async getList() {
       let id = this.$route.params.id;
       this.data.typeId = id;

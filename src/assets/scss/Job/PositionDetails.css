@@ -1,0 +1,270 @@
+.bg {
+  background-color: white;
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+.header {
+  background-color: #fbffff;
+  height: 55px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header .header-title {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .header-title img {
+  height: 18px;
+  width: 18px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.header .header-title p {
+  font-size: 18px;
+  margin-left: 15px;
+  color: black;
+}
+
+.bottom {
+  width: 100%;
+  position: absolute;
+  bottom: 10px;
+}
+
+.bottom .btn {
+  width: 90%;
+  margin: auto;
+  height: 40px;
+  background-color: #11aca8;
+}
+
+.bottom .btn p {
+  font-size: 18px;
+  font-weight: 550;
+  color: white;
+}
+
+.position-card {
+  width: 100%;
+  height: 110px;
+  background-color: #11aca8;
+  padding-top: 15px;
+}
+
+.position-card .card-content {
+  width: 90%;
+  height: 90%;
+  margin: auto;
+}
+
+.position-card .card-content .row1 p {
+  font-size: 22px;
+  font-weight: 550;
+  color: white;
+}
+
+.position-card .card-content .row2 {
+  margin-top: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.position-card .card-content .row2 .pay {
+  font-size: 14px;
+  font-weight: 550;
+  color: #e3c813;
+}
+
+.position-card .card-content .row2 .title {
+  font-size: 12px;
+  font-weight: 550;
+  color: white;
+  margin-left: 10px;
+  margin-top: 2px;
+}
+
+.position-card .card-content .row3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 5px;
+}
+
+.position-card .card-content .row3 p {
+  font-size: 13px;
+  font-weight: 550;
+  color: white;
+}
+
+.position-card .card-content .row3 .icon-full {
+  width: 30px;
+  height: 20px;
+  margin-left: 5px;
+  border-radius: 3px;
+  background-color: #fc8989;
+}
+
+.position-card .card-content .row3 .icon-full p {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.position-card .card-content .row3 .icon-less {
+  width: 30px;
+  height: 20px;
+  margin-left: 5px;
+  border-radius: 3px;
+  background-color: #ffb800;
+}
+
+.position-card .card-content .row3 .icon-less p {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.detail {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+.detail .detail-card {
+  width: 90%;
+  margin: auto;
+}
+
+.detail .detail-card .detail-title {
+  font-size: 19px;
+  font-weight: 550;
+  margin-top: 15px;
+}
+
+.detail .detail-card .detail-content {
+  width: 100%;
+}
+
+.detail .detail-card .detail-content .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 15px;
+}
+
+.detail .detail-card .detail-content .row-title {
+  color: #939191;
+  font-size: 14px;
+  font-weight: 550;
+}
+
+.detail .detail-card .detail-content .row-content {
+  color: black;
+  font-size: 14px;
+  margin-left: 15px;
+}
+
+.detail .detail-card .content {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.detail .detail-card .content p {
+  font-size: 12px;
+}
+
+.detail .detail-card .position-boss {
+  width: 100%;
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.detail .detail-card .position-boss .avatar img {
+  width: 50px;
+  height: 50px;
+  border-radius: 30px;
+}
+
+.detail .detail-card .position-boss .boss {
+  margin-left: 20px;
+}
+
+.detail .detail-card .position-boss .boss .boss-name {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.detail .detail-card .position-boss .boss .boss-name .num {
+  margin-left: 30px;
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+.detail .detail-card .position-boss .boss .renzheng {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.detail .detail-card .position-boss .boss .renzheng img {
+  width: 30px;
+  height: 30px;
+}
+
+.detail .detail-card .position-boss .boss .renzheng p {
+  color: #11aca8;
+  font-size: 14px;
+  font-weight: 550;
+}
+
+.detail .detail-card .tips {
+  width: 100%;
+  height: 80px;
+  border-radius: 5px;
+  margin-top: 5px;
+  background-color: #ebe9e9;
+}
+
+.detail .detail-card .tips .tips-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px 10px 10px 10px;
+}
+
+.detail .detail-card .tips .tips-row img {
+  width: 30px;
+  height: 30px;
+}
+
+.detail .detail-card .tips .tips-row p {
+  color: #11aca8;
+  font-size: 14px;
+  font-weight: 550;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+.detail .detail-card .tips .tips-p {
+  width: 90%;
+  margin: auto;
+}
+
+.detail .detail-card .tips .tips-p p {
+  font-size: 12px;
+  font-weight: 550;
+}
+/*# sourceMappingURL=PositionDetails.css.map */

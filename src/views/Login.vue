@@ -74,6 +74,25 @@
           <p class="fontSize" @click="tabIsShow(3)">忘记密码</p>
         </div>
       </div>
+      <div class="qq">
+        <img
+          src="http://ww1.sinaimg.cn/large/0064QvQTly1gfxcqt9219j30jg0jgjsa.jpg"
+          alt=""
+          @click="qq"
+        />
+      </div>
+      <div class="weixin">
+        <img
+          src="http://ww1.sinaimg.cn/large/0064QvQTly1gfxelshmwwj30jg0jgt9a.jpg"
+          alt=""
+        />
+      </div>
+      <div class="weibo">
+        <img
+          src="http://ww1.sinaimg.cn/large/0064QvQTly1gfxfvtsiblj30jh0jggm6.jpg"
+          alt=""
+        />
+      </div>
       <div class="login-btn" @click="messageSignIn()">
         <p>确认登录</p>
       </div>
@@ -134,6 +153,7 @@
           v-model="phoneForm.passWord"
         />
       </div>
+
       <hr class="line" />
       <div class="cc-df">
         <div>
@@ -142,6 +162,25 @@
         <div class="cc-mllleft">
           <p class="fontSize" @click="tabIsShow(3)">忘记密码</p>
         </div>
+      </div>
+      <div class="qq">
+        <img
+          src="http://ww1.sinaimg.cn/large/0064QvQTly1gfxcqt9219j30jg0jgjsa.jpg"
+          alt=""
+          @click="qq"
+        />
+      </div>
+      <div class="weixin">
+        <img
+          src="http://ww1.sinaimg.cn/large/0064QvQTly1gfxelshmwwj30jg0jgt9a.jpg"
+          alt=""
+        />
+      </div>
+      <div class="weibo">
+        <img
+          src="http://ww1.sinaimg.cn/large/0064QvQTly1gfxfvtsiblj30jh0jggm6.jpg"
+          alt=""
+        />
       </div>
       <div class="login-btn" @click="passwordSignIn()">
         <p>确认登录</p>
@@ -175,7 +214,7 @@
           class="size"
         />
         <input
-          type="number"
+          type="text"
           maxlength="11"
           oninput="value=value.replace(/[^\d]/g,'')"
           placeholder="请输入手机号"
@@ -273,6 +312,10 @@ export default {
           {
             regex: /^1[3|4|5|6|7|8][0-9]{9}$/,
             error: "手机号格式不对"
+          },
+          {
+            regex: /^[0-9]+$/,
+            error: "其输入纯数字"
           }
         ],
         code: [{ required: true, error: "验证码不能为空" }],
@@ -429,16 +472,24 @@ export default {
     },
     updatePassword() {
       // this.$axios({
-      //   method: 'put',
-      //   url:this.GLOBAL.baseUrl+'/user/user/password?userAccount=' +this.phoneForm.phoneNumber,
+      //   method: "put",
+      //   url:
+      //     this.GLOBAL.baseUrl +
+      //     "/user/user/password?userAccount=" +
+      //     this.phoneForm.phoneNumber
       // })
-      //   .then((res) => {
-      //     console.log(this.phoneForm)
-      //     console.log(res)
+      //   .then(res => {
+      //     console.log(this.phoneForm);
+      //     console.log(res);
       //   })
       //   .catch(function(error) {
-      //     console.log(error)
-      //   })
+      //     console.log(error);
+      //   });
+    },
+    qq() {
+      // window.location.href = 'http://www.ntt1914866205.xyz';
+      window.location.href =
+        "https://graph.qq.com/oauth2.0/show?which=Login&display=pc&response_type=code&client_id=101883898&redirect_uri=http%3A%2F%2Fwww.ntt1914866205.xyz%2Fconnect&state=e9e3f9ee0f10480b927b25eae8f32776";
     }
   },
   computed: {}
@@ -447,4 +498,22 @@ export default {
 
 <style scoped lang="scss">
 @import "../assets/scss/login.scss";
+.qq {
+  margin: 0 150px 20px 0;
+  height: 20px;
+  width: 20px;
+}
+.weixin {
+  float: right;
+  height: 20px;
+  width: 20px;
+  margin-top: -40px;
+}
+.weibo {
+  float: right;
+  height: 20px;
+  width: 20px;
+  margin-left: 140px;
+  margin-top: -18px;
+}
 </style>

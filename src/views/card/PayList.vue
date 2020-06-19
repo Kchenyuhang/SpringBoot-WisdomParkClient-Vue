@@ -10,10 +10,7 @@
       <p>消费明细</p>
     </div>
     <hr class="line" />
-    <div
-      v-for="item in customers"
-      :key="item"
-    >
+    <div v-for="item in customers" :key="item">
       <div class="card cc-df-between">
         <div class="cc-df-warp pay">
           <div>

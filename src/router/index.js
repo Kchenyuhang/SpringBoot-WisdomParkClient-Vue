@@ -2,6 +2,10 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Login from "../views/Login.vue";
 import Layout from "../views/Layout.vue";
+import Runorders from "../views/errand/Runorders.vue";
+import Orderreceiving from "../views/errand/Orderreceiving.vue";
+import Receiveall from "../views/errand/orders/Receiveall.vue";
+import Receivegoods from "../views/errand/orders/Receivegoods.vue";
 import JobNav from "../views/Job/JobNav.vue";
 import FleaNav from "../views/fleamarket/FleaNav";
 
@@ -109,6 +113,26 @@ const routes = [
     component: () => import("../views/Alumnus/AlumnusMessage.vue")
   },
   {
+    path: '/positiondetails/:Id',
+    name: 'PositionDetails',
+    component: () => import('../views/Job/PositionDetails.vue'),
+  },
+  {
+    path: '/companydetails/:Id',
+    name: 'CompanyDetails',
+    component: () => import('../views/Job/CompanyDetails.vue'),
+  },
+  {
+    path: '/fulltimejob',
+    name: 'FullTimeJob',
+    component: () => import('../views/Job/FullTimeJob.vue'),
+  },
+  {
+    path: '/jobsearch',
+    name: 'JobSearch',
+    component: () => import('../views/Job/JobSearch.vue'),
+  },
+  {
     path: "/alumnuscollect",
     name: "AlumnusCollect",
     component: () => import("../views/Alumnus/AlumnusCollect.vue")
@@ -119,29 +143,29 @@ const routes = [
     component: () => import("../views/Alumnus/Publish.vue")
   },
   {
-    path: '/alumnuscomment',
-    name: 'AlumnusComment',
-    component: () => import('../views/Alumnus/AlumnusComment.vue'),
+    path: "/alumnuscomment",
+    name: "AlumnusComment",
+    component: () => import("../views/Alumnus/AlumnusComment.vue")
   },
   {
-    path: '/alumnusawesome',
-    name: 'AlumnusAwesome',
-    component: () => import('../views/Alumnus/AlumnusAwesome.vue'),
+    path: "/alumnusawesome",
+    name: "AlumnusAwesome",
+    component: () => import("../views/Alumnus/AlumnusAwesome.vue")
   },
   {
-    path: '/privatechat',
-    name: 'PrivateChat',
-    component: () => import('../views/Alumnus/PrivateChat.vue'),
+    path: "/privatechat",
+    name: "PrivateChat",
+    component: () => import("../views/Alumnus/PrivateChat.vue")
   },
   {
-    path: '/alumnussetting',
-    name: 'AlumnusSetting',
-    component: () => import('../views/Alumnus/AlumnusSetting.vue'),
+    path: "/alumnussetting",
+    name: "AlumnusSetting",
+    component: () => import("../views/Alumnus/AlumnusSetting.vue")
   },
   {
-    path: '/publish',
-    name: 'Publish',
-    component: () => import('../views/Alumnus/Publish.vue'),
+    path: "/publish",
+    name: "Publish",
+    component: () => import("../views/Alumnus/Publish.vue")
   },
   {
     path: "/metrocard",
@@ -182,6 +206,16 @@ const routes = [
     path: "/library",
     name: "Library",
     component: () => import("../views/library/Library.vue")
+  },
+  {
+    path: "/wallet",
+    name: "Wallet",
+    component: () => import("../views/errand/user/Wallet.vue")
+  },
+  {
+    path: "/set",
+    name: "Set",
+    component: () => import("../views/errand/user/Set.vue")
   },
   {
     path: "/update",
@@ -273,6 +307,29 @@ const routes = [
         path: "underway",
         name: "Underway",
         component: () => import("../views/errand/orders/Underway.vue")
+      },
+      {
+        path: "cancle",
+        name: "Runcancle",
+        component: () => import("../views/errand/orders/Runcancle.vue")
+      }
+    ]
+  },
+  {
+    path: "/run",
+    name: "Runorders",
+    redirect: "/run/all",
+    component: Runorders,
+    children: [
+      {
+        path: "all",
+        name: "Runall",
+        component: () => import("../views/errand/orders/Runall.vue")
+      },
+      {
+        path: "filish",
+        name: "Runfilish",
+        component: () => import("../views/errand/orders/Runfilish.vue")
       }
     ]
   },
@@ -286,17 +343,50 @@ const routes = [
     name: "DestinationAdress",
     component: () => import("../views/errand/adressorder/DestinationAdress.vue")
   },
+  {
+    path: "/orderconfirmation",
+    name: "Orderconfirmation",
+    component: () => import("../views/errand/orders/Orderconfirmation.vue")
+  },
+  {
+    path: "/apply",
+    name: "Apply",
+    component: () => import("../views/errand/user/Apply.vue")
+  },
+  {
+    path: "/orderreceiving",
+    name: "Orderreceiving",
+    redirect: "/orderreceiving/all",
+    component: Orderreceiving,
+    children: [
+      {
+        path: "all",
+        name: "Receiveall",
+        component: Receiveall
+      },
+      {
+        path: "goods",
+        name: "Receivegoods",
+        component: Receivegoods
+      }
+    ]
+  },
+  {
+    path: '/informationDetail/:Id',
+    name: 'InformationDetail',
+    component: () => import('../views/main/InformationDetail.vue'),
+  },
   // 跳蚤市场路由
   {
     path: "/fleaNav",
     name: "FleaNav",
     component: FleaNav,
     children: [
-      {
-        path: "/",
-        name: "HomePage",
-        component: () => import("../views/fleamarket/HomePage.vue")
-      },
+      // {
+      //   path: "/",
+      //   name: "HomePage",
+      //   component: () => import("../views/fleamarket/HomePage.vue")
+      // },
       {
         path: "/homePage",
         name: "HomePage",
@@ -330,7 +420,7 @@ const routes = [
     component: () => import("../views/fleamarket/personal/Personal.vue")
   },
   {
-    path:"/chatting/:UserId",
+    path: "/chatting/:UserId",
     name: "Chatting",
     component: () => import("../views/Alumnus/Chatting.vue")
   },
@@ -366,6 +456,11 @@ const routes = [
     component: () => import("../views/fleamarket/commodity/ListDetail.vue")
   },
   {
+    path: "/rewarddetail/:id",
+    name: "RewardDetail",
+    component: () => import("../views/fleamarket/reward/RewardDetail.vue")
+  },
+  {
     path: "/personaldetail",
     name: "PersonalDetail",
     component: () => import("../views/fleamarket/personal/PersonalDetail.vue")
@@ -384,11 +479,6 @@ const routes = [
     path: "/mybuy",
     name: "MyBuy",
     component: () => import("../views/fleamarket/my/MyBuy.vue")
-  },
-  {
-    path: "/mysell",
-    name: "MySell",
-    component: () => import("../views/fleamarket/my/MySell.vue")
   }
 ];
 const router = new VueRouter({
