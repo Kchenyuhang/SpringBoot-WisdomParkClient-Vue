@@ -5,6 +5,10 @@
   .header {
     height: 8%;
     display: flex;
+    position: fixed;
+    background-color: #fff;
+    z-index: 999;
+    width: 100%;
 
     img {
       height: 20px;
@@ -22,13 +26,14 @@
   }
   .solder {
     position: absolute;
-    z-index: 999;
+    z-index: 998;
     // transform: rotate(70deg);
     // right: 0;
   }
   .container {
     // height: 80%;
-    position: absolute;
+    position: relative;
+    top: 50px;
     margin-bottom: 100px;
     width: 100%;
     .card {

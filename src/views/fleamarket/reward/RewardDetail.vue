@@ -47,7 +47,7 @@
             v-for="(item, index) in comments"
             :key="index"
           >
-            <div v-if="item.title == reward.title">
+            <div>
               <div class="ds-avatar">
                 <img
                   src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/1.jpg"
@@ -63,6 +63,12 @@
             </div>
           </div>
           <!-- <hr class="line" /> -->
+          <div class="none">
+            <p
+              v-show="comments.length <=num"
+              class="bott"
+            >没有更多留言了</p>
+          </div>
         </div>
       </div>
     </div>
@@ -93,6 +99,7 @@
         @click="doSend"
       />
     </div>
+
   </div>
 </template>
 <script>
@@ -173,12 +180,12 @@ export default {
       console.log(this.user);
     },
     async getComment() {
-      this.url = this.GLOBAL.baseUrl + "/flea/comment/getByRewardId";
+      this.url = "http://10.40.142.5:8080/flea/comment/getByRewardId";
       this.data = {
         pkRewardId: this.$route.params.id
       };
       this.comments = (await API.init(this.url, this.data, "post")).data;
-      this.comments = this.comments.reverse();
+      this.comments = this.comments.slice(0, this.num).reverse();
       // this.comments.slice(0, this.num);
       // console.log(this.result);
     },
@@ -219,7 +226,13 @@ export default {
 <style scoped lang="scss">
 .top {
   height: 40px;
-  background-color: #ffffff;
+  // background-color: #ffffff;
+  z-index: 999;
+  position: fixed;
+  background-color: white;
+  width: 100%;
+  margin-top: -10px;
+  height: 40px;
 }
 .top img {
   height: 20px;
@@ -235,6 +248,9 @@ export default {
 .container {
   width: 90%;
   // height: 10px;
+  position: relative;
+  // padding-top: 50px;
+  top: 50px;
   margin-left: 5%;
   background-color: white;
   /* border: 1px solid#c4c4c4; */
@@ -420,6 +436,23 @@ export default {
     margin-top: 10px;
     margin-left: -10px;
     margin-right: 10px;
+  }
+}
+.none {
+  // display: flex;
+  position: relative;
+  text-align: center;
+
+  .bott {
+    // position: absolute;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    // left: 50%;
+    // text-align: center;
+    // display: flex;
+    // justify-content: center;
+
+    // bottom: 0;
   }
 }
 </style>

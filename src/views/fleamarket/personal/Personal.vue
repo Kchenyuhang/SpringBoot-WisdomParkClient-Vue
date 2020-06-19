@@ -127,6 +127,7 @@
         v-show="isShow == 1"
         v-for="item in send"
         :key="item.id"
+        @click="gotoDetail(item.goodsId)"
       >
 
         <div
@@ -389,7 +390,7 @@ export default {
         pkFleaUserId: id
       };
       this.buy = (await API.init(this.url, this.data, "post")).data.content;
-      // console.log(this.buy);
+      console.log(this.buy);
     },
     async getLike() {
       let id = this.$route.params.id;
