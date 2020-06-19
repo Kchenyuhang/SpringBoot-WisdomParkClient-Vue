@@ -5,6 +5,9 @@
 
 .bg .header {
   height: auto;
+<<<<<<< HEAD
+  background-color: white;
+=======
   background-color: rgba(128, 128, 128, 0.2);
 }
 
@@ -17,6 +20,7 @@
   background-repeat: no-repeat;
   -webkit-filter: blur(5px);
           filter: blur(5px);
+>>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
 }
 
 .bg .header .icon {
@@ -51,18 +55,28 @@
 .bg .header .inform .top .left .card .mes {
   margin-left: 10px;
   margin-top: -1%;
+<<<<<<< HEAD
+=======
   font-weight: 900;
+>>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
 }
 
 .bg .header .inform .top .left .card .mes .wid {
   font-weight: 700;
+<<<<<<< HEAD
+=======
   color: white;
+>>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
 }
 
 .bg .header .inform .top .left .card .mes .nickname {
   font-size: 12px;
+<<<<<<< HEAD
+  color: #ccc9ca;
+=======
   font-weight: 900;
   color: white;
+>>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
 }
 
 .bg .header .inform .top .right {
@@ -87,18 +101,26 @@
   margin-top: 80px;
   margin-left: 5%;
   margin-bottom: 100px;
+<<<<<<< HEAD
+=======
   font-weight: 900;
 }
 
 .bg .header .bottom p {
   color: white;
+>>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
 }
 
 .bg .header .count {
   bottom: 0;
+<<<<<<< HEAD
+  margin-left: 8%;
+  margin-right: 10%;
+=======
   background-color: white;
   margin-bottom: 20px;
   padding-top: 10px;
+>>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
 }
 
 .bg .header .count .tab {
@@ -107,8 +129,14 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+<<<<<<< HEAD
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+=======
   -ms-flex-pack: distribute;
       justify-content: space-around;
+>>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
 }
 
 .bg .message {
@@ -168,9 +196,13 @@
 
 .bg .container {
   height: 80%;
+<<<<<<< HEAD
+  background-color: #c4bebe;
+=======
   width: 90%;
   margin-left: 15px;
   border-radius: 10px;
+>>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
   margin-top: 4px;
 }
 
@@ -178,16 +210,30 @@
   margin-top: 5%;
   width: 100%;
   background-color: #fff;
+<<<<<<< HEAD
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+=======
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+>>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
 }
 
 .bg .container .box .left img {
   width: 130px;
   height: 90px;
+<<<<<<< HEAD
+  margin: 10px 10px 10px 10px;
+}
+
+.bg .container .box .right .title {
+  font-weight: 700;
+=======
   border-radius: 10px;
   margin: 10px 10px 10px 10px;
 }
@@ -199,6 +245,7 @@
 .bg .container .box .right .title {
   font-weight: 700;
   margin-top: 8px;
+>>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
 }
 
 .bg .container .box .right .des {
@@ -207,6 +254,17 @@
 }
 
 .bg .container .box .right .price {
+<<<<<<< HEAD
+  margin-top: 35%;
+  font-size: 14px;
+  font-weight: 600;
+  color: #f56969;
+}
+
+.bg .container .box .right .com {
+  position: absolute;
+  right: 4%;
+=======
   margin-top: 20%;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
@@ -227,6 +285,7 @@
 .bg .container .box .right .com {
   position: absolute;
   right: 6%;
+>>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -271,6 +330,8 @@
   border-bottom: 4px #46abf1 solid;
   color: #46abf1;
 }
+<<<<<<< HEAD
+=======
 
 .del {
   width: 20px;
@@ -309,4 +370,5 @@
   width: 50%;
   text-align: center;
 }
+>>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
 /*# sourceMappingURL=Personal.css.map */

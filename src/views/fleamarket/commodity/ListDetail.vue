@@ -10,28 +10,18 @@
         <p>{{ listName }}</p>
       </div>
       <div class="r-list">
-        <div
-          class="r-left"
-          v-for="(item, index) in list"
-          :key="index"
-        >
+        <div class="r-left" v-for="(item, index) in list" :key="index">
           <!-- <div
           class="r-left-con"
           @click="gotoDetail(item.pkFleaGoodsId)"
         >  -->
-          <div
-            class="r-left-con"
-            @click="gotoComDetail(item.pkFleaGoodsId)"
-          >
+          <div class="r-left-con" @click="gotoComDetail(item.pkFleaGoodsId)">
             <img :src="item.goodsImgUrl.split('--**--')[0]" />
             <span>{{ item.goodsDescription }}</span>
             <p>$ {{ item.goodsPrice }}</p>
             <div class="r-right">
               <div class="img-box">
-                <img
-                  :src="item.userAvatar"
-                  alt=""
-                />
+                <img :src="item.userAvatar" alt="" />
               </div>
               <p>{{ item.nickname }}</p>
             </div>

@@ -44,11 +44,13 @@ export default {
 .tipsClass {
   top: 60%;
   left: 50%;
+  width: 120px;
   height: 30px;
   line-height: 30px;
   position: absolute;
   padding: 0 15px;
-  background: whitesmoke;
+  // background: whitesmoke;
+  background-color: dimgray;
   font-size: 12px;
   margin: 0px auto;
   text-align: center;
@@ -57,7 +59,8 @@ export default {
   border-radius: 3px;
 }
 .tipsClass p {
-  color: red;
+  font-size: 15px;
+  color: #ffffff;
 }
 .animated {
   opacity: 0;

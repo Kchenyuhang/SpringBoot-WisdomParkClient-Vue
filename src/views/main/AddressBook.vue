@@ -99,7 +99,6 @@ export default {
       };
       this.url = this.GLOBAL.baseUrl + "/addressBook/list/userId";
       this.result = await API.init(this.url, this.data, "post");
-      // console.log(this.result);
       this.transition();
     },
     transition() {

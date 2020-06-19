@@ -19,18 +19,12 @@
           @click="gotoDetail(item.pkRewardId)"
         >
           <div>
-            <img
-              :src="item.imageUrl"
-              alt=""
-            /> <span>{{ item.title }}</span>
+            <img :src="item.imageUrl" alt="" /> <span>{{ item.title }}</span>
             <p>{{ item.description.slice(0, 30) }}...</p>
 
             <p>¥价格</p>
             <div class="right">
-              <img
-                :src="item.fleaUser.avatar"
-                alt=""
-              />
+              <img :src="item.fleaUser.avatar" alt="" />
             </div>
           </div>
         </div>

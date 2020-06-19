@@ -21,6 +21,7 @@
           type="number"
           placeholder="手机号"
           v-model="phoneNumber"
+          oninput="if(value.length>5)value=value.slice(0,11)"
           maxlength="11"
         />
         <hr class="line" />

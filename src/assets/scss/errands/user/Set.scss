@@ -1,0 +1,49 @@
+.bg {
+    background-color: #fbfbfb;
+    height: 100vh;
+    width: 100%;
+    .header {
+        background-color: #ffffff;
+        height: 40px;
+        display: flex;
+        img {
+          height: 20px;
+          width: 20px;
+          margin-top: 10px;
+          margin-left: 5px;
+        }
+        p {
+          font-size: 18px;
+          font-weight: 550;
+          margin-left: 3%;
+          margin-top: 2%;
+        }
+      }
+      .userdiv {
+        background-color: #ffffff;
+          width: 100%;
+          height: 50px;
+          p {
+              padding: 10px 0 0 10px;
+          }
+      }
+      .center {
+          margin-top: 10px;
+          width: 100%;
+          display: flex;
+          height: 40px;
+          justify-content:center;
+          img {
+              width: 25px;
+              height: 25px;
+          }
+      }
+      .btn {
+          position: absolute;
+          bottom: 0;
+          border: none;
+          width: 100%;
+          height: 50px;
+         background-color: #ffffff;
+      }
+    }
