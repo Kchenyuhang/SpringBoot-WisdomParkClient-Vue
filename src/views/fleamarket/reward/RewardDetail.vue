@@ -181,7 +181,7 @@ export default {
       console.log(this.user);
     },
     async getComment() {
-      this.url = "http://10.40.142.5:8080/flea/comment/getByRewardId";
+      this.url = this.GLOBAL.baseUrl + "/flea/comment/getByRewardId";
       this.data = {
         pkRewardId: this.$route.params.id
       };
@@ -217,9 +217,10 @@ export default {
       this.send.rewardId = this.$route.params.id;
       this.result = (await API.init(this.url, this.send, "post")).data;
       this.show = false;
+      console.log(this.send);
+      console.log(this.result);
       this.send.comment = "";
       this.getComment();
-      // console.log(this.result);
     }
   },
   computed: {}

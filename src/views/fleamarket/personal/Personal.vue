@@ -127,7 +127,6 @@
         v-show="isShow == 1"
         v-for="item in send"
         :key="item.goodsId"
-        @click="gotoDetail(item.goodsId)"
       >
 
         <div
@@ -142,7 +141,10 @@
             @click="getValue(item.goodsId)"
           >
           <div class="left">
-            <img :src="item.goodsImgUrl.split('--**--')[0]" />
+            <img
+              @click="gotoDetail(item.goodsId)"
+              :src="item.goodsImgUrl.split('--**--')[0]"
+            />
           </div>
           <div
             class="right"
