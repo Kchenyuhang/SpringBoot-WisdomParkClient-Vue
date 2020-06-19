@@ -40,7 +40,6 @@
 
 .screen-card {
   width: 85%;
-  height: 300px;
   margin: auto;
 }
 
@@ -55,19 +54,22 @@
   margin-top: 20px;
 }
 
-.screen-card .screen-card {
+.screen-card .screen-body {
   width: 100%;
-  height: 250px;
+  margin: auto;
 }
 
-.screen-card .screen-card .screen-type {
-  background-color: #f5f5f5;
-  width: 33%;
+.screen-card .screen-body .screen-type {
+  background-color: #ebeaea;
   height: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 20px;
+  margin-bottom: 30px;
   border-radius: 5px;
 }
 
-.screen-card .screen-card .screen-type p {
+.screen-card .screen-body .screen-type p {
   font-size: 14px;
   font-weight: 550;
 }

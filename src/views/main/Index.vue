@@ -246,6 +246,25 @@ export default {
     async getToday() {
       this.url = this.GLOBAL.baseUrl + "/course/today";
       this.today = (await API.init(this.url, this.todayData, "post")).data;
+      console.log(this.today)
+      for(let i=0;i<this.today.length;i++){
+        if(this.today[i].time==1){
+           this.today[i].time='1-2'
+        }
+        if(this.today[i].time==2){
+           this.today[i].time='3-4'
+        }
+        if(this.today[i].time==3){
+           this.today[i].time='5-6'
+        }
+        if(this.today[i].time==4){
+           this.today[i].time='7-8'
+        }
+        if(this.today[i].time==5){
+           this.today[i].time='9-10'
+        }
+       
+      }
       console.log(this.today);
     }
   },

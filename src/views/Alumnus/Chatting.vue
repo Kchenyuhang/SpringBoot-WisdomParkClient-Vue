@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg">
     <div class="header">
       <div class="header-title">
         <router-link to="/privatechat">
@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="cc-df-between" v-if="item.userId==friend.pkUserAccountId">
-          <div class="msgArea">
+          <div class="msgArea cc-df-left">
             <div class="avatar">
               <img :src="friend.avatar" />
             </div>
@@ -33,9 +33,11 @@
       </div>
       <div class="input">
         <div class="inp cc-df-center">
-          <textarea name id cols="30" rows="1" v-model="msg" class="test"></textarea>
+          <textarea name id cols="30" rows="1" v-model="msg" class="test" placeholder="请输入私聊内容"></textarea>
         </div>
-        <button @click="sendToUser" class="btn">发送</button>
+        <div @click="sendToUser" class="btn cc-df-center">
+          <p>发送</p>
+        </div>
       </div>
     </div>
   </div>
@@ -62,6 +64,7 @@ export default {
   },
   created() {
     this.selectUser();
+    this.selectChat();
   },
   mounted: function() {
     this.initWebSocket();
@@ -72,11 +75,18 @@ export default {
     clearInterval(this.timer);
   },
   methods: {
+    async selectChat() {
+      this.data = {
+        id: "12"
+      };
+      this.url = this.GLOBAL.baseUrl + "/dynamic/message/all";
+      this.result = await API.init(this.url, this.data, "post");
+      console.log(this.result);
+    },
     async selectUser() {
       this.data = {
         field: this.friendId
       };
-
       this.url = this.GLOBAL.baseUrl + "/user/single/id";
       this.result = await API.init(this.url, this.data, "post");
       this.friend = this.result;
@@ -92,6 +102,7 @@ export default {
       };
       // 统一前缀配置
       this.stompClient.send("/app/sendToUser", {}, JSON.stringify(data));
+      this.selectChat();
     },
     initWebSocket() {
       this.connection();
@@ -111,7 +122,7 @@ export default {
     },
     connection() {
       // 建立连接对象
-      this.socket = new SockJS("http://118.31.21.206:8080/websocket"); //连接服务端提供的通信接口，连接以后才可以订阅广播消息和个人消息
+      this.socket = new SockJS("http://120.26.185.155:8079/websocket"); //连接服务端提供的通信接口，连接以后才可以订阅广播消息和个人消息
       // 获取STOMP子协议的客户端对象
       this.stompClient = Stomp.over(this.socket);
       // 定义客户端的认证信息,按需求配置
@@ -127,17 +138,35 @@ export default {
         frame => {
           this.stompClient.subscribe("/topic/user" + this.friendId, msg => {
             // 订阅服务端提供的某个topic
-            console.log(msg.body.substring(0, msg.body.indexOf(":") - 1)); // msg.body存放的是服务端发送给我们的信息
-            var num = msg.body
-              .substring(0, msg.body.indexOf(":") - 1)
-              .match(/\d+/g);
-            this.dataList.push({
-              userId: num[0],
-              msg: msg.body.substring(msg.body.indexOf(":") + 1)
-            });
-            console.log(this.dataList);
+            // console.log(msg.body.substring(0, msg.body.indexOf(":") - 1)); // msg.body存放的是服务端发送给我们的信息
+            // var num = msg.body
+            //   .substring(0, msg.body.indexOf(":") - 1)
+            //   .match(/\d+/g);
+            // this.dataList.push({
+            //   userId: num[0],
+            //   msg: msg.body.substring(msg.body.indexOf(":") + 1)
+            // });
+            // console.log(this.dataList);
+            console.log(msg.body);
             console.log(frame);
           });
+          this.stompClient.subscribe(
+            "/topic/user" + this.user.pkUserAccountId,
+            msg => {
+              // 订阅服务端提供的某个topic
+              // console.log(msg.body.substring(0, msg.body.indexOf(":") - 1)); // msg.body存放的是服务端发送给我们的信息
+              // var num = msg.body
+              //   .substring(0, msg.body.indexOf(":") - 1)
+              //   .match(/\d+/g);
+              // this.dataList.push({
+              //   userId: num[0],
+              //   msg: msg.body.substring(msg.body.indexOf(":") + 1)
+              // });
+              // console.log(this.dataList);
+              console.log(msg.body);
+              console.log(frame);
+            }
+          );
         },
         err => {
           // 连接发生错误时的处理函数
@@ -158,30 +187,4 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/scss/alumnus/Chatting.scss";
-// .body {
-//   margin: 20px;
-// }
-// .msgArea {
-//   width: 45%;
-//   height: 50px;
-//   border: #4cd7ff solid 1px;
-//   display: flex;
-//   flex-wrap: nowrap;
-//   align-items: center;
-// }
-// /*.msgAreaReverse {*/
-// /*  width: 45%;*/
-// /*  height: 50px;*/
-// /*  border: #4cd7ff solid 1px;*/
-// /*  display: flex;*/
-// /*  flex-wrap: nowrap;*/
-// /*  flex-direction: row-reverse;*/
-// /*  align-items: center;*/
-// /*}*/
-// .msg {
-//   margin-left: 10px;
-// }
-// .input {
-//   margin-top: 500px;
-// }
 </style>

@@ -103,9 +103,34 @@ const routes = [
     component: () => import("../views/Alumnus/AlumnusIndex.vue")
   },
   {
+    path: "/dongtaidetails/:Id",
+    name: "DongtaiDetails",
+    component: () => import("../views/Alumnus/DongtaiDetails.vue")
+  },
+  {
     path: "/alumnusmessage",
     name: "AlumnusMessage",
     component: () => import("../views/Alumnus/AlumnusMessage.vue")
+  },
+  {
+    path: '/positiondetails/:Id',
+    name: 'PositionDetails',
+    component: () => import('../views/Job/PositionDetails.vue'),
+  },
+  {
+    path: '/companydetails/:Id',
+    name: 'CompanyDetails',
+    component: () => import('../views/Job/CompanyDetails.vue'),
+  },
+  {
+    path: '/fulltimejob',
+    name: 'FullTimeJob',
+    component: () => import('../views/Job/FullTimeJob.vue'),
+  },
+  {
+    path: '/jobsearch',
+    name: 'JobSearch',
+    component: () => import('../views/Job/JobSearch.vue'),
   },
   {
     path: "/alumnuscollect",
@@ -346,6 +371,11 @@ const routes = [
       }
     ]
   },
+  {
+    path: '/informationDetail/:Id',
+    name: 'InformationDetail',
+    component: () => import('../views/main/InformationDetail.vue'),
+  },
   // 跳蚤市场路由
   {
     path: "/fleaNav",
@@ -449,11 +479,6 @@ const routes = [
     path: "/mybuy",
     name: "MyBuy",
     component: () => import("../views/fleamarket/my/MyBuy.vue")
-  },
-  {
-    path: "/mysell",
-    name: "MySell",
-    component: () => import("../views/fleamarket/my/MySell.vue")
   }
 ];
 const router = new VueRouter({

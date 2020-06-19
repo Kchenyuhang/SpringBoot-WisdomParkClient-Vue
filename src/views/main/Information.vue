@@ -11,12 +11,21 @@
         </router-link>
         <p>资讯</p>
       </div>
-      <Carousel :slideList="slideList"></Carousel>
+      <Carousel
+        :slideList="slideList"
+        @into="into"
+      ></Carousel>
       <div class="Top">
         <p class="title">置顶帖</p>
         <div>
-          <div v-for="(item, index) in result" :key="index">
-            <div class="cc-df">
+          <div
+            v-for="(item, index) in result"
+            :key="index"
+          >
+            <div
+              class="cc-df"
+              @click="intoDetail(item.pkInfoManageId)"
+            >
               <img :src="item.cover" />
               <div class="cc-col-between cc-mleft">
                 <p class="file">{{ item.title }}...</p>
@@ -29,22 +38,49 @@
       </div>
       <div class="container ">
         <div class="cc-df container-header">
-          <div class="cc-coll-4 cc-df-center" @click="isShow = 1">
-            <p :class="{ blueLine: isShow == 1 }" @click="getAll">全部</p>
+          <div
+            class="cc-coll-4 cc-df-center"
+            @click="isShow = 1"
+          >
+            <p
+              :class="{ blueLine: isShow == 1 }"
+              @click="getAll"
+            >全部</p>
           </div>
-          <div class="cc-coll-4 cc-df-center" @click="isShow = 2">
-            <p :class="{ blueLine: isShow == 2 }" @click="getDoList">教务处</p>
+          <div
+            class="cc-coll-4 cc-df-center"
+            @click="isShow = 2"
+          >
+            <p
+              :class="{ blueLine: isShow == 2 }"
+              @click="getDoList"
+            >教务处</p>
           </div>
-          <div class="cc-coll-4 cc-df-center" @click="isShow = 3">
-            <p :class="{ blueLine: isShow == 3 }" @click="getStudentList">
+          <div
+            class="cc-coll-4 cc-df-center"
+            @click="isShow = 3"
+          >
+            <p
+              :class="{ blueLine: isShow == 3 }"
+              @click="getStudentList"
+            >
               学生会
             </p>
           </div>
         </div>
         <div>
-          <div v-for="(item, index) in teachResult" :key="index">
-            <div class="cc-df cc-mtop cc-mleft">
-              <img :src="item.cover" alt="" />
+          <div
+            v-for="(item, index) in teachResult"
+            :key="index"
+          >
+            <div
+              class="cc-df cc-mtop cc-mleft"
+              @click="intoDetail(item.pkInfoManageId)"
+            >
+              <img
+                :src="item.cover"
+                alt=""
+              />
               <div class="cc-col-between cc-mleft">
                 <p class="file">
                   <b>{{ item.title }}</b>
@@ -70,17 +106,20 @@ export default {
         {
           url: "#",
           description: "one",
-          image: ""
+          image: "",
+          id: ""
         },
         {
           url: "#",
           description: "two",
-          image: ""
+          image: "",
+          id: ""
         },
         {
           url: "#",
           description: "three",
-          image: ""
+          image: "",
+          id: ""
         }
       ],
       isShow: 1,
@@ -106,23 +145,20 @@ export default {
     // this.loadMore();
   },
   methods: {
+    into(index) {
+      this.$router.push({
+        name: "InformationDetail",
+        params: { Id:  this.slideList[index].id }
+      });
+    },
+    intoDetail(index) {
+      this.$router.push({
+        name: "InformationDetail",
+        params: { Id: index }
+      });
+    },
     loadMore() {
-      // window.onscroll = () => {
-      /**
-       * document.documentElement.offsetHeight：网页可见区域高，获取元素自身的高度（包含边框）
-       * document.documentElement.scrollTop; 获取当前页面的滚动条纵坐标位置，网页被卷去的高
-       * window.innerHeight：获取浏览器页面可用高度
-       */
-      // console.log(document.documentElement.offsetHeight);
-      // console.log(document.documentElement.scrollTop);
-      // console.log(window.innerHeight);
       this.data.pageSize = this.data.pageSize + 10;
-      //注：只有距离满足条件，允许加载下一页数据，且当前page为1,2,3时，才允许滚动加载
-      // if (bottomOfWindow && this.loadMore === true && this.page <= 3) {
-      // console.log("请求加载数据，请求page为", this.page);
-      // this.get_article_list(this.page);
-      // }
-      // };
     },
     async getList() {
       this.url = this.GLOBAL.baseUrl + "/info/isTap";
@@ -134,6 +170,7 @@ export default {
       this.result = (await API.init(this.url, this.data, "post")).data;
       for (let i = 0; i < this.result.length; i++) {
         this.slideList[i].image = this.result[i].cover;
+        this.slideList[i].id = this.result[i].pkInfoManageId;
         console.log(this.slideList[i].image);
       }
     },

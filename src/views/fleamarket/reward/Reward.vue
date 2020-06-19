@@ -2,12 +2,10 @@
   <div>
     <div class="container">
       <div class="header">
-        <router-link to="/layout">
-          <img
-            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
-            alt=""
-          />
-        </router-link>
+        <img
+          src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
+          alt=""
+        />
         <p>悬赏</p>
       </div>
       <div class="recomond">
@@ -21,18 +19,12 @@
           @click="gotoDetail(item.pkRewardId)"
         >
           <div>
-            <img
-              :src="item.imageUrl"
-              alt=""
-            /> <span>{{ item.title }}</span>
+            <img :src="item.imageUrl" alt="" /> <span>{{ item.title }}</span>
             <p>{{ item.description.slice(0, 30) }}...</p>
 
             <p>¥价格</p>
             <div class="right">
-              <img
-                :src="item.fleaUser.avatar"
-                alt=""
-              />
+              <img :src="item.fleaUser.avatar" alt="" />
             </div>
           </div>
         </div>
@@ -110,6 +102,7 @@ export default {
 .container {
   padding: 0;
   height: auto;
+  // text-align: center;
 }
 .list {
   height: auto;

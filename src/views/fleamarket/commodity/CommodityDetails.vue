@@ -9,11 +9,10 @@
       <!-- </router-link> -->
       <p>商品详情</p>
     </div>
-    <div
-      class="solder"
-      v-show="list[0].isDeleted==true"
-    >
-      <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/0ac2e928674ff8e5bd0c0a9c00542b3f.png" />
+    <div class="solder" v-show="list[0].isDeleted == true">
+      <img
+        src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/0ac2e928674ff8e5bd0c0a9c00542b3f.png"
+      />
     </div>
     <div class="container">
       <div class="card">

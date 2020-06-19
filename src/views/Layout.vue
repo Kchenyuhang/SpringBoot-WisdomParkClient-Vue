@@ -14,6 +14,7 @@
           <p>资讯</p>
         </router-link>
       </div>
+
       <div class="icon1" v-if="iconIsshow1 == 1">
         <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_zixun.png"
@@ -105,6 +106,7 @@
 </template>
 
 <script>
+const API = require("../request/api");
 export default {
   name: "Layout",
   data() {
@@ -115,12 +117,39 @@ export default {
   },
   components: {},
   created() {
-    if (localStorage.getItem("token") === null) {
-      this.$router.push("/login");
+    let jobNumber = this.$route.query.jobNumber;
+    let password = this.$route.query.password;
+    console.log("jobNumber" + jobNumber);
+    console.log("password" + password);
+    if (jobNumber != null && password != null) {
+      this.messageSignIn(jobNumber, password);
+    } else {
+      if (localStorage.getItem("token") === null) {
+        this.$router.push("/login");
+      }
     }
   },
   mounted() {},
-  methods: {},
+  methods: {
+    async messageSignIn(jobNumber, passWord) {
+      let data = {
+        userAccount: jobNumber,
+        passWord: passWord
+      };
+      let url = this.GLOBAL.baseUrl + "/user/login";
+      let result = await API.init(url, data, "post");
+      if (result.msg == "成功") {
+        localStorage.setItem("token", result.data.token);
+        this.$store.commit("setToken", result.data.token);
+        console.log(result.data.token);
+
+        localStorage.setItem("user", JSON.stringify(result.data.UserAccount));
+        this.$store.commit("setUser", result.data.UserAccount);
+        console.log(result.data.UserAccount);
+        // this.$router.push("/layout");
+      }
+    }
+  },
   computed: {},
   watch: {
     $route(to, from) {
