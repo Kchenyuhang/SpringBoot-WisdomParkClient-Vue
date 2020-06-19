@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <!-- 下拉框组件html结构（子组件） -->
   <div
     class="select-box"
@@ -169,17 +168,3 @@ export default {
   transform: scaleY(0);
 }
 </style>
-=======
-  <div slot="select01">{{ msg }}</div>
-</template>
-
-<script>
-export default {
-  data() {
-    return {
-      msg: "select01"
-    };
-  }
-};
-</script>
->>>>>>> 94bd637ed6fed8beb6df25554908c6234d6ada69
