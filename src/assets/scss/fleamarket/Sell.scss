@@ -1,25 +1,32 @@
 .bg {
-    background-color: #f9f9f9;
-    width: 100%;
+  background-color: #f9f9f9;
+  width: 100%;
+}
+
+.header {
+  background-color: #ffffff;
+  height: 40px;
+  display: flex;
+
+  img {
+    height: 20px;
+    width: 30px;
+    margin-top: 10px;
+    margin-left: 5px;
   }
-  
-  .header {
-    background-color: #ffffff;
-    height: 40px;
-    display: flex;
-  
-    img {
-      height: 20px;
-      width: 30px;
-      margin-top: 10px;
-      margin-left: 5px;
-    }
-  
-    p {
-      font-size: 16px;
-      font-weight: 550;
-      margin-left: 34%;
-      margin-top: 3%;
-    }
+
+  p {
+    font-size: 16px;
+    font-weight: 550;
+    margin-left: 34%;
+    margin-top: 3%;
   }
-  
+}
+.hengzhe {
+  display: flex;
+  justify-content: space-around;
+  .suolue {
+    width: 100px;
+    height: 100px;
+  }
+}

@@ -1,0 +1,108 @@
+.bg {
+    background-color: #f7f7f7;
+    height: 100vh;
+    width: 100%;
+    .header {
+        background-color: #ffffff;
+        height: 40px;
+        display: flex;
+        img {
+          height: 20px;
+          width: 20px;
+          margin-top: 10px;
+          margin-left: 5px;
+        }
+        p {
+          font-size: 18px;
+          font-weight: 550;
+          margin-left: 3%;
+          margin-top: 2%;
+        }
+      }
+    img {
+        width: 100%;
+        height: 155px;
+    }
+    .inputCenter {
+        box-shadow: 0 0 30px 0 #d2e1ee;
+        position: absolute;
+        top: 140px;
+        background-color: #ffffff;
+        width: 92%;
+        left: 15px;
+        height: 140px;
+        border-radius: 5px;
+        .content {
+            width: 85%;
+            height: 120px;
+            margin: 10px 0 0 40px;
+            h4 {
+                color: #000000;
+                font-weight: 600;
+            }
+            .desnation{
+                margin-top: 24px;
+            }
+        }
+        .blueDiv {
+            position: absolute;
+            top: 23px;
+            left: 10px;
+            background-color: #43a0ff;
+            border-radius: 50%;
+            width: 8px;
+            height: 8px;
+        }
+        .yellowDiv {
+            position: absolute;
+            top: 90px;
+            left: 10px;
+            background-color: #ffa127;
+            border-radius: 50%;
+            width: 8px;
+            height: 8px;
+        }
+        .line {
+            border-radius: 2px;
+            margin-top:-68px;
+            width: 78%;
+            height: 1px;
+            background-color: #f4f4f4;
+        }
+    }
+    .bottom {
+        margin: 100px 0 0 10px;
+        width: 95%;
+        display: inline-block;
+        background-color: #f7f7f7;
+        .card {
+            background-color: #ffffff;
+            border: 0.5px solid #d3d3d5 ;
+            padding: 10px 10px 0 10px;
+            margin-bottom:10px;
+            margin-left:5px;
+            display: flex;
+            width: 98%;
+            height: 40px;
+                img {
+                    width: 20px;
+                    height: 20px;
+                }
+                .cinput {
+                    border: none;
+                    height: 25px;
+                    width: 100%;
+                    margin-left: 10px;
+                }
+        }
+    }
+    .btn {
+        margin: 205px 0 0 10px;
+        width: 95%;
+        height: 45px;
+        color: #ffffff;
+        background-color:#12a3fd ;
+        border-radius: 20px;
+        border: none;
+      }
+  }

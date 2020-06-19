@@ -10,7 +10,10 @@
       <router-link to="/search">
         <div class="search bar">
           <form>
-            <input type="text" placeholder="请输入您要搜索的内容..." />
+            <input
+              type="text"
+              placeholder="请输入您要搜索的内容..."
+            />
             <button type="submit">搜索</button>
           </form>
         </div>
@@ -29,9 +32,16 @@
     </div>
     <p>推荐</p>
     <div class="left">
-      <div class="left-list" v-for="(item, index) in typeList" :key="index">
+      <div
+        class="left-list"
+        v-for="(item, index) in typeList"
+        :key="index"
+      >
         <div @click="goListDetail(item.pkFleaTypeId)">
-          <img :src="item.typeCoverUrl" alt="" />
+          <img
+            :src="item.typeCoverUrl"
+            alt=""
+          />
           <h5>{{ item.typeName }}</h5>
         </div>
       </div>
@@ -50,7 +60,8 @@ export default {
       isShow: 0,
       path: "/list",
       page: [],
-      count: 1
+      count: 1,
+      repath: "/list"
     };
   },
   components: {},
@@ -58,6 +69,7 @@ export default {
     this.getAllType();
     localStorage.setItem("ListName", JSON.stringify(this.first));
     localStorage.setItem("path", JSON.stringify(this.path));
+    localStorage.setItem("repath", JSON.stringify(this.repath));
   },
   mounted() {},
   methods: {

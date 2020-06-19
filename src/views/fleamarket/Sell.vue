@@ -18,13 +18,33 @@
     ></textarea>
     <!-- 图片上传区域 -->
     <div class="upload">
-      <img class="up-pic" :src="data.goodsImgUrl" @click="avatarClick()" />
+      <div class="hengzhe">
+        <div
+          v-for="(item, index) in img"
+          :key="index"
+        >
+          <img
+            :src="item"
+            alt=""
+            class="suolue"
+          />
+        </div>
+
+      </div>
+      <img
+        class="up-pic"
+        :src="data.goodsImgUrl"
+        v-show="suolue"
+        @click="avatarClick()"
+      />
       <input
         @click="avatarClick()"
         type="file"
         @change="uploadAvatar($event)"
         ref="file"
+        multiple="multiple"
         style="display: none;"
+        accept="image/gif,image/jpeg,image/jpg,image/png"
         id="file"
       />
     </div>
@@ -35,23 +55,29 @@
           placeholder="请输入价格"
           v-model="data.goodsPrice"
         />
-        <input type="text" placeholder="请输入类型" v-model="data.goodsMark" />
+        <input
+          type="text"
+          placeholder="请输入类型"
+          v-model="data.goodsMark"
+        />
+
         <select
+          class="option"
           name="bbxb"
           id="selecte1"
-          class="longselect"
           v-model="id"
           @click="get(id)"
         >
           <option value="">---请选择--</option>
           <option
+            class="option"
             :value="item.pkFleaTypeId"
             selected="selected"
             v-for="(item, index) in type"
             :key="index"
-            >{{ item.typeName }}</option
-          >
+          >{{ item.typeName }}</option>
         </select>
+        <!-- <p>{{this.imgstr}}</p> -->
         <button @click="getSell">确认发布</button>
       </div>
     </div>
@@ -75,7 +101,10 @@ export default {
         goodsPrice: "",
         pkFleaTypeId: 0,
         pkFleaUserId: 0
-      }
+      },
+      img: [],
+      imgstr: "",
+      suolue: true
     };
   },
   components: {},
@@ -91,14 +120,13 @@ export default {
     async getAllType() {
       this.url = this.GLOBAL.baseUrl + "/flea/type/all";
       this.type = (await API.init(this.url, this.data, "post")).data.types;
-      // console.log(this.type);
     },
     async getSell() {
       this.url = this.GLOBAL.baseUrl + "/flea/goods/increased";
-      // console.log(this.data);
+      this.data.goodsImgUrl = this.imgstr;
+      console.log(this.data);
 
       this.type = (await API.init(this.url, this.data, "post")).data.types;
-      // console.log(this.type);
       this.$router.push({
         path: `/personal/${this.data.pkFleaUserId}`
       });
@@ -111,23 +139,30 @@ export default {
         accessKeySecret: "ZX0hbGsO2aOAWUfGJlrL48Tkp0bfFQ",
         bucket: "student-m"
       });
-      let timestamp = Date.parse(new Date());
-      let imgUrl = "img/" + timestamp + "." + "jpeg";
-      var file = event.target.files[0]; //获取文件流
       var _this = this;
-      client.multipartUpload(imgUrl, file).then(function(result) {
-        _this.avatar = result.res.requestUrls[0];
-        _this.updateAdminInfo(_this.avatar);
-        console.log(_this.avatar);
-      });
+      for (let i = 0; i < event.target.files.length; i++) {
+        let timestamp = Date.parse(new Date());
+        let imgUrl = "img/" + timestamp + i + "." + "png";
+        var file = event.target.files[i];
+        client.multipartUpload(imgUrl, file).then(function(result) {
+          _this.img.push(result.res.requestUrls[0]);
+          _this.updateAdminInfo(_this.img);
+        });
+      }
     },
     avatarClick() {
       this.$refs.file.click();
     },
-    updateAdminInfo(url) {
-      this.imgDataUrl = url.substring(0, url.indexOf("?"));
-      this.data.goodsImgUrl = url;
-      // this.updateAvatar();
+    updateAdminInfo(img) {
+      this.img = img;
+      this.suolue = false;
+      // for (let i = 0; i < img.length; i++) {
+      //   this.imgstr = img[i] + "--**--" + this.imgstr;
+      // }
+      this.imgstr = img.join("--**--");
+      // console.log(this.imgstr);
+
+      // this.imgstr = this.imgstr.slice(0, 216);
     }
   },
   computed: {},
@@ -177,5 +212,10 @@ button {
   // background-color: red;
   border: none;
   border-radius: 5px;
+}
+.option {
+  width: auto;
+  position: absolute;
+  left: 50%;
 }
 </style>

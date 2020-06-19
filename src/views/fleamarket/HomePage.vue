@@ -14,7 +14,11 @@
           @click="gotoSearch(id)"
         />
         <router-link to="/list">
-          <img src="../../assets/images/更多.png" alt="" class="imgs" />
+          <img
+            src="../../assets/images/更多.png"
+            alt=""
+            class="imgs"
+          />
         </router-link>
       </div>
       <Carousel :slideList="slideList"></Carousel>
@@ -25,7 +29,10 @@
           :key="index"
         >
           <div @click="goListDetail(item.pkFleaTypeId)">
-            <img :src="item.img" class="icon" />
+            <img
+              :src="item.img"
+              class="icon"
+            />
             <p class="cc-mtop font-size">{{ item.sub }}</p>
           </div>
         </div>
@@ -47,7 +54,10 @@
         </div>
       </div>
     </div>
-    <div class="release" @scroll="doload()">
+    <div
+      class="release"
+      @scroll="doload()"
+    >
       <div
         class="footer"
         v-for="item in hotList"
@@ -55,7 +65,10 @@
         @click="gotoDetail(item.pkFleaGoodsId)"
       >
         <div class="goods">
-          <img :src="item.userAvatar" alt="" />
+          <img
+            :src="item.userAvatar"
+            alt=""
+          />
           <span>{{ item.username }}</span>
           <h5>{{ item.goodsCreateTime }}</h5>
           <!-- <p>¥ {{ item.goodsPrice }}</p> -->
@@ -86,7 +99,7 @@ export default {
       data: {
         currentPage: 1,
         field: 4,
-        pageSize: 4
+        pageSize: 6
       },
       slideList: [
         {
@@ -131,7 +144,8 @@ export default {
         }
       ],
       id: "1",
-      num: 5
+      num: 5,
+      repath: "/homePage"
     };
   },
   components: {
@@ -144,12 +158,12 @@ export default {
     this.reInto();
     this.getHotList();
     localStorage.setItem("path", JSON.stringify(this.path));
+    localStorage.setItem("repath", JSON.stringify(this.repath));
     let that = this;
     window.onscroll = function() {
       // scrollTop 滚动条滚动时，距离顶部的距离
       var scrollTop =
         document.documentElement.scrollTop || document.body.scrollTop;
-
       // windowHeight 可视区的高度
       var windowHeight =
         document.documentElement.clientHeight || document.body.clientHeight;
@@ -159,7 +173,6 @@ export default {
       // 滚动条到底部的条件
       if (scrollTop + windowHeight >= scrollHeight - 50) {
         // 加载数据
-
         that.loadmore();
       }
     };
@@ -171,7 +184,7 @@ export default {
       this.url = this.GLOBAL.baseUrl + "/flea/goods/all";
       this.data = {
         currentPage: 0,
-        pageSize: 4
+        pageSize: 6
       };
       this.list = (await API.init(this.url, this.data, "post")).data;
       // this.count = this.list.length - 4;

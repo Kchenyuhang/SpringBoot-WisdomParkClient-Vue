@@ -39,4 +39,11 @@
 .topNav p {
   padding-top: 20px;
 }
+
+.topNav .xline {
+  margin: auto;
+  width: 32px;
+  height: 3px;
+  background-color: #007acc;
+}
 /*# sourceMappingURL=Order.css.map */
