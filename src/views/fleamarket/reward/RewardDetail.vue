@@ -112,7 +112,8 @@ export default {
         rewardId: 0,
         userId: 0
       },
-      show: false
+      show: false,
+      num: 5
     };
   },
   components: {},
@@ -120,6 +121,25 @@ export default {
     this.getReward();
     this.getComment();
     this.backTop();
+    let that = this;
+    window.onscroll = function() {
+      // scrollTop 滚动条滚动时，距离顶部的距离
+      var scrollTop =
+        document.documentElement.scrollTop || document.body.scrollTop;
+
+      // windowHeight 可视区的高度
+      var windowHeight =
+        document.documentElement.clientHeight || document.body.clientHeight;
+      // scrollHeight 滚动条的总高度
+      var scrollHeight =
+        document.documentElement.scrollHeight || document.body.scrollHeight;
+      // 滚动条到底部的条件
+      if (scrollTop + windowHeight >= scrollHeight - 50) {
+        // 加载数据
+
+        that.loadmore();
+      }
+    };
   },
   mounted() {
     function $(id) {
@@ -132,6 +152,10 @@ export default {
     };
   },
   methods: {
+    loadmore() {
+      this.num += 5;
+      this.getComment();
+    },
     async getReward() {
       this.url = this.GLOBAL.baseUrl + "/flea/reward/all";
       this.data = {
@@ -154,6 +178,8 @@ export default {
         pkRewardId: this.$route.params.id
       };
       this.comments = (await API.init(this.url, this.data, "post")).data;
+      this.comments = this.comments.reverse();
+      // this.comments.slice(0, this.num);
       // console.log(this.result);
     },
     gotoPerson(id) {
@@ -367,12 +393,12 @@ export default {
   textarea {
     display: block;
     width: 300px;
-    height: 34px;
+    height: 40px;
     overflow: hidden;
     padding: 5px 10px;
     margin: 0px auto 0;
     resize: none;
-    line-height: 24px;
+    line-height: 30px;
     font-size: 16px;
     color: #666;
     border: 1px solid #ccc;
@@ -391,7 +417,7 @@ export default {
     width: 30px;
     height: 30px;
     // margin-bottom: -10px;
-    margin-top: 33px;
+    margin-top: 10px;
     margin-left: -10px;
     margin-right: 10px;
   }

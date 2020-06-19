@@ -50,10 +50,10 @@
             @click="isShow = 2"
             v-show="show"
           >
-            <p :class="{ blueLine: isShow == 2 }">订单{{ buy.length }}</p>
+            <p :class="{ blueLine: isShow == 2 }">订单</p>
           </div>
           <div @click="isShow = 3">
-            <p :class="{ blueLine: isShow == 3 }">收藏{{ like.length }}</p>
+            <p :class="{ blueLine: isShow == 3 }">收藏</p>
           </div>
         </div>
       </div>
@@ -71,7 +71,7 @@
       >
         <p>是否想要下架这件商品</p>
         <div class="b-pos">
-          <span @click="zzc = false">取消</span>
+          <span @click="zzc = false;checkbox = false">取消</span>
           <span @click="deleteSend()">确认</span>
         </div>
       </div>
@@ -81,7 +81,7 @@
       >
         <p>是否想要修改这件商品</p>
         <div class="b-pos">
-          <span @click="upzzc = false">取消</span>
+          <span @click="upzzc = false;checkbox = false">取消</span>
           <span @click="detail = true">确认</span>
         </div>
       </div>
