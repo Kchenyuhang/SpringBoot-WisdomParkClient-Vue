@@ -108,24 +108,24 @@ const routes = [
     component: () => import("../views/Alumnus/AlumnusMessage.vue")
   },
   {
-    path: '/positiondetails/:Id',
-    name: 'PositionDetails',
-    component: () => import('../views/Job/PositionDetails.vue'),
+    path: "/positiondetails/:Id",
+    name: "PositionDetails",
+    component: () => import("../views/Job/PositionDetails.vue")
   },
   {
-    path: '/companydetails/:Id',
-    name: 'CompanyDetails',
-    component: () => import('../views/Job/CompanyDetails.vue'),
+    path: "/companydetails/:Id",
+    name: "CompanyDetails",
+    component: () => import("../views/Job/CompanyDetails.vue")
   },
   {
-    path: '/fulltimejob',
-    name: 'FullTimeJob',
-    component: () => import('../views/Job/FullTimeJob.vue'),
+    path: "/fulltimejob",
+    name: "FullTimeJob",
+    component: () => import("../views/Job/FullTimeJob.vue")
   },
   {
-    path: '/jobsearch',
-    name: 'JobSearch',
-    component: () => import('../views/Job/JobSearch.vue'),
+    path: "/jobsearch",
+    name: "JobSearch",
+    component: () => import("../views/Job/JobSearch.vue")
   },
   {
     path: "/alumnuscollect",
@@ -367,9 +367,9 @@ const routes = [
     ]
   },
   {
-    path: '/informationDetail/:Id',
-    name: 'InformationDetail',
-    component: () => import('../views/main/InformationDetail.vue'),
+    path: "/informationDetail/:Id",
+    name: "InformationDetail",
+    component: () => import("../views/main/InformationDetail.vue")
   },
   // 跳蚤市场路由
   {

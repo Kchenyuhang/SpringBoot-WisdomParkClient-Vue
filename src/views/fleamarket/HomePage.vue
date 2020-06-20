@@ -14,11 +14,7 @@
           @click="gotoSearch(id)"
         />
         <router-link to="/list">
-          <img
-            src="../../assets/images/更多.png"
-            alt=""
-            class="imgs"
-          />
+          <img src="../../assets/images/更多.png" alt="" class="imgs" />
         </router-link>
       </div>
       <Carousel :slideList="slideList"></Carousel>
@@ -29,10 +25,7 @@
           :key="index"
         >
           <div @click="goListDetail(item.pkFleaTypeId)">
-            <img
-              :src="item.img"
-              class="icon"
-            />
+            <img :src="item.img" class="icon" />
             <p class="cc-mtop font-size">{{ item.sub }}</p>
           </div>
         </div>
@@ -54,10 +47,7 @@
         </div>
       </div>
     </div>
-    <div
-      class="release"
-      @scroll="doload()"
-    >
+    <div class="release" @scroll="doload()">
       <div
         class="footer"
         v-for="item in hotList"
@@ -65,10 +55,7 @@
         @click="gotoDetail(item.pkFleaGoodsId)"
       >
         <div class="goods">
-          <img
-            :src="item.userAvatar"
-            alt=""
-          />
+          <img :src="item.userAvatar" alt="" />
           <span>{{ item.username }}</span>
           <h5>{{ item.goodsCreateTime }}</h5>
           <!-- <p>¥ {{ item.goodsPrice }}</p> -->
@@ -278,17 +265,4 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/scss/fleamarket/HomePage.scss";
-.icon {
-  height: 55px;
-  width: 55px;
-  margin-top: 20px;
-}
-.cc-df {
-  margin-top: 10px;
-  background-color: white;
-}
-.cc-df p {
-  margin-left: 12px;
-  margin-top: -3px;
-}
 </style>

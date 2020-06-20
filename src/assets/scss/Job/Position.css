@@ -101,13 +101,13 @@
 
 .choose .choose-between .choose-title p {
   margin-right: 25px;
+  margin-top: 52px;
   font-size: 15px;
 }
 
 .choose .choose-between .choose-all img {
   width: 20px;
   height: 20px;
-  margin-top: 55px;
   margin-left: 15px;
 }
 
@@ -171,6 +171,73 @@
   font-weight: 550;
 }
 
+.job-card2 {
+  width: 100%;
+  height: 120px;
+  margin-bottom: 5px;
+  background-color: white;
+}
+
+.job-card2 .job-card-wide2 {
+  width: 90%;
+  margin: auto;
+  padding-top: 15px;
+}
+
+.job-card2 .job-card-wide2 .job-title2 .job-name2 {
+  font-size: 18px;
+  font-weight: 550;
+}
+
+.job-card2 .job-card-wide2 .job-title2 .salary2 {
+  font-size: 14px;
+  font-weight: 550;
+  color: #52aba9;
+}
+
+.job-card2 .job-card-wide2 .type-row {
+  width: 90%;
+  height: 30%;
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.job-card2 .job-card-wide2 .type-row .job-type {
+  height: 20px;
+  margin-right: 10px;
+  padding: 3px 3px 3px 3px;
+  border-radius: 5px;
+  background-color: #ebebeb;
+}
+
+.job-card2 .job-card-wide2 .type-row .job-type p {
+  font-size: 12px;
+}
+
+.job-card2 .job-card-wide2 .job-number2 {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.job-card2 .job-card-wide2 .job-number2 p {
+  font-size: 12px;
+  color: #6d6d6d;
+  margin-right: 20px;
+}
+
+.job-card2 .job-card-wide2 .job-place2 .boss {
+  font-size: 14px;
+}
+
+.job-card2 .job-card-wide2 .job-place2 .place {
+  font-size: 16px;
+  font-weight: 550;
+}
+
 .line {
   width: 90%;
   border: none;
@@ -202,5 +269,11 @@
 .fontBlack1 {
   font-size: 14px;
   color: black;
+}
+
+.top-btn {
+  position: fixed;
+  bottom: 100px;
+  right: 15px;
 }
 /*# sourceMappingURL=Position.css.map */

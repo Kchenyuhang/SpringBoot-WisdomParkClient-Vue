@@ -139,8 +139,8 @@
           </div>
         </div>
         <div style="text-align:center">
-          <p @click="show = true" v-show="!show">修改</p>
-          <p @click="update" v-show="show">确认修改</p>
+          <button @click="show = true" v-show="!show"><p>修改</p></button>
+          <button @click="update" v-show="show"><p>确认修改</p></button>
         </div>
       </div>
     </div>
@@ -309,4 +309,5 @@ export default {
 
 <style scoped lang="scss">
 @import "../../../assets/scss/fleamarket/personal/PersonalDetail.scss";
+
 </style>

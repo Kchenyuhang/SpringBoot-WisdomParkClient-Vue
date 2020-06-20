@@ -46,6 +46,10 @@
   margin-top: 25px;
 }
 
+.icon1 p {
+  margin-left: 2px;
+}
+
 p {
   display: block;
   color: #929292;
@@ -54,7 +58,7 @@ p {
 }
 
 .icon2 {
-  margin-top: 25px;
+  margin-top: 30px;
   height: 60px;
   width: 60px;
   display: -webkit-box;
@@ -117,6 +121,10 @@ p {
   width: 60px;
 }
 
+.icon4 p {
+  margin-left: 2px;
+}
+
 .icon5 {
   margin-top: 25px;
   display: -webkit-box;
@@ -136,9 +144,14 @@ p {
   width: 60px;
 }
 
+.icon5 p {
+  margin-left: 2px;
+}
+
 .icon {
   height: 25px;
   width: 25px;
   margin-left: 1px;
+  margin-top: 2px;
 }
 /*# sourceMappingURL=FleaNav.css.map */

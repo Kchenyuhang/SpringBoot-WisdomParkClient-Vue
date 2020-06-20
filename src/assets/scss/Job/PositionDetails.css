@@ -37,8 +37,9 @@
 
 .bottom {
   width: 100%;
-  position: absolute;
-  bottom: 10px;
+  position: fixed;
+  bottom: 0;
+  height: 55px;
 }
 
 .bottom .btn {
