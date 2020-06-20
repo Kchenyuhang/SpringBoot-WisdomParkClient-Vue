@@ -1,7 +1,7 @@
 .bg {
   background-color: #f3f3f3;
-  width: 100%;
   height: 100vh;
+  width: 100%;
 }
 
 .header {
@@ -33,36 +33,7 @@
   color: black;
 }
 
-.body {
-  background-color: #f3f3f3;
-}
-
-.body .msgArea {
-  width: 80%;
-  margin-top: 10px;
-}
-
-.body .msgArea .avatar {
-  border-radius: 50px;
-  margin-top: 5px;
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-.body .msgArea .avatar img {
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-}
-
-.body .msgArea .msg {
-  margin-left: 10px;
-  background-color: white;
-  border-radius: 20px;
-  padding: 5px 5px 5px 5px;
-}
-
-.body .input {
+.input {
   background-color: #efefef;
   width: 100%;
   height: 55px;
@@ -73,26 +44,25 @@
   padding-top: 10px;
 }
 
-.body .input .btn {
+.input .btn {
   height: 100%;
   margin-right: 15px;
   width: 40px;
 }
 
-.body .input .btn p {
+.input .btn p {
   color: #02b1d7;
   font-size: 16px;
 }
 
-.body .input .inp {
+.input .inp {
   width: 70%;
   margin: auto;
   height: 30px;
   background-color: white;
-  border-radius: 20px;
 }
 
-.body .input .inp .test {
+.input .inp .test {
   width: 80%;
   min-height: 30px;
   max-height: 300px;
@@ -113,5 +83,4 @@
 
 textarea::-webkit-input-placeholder {
   font-size: 14px;
-  padding-top: 5px;
 }

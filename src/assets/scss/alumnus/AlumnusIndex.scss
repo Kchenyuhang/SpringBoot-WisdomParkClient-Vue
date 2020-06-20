@@ -162,8 +162,60 @@
         }
       }
     }
+    .comment-row{
+      margin-top: 5px;
+      width: 100%;
+      display: flex;
+      margin-bottom: 10px;
+      .dis{
+        display: flex;
+        img{
+          width: 35px;
+            height: 35px;
+            border-radius: 20px;
+        }
+        .comment-content{
+          margin-left: 10px;
+          .row3{
+            display: flex;
+            .nickname{
+              font-size: 12px;
+              color: #9e9090;
+            }
+            .dian{
+              font-size: 12px;
+              color: #9e9090;
+              margin-left: 5px;
+              margin-right: 5px;
+            }
+            .time{
+              font-size: 12px;
+              color: #9e9090;
+            }
+          }
+          .row4{
+            margin-top: 5px;
+            p{
+              font-size: 12px;
+              color: #000000;
+            }
+          }
+          
+        }
+      }
+      
+      .zan{
+        img{
+          width: 15px;
+          height: 15px;
+        }
+      }
+    }
   }
 }
 .avatar-2 {
   width: 100%;
+}
+.fontSize{
+  font-size: 13px;
 }

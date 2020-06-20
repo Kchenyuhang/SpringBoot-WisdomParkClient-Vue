@@ -140,7 +140,7 @@ export default {
       userId: this.$store.state.user.jobNumber,
       homeCity: "",
       showBombTips: {
-        visible: false,
+        visible: false
       },
       tipsContent: "",
       show: true,
@@ -220,7 +220,7 @@ export default {
     async orerrand() {
       this.data = {
         errandsId: this.userId,
-        status: 1,
+        status: 1
       };
       this.url = this.GLOBAL1.baseUrl + "/reviewfrom/isErrends";
       this.apply = await API.init(this.url, this.data, "post");
@@ -232,6 +232,7 @@ export default {
       if (this.codes == 80002) {
         this.tipsContent = "请先申请为跑腿";
         this.showBombTips.visible = true;
+        this.$router.push("/apply");
       }
       if (this.codes == 1) {
         this.$router.push("/run");

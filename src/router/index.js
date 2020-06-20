@@ -4,8 +4,6 @@ import Login from "../views/Login.vue";
 import Layout from "../views/Layout.vue";
 import Runorders from "../views/errand/Runorders.vue";
 import Orderreceiving from "../views/errand/Orderreceiving.vue";
-import Receiveall from "../views/errand/orders/Receiveall.vue";
-import Receivegoods from "../views/errand/orders/Receivegoods.vue";
 import JobNav from "../views/Job/JobNav.vue";
 import FleaNav from "../views/fleamarket/FleaNav";
 
@@ -101,6 +99,11 @@ const routes = [
     path: "/alumnusindex",
     name: "AlumnusIndex",
     component: () => import("../views/Alumnus/AlumnusIndex.vue")
+  },
+  {
+    path: "/dongtaidetails/:Id",
+    name: "DongtaiDetails",
+    component: () => import("../views/Alumnus/DongtaiDetails.vue")
   },
   {
     path: "/alumnusmessage",
@@ -357,12 +360,12 @@ const routes = [
       {
         path: "all",
         name: "Receiveall",
-        component: Receiveall
+        component: () => import("../views/errand/orders/Receiveall.vue")
       },
       {
         path: "goods",
         name: "Receivegoods",
-        component: Receivegoods
+        component: () => import("../views/errand/orders/Receivegoods.vue")
       }
     ]
   },
