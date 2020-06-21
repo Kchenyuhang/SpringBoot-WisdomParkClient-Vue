@@ -6,57 +6,81 @@
           <img
             src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/position/zuojiantou.png"
             alt=""
-          >
+          />
         </router-link>
         <p>我的收藏</p>
       </div>
     </div>
     <div
-      v-for="item in 2"
+      v-for="item in result"
       :key="item.id"
     >
       <div class="collect-card">
         <div class="row cc-df-between">
           <div class="left">
             <div class="left-top">
-              <p>南工院这几年变化好大！怀念南工院的生活。</p>
+              <p>{{ item.content.slice(0, 60) }}...</p>
             </div>
             <div class="left-bottom">
-                <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/alumnus/zyj.jpg" alt="">
-                <div>
-                    <p>十七岁的他</p>
-                </div>
+              <img
+                :src="item.userAvatar"
+                alt=""
+              />
+              <div>
+                <p>{{ item.nickname }}</p>
+              </div>
             </div>
           </div>
           <div class="right">
-              <div class="right-top">
-                  <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/alumnus/dongtai_image.jpg" alt="">
+            <div class="right-top">
+              <img
+                :src="'https://images.weserv.nl/?url=' + item.picture[0]"
+                @click="geturl(item.picture[0])"
+              />
+            </div>
+            <div class="right-bottom cc-df-right">
+              <div>
+                <p>{{ item.gmtCreate }}</p>
               </div>
-              <div class="right-bottom cc-df-right">
-                  <div>
-                      <p>22小时之前</p>
-                  </div>
-              </div>
+            </div>
           </div>
-
         </div>
       </div>
       <hr class="line" />
     </div>
-
   </div>
 </template>
 
 <script>
+const API = require("../../request/api.js");
 export default {
   name: "AlumnusCollect",
   data() {
-    return {};
+    return {
+      count: 5,
+      result: []
+    };
   },
   components: {},
-  created() {},
+  created() {
+    this.getCollect();
+  },
   mounted() {},
-  methods: {},
+  methods: {
+    async getCollect() {
+      this.url = this.GLOBAL.baseUrl + "/dynamic/Collection";
+      this.data = {
+        currentPage: 0,
+        field: "1",
+        pageSize: this.count
+      };
+      this.result = (await API.init(this.url, this.data, "post")).data;
+      console.log(this.result);
+    },
+    geturl(a) {
+      console.log(a);
+    }
+  },
   computed: {}
 };
 </script>
