@@ -24,4 +24,17 @@
   margin-left: 34%;
   margin-top: 3%;
 }
+
+.hengzhe {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.hengzhe .suolue {
+  width: 100px;
+  height: 100px;
+}
 /*# sourceMappingURL=Sell.css.map */

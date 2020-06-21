@@ -57,7 +57,7 @@
             src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/jiahao.PNG"
             alt
             style="height: 40px;
-  width: 40px;"
+  width: 40px; "
           />
           <p>卖闲置</p>
         </router-link>

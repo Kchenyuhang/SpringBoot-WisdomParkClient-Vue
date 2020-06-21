@@ -78,18 +78,12 @@
 }
 
 .menu img {
-<<<<<<< HEAD
   width: 35px;
   height: 30px;
-=======
-  width: 40px;
-  height: 40px;
->>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
   padding-left: 10px;
 }
 
 .menu p {
-<<<<<<< HEAD
   padding-left: -15px;
 }
 
@@ -103,9 +97,6 @@
   left: 10px;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-=======
-  padding-left: -5px;
->>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
 }
 
 .bottom {

@@ -48,9 +48,9 @@
 }
 
 .bg .card {
-  width: 94%;
+  width: 90%;
   height: 160px;
-  margin-left: 10px;
+  margin-left: 20px;
   background-color: #ffffff;
   border: 0.5px solid #d3d3d5;
   padding: 10px 10px 0 10px;

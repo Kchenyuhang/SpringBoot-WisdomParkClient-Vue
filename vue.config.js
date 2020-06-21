@@ -1,7 +1,7 @@
 module.exports = {
   devServer: {
     host: "localhost",
-    port: 8089,
+    port: 8088,
     https: false,
     open: true,
     hotOnly: true,
@@ -10,5 +10,5 @@ module.exports = {
   assetsDir: "./assets/",
   publicPath: "./",
   indexPath: "./index.html",
-  transpileDependencies: ["vuetify"],
+  transpileDependencies: ["vuetify"]
 };
