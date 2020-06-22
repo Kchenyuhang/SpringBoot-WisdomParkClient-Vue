@@ -16,7 +16,7 @@
         <p class="name">{{ user.nickname }}</p>
         <p class="phone">
           {{ user.phoneNumber.substring(0, 3) }}****{{
-            user.phoneNumber.substring(7)
+          user.phoneNumber.substring(7)
           }}
         </p>
       </div>
@@ -86,10 +86,7 @@
             <p>退出登录</p>
           </div>
           <div class="info-right">
-            <img
-              src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/youjiantou.png"
-              alt="右箭头"
-            />
+            <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/youjiantou.png" alt="右箭头" />
           </div>
         </div>
       </div>
@@ -154,9 +151,12 @@ export default {
       });
     },
     updateAdminInfo(url) {
-      this.imgDataUrl = url.substring(0, url.indexOf("?"));
-      // this.user.avatar = this.imgDataUrl;
-      this.user.avatar = url;
+      if(url.indexOf("?")!=-1){
+        this.imgDataUrl = url.substring(0, url.indexOf("?"));
+        this.user.avatar = this.imgDataUrl;
+      }else{
+        this.user.avatar = url;
+      }
       this.updateAvatar();
     },
     avatarClick() {

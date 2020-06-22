@@ -6,9 +6,9 @@ module.exports = {
     open: true,
     hotOnly: true,
   },
-  outputDir: "./dist",
-  assetsDir: "./assets/",
-  publicPath: "./",
-  indexPath: "./index.html",
-  transpileDependencies: ["vuetify"]
-};
+  outputDir: './dist',
+  assetsDir: './assets/',
+  publicPath: './',
+  indexPath: './index.html',
+  transpileDependencies: ['vuetify'],
+}
