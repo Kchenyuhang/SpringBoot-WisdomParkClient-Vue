@@ -51,21 +51,19 @@ export default {
       isShow: 0,
       path: "/list",
       page: [],
-      count: 1,
-      repath: "/list"
+      lastPath: JSON.parse(localStorage.getItem("path")),
+      count: JSON.parse(localStorage.getItem("count"))
     };
   },
   components: {},
   created() {
     this.getAllType();
     localStorage.setItem("ListName", JSON.stringify(this.first));
-    localStorage.setItem("path", JSON.stringify(this.path));
-    localStorage.setItem("repath", JSON.stringify(this.repath));
   },
   mounted() {},
   methods: {
     async getAllType() {
-      this.url = "http://118.31.21.206:80/flea/type/all";
+      this.url = this.GLOBAL.baseUrl + "/flea/type/all";
       this.type = (await API.init(this.url, this.data, "post")).data.types;
       this.typeList = this.type[0].subTypes;
       localStorage.setItem("page", JSON.stringify(this.page));
@@ -77,6 +75,8 @@ export default {
       this.isShow = index;
     },
     goListDetail(id) {
+      this.lastPath[this.lastPath.length] = "/list";
+      localStorage.setItem("path", JSON.stringify(this.lastPath));
       this.$router.push({
         path: `/listDetail/${id}`
       });

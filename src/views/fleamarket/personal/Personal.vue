@@ -219,14 +219,10 @@ export default {
   name: "Personal",
   data() {
     return {
-      path: "/personal/",
       isShow: 1,
       show: true,
       user: JSON.parse(localStorage.getItem("FleaUser")),
-      path1: JSON.parse(localStorage.getItem("path1")),
-      page: JSON.parse(localStorage.getItem("page")),
-      mypath: JSON.parse(localStorage.getItem("mypath")),
-      pageCount: JSON.parse(localStorage.getItem("count")),
+      lastPath: JSON.parse(localStorage.getItem("path")),
       list: [],
       count: 100,
       send: [],
@@ -285,7 +281,7 @@ export default {
       this.option = !this.option;
     },
     add() {
-      this.$router.push("/sell");
+      this.$router.replace("/sell");
     },
     opendelete() {
       this.opt = false;
@@ -298,7 +294,10 @@ export default {
       this.ifopt = 2;
     },
     backTo() {
-      this.$router.push(this.mypath);
+      this.lastPath.splice(this.lastPath.length - 1, 1);
+      console.log(this.lastPath);
+      this.$router.push(this.lastPath[this.lastPath.length - 1]);
+      localStorage.setItem("path", JSON.stringify(this.lastPath));
     },
     async getUserInfor() {
       let id = this.$route.params.id;
@@ -363,15 +362,11 @@ export default {
       }
     },
     gotoDetail(id) {
-      let now = this.path + this.user.pkFleaUserId;
-      localStorage.setItem("path", JSON.stringify(now));
+      this.lastPath[this.lastPath.length] = "/commoditydetails/" + id;
+      localStorage.setItem("path", JSON.stringify(this.lastPath));
       this.$router.push({
         path: `/commoditydetails/${id}`
       });
-      this.page[this.pageCount] = id;
-      this.pageCount++;
-      localStorage.setItem("page", JSON.stringify(this.page));
-      localStorage.setItem("count", JSON.stringify(this.pageCount));
       // this.getList();
       // window.location.reload();
       // this.backTop();

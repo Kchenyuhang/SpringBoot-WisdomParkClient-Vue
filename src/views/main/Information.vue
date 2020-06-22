@@ -11,12 +11,21 @@
         </router-link>
         <p>资讯</p>
       </div>
-      <Carousel :slideList="slideList" @into="into"></Carousel>
+      <Carousel
+        :slideList="slideList"
+        @into="into"
+      ></Carousel>
       <div class="Top">
         <p class="title">置顶帖</p>
         <div>
-          <div v-for="(item, index) in result" :key="index">
-            <div class="cc-df" @click="intoDetail(item.pkInfoManageId)">
+          <div
+            v-for="(item, index) in result"
+            :key="index"
+          >
+            <div
+              class="cc-df"
+              @click="intoDetail(item.pkInfoManageId)"
+            >
               <img :src="item.cover" />
               <div class="cc-col-between cc-mleft">
                 <p class="file">{{ item.title }}...</p>
@@ -29,25 +38,49 @@
       </div>
       <div class="container ">
         <div class="cc-df container-header">
-          <div class="cc-coll-4 cc-df-center" @click="isShow = 1">
-            <p :class="{ blueLine: isShow == 1 }" @click="getAll">全部</p>
+          <div
+            class="cc-coll-4 cc-df-center"
+            @click="isShow = 1"
+          >
+            <p
+              :class="{ blueLine: isShow == 1 }"
+              @click="getAll"
+            >全部</p>
           </div>
-          <div class="cc-coll-4 cc-df-center" @click="isShow = 2">
-            <p :class="{ blueLine: isShow == 2 }" @click="getDoList">教务处</p>
+          <div
+            class="cc-coll-4 cc-df-center"
+            @click="isShow = 2"
+          >
+            <p
+              :class="{ blueLine: isShow == 2 }"
+              @click="getDoList"
+            >教务处</p>
           </div>
-          <div class="cc-coll-4 cc-df-center" @click="isShow = 3">
-            <p :class="{ blueLine: isShow == 3 }" @click="getStudentList">
+          <div
+            class="cc-coll-4 cc-df-center"
+            @click="isShow = 3"
+          >
+            <p
+              :class="{ blueLine: isShow == 3 }"
+              @click="getStudentList"
+            >
               学生会
             </p>
           </div>
         </div>
         <div>
-          <div v-for="(item, index) in teachResult" :key="index">
+          <div
+            v-for="(item, index) in teachResult"
+            :key="index"
+          >
             <div
               class="cc-df cc-mtop cc-mleft"
               @click="intoDetail(item.pkInfoManageId)"
             >
-              <img :src="item.cover" alt="" />
+              <img
+                :src="item.cover"
+                alt=""
+              />
               <div class="cc-col-between cc-mleft">
                 <p class="file">
                   <b>{{ item.title }}</b>
@@ -57,6 +90,10 @@
             </div>
           </div>
         </div>
+        <p
+          class="center"
+          v-show="end"
+        >--------到底了--------</p>
       </div>
     </div>
   </transition>
@@ -97,7 +134,8 @@ export default {
         field: "1",
         pageSize: 5
       },
-      count: 5
+      count: 5,
+      end: false
     };
   },
   components: {
@@ -107,6 +145,27 @@ export default {
     // console.log(this.transitionName);
     this.getList();
     this.getAll();
+    let that = this;
+    window.onscroll = function() {
+      // scrollTop 滚动条滚动时，距离顶部的距离
+      var scrollTop =
+        document.documentElement.scrollTop || document.body.scrollTop;
+      // windowHeight 可视区的高度
+      var windowHeight =
+        document.documentElement.clientHeight || document.body.clientHeight;
+      // scrollHeight 滚动条的总高度
+      var scrollHeight =
+        document.documentElement.scrollHeight || document.body.scrollHeight;
+      // 滚动条到底部的条件
+      if (scrollTop + windowHeight >= scrollHeight - 50) {
+        // 加载数据
+        that.loadmore();
+      }
+      if (scrollTop + windowHeight == scrollHeight) {
+        that.end = true;
+        console.log(that.end);
+      }
+    };
   },
   mounted() {
     // this.loadMore();
@@ -124,8 +183,17 @@ export default {
         params: { Id: index }
       });
     },
-    loadMore() {
-      this.data.pageSize = this.data.pageSize + 10;
+    loadmore() {
+      this.count += 5;
+      if (this.isShow == 1) {
+        this.getAll();
+      }
+      if (this.isShow == 2) {
+        this.getDoList();
+      }
+      if (this.isShow == 3) {
+        this.getStudentList();
+      }
     },
     async getList() {
       this.url = this.GLOBAL.baseUrl + "/info/isTap";
@@ -164,8 +232,7 @@ export default {
     async getAll() {
       this.url = this.GLOBAL.baseUrl + "/info/allInfo";
       this.data = {
-        currentPage: 1,
-        field: "1",
+        currentPage: 0,
         pageSize: this.count
       };
       this.teachResult = (await API.init(this.url, this.data, "post")).data;
