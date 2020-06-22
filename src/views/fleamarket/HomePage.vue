@@ -14,7 +14,11 @@
           @click="gotoSearch(id)"
         />
         <router-link to="/list">
-          <img src="../../assets/images/更多.png" alt="" class="imgs" />
+          <img
+            src="../../assets/images/更多.png"
+            alt=""
+            class="imgs"
+          />
         </router-link>
       </div>
       <Carousel :slideList="slideList"></Carousel>
@@ -25,7 +29,10 @@
           :key="index"
         >
           <div @click="goListDetail(item.pkFleaTypeId)">
-            <img :src="item.img" class="icon" />
+            <img
+              :src="item.img"
+              class="icon"
+            />
             <p class="cc-mtop font-size">{{ item.sub }}</p>
           </div>
         </div>
@@ -47,7 +54,10 @@
         </div>
       </div>
     </div>
-    <div class="release" @scroll="doload()">
+    <div
+      class="release"
+      @scroll="doload()"
+    >
       <div
         class="footer"
         v-for="item in hotList"
@@ -55,7 +65,10 @@
         @click="gotoDetail(item.pkFleaGoodsId)"
       >
         <div class="goods">
-          <img :src="item.userAvatar" alt="" />
+          <img
+            :src="item.userAvatar"
+            alt=""
+          />
           <span>{{ item.username }}</span>
           <h5>{{ item.goodsCreateTime }}</h5>
           <!-- <p>¥ {{ item.goodsPrice }}</p> -->
@@ -74,7 +87,7 @@ export default {
   name: "HomePage",
   data() {
     return {
-      path: "/homePage",
+      path: ["/homePage"],
       reward: [],
       list: [],
       page: [],
@@ -131,22 +144,20 @@ export default {
         }
       ],
       id: "1",
-      num: 5,
-      repath: "/homePage"
+      num: 5
     };
   },
   components: {
     Carousel: require("../../components/Carousel.vue").default
   },
   created() {
+    this.reInto();
     this.getTopReward();
     this.getGodList();
     this.getList();
-    this.reInto();
     this.getHotList();
     localStorage.setItem("path", JSON.stringify(this.path));
-    localStorage.setItem("repath", JSON.stringify(this.repath));
-    localStorage.setItem("mypath", JSON.stringify(this.path));
+    localStorage.setItem("count", JSON.stringify(0));
     let that = this;
     window.onscroll = function() {
       // scrollTop 滚动条滚动时，距离顶部的距离
@@ -164,7 +175,6 @@ export default {
         that.loadmore();
       }
     };
-    // this.getAllType();
   },
   mounted() {},
   methods: {
@@ -195,10 +205,8 @@ export default {
       this.getHotList();
     },
     gotoDetail(id) {
-      this.page[this.count++] = id;
-      localStorage.setItem("page", JSON.stringify(this.page));
-      localStorage.setItem("count", JSON.stringify(this.count));
-
+      this.path[this.path.length] = "/commoditydetails/" + id;
+      localStorage.setItem("path", JSON.stringify(this.path));
       this.$router.push({
         path: `/commoditydetails/${id}`
       });
@@ -215,8 +223,9 @@ export default {
       };
       this.user = (await API.init(this.url, this.data, "post")).data;
       // console.log(this.user);
-
-      localStorage.setItem("FleaUser", JSON.stringify(this.user));
+      if (this.user == "用户数据添加成功") {
+        this.reInto();
+      } else localStorage.setItem("FleaUser", JSON.stringify(this.user));
     },
     async getTopReward() {
       this.url = this.GLOBAL.baseUrl + "/flea/reward/top";

@@ -9,10 +9,11 @@
       <!-- </router-link> -->
       <p>商品详情</p>
     </div>
-    <div class="solder" v-show="list[0].isDeleted == true">
-      <img
-        src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/0ac2e928674ff8e5bd0c0a9c00542b3f.png"
-      />
+    <div
+      class="solder"
+      v-show="list[0].isDeleted == true"
+    >
+      <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/0ac2e928674ff8e5bd0c0a9c00542b3f.png" />
     </div>
     <div class="container">
       <div class="card">
@@ -48,21 +49,29 @@
         <div class="like">
           <div class="head">
             <div class="pos">
-              <img
-                src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/like.png"
-              />
+              <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/like.png" />
               <span>猜你喜欢</span>
             </div>
           </div>
           <div class="r-list">
-            <div class="r-left" v-for="(item, index) in likeList" :key="index">
-              <div class="r-left-con" @click="gotoDetail(item.pkFleaGoodsId)">
+            <div
+              class="r-left"
+              v-for="(item, index) in likeList"
+              :key="index"
+            >
+              <div
+                class="r-left-con"
+                @click="gotoDetail(item.pkFleaGoodsId)"
+              >
                 <img :src="item.goodsImgUrl.split('--**--')[0]" />
                 <span>{{ item.goodsDescription }}</span>
                 <p class="price">$ {{ item.goodsPrice }}</p>
                 <div class="r-right">
                   <div class="img-box">
-                    <img :src="item.userAvatar" alt="" />
+                    <img
+                      :src="item.userAvatar"
+                      alt=""
+                    />
                   </div>
                   <p>{{ item.nickname }}</p>
                 </div>
@@ -73,10 +82,11 @@
       </div>
     </div>
     <div class="bottom">
-      <div class="home" @click="gotoUserDetail(list[0].pkFleaUserId)">
-        <img
-          src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/shop.png"
-        />
+      <div
+        class="home"
+        @click="gotoUserDetail(list[0].pkFleaUserId)"
+      >
+        <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/shop.png" />
         <p>商家主页</p>
       </div>
       <div
@@ -84,9 +94,7 @@
         v-show="like"
         @click="dolike(list[0].pkFleaGoodsId, user.pkFleaUserId)"
       >
-        <img
-          src="http://ww1.sinaimg.cn/large/0064QvQTly1gfw77tsfzej30jg0jg0t5.jpg"
-        />
+        <img src="http://ww1.sinaimg.cn/large/0064QvQTly1gfw77tsfzej30jg0jg0t5.jpg" />
         <p>收藏</p>
       </div>
       <div
@@ -94,19 +102,23 @@
         v-show="!like"
         @click="unlike(list[0].pkFleaGoodsId, user.pkFleaUserId)"
       >
-        <img
-          src="http://ww1.sinaimg.cn/large/0064QvQTly1gfw77dim76j30jg0jggm1.jpg"
-        />
+        <img src="http://ww1.sinaimg.cn/large/0064QvQTly1gfw77dim76j30jg0jggm1.jpg" />
 
         <p>取消</p>
       </div>
       <div v-show="list[0].isDeleted != true">
         <router-link to="/pay">
-          <div class="want" v-show="list[0].pkFleaUserId != user.pkFleaUserId">
+          <div
+            class="want"
+            v-show="list[0].pkFleaUserId != user.pkFleaUserId"
+          >
             <p class="btn">我想要</p>
           </div>
         </router-link>
-        <div class="want" v-show="list[0].pkFleaUserId == user.pkFleaUserId">
+        <div
+          class="want"
+          v-show="list[0].pkFleaUserId == user.pkFleaUserId"
+        >
           <p class="btn none">我的商品</p>
         </div>
       </div>
@@ -136,9 +148,8 @@ export default {
       ],
       splist: [],
       likeList: [],
-      path: JSON.parse(localStorage.getItem("path")),
+      lastPath: JSON.parse(localStorage.getItem("path")),
       path1: "/commoditydetails/",
-      mypath: "/commoditydetails/",
       data: {
         pkFleaGoodsId: ""
       },
@@ -151,7 +162,6 @@ export default {
         pageSize: 100,
         typeId: 0
       },
-      page: JSON.parse(localStorage.getItem("page")),
       count: JSON.parse(localStorage.getItem("count")),
       user: JSON.parse(localStorage.getItem("FleaUser")),
       like: true
@@ -170,7 +180,6 @@ export default {
     this.iflike();
     this.AddComment();
     this.backTop();
-    console.log(this.list[0].goodsImgUrl.split("--**--").length);
   },
   mounted() {
     window.addEventListener("scroll", this.scrollToTop);
@@ -230,27 +239,15 @@ export default {
       }
     },
     backUp() {
-      if (this.count <= 1) {
-        this.count = 0;
-        localStorage.setItem("count", JSON.stringify(this.count));
-
-        // alert(this.path);
-        this.$router.push(this.path);
-      } else {
-        let count = this.page[this.count - 2];
-        this.$router.push({
-          path: `/commoditydetails/${count}`
-        });
-        --this.count;
-        localStorage.setItem("count", JSON.stringify(this.count));
-        window.location.reload();
-      }
+      this.lastPath.splice(this.lastPath.length - 1, 1);
+      console.log(this.lastPath);
+      this.$router.push(this.lastPath[this.lastPath.length - 1]);
+      localStorage.setItem("path", JSON.stringify(this.lastPath));
+      this.getList();
     },
     async getList() {
       let id = this.$route.params.id;
       this.data.pkFleaGoodsId = id;
-      this.path1 = this.path1 + id;
-      localStorage.setItem("path1", JSON.stringify(this.path1));
       this.url = this.GLOBAL.baseUrl + "/flea/goods/id";
       this.list = (await API.init(this.url, this.data, "post")).data;
       console.log(this.list[0].goodsImgUrl);
@@ -258,14 +255,11 @@ export default {
       this.getLikeList(this.list[0].pkFleaTypeId, id);
     },
     gotoDetail(id) {
-      localStorage.setItem("path", JSON.stringify(this.path));
+      this.lastPath[this.lastPath.length] = this.path1 + id;
+      localStorage.setItem("path", JSON.stringify(this.lastPath));
       this.$router.push({
         path: `/commoditydetails/${id}`
       });
-      this.page[this.count] = id;
-      this.count++;
-      localStorage.setItem("page", JSON.stringify(this.page));
-      localStorage.setItem("count", JSON.stringify(this.count));
       this.getList();
       // window.location.reload();
       // this.backTop();
@@ -287,11 +281,11 @@ export default {
       }
     },
     gotoUserDetail(id) {
-      this.mypath = this.mypath + this.$route.params.id;
-      localStorage.setItem("mypath", JSON.stringify(this.mypath));
       this.$router.push({
         path: `/personal/${id}`
       });
+      this.lastPath[this.lastPath.length] = "/personal/" + id;
+      localStorage.setItem("path", JSON.stringify(this.lastPath));
     },
     backTop() {
       // const that = this;
