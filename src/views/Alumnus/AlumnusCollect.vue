@@ -32,7 +32,7 @@
             </div>
           </div>
           <div class="right">
-            <div class="right-top">
+            <div class="right-top" v-if="item.picture.length>=1">
               <img
                 :src="'https://images.weserv.nl/?url=' + item.picture[0]"
                 @click="geturl(item.picture[0])"

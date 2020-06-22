@@ -1,0 +1,101 @@
+.bg {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 60px;
+  }
+  .header {
+    background-color: #f8f8f8;
+    height: 55px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    display: flex;
+    .header-title {
+      width: 90%;
+      display: flex;
+      align-items: center;
+      img {
+        height: 16px;
+        width: 16px;
+        margin-top: 5px;
+        margin-left: 20px;
+      }
+      p {
+        font-size: 16px;
+        margin-left: 15px;
+        margin: auto;
+        color: black;
+      }
+    }
+  }
+  .body{
+      height: 100vh;
+      width: 100%;
+      background-color: #f4d6d6;
+      .row1{
+          margin-left: 20px;
+          p{
+              font-size: 90px;
+              font-weight: 550;
+
+          }
+      }
+      .row2{
+        margin-left: 60px;
+        p{
+            font-size: 18px;
+
+        }
+      }
+      .row3{
+          margin-top: 30px;
+          .chongdie{
+              margin-left: 50px;
+              .up{
+                  position: absolute;
+                  top: 210px;
+                  left: 35px;
+                  padding: 15px 5px 5px 5px;
+                width: 170px;
+                height: 70px;
+                background-color: #e8a6a6;
+                border: 1px solid #979797;
+                p{
+                    font-size: 12px;
+                }
+              }
+              .down{
+                  width: 170px;
+                  height: 70px;
+                  background-color: #e8a6a6;
+                  border: 1px solid #979797;
+              }
+          }
+      }
+      .row4{
+        margin-top: 40px;
+        .chongdie{
+            margin-left: 50px;
+            .up{
+                position: absolute;
+                top: 330px;
+                left: 42px;
+                padding: 5px 5px 5px 15px;
+              width: 200px;
+              height: 40px;
+              background-color: #e8a6a6;
+              border: 1px solid #979797;
+              p{
+                  font-size: 12px;
+              }
+            }
+            .down{
+                width: 200px;
+                height: 40px;
+                background-color: #e8a6a6;
+                border: 1px solid #979797;
+            }
+        }
+      }
+  }

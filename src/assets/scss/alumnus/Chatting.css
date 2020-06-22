@@ -7,16 +7,23 @@
 .header {
   background-color: #f8f8f8;
   height: 55px;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 .header .header-title {
   width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .header .header-title img {
@@ -69,6 +76,8 @@
   border-top: 1px solid #a7a7a7;
   position: fixed;
   bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   padding-top: 10px;
 }
@@ -115,3 +124,4 @@ textarea::-webkit-input-placeholder {
   font-size: 14px;
   padding-top: 5px;
 }
+/*# sourceMappingURL=Chatting.css.map */

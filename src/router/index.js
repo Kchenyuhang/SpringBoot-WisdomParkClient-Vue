@@ -423,6 +423,11 @@ const routes = [
     component: () => import("../views/Alumnus/Chatting.vue")
   },
   {
+    path: "/tuijian",
+    name: "Tuijian",
+    component: () => import("../views/Alumnus/Tuijian.vue")
+  },
+  {
     path: "/pay",
     name: "Pay",
     component: () => import("../views/fleamarket/sell/Pay.vue")
