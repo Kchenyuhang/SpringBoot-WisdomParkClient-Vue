@@ -10,10 +10,7 @@
       <router-link to="/search">
         <div class="search bar">
           <form>
-            <input
-              type="text"
-              placeholder="请输入您要搜索的内容..."
-            />
+            <input type="text" placeholder="请输入您要搜索的内容..." />
             <button type="submit">搜索</button>
           </form>
         </div>
@@ -26,22 +23,16 @@
         :key="index"
         @click="getFleaType(item.subTypes, index, item.typeName)"
         :class="{ bgc: isShow == index }"
+        class="bk"
       >
         {{ item.typeName }}
       </span>
     </div>
     <p>推荐</p>
     <div class="left">
-      <div
-        class="left-list"
-        v-for="(item, index) in typeList"
-        :key="index"
-      >
+      <div class="left-list" v-for="(item, index) in typeList" :key="index">
         <div @click="goListDetail(item.pkFleaTypeId)">
-          <img
-            :src="item.typeCoverUrl"
-            alt=""
-          />
+          <img :src="item.typeCoverUrl" alt="" />
           <h5>{{ item.typeName }}</h5>
         </div>
       </div>
@@ -74,7 +65,7 @@ export default {
   mounted() {},
   methods: {
     async getAllType() {
-      this.url = "http://101.37.31.188:8080/flea/type/all";
+      this.url = "http://118.31.21.206:80/flea/type/all";
       this.type = (await API.init(this.url, this.data, "post")).data.types;
       this.typeList = this.type[0].subTypes;
       localStorage.setItem("page", JSON.stringify(this.page));
@@ -151,44 +142,5 @@ button {
   width: 42px;
   cursor: pointer;
   position: absolute;
-}
-.list {
-  // margin-top: 10px;
-  width: 100px;
-  height: 500px;
-  float: left;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
-.list p {
-  margin-top: 1px;
-}
-.left {
-  margin-top: 20px;
-  font-weight: bold;
-  display: flex;
-  flex-wrap: wrap;
-}
-.left-list {
-  width: 30%;
-}
-.left-list img {
-  width: 60px;
-  margin-left: 10px;
-  border-radius: 50%;
-  margin-top: 10px;
-}
-p {
-  margin-top: 30px;
-  font-weight: bold;
-}
-h5 {
-  text-align: center;
-}
-.bgc {
-  color: rgb(0, 130, 252);
 }
 </style>

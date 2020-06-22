@@ -18,13 +18,14 @@
         </router-link>
       </div>
       <Carousel :slideList="slideList"></Carousel>
+      <!-- 首页四个分类 -->
       <div class="cc-df">
         <div
           class="cc-col-center cc-coll-3 address2"
           v-for="(item, index) in slideList"
           :key="index"
         >
-          <div @click="goListDetail(item.pkFleaTypeId)">
+          <div @click="goListDetail(item.pkFleaTypeId,item.name)">
             <img :src="item.img" class="icon" />
             <p class="cc-mtop font-size">{{ item.sub }}</p>
           </div>
@@ -41,7 +42,7 @@
         <img :src="item.goodsImgUrl.split('--**--')[0]" />
         <div class="left">
           <!-- 商品描述 -->
-          <h3>{{ item.goodsName }}</h3>
+          <h3>{{ item.goodsName.slice(0,10) }}</h3>
           <!-- 价格 -->
           <span>¥{{ item.goodsPrice }}</span>
         </div>
@@ -94,8 +95,9 @@ export default {
           pkFleaTypeId: "7",
           sub: "文具",
           description: "one",
-          name: "宠物",
+          name: "文具",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/1.jpg",
+          // 上面四个图标
           img:
             "http://ww1.sinaimg.cn/large/0064QvQTly1gfxa4t8zypj30jg0jg3zb.jpg"
         },
@@ -104,8 +106,9 @@ export default {
           pkFleaTypeId: "13",
           sub: "游戏",
           description: "two",
-          name: "手机数码",
+          name: "游戏",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/2.jpg",
+          // 上面四个图标
           img:
             "http://ww1.sinaimg.cn/large/0064QvQTly1gfxa54zfyoj30jg0jg0tn.jpg"
         },
@@ -114,8 +117,9 @@ export default {
           pkFleaTypeId: "3",
           sub: "衣服",
           description: "three",
-          name: "游戏交易",
+          name: "衣服",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg",
+          // 上面四个图标
           img:
             "http://ww1.sinaimg.cn/large/0064QvQTly1gfxa3xyg8mj30jg0jgq3l.jpg"
         },
@@ -124,8 +128,9 @@ export default {
           pkFleaTypeId: "4",
           sub: "数码",
           description: "three",
-          name: "女装",
+          name: "数码",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg",
+          // 上面四个图标
           img:
             "http://ww1.sinaimg.cn/large/0064QvQTly1gfxa4f62waj30jg0jg751.jpg"
         }
@@ -239,10 +244,11 @@ export default {
       this.typeList = subTypes;
       this.isShow = index;
     },
-    goListDetail(id) {
+    goListDetail(id, name) {
       this.$router.push({
         path: `/listDetail/${id}`
       });
+      localStorage.setItem("ListName", JSON.stringify(name));
     },
     handleScroll() {
       //scrollTop为滚动条在Y轴上的滚动距离。

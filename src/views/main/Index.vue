@@ -142,7 +142,7 @@
         <p class="fontSize">热门资讯</p>
         <div class="cc-col">
           <div class="cc-mtop" v-for="(item, index) in result" :key="index">
-            <div class="cc-df-between">
+            <div class="cc-df-between" @click="intoDetail(item.pkInfoManageId)">
               <div
                 class="left"
                 v-bind:style="{ backgroundImage: 'url(' + item.cover + ')' }"
@@ -238,6 +238,12 @@ export default {
         this.$router.push("/homePage");
       }
     },
+    intoDetail(index) {
+      this.$router.push({
+        name: "InformationDetail",
+        params: { Id: index }
+      });
+    },
     async getList() {
       this.url = this.GLOBAL.baseUrl + "/info/isTap";
       this.result = (await API.init(this.url, this.data, "post")).data;
@@ -246,24 +252,23 @@ export default {
     async getToday() {
       this.url = this.GLOBAL.baseUrl + "/course/today";
       this.today = (await API.init(this.url, this.todayData, "post")).data;
-      console.log(this.today)
-      for(let i=0;i<this.today.length;i++){
-        if(this.today[i].time==1){
-           this.today[i].time='1-2'
+      console.log(this.today);
+      for (let i = 0; i < this.today.length; i++) {
+        if (this.today[i].time == 1) {
+          this.today[i].time = "1-2";
         }
-        if(this.today[i].time==2){
-           this.today[i].time='3-4'
+        if (this.today[i].time == 2) {
+          this.today[i].time = "3-4";
         }
-        if(this.today[i].time==3){
-           this.today[i].time='5-6'
+        if (this.today[i].time == 3) {
+          this.today[i].time = "5-6";
         }
-        if(this.today[i].time==4){
-           this.today[i].time='7-8'
+        if (this.today[i].time == 4) {
+          this.today[i].time = "7-8";
         }
-        if(this.today[i].time==5){
-           this.today[i].time='9-10'
+        if (this.today[i].time == 5) {
+          this.today[i].time = "9-10";
         }
-       
       }
       console.log(this.today);
     }
