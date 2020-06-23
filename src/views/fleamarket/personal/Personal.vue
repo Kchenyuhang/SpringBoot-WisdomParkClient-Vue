@@ -15,20 +15,14 @@
         <div class="top">
           <div class="left">
             <div class="card">
-              <img
-                class="img"
-                :src="list.avatar"
-              />
+              <img class="img" :src="list.avatar" />
               <div class="mes">
                 <p class="wid">{{ list.username }}</p>
                 <p class="nickname">用户昵称：{{ list.nickname }}</p>
               </div>
             </div>
           </div>
-          <div
-            class="right"
-            v-show="show"
-          >
+          <div class="right" v-show="show">
             <router-link to="/personaldetail">
               <div class="btn">
                 <p>编辑资料</p>
@@ -39,17 +33,14 @@
       </div>
       <div class="bottom">
         <p>1234天前来过</p>
-        <p>个人简介</p>
+        <p>我就是我不一样的烟火！！！！！</p>
       </div>
       <div class="count">
         <div class="tab">
           <div @click="isShow = 1">
             <p :class="{ blueLine: isShow == 1 }">发布</p>
           </div>
-          <div
-            @click="isShow = 2"
-            v-show="show"
-          >
+          <div @click="isShow = 2" v-show="show">
             <p :class="{ blueLine: isShow == 2 }">订单</p>
           </div>
           <div @click="isShow = 3">
@@ -65,132 +56,76 @@
         src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/Options.png"
         @click="opt = !opt"
       />
-      <div
-        class="zhezhaoceng"
-        v-show="zzc"
-      >
+      <div class="zhezhaoceng" v-show="zzc">
         <p>是否想要下架这件商品</p>
         <div class="b-pos">
-          <span @click="zzc = false;checkbox = false">取消</span>
+          <span
+            @click="
+              zzc = false;
+              checkbox = false;
+            "
+            >取消</span
+          >
           <span @click="deleteSend()">确认</span>
         </div>
       </div>
-      <div
-        class="zhezhaoceng"
-        v-show="upzzc"
-      >
+      <div class="zhezhaoceng" v-show="upzzc">
         <p>是否想要修改这件商品</p>
         <div class="b-pos">
-          <span @click="upzzc = false;checkbox = false">取消</span>
+          <span
+            @click="
+              upzzc = false;
+              checkbox = false;
+            "
+            >取消</span
+          >
           <span @click="detail = true">确认</span>
         </div>
       </div>
-      <div
-        class="zhezhaoceng"
-        v-show="detail"
-      >
+      <div class="zhezhaoceng" v-show="detail">
         <p>修改详情</p>
-        <input
-          type="text"
-          v-model="goodsDescription"
-          placeholder="商品详情"
-        />
-        <input
-          type="text"
-          v-model="goodsMark"
-          placeholder="标签"
-        />
-        <input
-          type="text"
-          v-model="goodsName"
-          placeholder="商品名称"
-        />
-        <input
-          type="text"
-          v-model="goodsPrice"
-          placeholder="商品价格"
-        />
+        <input type="text" v-model="goodsDescription" placeholder="商品详情" />
+        <input type="text" v-model="goodsMark" placeholder="标签" />
+        <input type="text" v-model="goodsName" placeholder="商品名称" />
+        <input type="text" v-model="goodsPrice" placeholder="商品价格" />
         <div class="b-pos">
           <span @click="changeSend()">确认</span>
         </div>
       </div>
-      <div
-        class="zhezhaoceng"
-        v-show="zzc1"
-      >
+      <div class="zhezhaoceng" v-show="zzc1">
         <p>成功下架商品</p>
         <div class="b-pos">
           <span @click="zzc1 = false">确认</span>
         </div>
       </div>
-      <div
-        v-show="isShow == 1"
-        v-for="item in send"
-        :key="item.goodsId"
-      >
-
-        <div
-          class="box"
-          v-if="item.isDeleted == false"
-        >
+      <div v-show="isShow == 1" v-for="item in send" :key="item.goodsId">
+        <div class="box" v-if="item.isDeleted == false">
           <input
             type="radio"
             name="radio"
             class="checkbox"
             v-show="checkbox"
             @click="getValue(item.goodsId)"
-          >
+          />
           <div class="left">
             <img
               @click="gotoDetail(item.goodsId)"
               :src="item.goodsImgUrl.split('--**--')[0]"
             />
           </div>
-          <div
-            class="right"
-            v-if="item.isDeleted == false"
-          >
+          <div class="right" v-if="item.isDeleted == false">
             <div class="title">
               <p>{{ item.goodsName }}</p>
-
             </div>
 
             <p class="des">{{ item.goodsDescription }}</p>
             <div class="price">
               <span class="red">￥{{ item.goodsPrice }}</span>
-              <!-- <div
-              class="zzc"
-              v-if="option == index"
-            >
-              <img
-                class="del"
-                src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/Settingscontroloptions.png"
-              />
-              <img
-                class="del"
-                src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/delete.png"
-                @click="showzzc(item.goodsId, index)"
-              />
-            </div> -->
-
-              <!-- <div class="com">
-            <img
-              class="icon"
-              src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/cc-message.png"
-            />
-            <p class="mes">0</p>
-          </div> -->
             </div>
           </div>
-
         </div>
       </div>
-      <div
-        class="box"
-        v-show="isShow == 2"
-        v-for="item in buy"
-        :key="item.id"
-      >
+      <div class="box" v-show="isShow == 2" v-for="item in buy" :key="item.id">
         <div class="left">
           <img :src="item.goodsImg.split('--**--')[0]" />
         </div>
@@ -220,11 +155,10 @@
         <div class="left">
           <img :src="item.goodsImgUrl.split('--**--')[0]" />
         </div>
-        <div
-          class="solder"
-          v-show="ifDelete[index] == true"
-        >
-          <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/0ac2e928674ff8e5bd0c0a9c00542b3f.png" />
+        <div class="solder" v-show="ifDelete[index] == true">
+          <img
+            src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/0ac2e928674ff8e5bd0c0a9c00542b3f.png"
+          />
         </div>
         <div class="right">
           <p class="title">{{ item.goodsName }}</p>
@@ -247,10 +181,7 @@
         </router-link>
       </div> -->
     </div>
-    <div
-      class="opzzc"
-      v-show="opt"
-    >
+    <div class="opzzc" v-show="opt">
       <div @mouseout="opt = false">
         <p @click="add">新增</p>
         <p @click="opendelete">删除</p>
@@ -266,14 +197,10 @@ export default {
   name: "Personal",
   data() {
     return {
-      path: "/personal/",
       isShow: 1,
       show: true,
       user: JSON.parse(localStorage.getItem("FleaUser")),
-      path1: JSON.parse(localStorage.getItem("path1")),
-      page: JSON.parse(localStorage.getItem("page")),
-      mypath: JSON.parse(localStorage.getItem("mypath")),
-      pageCount: JSON.parse(localStorage.getItem("count")),
+      lastPath: JSON.parse(localStorage.getItem("path")),
       list: [],
       count: 100,
       send: [],
@@ -332,7 +259,7 @@ export default {
       this.option = !this.option;
     },
     add() {
-      this.$router.push("/sell");
+      this.$router.replace("/sell");
     },
     opendelete() {
       this.opt = false;
@@ -345,7 +272,10 @@ export default {
       this.ifopt = 2;
     },
     backTo() {
-      this.$router.push(this.mypath);
+      this.lastPath.splice(this.lastPath.length - 1, 1);
+      console.log(this.lastPath);
+      this.$router.push(this.lastPath[this.lastPath.length - 1]);
+      localStorage.setItem("path", JSON.stringify(this.lastPath));
     },
     async getUserInfor() {
       let id = this.$route.params.id;
@@ -410,15 +340,11 @@ export default {
       }
     },
     gotoDetail(id) {
-      let now = this.path + this.user.pkFleaUserId;
-      localStorage.setItem("path", JSON.stringify(now));
+      this.lastPath[this.lastPath.length] = "/commoditydetails/" + id;
+      localStorage.setItem("path", JSON.stringify(this.lastPath));
       this.$router.push({
         path: `/commoditydetails/${id}`
       });
-      this.page[this.pageCount] = id;
-      this.pageCount++;
-      localStorage.setItem("page", JSON.stringify(this.page));
-      localStorage.setItem("count", JSON.stringify(this.pageCount));
       // this.getList();
       // window.location.reload();
       // this.backTop();

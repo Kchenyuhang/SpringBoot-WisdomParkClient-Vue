@@ -18,12 +18,14 @@
       <input
         type="text"
         class="theme"
+        v-model="password"
         placeholder="请输入卡密"
       >
 
       <textarea
         cols="5"
         placeholder="请输入备注"
+        v-model="remark"
         class="content"
       ></textarea>
 
@@ -40,12 +42,14 @@
       <input
         type="text"
         class="theme1"
-        placeholder="挂失时间"
+        placeholder="卡密"
+        v-model="password"
       >
       <textarea
         cols="5"
         placeholder="请输入备注"
         class="content"
+        v-model="remark"
       ></textarea>
 
     </div>
@@ -53,10 +57,16 @@
       class="btn cc-df-center"
       @click="isTrue=!isTrue"
     >
-      <p v-if="isTrue">
+      <p
+        v-if="isTrue"
+        @click="LossTo"
+      >
         挂失
       </p>
-      <p v-if="!isTrue">
+      <p
+        v-if="!isTrue"
+        @click="cancelLost"
+      >
         取消挂失
       </p>
 
@@ -66,17 +76,57 @@
 </template>
 
 <script>
+const API = require("../../request/api");
 export default {
   name: "LossCard",
   data() {
     return {
-      isTrue: true
+      isTrue: true,
+      user: JSON.parse(localStorage.getItem("user")),
+      password: "",
+      remark: "",
+      balance: ""
     };
   },
   components: {},
   created() {},
   mounted() {},
-  methods: {},
+  methods: {
+    async LossTo() {
+      this.url = this.GLOBAL.baseUrl + "/increase";
+      this.data = {
+        lossJobNumber: "",
+        lossName: "",
+        password: "",
+        remark: ""
+      };
+      this.data.lossJobNumber = this.user.jobNumber;
+      this.data.lossName = this.user.userName;
+      this.data.password = this.password;
+      this.data.remark = this.remark;
+      this.result = await API.init(this.url, this.data, "post");
+      this.balance = this.result.msg;
+      console.log(this.balance);
+    },
+    async cancelLost() {
+      this.url = this.GLOBAL.baseUrl + "/deletion";
+      this.data = {
+        lossJobNumber: "3",
+        lossName: "",
+        lossPhone: "",
+        password: "123456",
+        remark: ""
+      };
+      this.data.lossJobNumber = this.user.jobNumber;
+      this.data.lossName = this.user.userName;
+      this.data.lossPhone = this.user.phoneNumber;
+      this.data.password = this.password;
+      this.data.remark = this.remark;
+      this.result = await API.init(this.url, this.data, "post");
+      this.balance = this.result.msg;
+      console.log(this.balance);
+    }
+  },
   computed: {}
 };
 </script>

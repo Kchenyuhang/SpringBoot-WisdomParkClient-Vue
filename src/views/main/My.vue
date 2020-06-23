@@ -3,8 +3,14 @@
     <div class="bg">
       <!-- <Dialog v-bind.sync="showBombTips" :tipsContent="tipsContent"></Dialog> -->
       <div class="header cc-col-center">
-        <div class="cc-df cc-mltop" id="fileBox">
-          <img :src="user.avatar" @click="avatarClick()" />
+        <div
+          class="cc-df cc-mltop"
+          id="fileBox"
+        >
+          <img
+            :src="user.avatar"
+            @click="avatarClick()"
+          />
           <input
             type="file"
             @change="uploadAvatar($event)"
@@ -77,7 +83,10 @@
           </div>
         </router-link>
         <hr class="line" />
-        <div class="cc-df-between" @click="logout()">
+        <div
+          class="cc-df-between"
+          @click="logout()"
+        >
           <div class="cc-df info-left4">
             <img
               src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_qinlihuncun.png"
@@ -86,7 +95,10 @@
             <p>退出登录</p>
           </div>
           <div class="info-right">
-            <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/youjiantou.png" alt="右箭头" />
+            <img
+              src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/youjiantou.png"
+              alt="右箭头"
+            />
           </div>
         </div>
       </div>
@@ -151,10 +163,10 @@ export default {
       });
     },
     updateAdminInfo(url) {
-      if(url.indexOf("?")!=-1){
+      if (url.indexOf("?") != -1) {
         this.imgDataUrl = url.substring(0, url.indexOf("?"));
         this.user.avatar = this.imgDataUrl;
-      }else{
+      } else {
         this.user.avatar = url;
       }
       this.updateAvatar();

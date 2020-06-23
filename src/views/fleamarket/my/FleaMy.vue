@@ -67,7 +67,9 @@
       <hr class="line" />
       <div class="white"></div>
       <router-link to="/layout">
-        <button><p>退出跳蚤市场</p></button>
+        <button>
+          <p>退出跳蚤市场</p>
+        </button>
       </router-link>
     </div>
   </div>
@@ -79,13 +81,12 @@ export default {
     return {
       menuIndex: 0,
       user: JSON.parse(localStorage.getItem("FleaUser")),
+      lastPath: JSON.parse(localStorage.getItem("path")),
       path: "/fleaMy"
     };
   },
   components: {},
-  created() {
-    localStorage.setItem("mypath", JSON.stringify(this.path));
-  },
+  created() {},
   mounted() {},
   methods: {
     menuShow(index) {
@@ -93,11 +94,11 @@ export default {
       console.log(this.menuIndex);
     },
     gotoUserDetail(id) {
-      this.$router.push({
+      this.$router.replace({
         path: `/personal/${id}`
       });
-      localStorage.setItem("path", JSON.stringify(this.path));
-      localStorage.setItem("path1", JSON.stringify(this.path));
+      this.lastPath[this.lastPath.length] = this.path;
+      localStorage.setItem("path", JSON.stringify(this.lastPath));
     }
   },
   computed: {},

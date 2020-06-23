@@ -58,7 +58,7 @@
             <div class="r-left" v-for="(item, index) in likeList" :key="index">
               <div class="r-left-con" @click="gotoDetail(item.pkFleaGoodsId)">
                 <img :src="item.goodsImgUrl.split('--**--')[0]" />
-                <span>{{ item.goodsDescription }}</span>
+                <span>{{ item.goodsDescription.slice(0, 9) }}</span>
                 <p class="price">$ {{ item.goodsPrice }}</p>
                 <div class="r-right">
                   <div class="img-box">
@@ -136,9 +136,8 @@ export default {
       ],
       splist: [],
       likeList: [],
-      path: JSON.parse(localStorage.getItem("path")),
+      lastPath: JSON.parse(localStorage.getItem("path")),
       path1: "/commoditydetails/",
-      mypath: "/commoditydetails/",
       data: {
         pkFleaGoodsId: ""
       },
@@ -151,7 +150,6 @@ export default {
         pageSize: 100,
         typeId: 0
       },
-      page: JSON.parse(localStorage.getItem("page")),
       count: JSON.parse(localStorage.getItem("count")),
       user: JSON.parse(localStorage.getItem("FleaUser")),
       like: true
@@ -170,7 +168,6 @@ export default {
     this.iflike();
     this.AddComment();
     this.backTop();
-    console.log(this.list[0].goodsImgUrl.split("--**--").length);
   },
   mounted() {
     window.addEventListener("scroll", this.scrollToTop);
@@ -230,42 +227,26 @@ export default {
       }
     },
     backUp() {
-      if (this.count <= 1) {
-        this.count = 0;
-        localStorage.setItem("count", JSON.stringify(this.count));
-
-        // alert(this.path);
-        this.$router.push(this.path);
-      } else {
-        let count = this.page[this.count - 2];
-        this.$router.push({
-          path: `/commoditydetails/${count}`
-        });
-        --this.count;
-        localStorage.setItem("count", JSON.stringify(this.count));
-        window.location.reload();
-      }
+      this.lastPath.splice(this.lastPath.length - 1, 1);
+      console.log(this.lastPath);
+      this.$router.push(this.lastPath[this.lastPath.length - 1]);
+      localStorage.setItem("path", JSON.stringify(this.lastPath));
+      this.getList();
     },
     async getList() {
       let id = this.$route.params.id;
       this.data.pkFleaGoodsId = id;
-      this.path1 = this.path1 + id;
-      localStorage.setItem("path1", JSON.stringify(this.path1));
       this.url = this.GLOBAL.baseUrl + "/flea/goods/id";
       this.list = (await API.init(this.url, this.data, "post")).data;
-      console.log(this.list[0].goodsImgUrl);
-
+      console.log(this.list[0].goodsImgUrl.split("--**--"));
       this.getLikeList(this.list[0].pkFleaTypeId, id);
     },
     gotoDetail(id) {
-      localStorage.setItem("path", JSON.stringify(this.path));
+      this.lastPath[this.lastPath.length] = this.path1 + id;
+      localStorage.setItem("path", JSON.stringify(this.lastPath));
       this.$router.push({
         path: `/commoditydetails/${id}`
       });
-      this.page[this.count] = id;
-      this.count++;
-      localStorage.setItem("page", JSON.stringify(this.page));
-      localStorage.setItem("count", JSON.stringify(this.count));
       this.getList();
       // window.location.reload();
       // this.backTop();
@@ -287,39 +268,16 @@ export default {
       }
     },
     gotoUserDetail(id) {
-      this.mypath = this.mypath + this.$route.params.id;
-      localStorage.setItem("mypath", JSON.stringify(this.mypath));
       this.$router.push({
         path: `/personal/${id}`
       });
+      this.lastPath[this.lastPath.length] = "/personal/" + id;
+      localStorage.setItem("path", JSON.stringify(this.lastPath));
     },
     backTop() {
-      // const that = this;
-      // let timer = setInterval(() => {
-      //   let ispeed = Math.floor(-that.scrollTop / 5);
-      //   document.documentElement.scrollTop = document.body.scrollTop =
-      //     that.scrollTop + ispeed;
-      //   if (that.scrollTop === 0) {
-      //     clearInterval(timer);
-      //   }
-      // }, 16);
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
     }
-    // 为了计算距离顶部的高度，当高度大于60显示回顶部图标，小于60则隐藏
-    // scrollToTop() {
-    //   const that = this;
-    //   let scrollTop =
-    //     window.pageYOffset ||
-    //     document.documentElement.scrollTop ||
-    //     document.body.scrollTop;
-    //   that.scrollTop = scrollTop;
-    //   if (that.scrollTop > 0) {
-    //     that.btnFlag = true;
-    //   } else {
-    //     that.btnFlag = false;
-    //   }
-    // }
   },
   computed: {}
 };

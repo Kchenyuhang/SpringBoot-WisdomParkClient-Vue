@@ -14,10 +14,10 @@
         class="box"
         v-for="(item, index) in send"
         :key="index"
-        @click="gotoDetail(item.userId)"
+        @click="gotoDetail(item.goodsId)"
       >
         <div class="left">
-          <img :src="item.goodsImgUrl" />
+          <img :src="item.goodsImg" />
         </div>
         <div class="right">
           <p class="title">{{ item.goodsName }}</p>
@@ -34,7 +34,10 @@ export default {
   name: "Personal",
   data() {
     return {
-      send: []
+      goodsId: 0,
+      send: [],
+      user: JSON.parse(localStorage.getItem("FleaUser")),
+      lastPath: JSON.parse(localStorage.getItem("path"))
     };
   },
   components: {},
@@ -45,11 +48,11 @@ export default {
   methods: {
     async getSend() {
       // let id = this.$route.params.id;
-      this.url = this.GLOBAL.baseUrl + "/flea/users/release";
+      this.url = this.GLOBAL.baseUrl + "/flea/users/orders";
       this.data = {
         currentPage: 1,
         pageSize: 3,
-        pkFleaUserId: 2
+        pkFleaUserId: this.user.pkFleaUserId
       };
       this.send = (await API.init(this.url, this.data, "post")).data.content;
       console.log(this.send);
