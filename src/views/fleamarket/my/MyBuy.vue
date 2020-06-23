@@ -14,7 +14,7 @@
         class="box"
         v-for="(item, index) in send"
         :key="index"
-        @click="gotoDetail(item.pkFleaUserId)"
+        @click="gotoDetail(item.goodsId)"
       >
         <div class="left">
           <img :src="item.goodsImg" />
@@ -34,8 +34,10 @@ export default {
   name: "Personal",
   data() {
     return {
+      goodsId: 0,
       send: [],
-      user: JSON.parse(localStorage.getItem("FleaUser"))
+      user: JSON.parse(localStorage.getItem("FleaUser")),
+      lastPath: JSON.parse(localStorage.getItem("path"))
     };
   },
   components: {},

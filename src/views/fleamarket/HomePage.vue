@@ -241,6 +241,8 @@ export default {
       this.isShow = index;
     },
     goListDetail(id, name) {
+      this.path[this.path.length] = "/listDetail/" + id;
+      localStorage.setItem("path", JSON.stringify(this.path));
       this.$router.push({
         path: `/listDetail/${id}`
       });

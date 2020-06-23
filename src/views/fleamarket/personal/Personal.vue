@@ -33,7 +33,7 @@
       </div>
       <div class="bottom">
         <p>1234天前来过</p>
-        <p>个人简介</p>
+        <p>我就是我不一样的烟火！！！！！</p>
       </div>
       <div class="count">
         <div class="tab">
@@ -121,28 +121,6 @@
             <p class="des">{{ item.goodsDescription }}</p>
             <div class="price">
               <span class="red">￥{{ item.goodsPrice }}</span>
-              <!-- <div
-              class="zzc"
-              v-if="option == index"
-            >
-              <img
-                class="del"
-                src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/Settingscontroloptions.png"
-              />
-              <img
-                class="del"
-                src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/delete.png"
-                @click="showzzc(item.goodsId, index)"
-              />
-            </div> -->
-
-              <!-- <div class="com">
-            <img
-              class="icon"
-              src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/cc-message.png"
-            />
-            <p class="mes">0</p>
-          </div> -->
             </div>
           </div>
         </div>

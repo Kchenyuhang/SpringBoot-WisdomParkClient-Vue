@@ -65,6 +65,7 @@ export default {
     async getAllType() {
       this.url = this.GLOBAL.baseUrl + "/flea/type/all";
       this.type = (await API.init(this.url, this.data, "post")).data.types;
+      console.log(this.type);
       this.typeList = this.type[0].subTypes;
       localStorage.setItem("page", JSON.stringify(this.page));
       console.log(this.typeList);
