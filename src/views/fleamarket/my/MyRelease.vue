@@ -14,7 +14,7 @@
         class="box"
         v-for="(item, index) in send"
         :key="index"
-        @click="gotoDetail(item.userId)"
+        @click="gotoDetail(item.pkFleaUserId)"
       >
         <div class="left">
           <img :src="item.goodsImgUrl" />
@@ -34,7 +34,8 @@ export default {
   name: "Personal",
   data() {
     return {
-      send: []
+      send: [],
+      user: JSON.parse(localStorage.getItem("FleaUser"))
     };
   },
   components: {},
@@ -49,7 +50,7 @@ export default {
       this.data = {
         currentPage: 1,
         pageSize: 3,
-        pkFleaUserId: 2
+        pkFleaUserId: this.user.pkFleaUserId
       };
       this.send = (await API.init(this.url, this.data, "post")).data.content;
       console.log(this.send);

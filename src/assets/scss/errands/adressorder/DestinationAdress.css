@@ -75,6 +75,7 @@
 }
 
 .line {
+  border: 0.8px solid #f4f4f4;
   width: 95%;
   height: 1px;
   margin-left: 0px;
@@ -88,5 +89,28 @@
   background-color: #12a3fd;
   border-radius: 20px;
   border: none;
+}
+
+.alsrtInfo {
+  position: absolute;
+  top: 210px;
+  left: 140px;
+}
+
+.profPrompt_test p {
+  color: red;
+  font-size: 12px;
+}
+
+.alsrtInfo1 {
+  position: absolute;
+  top: 210px;
+  left: 10px;
+}
+
+.alsrtInfo2 {
+  position: absolute;
+  top: 150px;
+  left: 10px;
 }
 /*# sourceMappingURL=DestinationAdress.css.map */

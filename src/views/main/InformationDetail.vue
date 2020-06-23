@@ -12,18 +12,16 @@
     </div>
     <div class="body">
       <div class="image">
-        <img
-          :src="information.cover"
-          alt=""
-        >
+        <img :src="information.cover" alt="" />
       </div>
       <div class="title">
-        <p>{{information.title}}</p>
+        <p>{{ information.title }}</p>
       </div>
       <div class="article">
-        <p>
-          {{information.text}}
-        </p>
+        <!-- <p>
+          {{ information.text }}
+        </p> -->
+        <p v-html="information.text"></p>
       </div>
     </div>
   </div>

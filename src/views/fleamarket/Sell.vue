@@ -209,9 +209,15 @@ button {
   height: 40px;
   width: 100%;
   margin-top: 80px;
-  // background-color: red;
+  background-color: rgb(0, 133, 215);
   border: none;
+  color: white;
   border-radius: 5px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+button:hover {
+  background-color: rgb(17, 112, 188);
 }
 .option {
   width: auto;

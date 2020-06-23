@@ -44,19 +44,14 @@
     <div v-for="(item,index) in Dongtais" :key="index">
       <div v-for="(item1,index1) in Dongtais[index]" :key="index1">
         <div class="dongtai-card">
-          <div v-for="(item2,index2) in users[index]" :key="index2">
-            <div class="dongtai-avatar" v-if="index2==index1" @click="chattting(index,index1)">
-              <img :src="item2.avatar" alt />
-            </div>
+          <div class="dongtai-avatar" @click="chattting(item1.userId)">
+            <img :src="'https://images.weserv.nl/?url=' + item1.userAccount.avatar" alt />
           </div>
-
-          <div class="dongtai-content" @click="into(item1.pkDynamicId)">
+          <div class="dongtai-content">
             <div class="row cc-df-between">
-              <div class="row">
-                <div v-for="(item2,index2) in users[index]" :key="index2">
-                  <div class="name" v-if="index2==index1">
-                    <p>{{item2.nickname}}</p>
-                  </div>
+              <div class="row" @click="into(item1.pkDynamicId)">
+                <div class="name">
+                  <p>{{item1.userAccount.nickname}}</p>
                 </div>
                 <div class="fenge cc-df-center">
                   <p>·</p>
@@ -66,21 +61,34 @@
                 </div>
               </div>
 
-              <div class="gengduo">
+              <div class="gengduo" @click="changeIsShow(item1.pkDynamicId)">
                 <img
                   src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/alumnus/gengduo_icon.png"
                   alt
                 />
               </div>
+              <div class="gengduo_box" v-if="isShow==item1.pkDynamicId">
+                <div class="shoucang cc-df-center" @click="college(item1.pkDynamicId)">
+                  <p>收藏</p>
+                </div>
+                <hr class="line" v-if="user.pkUserAccountId == item1.userid"/>
+                <div class="jubao cc-df-center" v-if="user.pkUserAccountId == item1.userid">
+                  <p>删除</p>
+                </div>
+                <hr class="line" />
+                <div class="jubao cc-df-center" @click="isShow=0">
+                  <p>关闭</p>
+                </div>
+              </div>
             </div>
-            <div class="article">
+            <div class="article" @click="into(item1.pkDynamicId)">
               <p>{{item1.content.substring(15,45)}}...</p>
             </div>
             <div class="image">
               <div
-                v-for="(img,index3) in imgs[index][index1]"
+                v-for="(img,index3) in item1.dynamicPhotoList"
                 :key="index3"
-                v-show="imgs[index][index1].length==1"
+                v-show="item1.dynamicPhotoList.length==1"
               >
                 <div class="avatar-2">
                   <img :src="'https://images.weserv.nl/?url='+img.picture" />
@@ -89,10 +97,10 @@
             </div>
             <div class="image cc-df-warp">
               <div
-                v-for="(img,index3) in imgs[index][index1]"
+                v-for="(img,index3) in item1.dynamicPhotoList"
                 :key="index3"
                 class="cc-coll-6"
-                v-show="imgs[index][index1].length==2"
+                v-show="item1.dynamicPhotoList.length==2"
               >
                 <div class="avatar-2">
                   <img :src="'https://images.weserv.nl/?url='+img.picture" />
@@ -101,16 +109,23 @@
             </div>
             <div class="image cc-df-warp">
               <div
-                v-for="(img,index3) in imgs[index][index1]"
+                v-for="(img,index3) in item1.dynamicPhotoList"
                 :key="index3"
                 class="cc-coll-4"
-                v-show="imgs[index][index1].length==3"
+                v-show="item1.dynamicPhotoList.length==3"
               >
                 <div class="avatar-2">
                   <img :src="'https://images.weserv.nl/?url='+img.picture" />
                 </div>
               </div>
             </div>
+            <div class="inp cc-df-between cc-df">
+              <input type="text" class="pinglun-input">
+              <div class="input-btn cc-df-center">
+                <p>发送</p>
+              </div>
+            </div>
+            
             <div class="row2 cc-df-between">
               <div class="comment cc-df-center">
                 <img
@@ -131,13 +146,13 @@
                 </div>
               </div>
             </div>
-            <div v-for="(item3,index3) in comments[index][index1]" :key="index3">
+            <div v-for="(item3,index3) in item1.commentVoList" :key="index3">
               <div class="comment-row cc-df-between">
                 <div class="dis">
-                  <img :src="item3.userId.avatar" alt />
+                  <img :src="'https://images.weserv.nl/?url='+item3.avatar" alt />
                   <div class="comment-content">
                     <div class="row3">
-                      <p class="nickname">{{item3.userId.nickname}}</p>
+                      <p class="nickname">{{item3.userId}}</p>
                       <p class="dian">·</p>
                       <p class="time">{{item3.gmtCreate}}</p>
                     </div>
@@ -153,11 +168,11 @@
                   />
                 </div>
               </div>
-              <div v-for="(item4,index4) in item3.replyComments" :key="index4">
+              <!-- <div v-for="(item4,index4) in item3.replyComments" :key="index4">
                 <p
                   class="fontSize"
                 >{{item4.userId.nickname}}回复了{{item3.userId.nickname}}：{{item4.content}}</p>
-              </div>
+              </div>-->
             </div>
           </div>
         </div>
@@ -173,14 +188,13 @@ export default {
   data() {
     return {
       Dongtais: [],
-      imgs: [],
-      users: [],
-      people: {},
       data: {},
       page: 1,
-      comments: [],
       msg: "",
-      show: true
+      show: true,
+      isShow: 0,
+      user: this.$store.state.user,
+      token: this.$store.state.token
     };
   },
   components: {
@@ -191,73 +205,28 @@ export default {
   },
   mounted() {
     setTimeout(() => {
-      this.show=false
+      this.show = false;
       this.msg = "加载完辽！";
-    }, 10000);
+    }, 3000);
   },
   methods: {
-    chattting(index, index1) {
+    async college(index) {
+      this.data = {
+        dynamicId: index,
+        userId: this.user.pkUserAccountId
+      };
+      this.url = this.GLOBAL.baseUrl + "/dynamic/Collection/insert";
+      this.result = await API.init(this.url, this.data, "post");
+      this.show = 0;
+    },
+    changeIsShow(index) {
+      this.isShow = index;
+    },
+    chattting(index) {
       this.$router.push({
         name: "Chatting",
-        params: { UserId: this.users[index][index1].pkUserAccountId }
+        params: { UserId: index }
       });
-    },
-    async selectComment(index) {
-      this.data = {
-        id: index
-      };
-      this.url = this.GLOBAL.baseUrl + "/dynamic/";
-      this.result = await API.init(this.url, this.data, "post");
-      this.comments[this.page - 1].push(this.result.data.commentVoList);
-    },
-    async selectImg(index) {
-      this.data = {
-        id: index
-      };
-      this.url = this.GLOBAL.baseUrl + "/dynamic/photo";
-      this.result = await API.init(this.url, this.data, "post");
-      this.imgs[this.page - 1].push(this.result.data);
-    },
-    async selectReplyUser() {
-      for (let i = 0; i < this.comments[this.page - 1].length; i++) {
-        for (let j = 0; j < this.comments[this.page - 1][i].length; j++) {
-          for (
-            let k = 0;
-            k < this.comments[this.page - 1][i][j].replyComments.length;
-            k++
-          ) {
-            this.data = {
-              field: this.comments[this.page - 1][i][j].replyComments[k].userId
-            };
-            this.url = this.GLOBAL.baseUrl + "/user/single/id";
-            this.result = await API.init(this.url, this.data, "post");
-            this.comments[this.page - 1][i][j].replyComments[
-              k
-            ].userId = this.result;
-          }
-        }
-      }
-    },
-    async selectCommentUser() {
-      // console.log(index,commentUsers)
-      for (let i = 0; i < this.comments[this.page - 1].length; i++) {
-        for (let j = 0; j < this.comments[this.page - 1][i].length; j++) {
-          this.data = {
-            field: this.comments[this.page - 1][i][j].userId
-          };
-          this.url = this.GLOBAL.baseUrl + "/user/single/id";
-          this.result = await API.init(this.url, this.data, "post");
-          this.comments[this.page - 1][i][j].userId = this.result;
-        }
-      }
-    },
-    async selectUser(index) {
-      this.data = {
-        field: index
-      };
-      this.url = this.GLOBAL.baseUrl + "/user/single/id";
-      this.result = await API.init(this.url, this.data, "post");
-      this.users[this.page - 1].push(this.result);
     },
     async selectDongtai() {
       this.data = {
@@ -268,18 +237,6 @@ export default {
       this.result = await API.init(this.url, this.data, "post");
       this.Dongtais.push(this.result.data);
       console.log(this.Dongtais);
-      this.users.push([]);
-      this.imgs.push([]);
-      this.comments.push([]);
-      this.data1 = this.Dongtais[this.page - 1];
-      for (let i = 0; i < this.data1.length; i++) {
-        await this.selectUser(this.data1[i].userId);
-        await this.selectImg(this.data1[i].pkDynamicId);
-        await this.selectComment(this.data1[i].pkDynamicId);
-      }
-      await this.selectCommentUser();
-      await this.selectReplyUser();
-      console.log(this.comments);
     },
     into(index) {
       if (index == 1) {

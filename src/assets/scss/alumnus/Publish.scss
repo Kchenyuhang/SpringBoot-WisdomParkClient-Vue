@@ -1,130 +1,126 @@
 .bg {
-    background-color: white;
-    height: 100%;
-    width: 100%;
-    margin-bottom: 60px;
-  }
-  .header {
-    background-color: #f8f8f8;
-    height: 55px;
-    position: sticky;
-    top: 0;
-    left: 0;
-    display: flex;
-    .header-title {
-      width: 90%;
-      display: flex;
-      align-items: center;
-      img {
-        height: 16px;
-        width: 16px;
-        margin-top: 5px;
-        margin-left: 20px;
-      }
-      p {
-        font-size: 16px;
-        margin-left: 15px;
-        margin: auto;
-        color: black;
-      }
-    }
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 60px;
 }
-.article{
+.header {
+  background-color: #f8f8f8;
+  height: 55px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  display: flex;
+  .header-title {
     width: 90%;
-    height: 380px;
-    margin: auto;
-    .theme {
-        width: 94%;
-        outline-style: none;
-        border: 0px;
-        margin-left: 3%;
-        margin-top: 3%;
-        background-color: white;
-        padding: 14px 14px;
-        font-size: 16px;
-
-      }
-      .content {
-        width: 94%;
-        outline-style: none;
-        border: 0px;
-        margin-left: 3%;
-        margin-top: 5%;
-        background-color: white;
-        padding: 14px;
-        height: 180px;
-        resize:none;
-        font-size: 16px;
-      }
-      .image{
-          width: 100px;
-          height: 100px;
-          margin-left: 6%;
-          border: 1px solid #eaeaea;
-          padding-top: 20px;
-          img{
-              width: 30px;
-              height: 30px;
-          }
-          p{
-              color: #9f9f9f;
-              font-size: 14px;
-          }
-      }
-
-      
-}
-.place{
-    height: 60px;
-    width: 85%;
-    margin: auto;
-    .left{
-        width: 35%;
-        height: 100%;
-        display: flex;
-        img{
-            width: 20px;
-            height: 20px;
-            margin-top: 2px;
-        }
-        p{
-            margin-left: 10px;
-            font-size: 18px;
-            font-weight: 550;
-        }
+    display: flex;
+    align-items: center;
+    img {
+      height: 16px;
+      width: 16px;
+      margin-top: 5px;
+      margin-left: 20px;
     }
-    .right{
-        width: 20px;
-        height: 16px;
+    p {
+      font-size: 16px;
+      margin-left: 15px;
+      margin: auto;
+      color: black;
     }
+  }
 }
-.tips{
+.article {
+  width: 90%;
+  height: 380px;
+  margin: auto;
+  .theme {
     width: 94%;
-    margin: auto;
-    margin-bottom: 40px;
-    p{
-        font-size: 12px;
-        color: #938c8c;
+    outline-style: none;
+    border: 0px;
+    margin-left: 3%;
+    margin-top: 3%;
+    background-color: white;
+    padding: 14px 14px;
+    font-size: 16px;
+  }
+  .content {
+    width: 94%;
+    outline-style: none;
+    border: 0px;
+    margin-left: 3%;
+    margin-top: 5%;
+    background-color: white;
+    padding: 14px;
+    height: 180px;
+    resize: none;
+    font-size: 16px;
+  }
+  .image {
+    width: 100px;
+    height: 100px;
+    margin-left: 6%;
+    border: 1px solid #eaeaea;
+    padding-top: 20px;
+    img {
+      width: 80px;
+      height: 80px;
     }
+    p {
+      color: #9f9f9f;
+      font-size: 14px;
+    }
+  }
 }
-.publish-btn{
-    width: 80%;
-    height: 45px;
-    background-color: #f16767;
-    margin: auto;
-    border-radius: 30px;
-    p{
-        color: white;
+.place {
+  height: 60px;
+  width: 85%;
+  margin: auto;
+  .left {
+    width: 35%;
+    height: 100%;
+    display: flex;
+    img {
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
     }
+    p {
+      margin-left: 10px;
+      font-size: 18px;
+      font-weight: 550;
+    }
+  }
+  .right {
+    width: 20px;
+    height: 16px;
+  }
+}
+.tips {
+  width: 94%;
+  margin: auto;
+  margin-bottom: 40px;
+  p {
+    font-size: 12px;
+    color: #938c8c;
+  }
+}
+.publish-btn {
+  width: 80%;
+  height: 45px;
+  background-color: #f16767;
+  margin: auto;
+  border-radius: 30px;
+  p {
+    color: white;
+  }
 }
 .line {
-    width: 85%;
-    border: none;
-    height: 2px;
-    background: #e8e8e8;
-  }
+  width: 85%;
+  border: none;
+  height: 2px;
+  background: #e8e8e8;
+}
 input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
   font-size: 16px;
-
 }

@@ -2,7 +2,6 @@
   background-color: #f7f7f7;
   height: 100%;
   width: 100%;
-  margin-bottom: 60px;
 }
 
 .header {
@@ -49,5 +48,88 @@
   height: 28px;
   width: 28px;
   margin-top: 8px;
+}
+
+.body {
+  width: 100%;
+  height: 100vh;
+}
+
+.body .message-card {
+  width: 94%;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.body .message-card .avatar {
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  border-radius: 30px;
+}
+
+.body .message-card .avatar img {
+  width: 50px;
+  height: 50px;
+  border-radius: 30px;
+  margin-top: 10px;
+}
+
+.body .message-card .message {
+  margin-left: 5px;
+}
+
+.body .message-card .message .row1 {
+  margin-top: 10px;
+  width: 280px;
+}
+
+.body .message-card .message .row1 .row1-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.body .message-card .message .row1 .row1-left .name {
+  font-size: 14px;
+}
+
+.body .message-card .message .row1 .row1-left .bumen {
+  font-size: 14px;
+  margin-left: 10px;
+  color: #949494;
+}
+
+.body .message-card .message .row1 .row1-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.body .message-card .message .row1 .row1-right .time {
+  width: 50px;
+}
+
+.body .message-card .message .row1 .row1-right .time p {
+  font-size: 14px;
+  margin-left: 0px;
+  color: #949494;
+}
+
+.body .message-card .message .row1 .row1-right img {
+  width: 20px;
+  height: 20px;
+}
+
+.body .message-card .message .row2 {
+  margin-top: 5px;
+}
+
+.body .message-card .message .row2 p {
+  font-size: 15px;
+  margin-left: 0px;
+  color: #949494;
 }
 /*# sourceMappingURL=JobMessage.css.map */

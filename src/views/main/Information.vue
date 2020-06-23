@@ -90,6 +90,10 @@
             </div>
           </div>
         </div>
+        <p
+          class="center"
+          v-show="end"
+        >--------到底了--------</p>
       </div>
     </div>
   </transition>
@@ -130,7 +134,8 @@ export default {
         field: "1",
         pageSize: 5
       },
-      count: 5
+      count: 5,
+      end: false
     };
   },
   components: {
@@ -140,6 +145,27 @@ export default {
     // console.log(this.transitionName);
     this.getList();
     this.getAll();
+    let that = this;
+    window.onscroll = function() {
+      // scrollTop 滚动条滚动时，距离顶部的距离
+      var scrollTop =
+        document.documentElement.scrollTop || document.body.scrollTop;
+      // windowHeight 可视区的高度
+      var windowHeight =
+        document.documentElement.clientHeight || document.body.clientHeight;
+      // scrollHeight 滚动条的总高度
+      var scrollHeight =
+        document.documentElement.scrollHeight || document.body.scrollHeight;
+      // 滚动条到底部的条件
+      if (scrollTop + windowHeight >= scrollHeight - 50) {
+        // 加载数据
+        that.loadmore();
+      }
+      if (scrollTop + windowHeight == scrollHeight) {
+        that.end = true;
+        console.log(that.end);
+      }
+    };
   },
   mounted() {
     // this.loadMore();
@@ -148,7 +174,7 @@ export default {
     into(index) {
       this.$router.push({
         name: "InformationDetail",
-        params: { Id:  this.slideList[index].id }
+        params: { Id: this.slideList[index].id }
       });
     },
     intoDetail(index) {
@@ -157,8 +183,17 @@ export default {
         params: { Id: index }
       });
     },
-    loadMore() {
-      this.data.pageSize = this.data.pageSize + 10;
+    loadmore() {
+      this.count += 5;
+      if (this.isShow == 1) {
+        this.getAll();
+      }
+      if (this.isShow == 2) {
+        this.getDoList();
+      }
+      if (this.isShow == 3) {
+        this.getStudentList();
+      }
     },
     async getList() {
       this.url = this.GLOBAL.baseUrl + "/info/isTap";
@@ -197,8 +232,7 @@ export default {
     async getAll() {
       this.url = this.GLOBAL.baseUrl + "/info/allInfo";
       this.data = {
-        currentPage: 1,
-        field: "1",
+        currentPage: 0,
         pageSize: this.count
       };
       this.teachResult = (await API.init(this.url, this.data, "post")).data;

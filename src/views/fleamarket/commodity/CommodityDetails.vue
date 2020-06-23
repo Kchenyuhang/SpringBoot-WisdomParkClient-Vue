@@ -9,10 +9,11 @@
       <!-- </router-link> -->
       <p>商品详情</p>
     </div>
-    <div class="solder" v-show="list[0].isDeleted == true">
-      <img
-        src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/0ac2e928674ff8e5bd0c0a9c00542b3f.png"
-      />
+    <div
+      class="solder"
+      v-show="list[0].isDeleted == true"
+    >
+      <img src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/0ac2e928674ff8e5bd0c0a9c00542b3f.png" />
     </div>
     <div class="container">
       <div class="card">
@@ -105,23 +106,23 @@
 
         <p>取消</p>
       </div>
-      <div v-show="list[0].isDeleted!=true">
+      <div v-show="list[0].isDeleted != true">
         <router-link to="/pay">
           <div
             class="want"
-            v-show="list[0].pkFleaUserId!=user.pkFleaUserId"
+            v-show="list[0].pkFleaUserId != user.pkFleaUserId"
           >
             <p class="btn">我想要</p>
           </div>
         </router-link>
         <div
           class="want"
-          v-show="list[0].pkFleaUserId==user.pkFleaUserId"
+          v-show="list[0].pkFleaUserId == user.pkFleaUserId"
         >
           <p class="btn none">我的商品</p>
         </div>
       </div>
-      <div v-show="list[0].isDeleted==true">
+      <div v-show="list[0].isDeleted == true">
         <div class="want">
           <p class="btn none">已卖出</p>
         </div>
@@ -147,9 +148,8 @@ export default {
       ],
       splist: [],
       likeList: [],
-      path: JSON.parse(localStorage.getItem("path")),
+      lastPath: JSON.parse(localStorage.getItem("path")),
       path1: "/commoditydetails/",
-      mypath: "/commoditydetails/",
       data: {
         pkFleaGoodsId: ""
       },
@@ -162,7 +162,6 @@ export default {
         pageSize: 100,
         typeId: 0
       },
-      page: JSON.parse(localStorage.getItem("page")),
       count: JSON.parse(localStorage.getItem("count")),
       user: JSON.parse(localStorage.getItem("FleaUser")),
       like: true
@@ -181,7 +180,6 @@ export default {
     this.iflike();
     this.AddComment();
     this.backTop();
-    console.log(this.list[0].goodsImgUrl.split("--**--").length);
   },
   mounted() {
     window.addEventListener("scroll", this.scrollToTop);
@@ -241,27 +239,15 @@ export default {
       }
     },
     backUp() {
-      if (this.count <= 1) {
-        this.count = 0;
-        localStorage.setItem("count", JSON.stringify(this.count));
-
-        // alert(this.path);
-        this.$router.push(this.path);
-      } else {
-        let count = this.page[this.count - 2];
-        this.$router.push({
-          path: `/commoditydetails/${count}`
-        });
-        --this.count;
-        localStorage.setItem("count", JSON.stringify(this.count));
-        window.location.reload();
-      }
+      this.lastPath.splice(this.lastPath.length - 1, 1);
+      console.log(this.lastPath);
+      this.$router.push(this.lastPath[this.lastPath.length - 1]);
+      localStorage.setItem("path", JSON.stringify(this.lastPath));
+      this.getList();
     },
     async getList() {
       let id = this.$route.params.id;
       this.data.pkFleaGoodsId = id;
-      this.path1 = this.path1 + id;
-      localStorage.setItem("path1", JSON.stringify(this.path1));
       this.url = this.GLOBAL.baseUrl + "/flea/goods/id";
       this.list = (await API.init(this.url, this.data, "post")).data;
       console.log(this.list[0].goodsImgUrl);
@@ -269,14 +255,11 @@ export default {
       this.getLikeList(this.list[0].pkFleaTypeId, id);
     },
     gotoDetail(id) {
-      localStorage.setItem("path", JSON.stringify(this.path));
+      this.lastPath[this.lastPath.length] = this.path1 + id;
+      localStorage.setItem("path", JSON.stringify(this.lastPath));
       this.$router.push({
         path: `/commoditydetails/${id}`
       });
-      this.page[this.count] = id;
-      this.count++;
-      localStorage.setItem("page", JSON.stringify(this.page));
-      localStorage.setItem("count", JSON.stringify(this.count));
       this.getList();
       // window.location.reload();
       // this.backTop();
@@ -298,11 +281,11 @@ export default {
       }
     },
     gotoUserDetail(id) {
-      this.mypath = this.mypath + this.$route.params.id;
-      localStorage.setItem("mypath", JSON.stringify(this.mypath));
       this.$router.push({
         path: `/personal/${id}`
       });
+      this.lastPath[this.lastPath.length] = "/personal/" + id;
+      localStorage.setItem("path", JSON.stringify(this.lastPath));
     },
     backTop() {
       // const that = this;
@@ -338,8 +321,6 @@ export default {
 
 <style scoped lang="scss">
 @import "../../../assets/scss/fleamarket/commodity/CommodityDetails.scss";
-.img-box {
-}
 .price {
   margin-top: 13px;
 }

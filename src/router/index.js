@@ -4,8 +4,6 @@ import Login from "../views/Login.vue";
 import Layout from "../views/Layout.vue";
 import Runorders from "../views/errand/Runorders.vue";
 import Orderreceiving from "../views/errand/Orderreceiving.vue";
-import Receiveall from "../views/errand/orders/Receiveall.vue";
-import Receivegoods from "../views/errand/orders/Receivegoods.vue";
 import JobNav from "../views/Job/JobNav.vue";
 import FleaNav from "../views/fleamarket/FleaNav";
 
@@ -113,24 +111,24 @@ const routes = [
     component: () => import("../views/Alumnus/AlumnusMessage.vue")
   },
   {
-    path: '/positiondetails/:Id',
-    name: 'PositionDetails',
-    component: () => import('../views/Job/PositionDetails.vue'),
+    path: "/positiondetails/:Id",
+    name: "PositionDetails",
+    component: () => import("../views/Job/PositionDetails.vue")
   },
   {
-    path: '/companydetails/:Id',
-    name: 'CompanyDetails',
-    component: () => import('../views/Job/CompanyDetails.vue'),
+    path: "/companydetails/:Id",
+    name: "CompanyDetails",
+    component: () => import("../views/Job/CompanyDetails.vue")
   },
   {
-    path: '/fulltimejob',
-    name: 'FullTimeJob',
-    component: () => import('../views/Job/FullTimeJob.vue'),
+    path: "/fulltimejob",
+    name: "FullTimeJob",
+    component: () => import("../views/Job/FullTimeJob.vue")
   },
   {
-    path: '/jobsearch',
-    name: 'JobSearch',
-    component: () => import('../views/Job/JobSearch.vue'),
+    path: "/jobsearch",
+    name: "JobSearch",
+    component: () => import("../views/Job/JobSearch.vue")
   },
   {
     path: "/alumnuscollect",
@@ -367,19 +365,19 @@ const routes = [
       {
         path: "all",
         name: "Receiveall",
-        component: Receiveall
+        component: () => import("../views/errand/orders/Receiveall.vue")
       },
       {
         path: "goods",
         name: "Receivegoods",
-        component: Receivegoods
+        component: () => import("../views/errand/orders/Receivegoods.vue")
       }
     ]
   },
   {
-    path: '/informationDetail/:Id',
-    name: 'InformationDetail',
-    component: () => import('../views/main/InformationDetail.vue'),
+    path: "/informationDetail/:Id",
+    name: "InformationDetail",
+    component: () => import("../views/main/InformationDetail.vue")
   },
   // 跳蚤市场路由
   {
@@ -428,6 +426,11 @@ const routes = [
     path: "/chatting/:UserId",
     name: "Chatting",
     component: () => import("../views/Alumnus/Chatting.vue")
+  },
+  {
+    path: "/tuijian",
+    name: "Tuijian",
+    component: () => import("../views/Alumnus/Tuijian.vue")
   },
   {
     path: "/pay",

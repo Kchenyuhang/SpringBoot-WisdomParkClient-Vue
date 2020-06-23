@@ -5,9 +5,6 @@
 
 .bg .header {
   height: auto;
-<<<<<<< HEAD
-  background-color: white;
-=======
   background-color: rgba(128, 128, 128, 0.2);
 }
 
@@ -20,7 +17,6 @@
   background-repeat: no-repeat;
   -webkit-filter: blur(5px);
           filter: blur(5px);
->>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
 }
 
 .bg .header .icon {
@@ -55,28 +51,18 @@
 .bg .header .inform .top .left .card .mes {
   margin-left: 10px;
   margin-top: -1%;
-<<<<<<< HEAD
-=======
   font-weight: 900;
->>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
 }
 
 .bg .header .inform .top .left .card .mes .wid {
   font-weight: 700;
-<<<<<<< HEAD
-=======
   color: white;
->>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
 }
 
 .bg .header .inform .top .left .card .mes .nickname {
   font-size: 12px;
-<<<<<<< HEAD
-  color: #ccc9ca;
-=======
   font-weight: 900;
   color: white;
->>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
 }
 
 .bg .header .inform .top .right {
@@ -101,26 +87,18 @@
   margin-top: 80px;
   margin-left: 5%;
   margin-bottom: 100px;
-<<<<<<< HEAD
-=======
   font-weight: 900;
 }
 
 .bg .header .bottom p {
   color: white;
->>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
 }
 
 .bg .header .count {
   bottom: 0;
-<<<<<<< HEAD
-  margin-left: 8%;
-  margin-right: 10%;
-=======
   background-color: white;
   margin-bottom: 20px;
   padding-top: 10px;
->>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
 }
 
 .bg .header .count .tab {
@@ -129,14 +107,8 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-<<<<<<< HEAD
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-=======
   -ms-flex-pack: distribute;
       justify-content: space-around;
->>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
 }
 
 .bg .message {
@@ -196,46 +168,54 @@
 
 .bg .container {
   height: 80%;
-<<<<<<< HEAD
-  background-color: #c4bebe;
-=======
   width: 90%;
   margin-left: 15px;
   border-radius: 10px;
->>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
-  margin-top: 4px;
+  margin-top: 10px;
+}
+
+.bg .container .options {
+  position: absolute;
+  right: 25px;
+  margin-top: -30px;
 }
 
 .bg .container .box {
-  margin-top: 5%;
+  margin-top: 20px;
   width: 100%;
   background-color: #fff;
-<<<<<<< HEAD
-  position: absolute;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-=======
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
->>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
 }
 
-.bg .container .box .left img {
+.bg .container .box .checkbox {
+  margin-top: 60px;
+  margin-right: 10px;
+}
+
+.bg .container .box .checkbox .left {
+  height: 80%;
+}
+
+.bg .container .box .checkbox .left img {
   width: 130px;
   height: 90px;
-<<<<<<< HEAD
+  border-radius: 10px;
   margin: 10px 10px 10px 10px;
 }
 
-.bg .container .box .right .title {
-  font-weight: 700;
-=======
-  border-radius: 10px;
-  margin: 10px 10px 10px 10px;
+.bg .container .box .solder {
+  position: absolute;
+  z-index: 999;
+  -webkit-transform: rotate(50deg);
+          transform: rotate(50deg);
+  width: 100px;
+  height: 100px;
+  right: 20px;
+  margin-top: -10px;
 }
 
 .bg .container .box .right {
@@ -245,7 +225,13 @@
 .bg .container .box .right .title {
   font-weight: 700;
   margin-top: 8px;
->>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 170px;
 }
 
 .bg .container .box .right .des {
@@ -253,39 +239,20 @@
   color: #b7b6b6;
 }
 
-.bg .container .box .right .price {
-<<<<<<< HEAD
-  margin-top: 35%;
-  font-size: 14px;
-  font-weight: 600;
-  color: #f56969;
-}
-
-.bg .container .box .right .com {
-  position: absolute;
-  right: 4%;
-=======
-  margin-top: 20%;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.bg .container .box .right .price .red {
+.bg .container .box .right .red {
   font-weight: 600;
   font-size: 14px;
   color: #f56969;
 }
 
-.bg .container .box .right .price .right {
-  position: absolute;
+.bg .container .box .right .right {
+  position: relative;
   right: 10%;
 }
 
 .bg .container .box .right .com {
   position: absolute;
   right: 6%;
->>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -330,21 +297,27 @@
   border-bottom: 4px #46abf1 solid;
   color: #46abf1;
 }
-<<<<<<< HEAD
-=======
 
 .del {
   width: 20px;
   height: 20px;
-  position: absolute;
-  right: 30px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.options {
+  width: 20px;
+  height: 20px;
+  position: relative;
 }
 
 .zhezhaoceng {
   z-index: 999;
   position: fixed;
   width: 50%;
-  height: 100px;
+  height: auto;
   background-color: white;
   font-size: 16px;
   border-radius: 5px;
@@ -370,5 +343,30 @@
   width: 50%;
   text-align: center;
 }
->>>>>>> 5cd117fe129481578427ca3ee40f5c1e42a12cab
+
+.zzc {
+  width: 20%;
+  height: auto;
+  background-color: yellow;
+}
+
+.opzzc {
+  z-index: 999;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
+  height: 200px;
+  background-color: white;
+  border: none;
+  bottom: 0;
+}
+
+.opzzc p {
+  font-size: 14px;
+  color: black;
+  text-align: center;
+  margin-bottom: 15%;
+  margin-top: 5%;
+}
 /*# sourceMappingURL=Personal.css.map */

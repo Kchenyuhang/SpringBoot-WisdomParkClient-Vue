@@ -22,7 +22,7 @@
         <p class="name">{{ user.nickname }}</p>
         <p class="phone">
           {{ user.phoneNumber.substring(0, 3) }}****{{
-            user.phoneNumber.substring(7)
+          user.phoneNumber.substring(7)
           }}
         </p>
       </div>
@@ -163,9 +163,12 @@ export default {
       });
     },
     updateAdminInfo(url) {
-      this.imgDataUrl = url.substring(0, url.indexOf("?"));
-      // this.user.avatar = this.imgDataUrl;
-      this.user.avatar = url;
+      if (url.indexOf("?") != -1) {
+        this.imgDataUrl = url.substring(0, url.indexOf("?"));
+        this.user.avatar = this.imgDataUrl;
+      } else {
+        this.user.avatar = url;
+      }
       this.updateAvatar();
     },
     avatarClick() {
