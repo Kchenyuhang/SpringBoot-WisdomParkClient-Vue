@@ -16,7 +16,7 @@
         </div>
       </div>
     </div>
-    <div class="faxian">
+    <!-- <div class="faxian">
       <div class="faxian-card">
         <div class="row">
           <p>搜索发现</p>
@@ -33,6 +33,9 @@
         </div>
       </div>
 
+    </div> -->
+    <div class="body">
+      
     </div>
   </div>
 </template>

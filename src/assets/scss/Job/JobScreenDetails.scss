@@ -1,0 +1,130 @@
+.bg {
+    background-color: #f7f7f7;
+    height: 100vh;
+    width: 100%;
+  }
+  .header {
+    background-color: #63beba;
+    height: 55px;
+    display: flex;
+    .header-title {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      img {
+        height: 18px;
+        width: 18px;
+        margin-top: 5px;
+        margin-left: 5px;
+      }
+      p {
+        font-size: 18px;
+        font-weight: 550;
+        margin-left: 15px;
+        color: white;
+      }
+    }
+    
+}
+.shaixuan{
+    width: 100%;
+    height: 55px;
+    background-color: white;
+    .row{
+        width: 90%;
+        margin: auto;
+        display: flex;
+        margin-top: 15px;
+        .shaixuan-card{
+            height: 24px;
+            display: flex;
+            margin-right: 10px;
+            padding: 1px 3px 5px 5px;
+            background-color: #63beba;
+            img{
+                width: 8px;
+                height:8px;
+            }
+            p{
+                color: white;
+                font-weight: 550;
+            }
+        }
+    }
+}
+
+    .job-card2 {
+        width: 100%;
+        height: 130px;
+        margin-bottom: 5px;
+        background-color: white;
+        .job-card-wide2 {
+          width: 90%;
+          margin: auto;
+          padding-top: 15px;
+          .job-title2 {
+            .job-name2 {
+              font-size: 18px;
+              font-weight: 550;
+            }
+            .salary2 {
+              font-size: 14px;
+              font-weight: 550;
+              color: #52aba9;
+            }
+          }
+          .type-row{
+      
+            width: 90%;
+            height: 30%;
+            margin-top: 10px;
+            display: flex;
+            .job-type2 {
+              height: 20px;
+              margin-right: 10px;
+              padding: 5px 5px 5px 5px;
+              border-radius: 5px;
+              background-color: #ebebeb;
+              p {
+                font-size: 12px;
+              }
+            }
+          }
+          
+          .job-number2 {
+            margin-top: 10px;
+            margin-bottom: 5px;
+            display: flex;
+            p {
+              font-size: 16px;
+              color: black;
+              margin-right: 20px;
+            }
+          }
+          .job-place2 {
+            .boss {
+              font-size: 14px;
+            }
+            .place {
+              font-size: 16px;
+              font-weight: 550;
+            }
+          }
+        }
+      }
+      .fall{
+        margin-top: 150px;
+        img{
+          width: 50px;
+          height: 50px;
+        }
+        .null{
+          margin-top: 50px;
+          font-size: 20px;
+          font-weight: 550;
+        }
+        .back-p{
+          margin-top: 20px;
+          font-size: 18px;
+        }
+      }

@@ -1,0 +1,262 @@
+@charset "UTF-8";
+.bg {
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+}
+
+.header {
+  background-color: white;
+  height: 55px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header .header-title {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .header-title img {
+  height: 18px;
+  width: 18px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.body {
+  width: 100%;
+  height: 100vh;
+}
+
+.body .row1 {
+  width: 90%;
+  margin: auto;
+}
+
+.body .row1 .work-name {
+  font-size: 24px;
+  font-weight: 550;
+}
+
+.body .row1 .work-pay {
+  font-size: 24px;
+  color: #11aca8;
+}
+
+.body .row2 {
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.body .row2 .place {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.body .row2 .place img {
+  width: 25px;
+  height: 25px;
+}
+
+.body .row2 .place p {
+  margin-left: 20px;
+}
+
+.body .row2 .time {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.body .row2 .time img {
+  width: 25px;
+  height: 25px;
+}
+
+.body .row2 .time p {
+  margin-left: 20px;
+}
+
+.body .row3 {
+  width: 90%;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.body .row3 .boss-avatar img {
+  width: 70px;
+  height: 70px;
+  border-radius: 40px;
+}
+
+.body .row3 .boss-information {
+  margin-left: 20px;
+  margin-top: 15px;
+}
+
+.body .row3 .boss-information .info-row1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.body .row3 .boss-information .info-row1 img {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+}
+
+.body .row3 .boss-information .info-row1 p {
+  font-size: 18px;
+  margin-left: 15px;
+}
+
+.body .row3 .boss-information .info-row2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 5px;
+}
+
+.body .row3 .boss-information .info-row2 img {
+  width: 20px;
+  height: 20px;
+}
+
+.body .row3 .boss-information .info-row2 p {
+  font-size: 18px;
+  margin-left: 15px;
+}
+
+.body .row4 {
+  width: 90%;
+  margin: auto;
+}
+
+.body .row4 .work-detail {
+  font-size: 24px;
+  font-weight: 550;
+}
+
+.body .row4 .work-type {
+  margin: auto;
+  margin-top: 10px;
+  height: 25px;
+  padding: 5px 10px 5px 10px;
+  background-color: #edecec;
+  border-radius: 15px;
+}
+
+.body .row4 .work-type p {
+  font-size: 14px;
+  color: #808080;
+}
+
+.body .row5 {
+  width: 90%;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.body .row6 {
+  width: 90%;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.body .row6 .company-avatar img {
+  width: 70px;
+  height: 70px;
+  border-radius: 20px;
+}
+
+.body .row6 .company-detail {
+  margin-top: 10px;
+}
+
+.body .row6 .company-detail .company-detail-row1 p {
+  font-size: 18px;
+  font-weight: 550;
+}
+
+.body .row6 .company-detail .company-detail-row2 {
+  margin-top: 10px;
+}
+
+.body .row6 .company-detail .company-detail-row2 p {
+  font-size: 14px;
+}
+
+.body .tips {
+  width: 90%;
+  margin: auto;
+}
+
+.body .tips .tips-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.body .tips .tips-title img {
+  width: 30px;
+  height: 30px;
+}
+
+.body .tips .tips-title p {
+  margin-left: 10px;
+  margin-top: 3px;
+  color: #e92626;
+  font-weight: 550;
+}
+
+.body .tips .tips-content {
+  margin-top: 10px;
+}
+
+.body .tips .tips-content p {
+  font-family: "黑体";
+}
+
+.line {
+  width: 90%;
+  border: none;
+  height: 2px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background-color: #e4e4e4;
+}
+
+.bottom {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  height: 55px;
+}
+
+.bottom .btn {
+  width: 90%;
+  margin: auto;
+  height: 40px;
+  background-color: #11aca8;
+}
+
+.bottom .btn p {
+  font-size: 18px;
+  font-weight: 550;
+  color: white;
+}
+/*# sourceMappingURL=FullTimeJob.css.map */

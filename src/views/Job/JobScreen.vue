@@ -20,13 +20,13 @@
           v-for="(item,index) in types"
           :key="index"
         >
-          <div class="screen-type cc-mright cc-df-center">
+          <div class="screen-type cc-mright cc-df-center" @click="intoDetail(item.pkJobTypeId)">
             <p>{{item.name}}</p>
           </div>
         </div>
       </div>
     </div>
-    <div class="footer">
+    <!-- <div class="footer">
       <div class="footer-bin cc-df-between">
         <div class="footer-bin-clear cc-df-center">
           <p>清除</p>
@@ -35,7 +35,7 @@
           <p>确定</p>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -54,6 +54,13 @@ export default {
   },
   mounted() {},
   methods: {
+    intoDetail(index){
+      console.log(index)
+      this.$router.push({
+        name: "JobScreenDetails",
+        params: { Name: index }
+      });
+    },
     async selectType() {
       this.url = this.GLOBAL.baseUrl + "/jobType/list";
       this.result = await API.init(this.url, null, "post");

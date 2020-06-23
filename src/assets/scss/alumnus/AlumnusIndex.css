@@ -8,16 +8,23 @@
 .header {
   background-color: #f8f8f8;
   height: 55px;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 .header .header-title {
   width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .header .header-title img {
@@ -45,7 +52,8 @@
   width: 70px;
   height: 70px;
   border-radius: 50px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.692);
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.692);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.692);
 }
 
 .avatar-card .avatar-card-left img {
@@ -57,12 +65,17 @@
 .function-bar {
   background-color: white;
   height: 55px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  box-shadow: 0 4px 8px rgba(200, 200, 200, 0.6);
+  -webkit-box-shadow: 0 4px 8px rgba(200, 200, 200, 0.6);
+          box-shadow: 0 4px 8px rgba(200, 200, 200, 0.6);
 }
 
 .function-bar .function {
   height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -85,6 +98,8 @@
 .dongtai-card {
   width: 90%;
   margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-bottom: 2px;
   padding-top: 20px;
@@ -108,6 +123,8 @@
 
 .dongtai-card .dongtai-content .row {
   height: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -161,6 +178,8 @@
   height: 100%;
   border-radius: 30px;
   border: 1px solid #e0e0e0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -194,11 +213,15 @@
 .dongtai-card .dongtai-content .comment-row {
   margin-top: 5px;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-bottom: 10px;
 }
 
 .dongtai-card .dongtai-content .comment-row .dis {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -213,6 +236,8 @@
 }
 
 .dongtai-card .dongtai-content .comment-row .dis .comment-content .row3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -254,3 +279,4 @@
 .fontSize {
   font-size: 13px;
 }
+/*# sourceMappingURL=AlumnusIndex.css.map */

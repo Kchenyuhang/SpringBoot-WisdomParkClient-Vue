@@ -150,4 +150,10 @@ input::-webkit-input-placeholder {
 .company-card .company-bottom .company-type p {
   font-size: 12px;
 }
+
+.top-btn {
+  position: fixed;
+  bottom: 100px;
+  right: 15px;
+}
 /*# sourceMappingURL=Company.css.map */

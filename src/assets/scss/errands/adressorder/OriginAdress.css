@@ -91,4 +91,27 @@
   border-radius: 20px;
   border: none;
 }
+
+.alsrtInfo {
+  position: absolute;
+  top: 210px;
+  left: 140px;
+}
+
+.profPrompt_test p {
+  color: red;
+  font-size: 12px;
+}
+
+.alsrtInfo1 {
+  position: absolute;
+  top: 210px;
+  left: 10px;
+}
+
+.alsrtInfo2 {
+  position: absolute;
+  top: 150px;
+  left: 10px;
+}
 /*# sourceMappingURL=OriginAdress.css.map */
