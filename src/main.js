@@ -34,6 +34,7 @@ Amap.initAMapApiLoader({
 
 //缩略图
 import VuePreview from "vue-preview";
+// import { configs } from "eslint-plugin-prettier";
 Vue.use(VuePreview);
 // 引入Vant
 // import Vant from "vant";
@@ -46,7 +47,30 @@ Vue.use(VuePreview);
 // Vue.prototype.$video = Video
 
 Vue.config.productionTip = false;
+// 全局请求管理
+axios.interceptors.request.use(config => {
+  // 全局axios请求自带请求头
+  config.headers = {
+    Token: localStorage.getItem("token")
+  };
+  // if (["/user/login"].indexOf(config.url) === -1) {
+  //   const token = localStorage.getItem("Token");
+  //   if (token) {
+  //     config.headers.Authorization = token;
+  //   }
+  //   config.baseURL = "http://120.26.177.51:80";
+  // }
+  return config;
+});
 
+// 全局请求管理
+axios.interceptors.request.use(config => {
+  // 全局axios请求自带请求头
+  config.headers = {
+    Token: localStorage.getItem("token")
+  };
+  return config;
+});
 new Vue({
   router,
   store,

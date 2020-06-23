@@ -35,7 +35,7 @@
         <div class="r-left" v-for="(item, index) in list" :key="index">
           <div class="r-left-con" @click="gotoDetail(item.pkFleaGoodsId)">
             <img :src="item.goodsImgUrl.split('--**--')[0]" />
-            <span>{{ item.goodsName }}</span>
+            <span>{{ item.goodsName.slice(0, 10) }}</span>
             <p>$ {{ item.goodsPrice }}</p>
             <div class="r-right">
               <div class="img-box">
@@ -58,6 +58,7 @@ export default {
     return {
       path: "/search",
       keyword: "",
+      lastPath: JSON.parse(localStorage.getItem("path")),
       start: 0,
       end: 10,
       list: [],
@@ -94,14 +95,14 @@ export default {
       if (this.keyword == "") this.show = true;
     },
     gotoDetail(id) {
-      localStorage.setItem("path", JSON.stringify(this.path));
+      this.lastPath[this.lastPath.length] = "/search";
+      localStorage.setItem("path", JSON.stringify(this.lastPath));
+      this.lastPath[this.lastPath.length] = "/commoditydetails/" + id;
+      localStorage.setItem("path", JSON.stringify(this.lastPath));
       this.$router.push({
         path: `/commoditydetails/${id}`
       });
-      this.page[this.count] = id;
-      this.count++;
-      localStorage.setItem("page", JSON.stringify(this.page));
-      localStorage.setItem("count", JSON.stringify(this.count));
+      
       // this.page[this.count] = id;
       // this.count++;
       // this.getList();

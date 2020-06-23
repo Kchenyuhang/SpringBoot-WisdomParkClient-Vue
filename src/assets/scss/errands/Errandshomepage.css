@@ -6,7 +6,7 @@
 }
 
 .bg img {
-  width: 99.9%;
+  width: 99.5%;
   height: 250px;
 }
 
@@ -57,7 +57,7 @@
   margin-top: -63px;
   width: 89%;
   height: 1px;
-  background-color: #f4f4f4;
+  border: 0.5px solid #f4f4f4;
 }
 
 .inputDiv span {
@@ -66,6 +66,7 @@
 }
 
 .menu {
+  background-color: #ffffff;
   width: 97%;
   position: absolute;
   left: 2px;
@@ -101,20 +102,20 @@
 
 .bottom {
   background-color: #fff;
-  width: 94%;
-  height: 180px;
+  min-height: 180px;
   display: inline-block;
   position: absolute;
   top: 500px;
-  left: -5px;
+  left: 1px;
 }
 
 .bottom .card {
+  background-color: #ffffff;
   border: 1px solid #f4f4f4;
-  margin: 1px 1px 1px 1px;
+  margin: 1px 1px 1px 13px;
   margin-bottom: 15px;
   border-radius: 10px;
-  width: 100%;
+  width: 93%;
   height: 120px;
   display: -webkit-box;
   display: -ms-flexbox;

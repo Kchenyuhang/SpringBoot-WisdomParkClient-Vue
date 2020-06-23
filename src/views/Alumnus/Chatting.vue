@@ -10,22 +10,22 @@
     </div>
     <div class="body">
       <div v-for="(item, index) in dataList" :key="index">
-        <div class="cc-df-between" v-if="item.userId==user.pkUserAccountId">
+        <div class="cc-df-between" v-if="item.fromId==user.pkUserAccountId">
           <div></div>
           <div class="msgArea cc-df-right">
-            <div class="msg">{{item.msg}}</div>
+            <div class="msg">{{item.content}}</div>
             <div class="avatar cc-right">
               <img :src="user.avatar" />
             </div>
           </div>
         </div>
-        <div class="cc-df-between" v-if="item.userId==friend.pkUserAccountId">
+        <div class="cc-df-between" v-if="item.fromId==friend.pkUserAccountId">
           <div class="msgArea cc-df-left">
             <div class="avatar">
               <img :src="friend.avatar" />
             </div>
             <div class="msg">
-              <p>{{item.msg}}</p>
+              <p>{{item.content}}</p>
             </div>
           </div>
           <div></div>
@@ -59,7 +59,8 @@ export default {
       user: this.$store.state.user,
       friend: {},
       token: this.$store.state.token,
-      friendId: this.$route.params.UserId
+      friendId: this.$route.params.UserId,
+      id: ""
     };
   },
   created() {
@@ -76,12 +77,28 @@ export default {
   },
   methods: {
     async selectChat() {
+      this.id = this.friendId + this.user.pkUserAccountId;
       this.data = {
-        id: "12"
+        id: this.id
       };
-      this.url = this.GLOBAL.baseUrl + "/dynamic/message/all";
+      this.url = "http://120.26.185.155:8079/dynamic/message/all";
       this.result = await API.init(this.url, this.data, "post");
-      console.log(this.result);
+      this.dataList = this.result.data;
+      this.id = this.user.pkUserAccountId + this.friendId;
+      this.data = {
+        id: this.id
+      };
+      this.url = "http://120.26.185.155:8079/dynamic/message/all";
+      this.result = await API.init(this.url, this.data, "post");
+      this.dataList = this.dataList.concat(this.result.data);
+      console.log(this.dataList);
+      // this.dataList.sort(function(a, b) {
+      //   return (
+      //     Date.parse(b.date.replace(/-/g, "/")) -
+      //     Date.parse(a.date.replace(/-/g, "/"))
+      //   );
+      // });
+      //console.log(this.dataList);
     },
     async selectUser() {
       this.data = {

@@ -19,17 +19,9 @@
     <!-- 图片上传区域 -->
     <div class="upload">
       <div class="hengzhe">
-        <div
-          v-for="(item, index) in img"
-          :key="index"
-        >
-          <img
-            :src="item"
-            alt=""
-            class="suolue"
-          />
+        <div v-for="(item, index) in img" :key="index">
+          <img :src="item" alt="" class="suolue" />
         </div>
-
       </div>
       <img
         class="up-pic"
@@ -55,11 +47,7 @@
           placeholder="请输入价格"
           v-model="data.goodsPrice"
         />
-        <input
-          type="text"
-          placeholder="请输入类型"
-          v-model="data.goodsMark"
-        />
+        <input type="text" placeholder="请输入类型" v-model="data.goodsMark" />
 
         <select
           class="option"
@@ -75,7 +63,8 @@
             selected="selected"
             v-for="(item, index) in type"
             :key="index"
-          >{{ item.typeName }}</option>
+            >{{ item.typeName }}</option
+          >
         </select>
         <!-- <p>{{this.imgstr}}</p> -->
         <button @click="getSell">确认发布</button>
@@ -209,9 +198,15 @@ button {
   height: 40px;
   width: 100%;
   margin-top: 80px;
-  // background-color: red;
+  background-color: rgb(0, 133, 215);
   border: none;
+  color: white;
   border-radius: 5px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+button:hover {
+  background-color: rgb(17, 112, 188);
 }
 .option {
   width: auto;

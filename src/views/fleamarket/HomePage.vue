@@ -14,25 +14,19 @@
           @click="gotoSearch(id)"
         />
         <router-link to="/list">
-          <img
-            src="../../assets/images/更多.png"
-            alt=""
-            class="imgs"
-          />
+          <img src="../../assets/images/更多.png" alt="" class="imgs" />
         </router-link>
       </div>
       <Carousel :slideList="slideList"></Carousel>
+      <!-- 首页四个分类 -->
       <div class="cc-df">
         <div
           class="cc-col-center cc-coll-3 address2"
           v-for="(item, index) in slideList"
           :key="index"
         >
-          <div @click="goListDetail(item.pkFleaTypeId)">
-            <img
-              :src="item.img"
-              class="icon"
-            />
+          <div @click="goListDetail(item.pkFleaTypeId, item.name)">
+            <img :src="item.img" class="icon" />
             <p class="cc-mtop font-size">{{ item.sub }}</p>
           </div>
         </div>
@@ -48,16 +42,13 @@
         <img :src="item.goodsImgUrl.split('--**--')[0]" />
         <div class="left">
           <!-- 商品描述 -->
-          <h3>{{ item.goodsName }}</h3>
+          <h3>{{ item.goodsName.slice(0, 10) }}</h3>
           <!-- 价格 -->
           <span>¥{{ item.goodsPrice }}</span>
         </div>
       </div>
     </div>
-    <div
-      class="release"
-      @scroll="doload()"
-    >
+    <div class="release" @scroll="doload()">
       <div
         class="footer"
         v-for="item in hotList"
@@ -65,17 +56,14 @@
         @click="gotoDetail(item.pkFleaGoodsId)"
       >
         <div class="goods">
-          <img
-            :src="item.userAvatar"
-            alt=""
-          />
+          <img :src="item.userAvatar" alt="" />
           <span>{{ item.username }}</span>
           <h5>{{ item.goodsCreateTime }}</h5>
           <!-- <p>¥ {{ item.goodsPrice }}</p> -->
         </div>
         <div class="pic">
           <img :src="item.goodsImgUrl.split('--**--')[0]" />
-          <p>{{ item.goodsDescription }}</p>
+          <p>{{ item.goodsDescription.slice(0, 40) }}....</p>
         </div>
       </div>
     </div>
@@ -87,7 +75,7 @@ export default {
   name: "HomePage",
   data() {
     return {
-      path: "/homePage",
+      path: ["/homePage"],
       reward: [],
       list: [],
       page: [],
@@ -107,8 +95,9 @@ export default {
           pkFleaTypeId: "7",
           sub: "文具",
           description: "one",
-          name: "宠物",
+          name: "文具",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/1.jpg",
+          // 上面四个图标
           img:
             "http://ww1.sinaimg.cn/large/0064QvQTly1gfxa4t8zypj30jg0jg3zb.jpg"
         },
@@ -117,8 +106,9 @@ export default {
           pkFleaTypeId: "13",
           sub: "游戏",
           description: "two",
-          name: "手机数码",
+          name: "游戏",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/2.jpg",
+          // 上面四个图标
           img:
             "http://ww1.sinaimg.cn/large/0064QvQTly1gfxa54zfyoj30jg0jg0tn.jpg"
         },
@@ -127,8 +117,9 @@ export default {
           pkFleaTypeId: "3",
           sub: "衣服",
           description: "three",
-          name: "游戏交易",
+          name: "衣服",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg",
+          // 上面四个图标
           img:
             "http://ww1.sinaimg.cn/large/0064QvQTly1gfxa3xyg8mj30jg0jgq3l.jpg"
         },
@@ -137,29 +128,28 @@ export default {
           pkFleaTypeId: "4",
           sub: "数码",
           description: "three",
-          name: "女装",
+          name: "数码",
           image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg",
+          // 上面四个图标
           img:
             "http://ww1.sinaimg.cn/large/0064QvQTly1gfxa4f62waj30jg0jg751.jpg"
         }
       ],
       id: "1",
-      num: 5,
-      repath: "/homePage"
+      num: 5
     };
   },
   components: {
     Carousel: require("../../components/Carousel.vue").default
   },
   created() {
+    this.reInto();
     this.getTopReward();
     this.getGodList();
     this.getList();
-    this.reInto();
     this.getHotList();
     localStorage.setItem("path", JSON.stringify(this.path));
-    localStorage.setItem("repath", JSON.stringify(this.repath));
-    localStorage.setItem("mypath", JSON.stringify(this.path));
+    localStorage.setItem("count", JSON.stringify(0));
     let that = this;
     window.onscroll = function() {
       // scrollTop 滚动条滚动时，距离顶部的距离
@@ -177,7 +167,6 @@ export default {
         that.loadmore();
       }
     };
-    // this.getAllType();
   },
   mounted() {},
   methods: {
@@ -208,10 +197,8 @@ export default {
       this.getHotList();
     },
     gotoDetail(id) {
-      this.page[this.count++] = id;
-      localStorage.setItem("page", JSON.stringify(this.page));
-      localStorage.setItem("count", JSON.stringify(this.count));
-
+      this.path[this.path.length] = "/commoditydetails/" + id;
+      localStorage.setItem("path", JSON.stringify(this.path));
       this.$router.push({
         path: `/commoditydetails/${id}`
       });
@@ -228,8 +215,9 @@ export default {
       };
       this.user = (await API.init(this.url, this.data, "post")).data;
       // console.log(this.user);
-
-      localStorage.setItem("FleaUser", JSON.stringify(this.user));
+      if (this.user == "用户数据添加成功") {
+        this.reInto();
+      } else localStorage.setItem("FleaUser", JSON.stringify(this.user));
     },
     async getTopReward() {
       this.url = this.GLOBAL.baseUrl + "/flea/reward/top";
@@ -252,10 +240,13 @@ export default {
       this.typeList = subTypes;
       this.isShow = index;
     },
-    goListDetail(id) {
+    goListDetail(id, name) {
+      this.path[this.path.length] = "/listDetail/" + id;
+      localStorage.setItem("path", JSON.stringify(this.path));
       this.$router.push({
         path: `/listDetail/${id}`
       });
+      localStorage.setItem("ListName", JSON.stringify(name));
     },
     handleScroll() {
       //scrollTop为滚动条在Y轴上的滚动距离。
@@ -278,17 +269,4 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/scss/fleamarket/HomePage.scss";
-.icon {
-  height: 55px;
-  width: 55px;
-  margin-top: 20px;
-}
-.cc-df {
-  margin-top: 10px;
-  background-color: white;
-}
-.cc-df p {
-  margin-left: 12px;
-  margin-top: -3px;
-}
 </style>

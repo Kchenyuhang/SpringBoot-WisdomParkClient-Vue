@@ -17,7 +17,7 @@
         >  -->
           <div class="r-left-con" @click="gotoComDetail(item.pkFleaGoodsId)">
             <img :src="item.goodsImgUrl.split('--**--')[0]" />
-            <span>{{ item.goodsDescription }}</span>
+            <span>{{ item.goodsDescription.slice(0,15) }}</span>
             <p>$ {{ item.goodsPrice }}</p>
             <div class="r-right">
               <div class="img-box">
@@ -45,7 +45,7 @@ export default {
       },
       list: [],
       listName: JSON.parse(localStorage.getItem("ListName")),
-      repath: JSON.parse(localStorage.getItem("repath")),
+      repath: JSON.parse(localStorage.getItem("path")),
       page: [],
       count: 0,
       path: "/listDetail/"
@@ -59,23 +59,24 @@ export default {
   mounted() {},
   methods: {
     goBack() {
-      this.$router.push(this.repath);
+      this.repath.splice(this.repath.length - 1, 1);
+      this.$router.push(this.repath[this.repath.length - 1]);
+      localStorage.setItem("path", JSON.stringify(this.repath));
     },
     async getList() {
       let id = this.$route.params.id;
       this.data.typeId = id;
       // console.log(this.data.typeId);
-      let path = this.path + id;
       this.url = this.GLOBAL.baseUrl + "/flea/goods/type";
       this.list = (await API.init(this.url, this.data, "post")).data;
       //   this.likeList = (await API.init(this.url, this.data, "post")).data;
-      localStorage.setItem("path", JSON.stringify(path));
       // console.log(this.list);
     },
     gotoComDetail(id) {
-      this.page[this.count++] = id;
-      localStorage.setItem("page", JSON.stringify(this.page));
-      localStorage.setItem("count", JSON.stringify(this.count));
+      this.repath[this.repath.length] = "/listDetail/" + this.$route.params.id;
+      localStorage.setItem("path", JSON.stringify(this.repath));
+      this.repath[this.repath.length] = "/commoditydetails/" + id;
+      localStorage.setItem("path", JSON.stringify(this.repath));
       this.$router.push({
         path: `/commoditydetails/${id}`
       });

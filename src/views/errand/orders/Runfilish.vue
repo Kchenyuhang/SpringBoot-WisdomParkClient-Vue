@@ -9,8 +9,6 @@
       <!-- 顶部发件 -->
       <div class="top">
         <h4>发件</h4>
-        <!-- <button class="goodbtn" @click="filish(item.id)">完成</button> -->
-        <!-- <p v-show="item.status == 4">被抢单</p> -->
       </div>
       <!-- 中间发件地 -->
       <div class="origin">
@@ -34,10 +32,15 @@
       <!-- 下面时间 -->
       <div class="bottom">
         <p class="time">{{ item.finshTime }}</p>
-        <!-- <p class="cancle" v-show="item.status == 0" @click="canle(item.id)">
-          取消
-        </p> -->
       </div>
+    </div>
+    <!-- 当没有订单的时候会显示无订单消息 -->
+    <div class="messages" v-if="order">
+      <img
+        src="https://soft1851.oss-cn-beijing.aliyuncs.com/markdown/消息.png"
+        alt=""
+      />
+      <p>暂时没有已完成订单</p>
     </div>
   </div>
 </template>
@@ -48,6 +51,7 @@ export default {
   name: "Runfilish",
   data() {
     return {
+      order: false,
       result: [],
       userId: this.$store.state.user.jobNumber,
     };
@@ -62,14 +66,21 @@ export default {
         founderId: this.userId,
         num: 0,
         size: 100,
-        status: 3,
+        status: 3
       };
       this.url = this.GLOBAL1.baseUrl + "/transaction/errends/order";
       this.result = (await API.init(this.url, this.data, "post")).data.order;
       // console.log(this.result);
-    },
-  },
+      if (this.result.length === 0) {
+        this.order = true;
+      } else {
+        this.order = false;
+      }
+    }
+  }
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+@import "../../../assets/scss/errands/orders/Runfilish.scss";
+</style>

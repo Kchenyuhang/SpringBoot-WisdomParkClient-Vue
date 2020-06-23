@@ -98,7 +98,7 @@
 }
 .r-right h5 {
   margin-top: 30px;
-  margin-left: 30px;
+  margin-left: -10px;
   font-weight: bold;
   font-size: 15px;
 }
@@ -106,5 +106,21 @@
   font-size: 13px;
   color: #b9b7c9;
   margin-top: 15px;
-  margin-left: 30px;
+  margin-left: -10px;
+}
+button {
+  height: 40px;
+  width: 60%;
+  margin-left: 70px;
+  margin-top: 130px;
+  border: none;
+  border-radius: 10px;
+  background-color: red;
+}
+button p {
+  font-size: 16px;
+  color: white;
+}
+.white {
+  height: 10px;
 }

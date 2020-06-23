@@ -13,6 +13,7 @@
     "core-js": "^3.6.4",
     "jquery": "^3.5.1",
     "less-loader": "^6.1.0",
+    "module": "^1.2.5",
     "pinyin": "^2.9.1",
     "sockjs-client": "^1.4.0",
     "stompjs": "^2.3.3",

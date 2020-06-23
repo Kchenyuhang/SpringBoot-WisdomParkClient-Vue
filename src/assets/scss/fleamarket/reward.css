@@ -23,7 +23,60 @@
 .header p {
   font-size: 16px;
   font-weight: 550;
-  margin-left: 34%;
-  margin-top: 3%;
+  margin-left: 44%;
+  margin-top: 5%;
+}
+
+.container {
+  padding: 0;
+  height: auto;
+}
+
+.list {
+  height: auto;
+  width: 98%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: 100px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.left {
+  height: auto;
+  width: 46%;
+  margin-left: 10px;
+  margin-top: 40px;
+  background-color: white;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.left img {
+  height: 120px;
+  border-radius: 10px;
+}
+
+.right img {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  margin-top: 30px;
+  margin-left: 10px;
+}
+
+.right p {
+  float: right;
+  margin-right: 60px;
+  margin-top: 34px;
+}
+
+.recomond {
+  width: 100%;
 }
 /*# sourceMappingURL=reward.css.map */

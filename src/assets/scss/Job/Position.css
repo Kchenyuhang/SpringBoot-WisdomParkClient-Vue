@@ -173,7 +173,11 @@
 
 .job-card2 {
   width: 100%;
+<<<<<<< HEAD
   height: 130px;
+=======
+  height: 120px;
+>>>>>>> 1880ad312f2b0b44296aaa85fa95b970c58154fb
   margin-bottom: 5px;
   background-color: white;
 }
@@ -204,29 +208,48 @@
   display: flex;
 }
 
+<<<<<<< HEAD
 .job-card2 .job-card-wide2 .type-row .job-type2 {
   height: 20px;
   margin-right: 10px;
   padding: 5px 5px 5px 5px;
+=======
+.job-card2 .job-card-wide2 .type-row .job-type {
+  height: 20px;
+  margin-right: 10px;
+  padding: 3px 3px 3px 3px;
+>>>>>>> 1880ad312f2b0b44296aaa85fa95b970c58154fb
   border-radius: 5px;
   background-color: #ebebeb;
 }
 
+<<<<<<< HEAD
 .job-card2 .job-card-wide2 .type-row .job-type2 p {
+=======
+.job-card2 .job-card-wide2 .type-row .job-type p {
+>>>>>>> 1880ad312f2b0b44296aaa85fa95b970c58154fb
   font-size: 12px;
 }
 
 .job-card2 .job-card-wide2 .job-number2 {
   margin-top: 10px;
+<<<<<<< HEAD
   margin-bottom: 5px;
+=======
+>>>>>>> 1880ad312f2b0b44296aaa85fa95b970c58154fb
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
 .job-card2 .job-card-wide2 .job-number2 p {
+<<<<<<< HEAD
   font-size: 16px;
   color: black;
+=======
+  font-size: 12px;
+  color: #6d6d6d;
+>>>>>>> 1880ad312f2b0b44296aaa85fa95b970c58154fb
   margin-right: 20px;
 }
 
@@ -277,9 +300,12 @@
   bottom: 100px;
   right: 15px;
 }
+<<<<<<< HEAD
 
 .top-btn img {
   width: 40px;
   height: 40px;
 }
+=======
+>>>>>>> 1880ad312f2b0b44296aaa85fa95b970c58154fb
 /*# sourceMappingURL=Position.css.map */
