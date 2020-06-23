@@ -34,6 +34,14 @@
         <p class="time">{{ item.finshTime }}</p>
       </div>
     </div>
+    <!-- 当没有订单的时候会显示无订单消息 -->
+    <div class="messages" v-if="order">
+      <img
+        src="https://soft1851.oss-cn-beijing.aliyuncs.com/markdown/消息.png"
+        alt=""
+      />
+      <p>暂时没有已完成订单</p>
+    </div>
   </div>
 </template>
 
@@ -43,6 +51,7 @@ export default {
   name: "Runfilish",
   data() {
     return {
+      order: false,
       result: [],
       userId: this.$store.state.user.jobNumber,
     };
@@ -62,9 +71,16 @@ export default {
       this.url = this.GLOBAL1.baseUrl + "/transaction/errends/order";
       this.result = (await API.init(this.url, this.data, "post")).data.order;
       // console.log(this.result);
+      if (this.result.length === 0) {
+        this.order = true;
+      } else {
+        this.order = false;
+      }
     }
   }
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+@import "../../../assets/scss/errands/orders/Runfilish.scss";
+</style>

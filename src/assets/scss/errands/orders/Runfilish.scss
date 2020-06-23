@@ -148,3 +148,15 @@ address{
      color: #ffffff;
      border: none;
  }
+.messages{
+    position: absolute;
+    top: 290px;
+    left: 115px;
+    background-color: #ffffff;
+    width: 40%;
+    height: 120px;
+    img{
+        width: 150px;
+        height: 100px;
+    }
+}

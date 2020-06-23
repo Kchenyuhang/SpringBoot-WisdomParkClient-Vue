@@ -1,0 +1,57 @@
+.bg {
+    background-color: #ffffff;
+    height: 100vh;
+    width: 100%;
+    .header {
+        background-color: #ffffff;
+        height: 40px;
+        display: flex;
+        img {
+          height: 20px;
+          width: 20px;
+          margin-top: 10px;
+          margin-left: 5px;
+        }
+        p {
+          font-size: 18px;
+          font-weight: 550;
+          margin-left: 3%;
+          margin-top: 2%;
+        }
+      }
+      .content {
+          border-radius: 5px;
+          margin-top: 10px;
+          margin-left: 7px;
+          width: 96%;
+          height: 55px;
+          border: 1px solid #f4f4f4;
+          display: flex;
+          justify-content: space-around;
+          .leftcard {
+              width: 50%;
+              height: 80%;
+              display: flex;
+              img {
+                height: 50px;
+                width: 50px;
+                border-radius: 50%;
+              }
+              .span1 {
+                  margin: 5px 0 0 30px;
+              }
+          }
+          .rightcard {
+              margin-top: 10px;
+              .announce{
+                color: #a6a6a6;
+              }
+              .success{
+                color: #12a3fd;
+              }
+              .cancle{
+                color: #ff0042;
+              }
+          }
+      }
+    }
