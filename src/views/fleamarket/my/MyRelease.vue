@@ -17,11 +17,11 @@
         @click="gotoDetail(item.goodsId)"
       >
         <div class="left">
-          <img :src="item.goodsImgUrl" />
+          <img :src="item.goodsImgUrl.split('--**--')[0]" />
         </div>
         <div class="right">
           <p class="title">{{ item.goodsName }}</p>
-          <p class="des">{{ item.goodsDescription }}</p>
+          <p class="des">{{ item.goodsDescription.slice(0, 5) }}</p>
           <p class="price">￥{{ item.goodsPrice }}</p>
         </div>
       </div>
@@ -51,7 +51,7 @@ export default {
       this.url = this.GLOBAL.baseUrl + "/flea/users/release";
       this.data = {
         currentPage: 1,
-        pageSize: 3,
+        pageSize: 10,
         pkFleaUserId: this.user.pkFleaUserId
       };
       this.send = (await API.init(this.url, this.data, "post")).data.content;

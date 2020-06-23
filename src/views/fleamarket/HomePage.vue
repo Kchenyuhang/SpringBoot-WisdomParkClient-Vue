@@ -63,7 +63,7 @@
         </div>
         <div class="pic">
           <img :src="item.goodsImgUrl.split('--**--')[0]" />
-          <p>{{ item.goodsDescription }}</p>
+          <p>{{ item.goodsDescription.slice(0, 40) }}....</p>
         </div>
       </div>
     </div>
