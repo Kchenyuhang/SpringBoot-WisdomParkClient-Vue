@@ -1,6 +1,6 @@
 // 引入
 import axios from "axios";
-//  axios.defaults.headers.post['token'] = null;
+// axios.defaults.headers.post['Token'] = this.$store.state.token;
 
 /**
  * get方法，对应get请求

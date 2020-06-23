@@ -142,7 +142,7 @@
         <p class="fontSize">热门资讯</p>
         <div class="cc-col">
           <div class="cc-mtop" v-for="(item, index) in result" :key="index">
-            <div class="cc-df-between">
+            <div class="cc-df">
               <div
                 class="left"
                 v-bind:style="{ backgroundImage: 'url(' + item.cover + ')' }"
