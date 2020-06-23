@@ -89,7 +89,7 @@
         </div>
         <input
           class="numput"
-          type="text"
+          type="number"
           placeholder="收件人手机号"
           v-model="phoneForm.desnumber"
           maxlength="11"

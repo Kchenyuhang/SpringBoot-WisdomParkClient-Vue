@@ -4,7 +4,7 @@ module.exports = {
     port: 8089,
     https: false,
     open: true,
-    hotOnly: true,
+    hotOnly: true
   },
   outputDir: "./dist",
   assetsDir: "./assets/",

@@ -114,9 +114,9 @@ export default {
       console.log(this.result1);
       localStorage.setItem("user", JSON.stringify(this.result1));
       this.$store.commit("setUser", this.result1);
-    },
+    }
   },
-  computed: {},
+  computed: {}
 };
 </script>
 

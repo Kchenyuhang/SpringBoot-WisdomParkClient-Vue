@@ -1,12 +1,10 @@
 <template>
  <div class="bg">
     <div class="header">
-      <router-link to="/errandshomepage">
-        <img
+        <img @click="handClick"
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
           alt=""
         />
-      </router-link>
       <p>接单大厅</p>
     </div>
     <div class="topNav">
@@ -34,6 +32,9 @@ export default {
   created() {},
   components: {},
   methods: {
+    handClick() {
+      this.$router.push("/errandshomepage")
+    },
     receive() {
       this.show = !this.show;
       this.$router.push("/orderreceiving/all");

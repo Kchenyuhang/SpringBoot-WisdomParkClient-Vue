@@ -5,7 +5,6 @@
       <div class="top">
         <h4>发件</h4>
         <button class="goodbtn" @click="receivegoods(item.id)">待取货</button>
-        <!-- <p v-show="item.status == 4">被抢单</p> -->
       </div>
       <!-- 中间发件地 -->
       <div class="origin">
@@ -28,11 +27,16 @@
       <hr class="line" />
       <!-- 下面时间 -->
       <div class="bottom">
-        <p class="time">{{ item.orderCreateTime }}</p>
-        <!-- <p class="cancle" v-show="item.status == 0" @click="canle(item.id)">
-          取消
-        </p> -->
+        <p class="time">{{ item.oderCreateTime }}</p>
       </div>
+    </div>
+    <!-- 当没有订单的时候会显示无订单消息 -->
+    <div class="messages" v-if="order">
+      <img
+        src="https://soft1851.oss-cn-beijing.aliyuncs.com/markdown/消息.png"
+        alt=""
+      />
+      <p>暂时没有已接订单</p>
     </div>
     <!-- 弹出框 -->
     <Dialog v-bind.sync="showBombTips" :tipsContent="tipsContent"></Dialog>
@@ -46,6 +50,7 @@ export default {
   name: "Receivegoods",
   data() {
     return {
+      order: false,
       showBombTips: {
         visible: false
       },
@@ -70,6 +75,11 @@ export default {
       this.url = this.GLOBAL1.baseUrl + "/transaction/errends/order";
       this.result = (await API.init(this.url, this.data, "post")).data.order;
       // console.log(this.result);
+      if (this.result.length === 0) {
+        this.order = true;
+      } else {
+        this.order = false;
+      }
     },
     async receivegoods(index) {
       this.data = {

@@ -47,6 +47,14 @@ Vue.use(VuePreview);
 
 Vue.config.productionTip = false;
 
+// 全局请求管理
+axios.interceptors.request.use(config => {
+  // 全局axios请求自带请求头
+  config.headers = {
+    Token: localStorage.getItem("token")
+  };
+  return config;
+});
 new Vue({
   router,
   store,

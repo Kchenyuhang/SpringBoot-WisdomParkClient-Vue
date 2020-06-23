@@ -9,6 +9,13 @@
         />
       </router-link>
       <p>跑腿</p>
+      <router-link to="/progress">
+        <img
+          class="image"
+          src="https://soft1851.oss-cn-beijing.aliyuncs.com/markdown/lALPDiQ3LlXs7OHMyM0BZA_356_200.png_720x720q90g.jpg"
+          alt
+        />
+      </router-link>
     </div>
     <!-- 中间身份证图片 -->
     <div class="imgcard">
@@ -48,7 +55,7 @@ export default {
   name: "Apply",
   data() {
     return {
-      userId: this.$store.state.user.pkUserAccountId,
+      userId: this.$store.state.user.jobNumber,
       phoneNumber: this.$store.state.user.phoneNumber,
       user: this.$store.state.user,
       result: [],
@@ -102,7 +109,7 @@ export default {
         idCardBack: this.zimg,
         idCardFront: this.fimg,
         remark: "无",
-        requesterId: 2,
+        requesterId: this.userId,
         requesterName: this.userName,
         requesterPhonenumber: this.phoneNumber
       };

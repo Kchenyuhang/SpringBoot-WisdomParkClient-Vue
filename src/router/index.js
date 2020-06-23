@@ -354,6 +354,11 @@ const routes = [
     component: () => import("../views/errand/user/Apply.vue")
   },
   {
+    path: "/progress",
+    name: "Progress",
+    component: () => import("../views/errand/user/Progress.vue")
+  },
+  {
     path: "/orderreceiving",
     name: "Orderreceiving",
     redirect: "/orderreceiving/all",
