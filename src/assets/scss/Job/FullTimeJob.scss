@@ -22,6 +22,168 @@
   .body{
       width: 100%;
       height: 100vh;
+      .row1{
+        width: 90%;
+        margin: auto;
+        .work-name{
+          font-size: 24px;
+          font-weight: 550;
+        }
+        .work-pay{
+          font-size: 24px;
+          color: #11aca8;
+        }
+      }
+      .row2{
+        width: 90%;
+        margin: auto;
+        margin-top: 20px;
+        .place{
+          display: flex;
+          img{
+            width: 25px;
+            height: 25px;
+          }
+          p{
+            margin-left: 20px;
+          }
+        }
+        .time{
+          display: flex;
+          img{
+            width: 25px;
+            height: 25px;
+          }
+          p{
+            margin-left: 20px;
+          }
+        }
+      }
+      .row3{
+        width: 90%;
+        margin: auto;
+        display: flex;
+        .boss-avatar{
+          img{
+            width: 70px;
+            height: 70px;
+            border-radius: 40px;
+          }
+        }
+        .boss-information{
+          margin-left: 20px;
+          margin-top: 15px;
+          .info-row1{
+            display: flex;
+            img{
+              width: 18px;
+              height: 18px;
+              margin-top: 2px;
+            }
+            p{
+              font-size: 18px;
+              margin-left: 15px;
+            }
+          }
+          .info-row2{
+            display: flex;
+            margin-top: 5px;
+            img{
+              width: 20px;
+              height: 20px;
+            }
+            p{
+              font-size: 18px;
+              margin-left: 15px;
+            }
+          }
+        }
+      }
+      .row4{
+        width: 90%;
+        margin: auto;
+        .work-detail{
+          font-size: 24px;
+          font-weight: 550;
+        }
+        .work-type{
+          margin: auto;
+          margin-top: 10px;
+          height: 25px;
+          padding: 5px 10px 5px 10px;
+          background-color: #edecec;
+          border-radius: 15px;
+          p{
+            font-size: 14px;
+            color: #808080;
+          }
+        }
+      }
+      .row5{
+        width: 90%;
+        margin: auto;
+        margin-top: 10px;
+      }
+      .row6{
+        width: 90%;
+        margin: auto;
+        display: flex;
+        .company-avatar{
+          img{
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+          }
+        }
+        .company-detail{
+          margin-top: 10px;
+          .company-detail-row1{
+            p{
+              font-size: 18px;
+              font-weight: 550;
+            }
+          }
+          .company-detail-row2{
+            margin-top: 10px;
+            p{
+              font-size: 14px;
+            }
+          }
+
+        }
+        
+      }
+      .tips{
+        width: 90%;
+        margin: auto;
+        .tips-title{
+          display: flex;
+          img{
+            width: 30px;
+            height: 30px;
+          }
+          p{
+            margin-left: 10px;
+            margin-top: 3px;
+            color: #e92626;
+            font-weight: 550;
+          }
+        }
+        .tips-content{
+          margin-top: 10px;
+          p{
+            font-family: "黑体";
+          }
+        }
+      }
+  }
+  .line{
+    width: 90%;
+    border: none;
+    height: 2px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: #e4e4e4;
   }
 .bottom{
     width: 100%;

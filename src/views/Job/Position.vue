@@ -26,13 +26,13 @@
     >
       <div
         class="part-time-job cc-df-center"
-        @click="isTrue=true"
+        @click="clear(1)"
       >
         <p :class="{'fontBlack':isTrue}">兼职</p>
       </div>
       <div
         class="full-time-job cc-df-center"
-        @click="isTrue=false"
+        @click="clear(2)"
       >
         <p :class="{'fontBlack':!isTrue}">校招</p>
       </div>
@@ -53,20 +53,6 @@
             ></Select>
           </div>
         </div>
-
-        <div class="cc-df">
-
-          <div
-            class="choose-all"
-            @click="into(2)"
-          >
-            <img
-              src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/position/gengduo.png"
-              alt=""
-            >
-          </div>
-        </div>
-
       </div>
       <hr class="line1" />
     </div>
@@ -105,7 +91,7 @@
     </div>
     <div
       class="cc-df-center cc-donghua bottom"
-      v-if="isBottom"
+      v-if="isBottom&&isTrue"
     >
       <p>--------已经到底了---------</p>
     </div>
@@ -116,7 +102,17 @@
     >
       <hr class="line" />
       <div class="choose-between cc-df-between">
-        <div></div>
+         <div class="cc-df">
+          <div
+            class="choose-all"
+            @click="into(2)"
+          >
+            <img
+              src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/position/gengduo.png"
+              alt=""
+            >
+          </div>
+        </div>
         <div class="choose-title">
           <p>排序：</p>
           <Select
@@ -127,45 +123,58 @@
       </div>
       <hr class="line1" />
     </div>
-    <div v-for="(item,index) in jobs" :key="index">
-      <div
-      v-for="(item1,index1) in jobs[index]"
-      :key="index1"
-      v-show="!isTrue"
+    <div
+      v-for="(item5,index5) in jobs"
+      :key="index5"
     >
-      <div class="job-card2">
-        <div class="job-card-wide2">
-          <div class="job-title2 cc-df-between">
-            <p class="job-name2">{{item1.name}}</p>
-            <p class="salary2">￥{{item1.min}}K~{{item1.max}}K</p>
-          </div>
-          <div class="type-row">
-          <div v-for="item in 3" :key="item.id">
-             <div class="job-type cc-df-center">
-                 <p>职位类型</p>
+      <div
+        v-for="(item1,index1) in jobs[index5]"
+        :key="index1"
+        v-show="!isTrue"
+      >
+        <div
+          class="job-card2"
+          @click="intoFull(item1.pkJobId)"
+        >
+          <div class="job-card-wide2">
+            <div class="job-title2 cc-df-between">
+              <p class="job-name2">{{item1.name}}</p>
+              <p class="salary2">￥{{item1.min}}K~{{item1.max}}K</p>
             </div>
-          </div>
-          </div>
-         
-          <div class="job-number2">
-            <p>公司名字</p>
-            <p>99人</p>
-          </div>
-          <div class="job-place2 cc-df-between">
-            <p class="boss">{{item1.boss}}</p>
-            <p class="place">地址</p>
+            <div class="type-row">
+              <div class="job-type2 cc-df-center">
+                <p>{{item1.diploma}}</p>
+              </div>
+              <div class="job-type2 cc-df-center">
+                <p>{{item1.experience}}</p>
+              </div>
+              <div class="job-type2 cc-df-center">
+                <p>{{item1.jobType.name}}</p>
+              </div>
+            </div>
+            <div class="job-number2">
+              <p>{{item1.company.name}}</p>
+            </div>
+            <div class="job-place2 cc-df-between">
+              <p class="boss">{{item1.boss}}</p>
+              <p class="place">{{item1.workplace}}</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <div
+      class="cc-df-center cc-donghua bottom"
+      v-if="isBottom&&!isTrue"
+    >
+      <p>--------已经到底了---------</p>
     </div>
-    
     <div
       class="top-btn cc-donghua"
       @click="top()"
       v-if="isTop"
     >
-      <p>置顶</p>
+      <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/position/top.png" alt="">
     </div>
   </div>
 </template>
@@ -232,8 +241,24 @@ export default {
   },
 
   methods: {
-    changeisTrue() {
-      alert(2);
+    clear(index) {
+      if (index == 1) {
+        this.isTrue = true;
+      }
+      if (index == 2) {
+        this.isTrue = false;
+      }
+      this.isBottom = false;
+      this.page = 1;
+      this.isTop = false;
+      this.isBackground = false;
+    },
+    intoFull(index) {
+      console.log(index);
+      this.$router.push({
+        name: "FullTimeJob",
+        params: { Id: index , Type: 1,Name: null}
+      });
     },
     intoDetail(index) {
       console.log(index);
@@ -285,6 +310,7 @@ export default {
       if (scrollTop + screenHeight >= documentTop - 1) {
         this.page++;
         this.selectPartJob();
+        this.selectJob();
         //干你想干的事儿
         /* console.log(screenTop)
 				console.log(documentTop)
