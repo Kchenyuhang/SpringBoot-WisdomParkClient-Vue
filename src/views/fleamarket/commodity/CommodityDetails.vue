@@ -151,6 +151,7 @@ export default {
         typeId: 0
       },
       count: JSON.parse(localStorage.getItem("count")),
+      page: 0,
       user: JSON.parse(localStorage.getItem("FleaUser")),
       like: true
     };
@@ -239,6 +240,8 @@ export default {
       this.url = this.GLOBAL.baseUrl + "/flea/goods/id";
       this.list = (await API.init(this.url, this.data, "post")).data;
       console.log(this.list[0].goodsImgUrl.split("--**--"));
+      this.page = id;
+      localStorage.setItem("page", JSON.stringify(this.page));
       this.getLikeList(this.list[0].pkFleaTypeId, id);
     },
     gotoDetail(id) {

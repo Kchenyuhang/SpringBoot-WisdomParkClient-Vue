@@ -1,64 +1,23 @@
 <template>
-  <div>
-    <div class="header">
-      <div class="header-title">
-        <router-link to="/layout">
-          <img
-            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/position/zuojiantou.png"
-            alt
-          />
-        </router-link>
-        <p>推荐好友</p>
-      </div>
-    </div>
-    <div class="body">
-      <div class="row1">
-        <p>90%</p>
-      </div>
-      <div class="row2">
-        <p>互动亲密度</p>
-      </div>
-      <div class="row3">
-        <div class="chongdie">
-          <div class="up cc-col-center">
-            <p>Ta在刚刚也评论了你的动态</p>
-            <p>我和原来是渐渐相离。。</p>
-          </div>
-          <div class="down">
-          </div>
-        </div>
-      </div>
-      <div class="row4">
-        <div class="chongdie">
-          <div class="up">
-            <p>聊一聊，会有惊喜发现！</p>
-          </div>
-          <div class="down">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="overall">
-      <div class="circle-box">
+  <div class="overall">
+    <div class="circle-box">
+      <div
+        class="circle"
+        :style="`width:${circle_w}px;height:${circle_h}px`"
+      >
         <div
-          class="circle"
-          :style="`width:${circle_w}px;height:${circle_h}px`"
+          class="origin"
+          :style="`width:${box_w}px;height:${box_h}px;transform: rotate(${stard}deg);`"
         >
           <div
-            class="origin"
-            :style="`width:${box_w}px;height:${box_h}px;transform: rotate(${stard}deg);`"
+            :style="`width:${box_w}px;height:${box_h}px;transform: rotate(${-stard}deg);`"
+            class="img-box"
+            v-for="(i,index) in boxNum"
+            :key="index"
+            @click="Turn(index)"
           >
-            <div
-              :style="`width:${box_w}px;height:${box_h}px;transform: rotate(${-stard}deg);`"
-              class="img-box"
-              v-for="(i,index) in boxNum"
-              :key="index"
-              @click="Turn(index)"
-            >
-              <div class="box">
-                <div class="content">{{index+1}}</div>
-              </div>
+            <div class="box">
+              <div class="content">{{index+1}}</div>
             </div>
           </div>
         </div>
@@ -69,7 +28,6 @@
 
 <script>
 export default {
-  name: "Tuijian",
   data() {
     return {
       circle_w: window.innerHeight, //圆盘的宽
@@ -83,7 +41,6 @@ export default {
       activeIndex: 0 //默认下标
     };
   },
-  components: {},
   created() {
     this.stard_s = this.stard;
   },
@@ -116,13 +73,11 @@ export default {
         }
       }
     }
-  },
-  computed: {}
+  }
 };
 </script>
 
-<style scoped lang="scss">
-@import "../../assets/scss/alumnus/Tuijian.scss";
+<style lang="scss" scoped>
 .overall {
   width: 100%;
   height: 100%;

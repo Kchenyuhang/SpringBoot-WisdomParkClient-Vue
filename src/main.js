@@ -38,7 +38,7 @@ import VuePreview from "vue-preview";
 Vue.use(VuePreview);
 // 引入Vant
 // import Vant from "vant";
-// import "vant/lib/index.css";
+// import "vant/lib/index.css";uhfyg
 // Vue.use(Vant);
 
 // import Video from 'video.js'
