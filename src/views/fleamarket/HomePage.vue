@@ -26,15 +26,15 @@
       <div class="cc-df">
         <div
           class="cc-col-center cc-coll-3 address2"
-          v-for="(item, index) in slideList"
+          v-for="(item, index) in fourList"
           :key="index"
         >
-          <div @click="goListDetail(item.pkFleaTypeId, item.name)">
+          <div @click="goListDetail(item.pkFleaTypeId, item.typeName)">
             <img
-              :src="item.img"
+              :src="item.typeCoverUrl"
               class="icon"
             />
-            <p class="cc-mtop font-size">{{ item.sub }}</p>
+            <p class="cc-mtop font-size">{{ item.typeName }}</p>
           </div>
         </div>
       </div>
@@ -152,6 +152,7 @@ export default {
             "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2kf96qvcj307205i0sn.jpg"
         }
       ],
+      fourList: [],
       id: "1",
       num: 5
     };
@@ -161,6 +162,7 @@ export default {
   },
   created() {
     this.reInto();
+    this.getForList();
     this.getTopReward();
     this.getGodList();
     this.getList();
@@ -201,6 +203,12 @@ export default {
         this.slideList[i].goodsId = this.list[i].pkFleaGoodsId;
       }
       console.log(this.slideList);
+    },
+    async getForList() {
+      this.url = this.GLOBAL.baseUrl + "/flea/type/top4";
+
+      this.fourList = (await API.init(this.url, null, "post")).data.type;
+      console.log(this.fourList);
     },
     async getHotList() {
       this.url = this.GLOBAL.baseUrl + "/flea/goods/all";

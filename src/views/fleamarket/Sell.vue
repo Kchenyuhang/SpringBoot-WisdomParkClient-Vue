@@ -19,8 +19,15 @@
     <!-- 图片上传区域 -->
     <div class="upload">
       <div class="hengzhe">
-        <div v-for="(item, index) in img" :key="index">
-          <img :src="item" alt="" class="suolue" />
+        <div
+          v-for="(item, index) in img"
+          :key="index"
+        >
+          <img
+            :src="item"
+            alt=""
+            class="suolue"
+          />
         </div>
       </div>
       <img
@@ -47,7 +54,11 @@
           placeholder="请输入价格"
           v-model="data.goodsPrice"
         />
-        <input type="text" placeholder="请输入类型" v-model="data.goodsMark" />
+        <input
+          type="text"
+          placeholder="请输入类型"
+          v-model="data.goodsMark"
+        />
 
         <select
           class="option"
@@ -63,8 +74,7 @@
             selected="selected"
             v-for="(item, index) in type"
             :key="index"
-            >{{ item.typeName }}</option
-          >
+          >{{ item.typeName }}</option>
         </select>
         <!-- <p>{{this.imgstr}}</p> -->
         <!-- <button @click="getSell">确认发布</button> -->
@@ -112,6 +122,7 @@ export default {
     async getAllType() {
       this.url = this.GLOBAL.baseUrl + "/flea/type/all";
       this.type = (await API.init(this.url, this.data, "post")).data.types;
+      console.log(this.type);
     },
     async getSell() {
       this.path[this.path.length] = "/homePage";
@@ -138,7 +149,7 @@ export default {
         title: this.data.goodsName,
         imageUrl: this.data.goodsImgUrl
       };
-      console.log(data)
+      console.log(data);
       this.type = (await API.init(this.url, data, "post")).data.types;
       this.$router.push({
         path: `/personal/${this.data.pkFleaUserId}`
