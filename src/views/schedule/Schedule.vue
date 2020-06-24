@@ -1,5 +1,8 @@
 <template>
-  <div id="classSchedule" class="bg">
+  <div
+    id="classSchedule"
+    class="bg"
+  >
     <div class="header">
       <router-link to="/layout">
         <img
@@ -11,15 +14,33 @@
     </div>
     <hr class="line" />
     <div class="container">
-      <p class="shortselect cc-df-center" @click="change(1)">{{ day }}</p>
-      <p class="longselect cc-df-center" @click="change(2)">{{ semester }}</p>
-      <div class="zhezhaoceng" v-if="show1">
-        <div v-for="(item, index) in List" :key="index">
+      <p
+        class="shortselect cc-df-center"
+        @click="change(1)"
+      >{{ day }}</p>
+      <p
+        class="longselect cc-df-center"
+        @click="change(2)"
+      >{{ semester }}</p>
+      <div
+        class="zhezhaoceng"
+        v-if="show1"
+      >
+        <div
+          v-for="(item, index) in List"
+          :key="index"
+        >
           <p @click="getSeme(index)">{{ item.name }}</p>
         </div>
       </div>
-      <div class="zhezhaoceng2" v-if="show2">
-        <div v-for="(item, index) in weeks" :key="index">
+      <div
+        class="zhezhaoceng2"
+        v-if="show2"
+      >
+        <div
+          v-for="(item, index) in weeks"
+          :key="index"
+        >
           <p @click="getDay(index)">{{ item }}</p>
         </div>
       </div>
@@ -47,12 +68,24 @@
     </div>
     <!--课程表-->
     <table class="schedule">
-      <tr class="week-list" style="height:30px">
+      <tr
+        class="week-list"
+        style="height:30px"
+      >
         <td colspan="2"></td>
-        <td v-for="(item, index) in weekends" :key="index">{{ item }}</td>
+        <td
+          v-for="(item, index) in weekends"
+          :key="index"
+        >{{ item }}</td>
       </tr>
-      <tr class="am" style="height:70px">
-        <td rowspan="2" @click="show = true">上午</td>
+      <tr
+        class="am"
+        style="height:70px"
+      >
+        <td
+          rowspan="2"
+          @click="show = true"
+        >上午</td>
 
         <td>1-2</td>
         <td
@@ -78,8 +111,14 @@
           {{ item.subjectName }}
         </td>
       </tr>
-      <tr class="noon" style="height:20px">
-        <td colspan="9" class="blank"></td>
+      <tr
+        class="noon"
+        style="height:20px"
+      >
+        <td
+          colspan="9"
+          class="blank"
+        ></td>
       </tr>
       <tr style="height:70px">
         <td rowspan="2">下午</td>
@@ -96,7 +135,10 @@
           {{ subjects[2][item - 1].subjectName }}
         </td>
       </tr>
-      <tr class="pm" style="height:70px">
+      <tr
+        class="pm"
+        style="height:70px"
+      >
         <td>7-8</td>
         <td
           v-for="item in 7"
@@ -111,7 +153,10 @@
         </td>
       </tr>
       <tr style="height:20px">
-        <td colspan="9" class="blank"></td>
+        <td
+          colspan="9"
+          class="blank"
+        ></td>
       </tr>
       <tr style="height:70px">
         <td>晚上</td>
@@ -129,8 +174,14 @@
       </tr>
     </table>
 
-    <div class="text" v-if="show3"></div>
-    <div class="text" v-if="!show3"></div>
+    <div
+      class="text"
+      v-if="show3"
+    ></div>
+    <div
+      class="text"
+      v-if="!show3"
+    ></div>
   </div>
 </template>
 

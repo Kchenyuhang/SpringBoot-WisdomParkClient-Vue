@@ -23,7 +23,10 @@
             <p>{{ item.description.slice(0, 8) }}...</p>
 
             <div class="right">
-              <img :src="item.fleaUser.avatar" alt="" />
+              <img
+                :src="item.fleaUser.avatar"
+                alt=""
+              />
               <p>{{ item.fleaUser.nickname }}</p>
             </div>
           </div>
@@ -82,6 +85,7 @@ export default {
       for (let i = 0; i < this.reward.length; i++) {
         this.test[i] = this.reward[i].fleaUser;
       }
+      console.log(this.test);
     },
     gotoDetail(id) {
       this.$router.push({

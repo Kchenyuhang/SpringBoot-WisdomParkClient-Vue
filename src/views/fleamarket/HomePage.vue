@@ -22,12 +22,12 @@
       <div class="cc-df">
         <div
           class="cc-col-center cc-coll-3 address2"
-          v-for="(item, index) in slideList"
+          v-for="(item, index) in fourList"
           :key="index"
         >
-          <div @click="goListDetail(item.pkFleaTypeId, item.name)">
-            <img :src="item.img" class="icon" />
-            <p class="cc-mtop font-size">{{ item.sub }}</p>
+          <div @click="goListDetail(item.pkFleaTypeId, item.typeName)">
+            <img :src="item.typeCoverUrl" class="icon" />
+            <p class="cc-mtop font-size">{{ item.typeName }}</p>
           </div>
         </div>
       </div>
@@ -96,8 +96,8 @@ export default {
           sub: "文具",
           description: "one",
           name: "文具",
-          image:
-            "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2mxudid3j30v90ku3zr.jpg",
+          image: "",
+          goodsId: "",
           // 上面四个图标
           img:
             "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2kh8jw89j308v04eq2u.jpg"
@@ -108,8 +108,8 @@ export default {
           sub: "游戏",
           description: "two",
           name: "游戏",
-          image:
-            "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2mzfz317j30dw0990sq.jpg",
+          image: "",
+          goodsId: "",
           // 上面四个图标
           img:
             "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2kmh0sncj308c08ct8n.jpg"
@@ -120,8 +120,8 @@ export default {
           sub: "衣服",
           description: "three",
           name: "衣服",
-          image:
-            "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2n37ch4xj30dw09774i.jpg",
+          image: "",
+          goodsId: "",
           // 上面四个图标
           img:
             "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2kkfw3b9j30ga0f33yu.jpg"
@@ -132,22 +132,24 @@ export default {
           sub: "数码",
           description: "three",
           name: "数码",
-          image:
-            "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2n3ioydyj30v90kuq3a.jpg",
+          image: "",
+          goodsId: "",
           // 上面四个图标
           img:
             "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2kf96qvcj307205i0sn.jpg"
         }
       ],
+      fourList: [],
       id: "1",
       num: 5
     };
   },
   components: {
-    Carousel: require("../../components/Carousel.vue").default
+    Carousel: require("../../components/ShopCarousel.vue").default
   },
   created() {
     this.reInto();
+    this.getForList();
     this.getTopReward();
     this.getGodList();
     this.getList();
@@ -183,7 +185,17 @@ export default {
       this.list = (await API.init(this.url, this.data, "post")).data;
       // this.count = this.list.length - 4;
       // this.list.splice(0, this.count);
-      // console.log(this.list);
+      for (let i = 0; i < 4; i++) {
+        this.slideList[i].image = this.list[i].goodsImgUrl;
+        this.slideList[i].goodsId = this.list[i].pkFleaGoodsId;
+      }
+      console.log(this.slideList);
+    },
+    async getForList() {
+      this.url = this.GLOBAL.baseUrl + "/flea/type/top4";
+
+      this.fourList = (await API.init(this.url, null, "post")).data.type;
+      console.log(this.fourList);
     },
     async getHotList() {
       this.url = this.GLOBAL.baseUrl + "/flea/goods/all";
@@ -226,7 +238,7 @@ export default {
     async getTopReward() {
       this.url = this.GLOBAL.baseUrl + "/flea/reward/top";
       this.reward = (await API.init(this.url, this.data, "post")).data;
-      console.log(this.reward);
+      // console.log(this.reward);
     },
     async getGodList() {
       this.url = this.GLOBAL.baseUrl + "/flea/goods/all";
