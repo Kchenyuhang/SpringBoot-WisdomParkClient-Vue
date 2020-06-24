@@ -136,32 +136,26 @@ input::placeholder {
 .goods img {
   height: 50px;
   width: 50px;
-  margin-left: 10px;
+  // margin-left: 10px;
   margin-top: 10px;
   border-radius: 50%;
 }
-.goods span {
-  float: right;
-  margin-right: 237px;
-  margin-top: 10px;
-}
 .goods p {
-  float: right;
-  margin-top: -30px;
-  margin-right: 30px;
+  // float: right;
+  // display: flex;
+  margin-top: -40px;
+  margin-left: 60px;
+  // margin-left: 60px;
+  // padding-left: 10px;
+  color: black;
 }
-.goods h5 {
-  float: right;
-  margin-right: 160px;
-  margin-top: -30px;
-}
-.pic img {
-  height: 200px;
-  width: 200px;
-  margin-top: 10px;
-  margin-left: 10px;
-  border-radius: 8px;
-}
+// .pic img {
+//   height: 200px;
+//   width: 200px;
+//   margin-top: 10px;
+//   margin-left: 10px;
+//   border-radius: 8px;
+// }
 .pic p {
   margin-left: 10px;
   margin-top: 10px;
@@ -193,3 +187,39 @@ input::placeholder {
   margin-left: 20px;
   margin-top: 20px;
 }
+.grid {
+  width: 1200px;
+  margin: 20px auto;
+  columns: 4;
+  column-gap: 40px;
+}
+.grid .box {
+  // background-color: red;
+  width: 100%;
+  // margin: 0 0 20px;
+  padding: 10px;
+  background: #fff;
+  overflow: hidden;
+  break-inside: avoid;
+}
+.grid .box img {
+  max-width: 100%;
+}
+@media (max-width: 600px) {
+  .grid {
+    columns: 2;
+    width: calc(100% - 40px);
+    box-sizing: border-box;
+    // padding: 20px 20px 20px 0;
+  }
+}
+@media (max-width: 368px) {
+  .grid {
+    columns: 1;
+  }
+}
+// @media (max-width: 480px) {
+//   .grid {
+//     columns: 1;
+//   }
+// }
