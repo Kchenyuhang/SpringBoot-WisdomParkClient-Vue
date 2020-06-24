@@ -11,8 +11,8 @@
   img {
     height: 20px;
     width: 30px;
-    margin-top: 10px;
-    margin-left: 5px;
+    margin-top: 20px;
+    // margin-left: 5px;
   }
 
   p {
@@ -24,7 +24,8 @@
 }
 .hengzhe {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  width: 100%;
   .suolue {
     width: 100px;
     height: 100px;

@@ -98,7 +98,7 @@ export default {
   position: relative;
   top: 15px;
   width: 100%;
-  height: 175px;
+  height: 250px;
   overflow: hidden;
 }
 
