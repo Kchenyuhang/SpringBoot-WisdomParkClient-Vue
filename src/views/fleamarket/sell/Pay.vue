@@ -85,11 +85,11 @@ export default {
       if (this.count <= 0) {
         this.count == 0;
         this.data = {
-          pkFleaGoodsId: this.page[this.count]
+          pkFleaGoodsId: this.page
         };
       } else
         this.data = {
-          pkFleaGoodsId: this.page[--this.count]
+          pkFleaGoodsId: this.page
         };
       this.seller = (await API.init(this.url, this.data, "post")).data;
       // console.log(this.seller);
@@ -99,8 +99,6 @@ export default {
     // },
     backto() {
       this.$router.push("/commoditydetails/" + this.page);
-      let c = [];
-      localStorage.setItem("page", JSON.stringify(c));
     }
   },
   computed: {}

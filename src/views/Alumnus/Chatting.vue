@@ -81,14 +81,14 @@ export default {
       this.data = {
         id: this.id
       };
-      this.url = "http://2p7173d335.zicp.vip:17280/dynamic/message/all";
+      this.url = "http://120.26.185.155:8079/dynamic/message/all";
       this.result = await API.init(this.url, this.data, "post");
       this.dataList = this.result.data;
       this.id = this.user.pkUserAccountId + this.friendId;
       this.data = {
         id: this.id
       };
-      this.url = "http://2p7173d335.zicp.vip:17280/dynamic/message/all";
+      this.url = "http://120.26.185.155:8079/dynamic/message/all";
       this.result = await API.init(this.url, this.data, "post");
       this.dataList = this.dataList.concat(this.result.data);
       console.log(this.dataList);
@@ -139,7 +139,7 @@ export default {
     },
     connection() {
       // 建立连接对象
-      this.socket = new SockJS("http://2p7173d335.zicp.vip:17280/websocket"); //连接服务端提供的通信接口，连接以后才可以订阅广播消息和个人消息
+      this.socket = new SockJS("http://120.26.185.155:8079/websocket"); //连接服务端提供的通信接口，连接以后才可以订阅广播消息和个人消息
       // 获取STOMP子协议的客户端对象
       this.stompClient = Stomp.over(this.socket);
       // 定义客户端的认证信息,按需求配置

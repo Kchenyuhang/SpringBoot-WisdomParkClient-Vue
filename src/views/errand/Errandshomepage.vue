@@ -140,7 +140,7 @@ export default {
       userId: this.$store.state.user.jobNumber,
       homeCity: "",
       showBombTips: {
-        visible: false
+        visible: false,
       },
       tipsContent: "",
       show: true,
@@ -155,14 +155,15 @@ export default {
         {
           title: "闪送全新服务“密送”上线,全程密码箱配送",
           description: "快给你的文件加个锁！",
-          image: "https://soft1851.oss-cn-beijing.aliyuncs.com/markdown/s43.png",
+          image:
+            "https://soft1851.oss-cn-beijing.aliyuncs.com/markdown/s43.png",
         },
         {
           title: "2元代金券直接领,下单更有惊喜抽奖!",
           description: "点击关注闪送公众号,更多精彩内容更多福利",
           image: "https://soft1851.oss-cn-beijing.aliyuncs.com/markdown/s2.png",
-        }
-      ]
+        },
+      ],
     };
   },
   created() {
@@ -219,7 +220,7 @@ export default {
     },
     async orerrand() {
       this.data = {
-        errandsId: this.userId,
+        founderId: this.userId,
         status: 1
       };
       this.url = this.GLOBAL1.baseUrl + "/reviewfrom/isErrends";
@@ -229,21 +230,20 @@ export default {
     },
     // 新用户进来没有申请为跑腿的时候的状态是
     runorders() {
-      if (this.codes == 80002) {
+      if (this.codes === 80002) {
         this.tipsContent = "请先申请为跑腿";
         this.showBombTips.visible = true;
-        this.$router.push("/apply");
       }
-      if (this.codes == 1) {
+      if (this.codes === 1) {
         this.$router.push("/run");
       }
     },
     receiver() {
-      if (this.codes == 80002) {
+      if (this.codes === 80002) {
         this.tipsContent = "请先申请为跑腿";
         this.showBombTips.visible = true;
       }
-      if (this.codes == 1) {
+      if (this.codes === 1) {
         this.$router.push("/orderreceiving");
       }
     },

@@ -29,7 +29,6 @@
             class="suolue"
           />
         </div>
-
       </div>
       <img
         class="up-pic"
@@ -92,6 +91,7 @@ export default {
       type: [],
       id: "",
       user: JSON.parse(localStorage.getItem("FleaUser")),
+      path: JSON.parse(localStorage.getItem("path")),
       data: {
         goodsDescription: "",
         goodsImgUrl:
@@ -122,6 +122,8 @@ export default {
       this.type = (await API.init(this.url, this.data, "post")).data.types;
     },
     async getSell() {
+      this.path[this.path.length] = "/homePage";
+      localStorage.setItem("path", JSON.stringify(this.path));
       this.url = this.GLOBAL.baseUrl + "/flea/goods/increased";
       this.data.goodsImgUrl = this.imgstr;
       console.log(this.data);

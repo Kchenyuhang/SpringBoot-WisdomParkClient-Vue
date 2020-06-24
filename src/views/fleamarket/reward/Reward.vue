@@ -22,9 +22,9 @@
             <img :src="item.imageUrl" alt="" /> <span>{{ item.title }}</span>
             <p>{{ item.description.slice(0, 30) }}...</p>
 
-            <p>¥价格</p>
             <div class="right">
               <img :src="item.fleaUser.avatar" alt="" />
+              <p>{{ item.fleaUser.nickname }}</p>
             </div>
           </div>
         </div>

@@ -66,7 +66,7 @@ export default {
       this.url = this.GLOBAL1.baseUrl + "/errands/find/order";
       this.result = (await API.init(this.url, this.data, "post")).data.order;
       // this.results = this.result.order;
-      // console.log(this.result);
+      console.log(this.result);
     },
     // 点击确认接单需要进行的操作 并且进行弹出框的操作
     async sureoder(index) {
@@ -81,11 +81,10 @@ export default {
       // 再次调用查询所有的方法 页面看看是否已经取消了 我的这个接单
       this.Grab();
     }
-  },
+  }
 };
 </script>
 
 <style scoped lang="scss">
 @import "../../../assets/scss/errands/orders/Receiveall.scss";
 </style>
-

@@ -31,6 +31,14 @@
         <p class="time">{{ item.deliveryTime }}</p>
       </div>
     </div>
+    <!-- 当没有订单的时候会显示无订单消息 -->
+    <div class="messages" v-if="order">
+      <img
+        src="https://soft1851.oss-cn-beijing.aliyuncs.com/markdown/消息.png"
+        alt=""
+      />
+      <p>暂时没有已进行订单</p>
+    </div>
     <!-- 弹出框 -->
     <Dialog v-bind.sync="showBombTips" :tipsContent="tipsContent"></Dialog>
   </div>
@@ -43,6 +51,7 @@ export default {
   name: "RunAll",
   data() {
     return {
+      order: false,
       showBombTips: {
         visible: false
       },
@@ -67,6 +76,11 @@ export default {
       this.url = this.GLOBAL1.baseUrl + "/transaction/errends/order";
       this.result = (await API.init(this.url, this.data, "post")).data.order;
       console.log(this.result);
+      if (this.result.length === 0) {
+        this.order = true;
+      } else {
+        this.order = false;
+      }
     },
     // 点击完成订单需要进行的操作
     async filish(index) {

@@ -63,7 +63,7 @@
         </div>
         <div class="pic">
           <img :src="item.goodsImgUrl.split('--**--')[0]" />
-          <p>{{ item.goodsDescription }}</p>
+          <p>{{ item.goodsDescription.slice(0, 40) }}....</p>
         </div>
       </div>
     </div>
@@ -241,6 +241,8 @@ export default {
       this.isShow = index;
     },
     goListDetail(id, name) {
+      this.path[this.path.length] = "/listDetail/" + id;
+      localStorage.setItem("path", JSON.stringify(this.path));
       this.$router.push({
         path: `/listDetail/${id}`
       });

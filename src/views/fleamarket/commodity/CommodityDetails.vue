@@ -64,7 +64,7 @@
                 @click="gotoDetail(item.pkFleaGoodsId)"
               >
                 <img :src="item.goodsImgUrl.split('--**--')[0]" />
-                <span>{{ item.goodsDescription }}</span>
+                <span>{{ item.goodsDescription.slice(0, 9) }}</span>
                 <p class="price">$ {{ item.goodsPrice }}</p>
                 <div class="r-right">
                   <div class="img-box">
@@ -163,6 +163,7 @@ export default {
         typeId: 0
       },
       count: JSON.parse(localStorage.getItem("count")),
+      page: 0,
       user: JSON.parse(localStorage.getItem("FleaUser")),
       like: true
     };
@@ -250,8 +251,9 @@ export default {
       this.data.pkFleaGoodsId = id;
       this.url = this.GLOBAL.baseUrl + "/flea/goods/id";
       this.list = (await API.init(this.url, this.data, "post")).data;
-      console.log(this.list[0].goodsImgUrl);
-
+      console.log(this.list[0].goodsImgUrl.split("--**--"));
+      this.page = id;
+      localStorage.setItem("page", JSON.stringify(this.page));
       this.getLikeList(this.list[0].pkFleaTypeId, id);
     },
     gotoDetail(id) {
@@ -288,32 +290,9 @@ export default {
       localStorage.setItem("path", JSON.stringify(this.lastPath));
     },
     backTop() {
-      // const that = this;
-      // let timer = setInterval(() => {
-      //   let ispeed = Math.floor(-that.scrollTop / 5);
-      //   document.documentElement.scrollTop = document.body.scrollTop =
-      //     that.scrollTop + ispeed;
-      //   if (that.scrollTop === 0) {
-      //     clearInterval(timer);
-      //   }
-      // }, 16);
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
     }
-    // 为了计算距离顶部的高度，当高度大于60显示回顶部图标，小于60则隐藏
-    // scrollToTop() {
-    //   const that = this;
-    //   let scrollTop =
-    //     window.pageYOffset ||
-    //     document.documentElement.scrollTop ||
-    //     document.body.scrollTop;
-    //   that.scrollTop = scrollTop;
-    //   if (that.scrollTop > 0) {
-    //     that.btnFlag = true;
-    //   } else {
-    //     that.btnFlag = false;
-    //   }
-    // }
   },
   computed: {}
 };
