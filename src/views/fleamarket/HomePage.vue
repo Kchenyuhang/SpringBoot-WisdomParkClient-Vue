@@ -32,6 +32,7 @@
         </div>
       </div>
     </div>
+    <p class="hotShop">热卖商品</p>
     <div class="inform">
       <div
         class="right"
@@ -42,12 +43,13 @@
         <img :src="item.goodsImgUrl.split('--**--')[0]" />
         <div class="left">
           <!-- 商品描述 -->
-          <h3>{{ item.goodsName.slice(0, 10) }}</h3>
+          <h3>{{ item.goodsName.slice(0, 5) }}</h3>
           <!-- 价格 -->
           <span>¥{{ item.goodsPrice }}</span>
         </div>
       </div>
     </div>
+    <p class="hotShop">最新发布</p>
     <div class="release" @scroll="doload()">
       <div
         class="footer"
@@ -180,7 +182,7 @@ export default {
       this.url = this.GLOBAL.baseUrl + "/flea/goods/all";
       this.data = {
         currentPage: 0,
-        pageSize: 6
+        pageSize: 4
       };
       this.list = (await API.init(this.url, this.data, "post")).data;
       // this.count = this.list.length - 4;
