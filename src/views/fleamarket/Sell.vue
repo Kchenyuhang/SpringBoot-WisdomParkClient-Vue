@@ -270,8 +270,13 @@ button {
   height: 40px;
   width: 100px;
   margin: 20px;
-  // background-color: rgb(0, 133, 215);
-  background-image: linear-gradient(to right, #1e88e5, #1170bc);
+  background-color: #47b8e0;
+  // background-image: linear-gradient(
+  //   to top right,
+  //   rgba(30, 136, 229, 0.6),
+  //   #1e88e5,
+  //   #1170bc
+  // );
   border: none;
   color: white;
   border-radius: 5px;
