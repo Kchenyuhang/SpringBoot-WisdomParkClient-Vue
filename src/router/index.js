@@ -96,6 +96,11 @@ const routes = [
     component: () => import("../views/Job/JobScreen.vue")
   },
   {
+    path: "/jobscreendetails/:Name",
+    name: "JobScreenDetails",
+    component: () => import("../views/Job/JobScreenDetails.vue")
+  },
+  {
     path: "/alumnusindex",
     name: "AlumnusIndex",
     component: () => import("../views/Alumnus/AlumnusIndex.vue")
@@ -121,9 +126,9 @@ const routes = [
     component: () => import("../views/Job/CompanyDetails.vue")
   },
   {
-    path: "/fulltimejob",
-    name: "FullTimeJob",
-    component: () => import("../views/Job/FullTimeJob.vue")
+    path: '/fulltimejob/:Id/:Type/:Name',
+    name: 'FullTimeJob',
+    component: () => import('../views/Job/FullTimeJob.vue'),
   },
   {
     path: "/jobsearch",

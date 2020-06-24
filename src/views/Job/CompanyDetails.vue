@@ -71,7 +71,7 @@
             v-for="item in companyJobVos"
             :key="item.id"
           >
-            <div class="card-content">
+            <div class="card-content" @click="intoFull(item.pkJobId)">
               <div class="row1 cc-df-between">
                 <div class="position-name">
                   <p>{{item.name}}</p>
@@ -131,6 +131,13 @@ export default {
     window.removeEventListener("scroll", this.onScroll);
   },
   methods: {
+    intoFull(index) {
+      console.log(index);
+      this.$router.push({
+        name: "FullTimeJob",
+        params: { Id: index , Type: 3,Name: this.$route.params.Id}
+      });
+    },
     handleScroll() {
       let scrollTop = document.documentElement.scrollTop;
       if (scrollTop >= 555 * (this.page - 1) + 189) {

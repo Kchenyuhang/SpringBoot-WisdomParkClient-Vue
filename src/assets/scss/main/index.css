@@ -63,8 +63,6 @@
 }
 
 .lateral-sliding {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   overflow-y: hidden;
   overflow-x: scroll;
@@ -96,6 +94,7 @@
 .right {
   width: 240px;
   height: 80px;
+  margin-left: 15px;
 }
 
 .right .right-top {
@@ -125,8 +124,7 @@
   background-color: white;
   position: absolute;
   top: 320px;
-  -webkit-box-shadow: 0 5px 20px rgba(41, 207, 146, 0.692);
-          box-shadow: 0 5px 20px rgba(41, 207, 146, 0.692);
+  box-shadow: 0 5px 20px rgba(41, 207, 146, 0.692);
 }
 
 .more .more-row {
@@ -144,4 +142,3 @@
   width: 15px;
   height: 15px;
 }
-/*# sourceMappingURL=index.css.map */
