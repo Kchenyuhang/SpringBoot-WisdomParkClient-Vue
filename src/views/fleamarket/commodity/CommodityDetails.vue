@@ -251,7 +251,7 @@ export default {
       this.data.pkFleaGoodsId = id;
       this.url = this.GLOBAL.baseUrl + "/flea/goods/id";
       this.list = (await API.init(this.url, this.data, "post")).data;
-      console.log(this.list[0].goodsImgUrl.split("--**--"));
+      // console.log(this.list[0].goodsImgUrl.split("--**--"));
       this.page = id;
       localStorage.setItem("page", JSON.stringify(this.page));
       this.getLikeList(this.list[0].pkFleaTypeId, id);
