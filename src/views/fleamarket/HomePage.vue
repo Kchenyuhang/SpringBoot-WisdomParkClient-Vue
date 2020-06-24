@@ -14,11 +14,7 @@
           @click="gotoSearch(id)"
         />
         <router-link to="/list">
-          <img
-            src="../../assets/images/更多.png"
-            alt=""
-            class="imgs"
-          />
+          <img src="../../assets/images/更多.png" alt="" class="imgs" />
         </router-link>
       </div>
       <Carousel :slideList="slideList"></Carousel>
@@ -30,10 +26,7 @@
           :key="index"
         >
           <div @click="goListDetail(item.pkFleaTypeId, item.typeName)">
-            <img
-              :src="item.typeCoverUrl"
-              class="icon"
-            />
+            <img :src="item.typeCoverUrl" class="icon" />
             <p class="cc-mtop font-size">{{ item.typeName }}</p>
           </div>
         </div>
@@ -57,23 +50,20 @@
       </div>
     </div>
     <p class="hotShop">最新发布</p>
-    <div
-      class="grid"
-      @scroll="doload()"
-    >
+    <div class="grid" @scroll="doload()">
       <div
         class="box"
         v-for="item in hotList"
         :key="item.pkFleaGoodsId"
         @click="gotoDetail(item.pkFleaGoodsId)"
       >
+        <img :src="item.goodsImgUrl.split('--**--')[0]" class="images" />
+        <p>{{ item.goodsDescription.slice(0, 10) }}....</p>
+        <span>¥ {{ item.goodsPrice }}</span>
         <div class="goods">
           <img :src="item.userAvatar" />
-          <p>¥ {{ item.goodsPrice }}</p>
           <p>{{ item.username }}</p>
         </div>
-        <img :src="item.goodsImgUrl.split('--**--')[0]" />
-        <p>{{ item.goodsDescription.slice(0, 40) }}....</p>
       </div>
     </div>
   </div>
