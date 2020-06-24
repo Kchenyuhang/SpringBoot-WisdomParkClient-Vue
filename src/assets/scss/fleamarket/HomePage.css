@@ -84,6 +84,7 @@ input {
 }
 
 .right {
+  height: 70px;
   width: 48%;
   margin-top: 10px;
   margin-left: 7px;
@@ -93,16 +94,21 @@ input {
 }
 
 .right img {
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
   float: right;
-  margin-right: 4px;
+  margin-top: 8px;
+  margin-right: 6px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
 }
 
 .left h3 {
+  margin-top: 5px;
   margin-left: 10px;
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .left span {
@@ -120,7 +126,7 @@ input {
 }
 
 .release {
-  margin-top: 25px;
+  margin-top: 20px;
   margin-bottom: 100px;
 }
 
@@ -169,27 +175,30 @@ input {
   width: 200px;
   margin-top: 10px;
   margin-left: 10px;
+  border-radius: 8px;
 }
 
 .pic p {
   margin-left: 10px;
   margin-top: 10px;
-  font-weight: bold;
+  font-size: 14px;
+  font-weight: 550;
 }
 
 .icon {
-  height: 50px;
-  width: 50px;
-  margin-top: 20px;
+  height: 45px;
+  width: 45px;
+  margin-top: 25px;
 }
 
 .cc-df {
-  margin-top: 10px;
   background-color: white;
 }
 
 .cc-df p {
-  margin-left: 9px;
-  margin-top: -3px;
+  margin-left: 7px;
+  margin-top: -1px;
+  font-size: 14px;
+  font-weight: 550;
 }
 /*# sourceMappingURL=HomePage.css.map */

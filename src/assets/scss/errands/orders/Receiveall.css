@@ -190,7 +190,7 @@ address {
 }
 
 .qbtn {
-  position: absolute;
+  margin-top: 180px;
   right: 20px;
   border: none;
   width: 70px;

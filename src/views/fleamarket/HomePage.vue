@@ -96,7 +96,8 @@ export default {
           sub: "文具",
           description: "one",
           name: "文具",
-          image: "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2mxudid3j30v90ku3zr.jpg",
+          image:
+            "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2mxudid3j30v90ku3zr.jpg",
           // 上面四个图标
           img:
             "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2kh8jw89j308v04eq2u.jpg"
@@ -107,7 +108,8 @@ export default {
           sub: "游戏",
           description: "two",
           name: "游戏",
-          image: "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2mzfz317j30dw0990sq.jpg",
+          image:
+            "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2mzfz317j30dw0990sq.jpg",
           // 上面四个图标
           img:
             "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2kmh0sncj308c08ct8n.jpg"
@@ -118,7 +120,8 @@ export default {
           sub: "衣服",
           description: "three",
           name: "衣服",
-          image: "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2n37ch4xj30dw09774i.jpg",
+          image:
+            "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2n37ch4xj30dw09774i.jpg",
           // 上面四个图标
           img:
             "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2kkfw3b9j30ga0f33yu.jpg"
@@ -129,7 +132,8 @@ export default {
           sub: "数码",
           description: "three",
           name: "数码",
-          image: "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2n3ioydyj30v90kuq3a.jpg",
+          image:
+            "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2n3ioydyj30v90kuq3a.jpg",
           // 上面四个图标
           img:
             "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2kf96qvcj307205i0sn.jpg"

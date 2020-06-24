@@ -187,11 +187,26 @@ address {
 }
 
 .goodbtn {
+  margin-top: 180px;
   border-radius: 20px;
   width: 60px;
   height: 30px;
   background-color: #009aff;
   color: #ffffff;
   border: none;
+}
+
+.messages {
+  position: absolute;
+  top: 290px;
+  left: 115px;
+  background-color: #ffffff;
+  width: 40%;
+  height: 120px;
+}
+
+.messages img {
+  width: 150px;
+  height: 100px;
 }
 /*# sourceMappingURL=Receivegoods.css.map */
