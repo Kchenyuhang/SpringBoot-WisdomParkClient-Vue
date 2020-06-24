@@ -24,13 +24,11 @@
     </div>
     <div class="footer">
       <p>实付款：{{ seller[0].goodsPrice }}</p>
-      <!-- <p>优惠：0000</p> -->
     </div>
     <button @click="doList">确定</button>
   </div>
 </template>
 <script>
-// import { get } from "../../../request/http";
 const API = require("../../../request/api.js");
 export default {
   name: "Pay",

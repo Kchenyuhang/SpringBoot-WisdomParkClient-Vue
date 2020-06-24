@@ -53,6 +53,10 @@ axios.interceptors.request.use(config => {
   config.headers = {
     Token: localStorage.getItem("token")
   };
+  // config.header("Access-Control-Allow-Origin: *");
+  // config.header('Access-Control-Allow-Methods:*');
+  // config.header('Access-Control-Allow-Headers:*');
+  // config.header("Access-Control-Request-Headers: *");
   // if (["/user/login"].indexOf(config.url) === -1) {
   //   const token = localStorage.getItem("Token");
   //   if (token) {
@@ -62,6 +66,7 @@ axios.interceptors.request.use(config => {
   // }
   return config;
 });
+
 new Vue({
   router,
   store,
