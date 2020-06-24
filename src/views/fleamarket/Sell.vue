@@ -7,14 +7,9 @@
       <p>发布</p>
     </div>
     <textarea
-      style="border: 0;border-radius:5px;background-color:#ffffff;width: 375px;height: 50px;padding: 10px;resize: none;"
+      class="titles"
       placeholder="标题，品牌，型号"
       v-model="data.goodsName"
-    ></textarea>
-    <textarea
-      style="border:0;border-radius:5px;background-color:#ffffff;width: 375px;height: 50px;padding: 10px;resize: none;"
-      placeholder="描述下你的商品"
-      v-model="data.goodsDescription"
     ></textarea>
     <!-- 图片上传区域 -->
     <div class="upload">
@@ -47,39 +42,64 @@
         id="file"
       />
     </div>
+    <textarea
+      class="des"
+      placeholder="描述下你的商品"
+      v-model="data.goodsDescription"
+    ></textarea>
     <div class="list">
       <div class="price">
-        <input
-          type="number"
-          placeholder="请输入价格"
-          v-model="data.goodsPrice"
-        />
-        <input
-          type="text"
-          placeholder="请输入类型"
-          v-model="data.goodsMark"
-        />
-
-        <select
-          class="option"
-          name="bbxb"
-          id="selecte1"
-          v-model="id"
-          @click="get(id)"
-        >
-          <option value="">---请选择--</option>
-          <option
+        <div>
+          <span class="tips">价格:</span>
+          <textarea
+            type="number"
+            class="title"
+            placeholder="请输入价格"
+            v-model="data.goodsPrice"
+          />
+          </div>
+        <div>
+          <span class="tips">类型:</span>
+          <textarea
+            type="number"
+            class="title"
+            placeholder="请输入类型"
+            v-model="data.goodsPrice"
+          />
+        </div>
+        <div>
+          <span class="tips">选项:</span>
+          <textarea
+            type="number"
+            class="title"
+            placeholder="请输入类型"
+            v-model="data.goodsPrice"
+          />
+          <select
             class="option"
-            :value="item.pkFleaTypeId"
-            selected="selected"
-            v-for="(item, index) in type"
-            :key="index"
-          >{{ item.typeName }}</option>
-        </select>
+            name="bbxb"
+            id="selecte1"
+            v-model="id"
+            @click="get(id)"
+          >
+            <option value="">---请选择--</option>
+            <option
+              class="option"
+              :value="item.pkFleaTypeId"
+              selected="selected"
+              v-for="(item, index) in type"
+              :key="index"
+              >{{ item.typeName }}</option
+            >
+          </select>
+        </div>
+
         <!-- <p>{{this.imgstr}}</p> -->
         <!-- <button @click="getSell">确认发布</button> -->
-        <button @click="getSell">发布为商品</button>
-        <button @click="getSellReward">发布为悬赏</button>
+        <div class="two">
+          <button @click="getSell">发布为商品</button>
+          <button @click="getSellReward">发布为悬赏</button>
+        </div>
       </div>
     </div>
   </div>
@@ -199,29 +219,38 @@ export default {
 h4 {
   margin-top: 10px;
   font-weight: 20px;
-  margin-left: 10px;
+  margin-left: 20px;
   font-size: 13px;
 }
 .up-pic {
   width: 90px;
   height: 90px;
-  margin-left: 140px;
-  border: none;
+  margin-left: 40%;
+  // border: none;
 }
 .upload {
-  height: 100px;
+  height: 90px;
+  width: 90%;
+  padding-left: 20px;
+  margin-top: 30px;
   // background-color: blue;
 }
 .list {
-  height: 200px;
+  height: 100px;
   margin-top: 10px;
   // background-color: brown;
+}
+.tips {
+  // margin-top: 20px;
+  position: relative;
+  bottom: 15px;
+  left: 10px;
 }
 .price input {
   height: 30px;
   width: 100%;
   margin-top: 5px;
-  border-radius: 10px;
+  border-radius: 4px;
   border: none;
 }
 select {
@@ -231,9 +260,10 @@ select {
 }
 button {
   height: 40px;
-  width: 100%;
-  margin-top: 80px;
-  background-color: rgb(0, 133, 215);
+  width: 100px;
+  margin: 20px;
+  // background-color: rgb(0, 133, 215);
+  background-image: linear-gradient(to right, #1e88e5, #1170bc);
   border: none;
   color: white;
   border-radius: 5px;
@@ -241,11 +271,53 @@ button {
   cursor: pointer;
 }
 button:hover {
-  background-color: rgb(17, 112, 188);
+  // background-color: rgb(17, 112, 188);
 }
 .option {
   width: auto;
   position: absolute;
   left: 50%;
+  margin-top: 5px;
+}
+.titles {
+  border: 0;
+  border-radius: 5px;
+  background-color: #ffffff;
+  width: 90%;
+  height: 40px;
+  padding: 10px;
+  resize: none;
+  border: 1px solid rgb(191, 191, 191);
+  margin-left: 20px;
+}
+.title {
+  border: 0;
+  border-radius: 5px;
+  background-color: #ffffff;
+  width: 80%;
+  height: 40px;
+  padding: 10px;
+  resize: none;
+  border: 1px solid rgb(191, 191, 191);
+  margin-left: 20px;
+}
+.des {
+  border: 0;
+  border-radius: 5px;
+  background-color: #ffffff;
+  width: 90%;
+  height: 150px;
+  padding: 10px;
+  resize: none;
+  border: 1px solid rgb(191, 191, 191);
+  margin-left: 20px;
+  margin-top: 50px;
+}
+.two {
+  display: flex;
+  justify-content: space-between;
+}
+textarea::placeholder {
+  margin-left: 100px;
 }
 </style>
