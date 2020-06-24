@@ -96,10 +96,10 @@ export default {
           sub: "文具",
           description: "one",
           name: "文具",
-          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/1.jpg",
+          image: "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2mxudid3j30v90ku3zr.jpg",
           // 上面四个图标
           img:
-            "http://ww1.sinaimg.cn/large/0064QvQTly1gfxa4t8zypj30jg0jg3zb.jpg"
+            "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2kh8jw89j308v04eq2u.jpg"
         },
         {
           url: "#",
@@ -107,10 +107,10 @@ export default {
           sub: "游戏",
           description: "two",
           name: "游戏",
-          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/2.jpg",
+          image: "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2mzfz317j30dw0990sq.jpg",
           // 上面四个图标
           img:
-            "http://ww1.sinaimg.cn/large/0064QvQTly1gfxa54zfyoj30jg0jg0tn.jpg"
+            "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2kmh0sncj308c08ct8n.jpg"
         },
         {
           url: "#",
@@ -118,10 +118,10 @@ export default {
           sub: "衣服",
           description: "three",
           name: "衣服",
-          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg",
+          image: "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2n37ch4xj30dw09774i.jpg",
           // 上面四个图标
           img:
-            "http://ww1.sinaimg.cn/large/0064QvQTly1gfxa3xyg8mj30jg0jgq3l.jpg"
+            "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2kkfw3b9j30ga0f33yu.jpg"
         },
         {
           url: "#",
@@ -129,10 +129,10 @@ export default {
           sub: "数码",
           description: "three",
           name: "数码",
-          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg",
+          image: "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2n3ioydyj30v90kuq3a.jpg",
           // 上面四个图标
           img:
-            "http://ww1.sinaimg.cn/large/0064QvQTly1gfxa4f62waj30jg0jg751.jpg"
+            "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2kf96qvcj307205i0sn.jpg"
         }
       ],
       id: "1",
