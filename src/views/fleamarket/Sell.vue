@@ -19,15 +19,8 @@
     <!-- 图片上传区域 -->
     <div class="upload">
       <div class="hengzhe">
-        <div
-          v-for="(item, index) in img"
-          :key="index"
-        >
-          <img
-            :src="item"
-            alt=""
-            class="suolue"
-          />
+        <div v-for="(item, index) in img" :key="index">
+          <img :src="item" alt="" class="suolue" />
         </div>
       </div>
       <img
@@ -54,11 +47,7 @@
           placeholder="请输入价格"
           v-model="data.goodsPrice"
         />
-        <input
-          type="text"
-          placeholder="请输入类型"
-          v-model="data.goodsMark"
-        />
+        <input type="text" placeholder="请输入类型" v-model="data.goodsMark" />
 
         <select
           class="option"
@@ -74,10 +63,13 @@
             selected="selected"
             v-for="(item, index) in type"
             :key="index"
-          >{{ item.typeName }}</option>
+            >{{ item.typeName }}</option
+          >
         </select>
         <!-- <p>{{this.imgstr}}</p> -->
-        <button @click="getSell">确认发布</button>
+        <!-- <button @click="getSell">确认发布</button> -->
+        <button @click="getSell">发布为商品</button>
+        <button @click="getSellReward">发布为悬赏</button>
       </div>
     </div>
   </div>
@@ -129,6 +121,25 @@ export default {
       console.log(this.data);
 
       this.type = (await API.init(this.url, this.data, "post")).data.types;
+      this.$router.push({
+        path: `/personal/${this.data.pkFleaUserId}`
+      });
+    },
+
+    async getSellReward() {
+      this.path[this.path.length] = "/homePage";
+      localStorage.setItem("path", JSON.stringify(this.path));
+      this.url = this.GLOBAL.baseUrl + "/flea/reward/increased";
+      this.data.goodsImgUrl = this.imgstr;
+      let data = {
+        description: this.data.goodsDescription,
+        pkRewardId: "0",
+        fleaUserId: this.data.pkFleaUserId,
+        title: this.data.goodsName,
+        imageUrl: this.data.goodsImgUrl
+      };
+      console.log(data)
+      this.type = (await API.init(this.url, data, "post")).data.types;
       this.$router.push({
         path: `/personal/${this.data.pkFleaUserId}`
       });

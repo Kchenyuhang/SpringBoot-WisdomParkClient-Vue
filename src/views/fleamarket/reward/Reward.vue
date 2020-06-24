@@ -20,7 +20,7 @@
         >
           <div>
             <img :src="item.imageUrl" alt="" /> <span>{{ item.title }}</span>
-            <p>{{ item.description.slice(0, 30) }}...</p>
+            <p>{{ item.description.slice(0, 5) }}...</p>
 
             <div class="right">
               <img :src="item.fleaUser.avatar" alt="" />

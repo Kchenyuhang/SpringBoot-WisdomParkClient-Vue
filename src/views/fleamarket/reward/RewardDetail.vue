@@ -30,10 +30,7 @@
             <!-- <span>#标签#</span> -->
             <h5>{{ reward.title }}</h5>
             <h6>{{ reward.description }}</h6>
-            <img
-              :src="reward.imageUrl"
-              alt="图片未能加载"
-            />
+            <img :src="reward.imageUrl" alt="图片未能加载" />
           </div>
         </div>
         <div class="content">
@@ -49,10 +46,7 @@
           >
             <div>
               <div class="ds-avatar">
-                <img
-                  :src="item.commentAvatar"
-                  alt=""
-                />
+                <img :src="item.commentAvatar" alt="" />
               </div>
               <div class="ds-comment-body">
                 <h5>{{ item.commentByName }}</h5>
@@ -64,20 +58,13 @@
           </div>
           <!-- <hr class="line" /> -->
           <div class="none">
-            <p
-              v-show="comments.length <=num"
-              class="bott"
-            >没有更多留言了</p>
+            <p v-show="comments.length <= num" class="bott">没有更多留言了</p>
           </div>
         </div>
       </div>
     </div>
     <div class="liuyan">
-      <div
-        class="btn"
-        @click="show = !show"
-        v-show="!show"
-      >
+      <div class="btn" @click="show = !show" v-show="!show">
         <img
           class="icon"
           src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/cc-message.png"
@@ -85,21 +72,13 @@
         <p>留言</p>
       </div>
     </div>
-    <div
-      class="zhezhaoceng"
-      v-show="show"
-    >
-      <textarea
-        id="ta"
-        rows="1"
-        v-model="send.comment"
-      ></textarea>
+    <div class="zhezhaoceng" v-show="show">
+      <textarea id="ta" rows="1" v-model="send.comment"></textarea>
       <img
         src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/send.png"
         @click="doSend"
       />
     </div>
-
   </div>
 </template>
 <script>
