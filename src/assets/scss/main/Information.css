@@ -78,4 +78,10 @@
   border-bottom: 4px #46abf1 solid;
   color: #46abf1;
 }
+
+.center {
+  position: relative;
+  text-align: center;
+  margin-top: 20px;
+}
 /*# sourceMappingURL=Information.css.map */

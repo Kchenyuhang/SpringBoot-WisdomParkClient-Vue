@@ -1,0 +1,268 @@
+.top {
+  height: 40px;
+  z-index: 999;
+  position: fixed;
+  background-color: white;
+  width: 100%;
+  margin-top: -10px;
+  height: 40px;
+}
+
+.top img {
+  height: 20px;
+  width: 20px;
+  margin-top: 10px;
+  margin-left: 6px;
+}
+
+.bg {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+.container {
+  width: 90%;
+  position: relative;
+  top: 50px;
+  margin-left: 5%;
+  background-color: white;
+  /* border: 1px solid#c4c4c4; */
+}
+
+.row {
+  height: 400px;
+  width: 100%;
+}
+
+.header {
+  height: 60px;
+  margin-top: 10px;
+  background-color: white;
+  /* box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2); */
+}
+
+.left img {
+  height: 50px;
+  width: 50px;
+  float: left;
+  margin-left: 14px;
+  border-radius: 30px;
+  -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.right p {
+  margin-left: 80px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.right span {
+  margin-left: 18px;
+  font-size: 12px;
+}
+
+.inform {
+  height: 300px;
+  width: 94%;
+  margin-left: 10px;
+  margin-top: 10px;
+  /* background-color: blue; */
+}
+
+.inform p {
+  color: red;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.inform span {
+  font-weight: bold;
+}
+
+.inform h5 {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.inform h6 {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.inform img {
+  margin-top: 10px;
+  width: 98%;
+  height: 250px;
+}
+
+.content {
+  height: 620px;
+  margin-top: 15px;
+}
+
+.com {
+  height: 80px;
+}
+
+.c-left img {
+  float: left;
+  height: 45px;
+  width: 45px;
+  margin-left: 20px;
+  margin-top: 15px;
+}
+
+.c-right {
+  margin-left: 80px;
+}
+
+.c-right h5 {
+  font-weight: bold;
+}
+
+.c-right p {
+  font-size: 15px;
+}
+
+.c-right span {
+  font-size: 10px;
+}
+
+.ds-post-main {
+  position: relative;
+  width: 95%;
+  margin-top: 20px;
+}
+
+.ds-avatar {
+  position: absolute;
+  top: 20px;
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+  background: whitesmoke;
+  border-radius: 50%;
+}
+
+.ds-avatar img {
+  border-radius: 50%;
+}
+
+.ds-avatar a {
+  display: block;
+  width: 31px;
+  height: 31px;
+  background: #748174;
+  border-radius: 50%;
+}
+
+.ds-comment-body {
+  margin-left: 20px;
+  padding: 10px 10px 10px 30px;
+  height: auto;
+  background: #f9cc9d;
+}
+
+.ds-comment-body h5 {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.ds-comment-body p {
+  margin-top: 4px;
+}
+
+.ds-comment-body span {
+  font-size: 13px;
+  margin-left: 120px;
+}
+
+.liuyan {
+  position: fixed;
+  z-index: 999;
+  bottom: 5%;
+  left: 45%;
+}
+
+.liuyan .btn {
+  width: 60px;
+  height: 60px;
+  border: 3px solid white;
+  border-radius: 50%;
+  background-color: #f4d53a;
+  text-align: center;
+  padding: 5px 5px 5px 5px;
+}
+
+.liuyan .btn .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.liuyan .btn p {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.zhezhaoceng {
+  z-index: 999;
+  position: fixed;
+  width: 100%;
+  height: auto;
+  background-color: white;
+  border: none;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.zhezhaoceng textarea {
+  display: block;
+  width: 300px;
+  height: 40px;
+  overflow: hidden;
+  padding: 5px 10px;
+  margin: 0px auto 0;
+  resize: none;
+  line-height: 30px;
+  font-size: 16px;
+  color: #666;
+  border: 1px solid #ccc;
+  outline: 0 none;
+  -webkit-box-shadow: 0 0 5px #999;
+          box-shadow: 0 0 5px #999;
+  border-radius: 3px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+
+.zhezhaoceng textarea:focus {
+  color: #277fe4;
+  border-color: #2196f3;
+  -webkit-box-shadow: 0 0 5px #03a9f4;
+          box-shadow: 0 0 5px #03a9f4;
+}
+
+.zhezhaoceng img {
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+  margin-left: -10px;
+  margin-right: 10px;
+}
+
+.none {
+  position: relative;
+  text-align: center;
+}
+
+.none .bott {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+/*# sourceMappingURL=RewardDetail.css.map */

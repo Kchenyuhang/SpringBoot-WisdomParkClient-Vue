@@ -63,6 +63,8 @@
 }
 
 .lateral-sliding {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   overflow-y: hidden;
   overflow-x: scroll;
@@ -124,7 +126,8 @@
   background-color: white;
   position: absolute;
   top: 320px;
-  box-shadow: 0 5px 20px rgba(41, 207, 146, 0.692);
+  -webkit-box-shadow: 0 5px 20px rgba(41, 207, 146, 0.692);
+          box-shadow: 0 5px 20px rgba(41, 207, 146, 0.692);
 }
 
 .more .more-row {
@@ -142,3 +145,4 @@
   width: 15px;
   height: 15px;
 }
+/*# sourceMappingURL=index.css.map */

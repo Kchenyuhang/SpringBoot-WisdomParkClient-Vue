@@ -26,6 +26,12 @@
   margin-top: 2%;
 }
 
+.bg .header .image {
+  width: 22px;
+  height: 22px;
+  margin-left: 270px;
+}
+
 .bg .imgcard {
   width: 94%;
   height: 200px;

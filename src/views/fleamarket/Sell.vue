@@ -111,6 +111,7 @@ export default {
   data() {
     return {
       type: [],
+      test: [],
       id: "",
       user: JSON.parse(localStorage.getItem("FleaUser")),
       path: JSON.parse(localStorage.getItem("path")),
@@ -141,8 +142,15 @@ export default {
     },
     async getAllType() {
       this.url = this.GLOBAL.baseUrl + "/flea/type/all";
+
       this.type = (await API.init(this.url, this.data, "post")).data.types;
-      console.log(this.type);
+      let subType = [];
+      for (let i = 0; i < this.type.length; i++) {
+        for (let j = 0; j < this.type[i].subTypes.length; j++) {
+          subType.push(this.type[i].subTypes[j]);
+        }
+      }
+      this.type = subType;
     },
     async getSell() {
       this.path[this.path.length] = "/homePage";
