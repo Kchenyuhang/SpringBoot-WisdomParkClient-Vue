@@ -13,21 +13,22 @@
       </div>
       <div class="list">
         <div
-          class="left"
+          class="card"
           v-for="(item, index) in reward"
           :key="index"
           @click="gotoDetail(item.pkRewardId)"
         >
           <div>
-            <img :src="item.imageUrl" alt="" /> <span>{{ item.title }}</span>
-            <p>{{ item.description.slice(0, 8) }}...</p>
-
+            <div class="img">
+              <img :src="item.imageUrl" alt="" />
+            </div>
             <div class="right">
-              <img
-                :src="item.fleaUser.avatar"
-                alt=""
-              />
-              <p>{{ item.fleaUser.nickname }}</p>
+              <span>{{ item.title.slice(0,6) }}</span>
+              <p class="mt-10">{{ item.description.slice(0, 8) }}...</p>
+              <div class="info">
+                <img :src="item.fleaUser.avatar" alt="" />
+                <p>{{ item.fleaUser.nickname }}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -47,28 +48,28 @@ export default {
         {
           url: "#",
           description: "one",
-          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/1.jpg"
+          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/1.jpg",
         },
         {
           url: "#",
           description: "two",
-          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/2.jpg"
+          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/2.jpg",
         },
         {
           url: "#",
           description: "three",
-          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg"
+          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg",
         },
         {
           url: "#",
           description: "three",
-          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg"
-        }
-      ]
+          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg",
+        },
+      ],
     };
   },
   components: {
-    Carousel: require("../../../components/Carousel.vue").default
+    Carousel: require("../../../components/Carousel.vue").default,
   },
   created() {
     this.getReward();
@@ -79,7 +80,7 @@ export default {
       this.url = this.GLOBAL.baseUrl + "/flea/reward/all";
       this.data = {
         currentPage: 0,
-        pageSize: 10
+        pageSize: 10,
       };
       this.reward = (await API.init(this.url, this.data, "post")).data.content;
       for (let i = 0; i < this.reward.length; i++) {
@@ -89,12 +90,12 @@ export default {
     },
     gotoDetail(id) {
       this.$router.push({
-        path: `/rewarddetail/${id}`
+        path: `/rewarddetail/${id}`,
       });
-    }
+    },
   },
   computed: {},
-  watch: {}
+  watch: {},
 };
 </script>
 

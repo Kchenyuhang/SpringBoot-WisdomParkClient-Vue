@@ -33,7 +33,6 @@
 }
 
 .list {
-  height: auto;
   width: 98%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -65,7 +64,6 @@
 }
 
 .left p {
-  margin-top: 7px;
   margin-left: 5px;
   font-size: 14px;
 }
@@ -77,18 +75,21 @@
   border-radius: 10px;
 }
 
+.right {
+  padding: 10px 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: burlywood;
+}
+
 .right img {
   height: 35px;
   width: 35px;
   border-radius: 50%;
-  margin-top: 30px;
-  margin-left: 10px;
-}
-
-.right p {
-  float: right;
-  margin-right: 70px;
-  margin-top: 38px;
 }
 
 .recomond {
