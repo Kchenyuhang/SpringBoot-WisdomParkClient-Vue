@@ -50,22 +50,19 @@
       </div>
     </div>
     <p class="hotShop">最新发布</p>
-    <div class="release" @scroll="doload()">
+    <div class="grid" @scroll="doload()">
       <div
-        class="footer"
+        class="box"
         v-for="item in hotList"
         :key="item.pkFleaGoodsId"
         @click="gotoDetail(item.pkFleaGoodsId)"
       >
+        <img :src="item.goodsImgUrl.split('--**--')[0]" class="images" />
+        <p>{{ item.goodsDescription.slice(0, 10) }}....</p>
+        <span>¥ {{ item.goodsPrice }}</span>
         <div class="goods">
-          <img :src="item.userAvatar" alt="" />
-          <span>{{ item.username }}</span>
-          <h5>{{ item.goodsCreateTime }}</h5>
-          <!-- <p>¥ {{ item.goodsPrice }}</p> -->
-        </div>
-        <div class="pic">
-          <img :src="item.goodsImgUrl.split('--**--')[0]" />
-          <p>{{ item.goodsDescription.slice(0, 40) }}....</p>
+          <img :src="item.userAvatar" />
+          <p>{{ item.username }}</p>
         </div>
       </div>
     </div>
