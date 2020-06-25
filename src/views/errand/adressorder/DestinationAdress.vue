@@ -99,14 +99,22 @@
       <hr class="line" />
     </div>
     <button class="btn" @click="go">确定</button>
+    <!-- 弹出框 -->
+    <Dialog v-bind.sync="showBombTips" :tipsContent="tipsContent"></Dialog>
   </div>
 </template>
 
 <script>
+import Dialog from "../../../components/dialog";
 export default {
   name: "DestinationAdress",
   data() {
     return {
+      // 弹出框消息提示数据
+      showBombTips: {
+        visible: false,
+      },
+      tipsContent: "请填写发件信息!",
       // 数据校验 判断是否为空的操作
       aletMsg: "", // 弹出框中的提示语
       displayStsates: "none",
@@ -118,7 +126,7 @@ export default {
         tips: null,
         data: {},
         url: "",
-        result: {}
+        result: {},
       },
       schema: {
         desnumber: [
@@ -145,7 +153,7 @@ export default {
     localStorage.setItem("address1", this.address1);
     this.$store.commit("setAddress1", this.address1);
   },
-  components: {},
+  components: { Dialog },
   methods: {
     // 提示框出现和消失
     alertDia(msg) {
@@ -230,19 +238,28 @@ export default {
       });
     },
     go() {
-      this.validate(this.schema, this.phoneForm);
-      this.aletMsg = this.phoneForm.tips;
-      this.alertDia(this.aletMsg);
-      if (this.phoneForm.tips == null) {
-        localStorage.setItem("desinfo", this.phoneForm.desinfo);
-        this.$store.commit("setdestdesinfo", this.phoneForm.desinfo);
-        localStorage.setItem("desname", this.phoneForm.desname);
-        this.$store.commit("setdestdesname", this.phoneForm.desname);
-        localStorage.setItem("desnumber", this.phoneForm.desnumber);
-        this.$store.commit("setdestdesnumber", this.phoneForm.desnumber);
-        this.$router.push("/orderconfirmation");
+      if (
+        localStorage.getItem("originnumber") === null ||
+        localStorage.getItem("originname") === null ||
+        localStorage.getItem("addressinfo") === null ||
+        localStorage.getItem("address") === null
+      ) {
+        this.showBombTips.visible = true;
       } else {
-        console.log(1);
+        this.validate(this.schema, this.phoneForm);
+        this.aletMsg = this.phoneForm.tips;
+        this.alertDia(this.aletMsg);
+        if (this.phoneForm.tips == null) {
+          localStorage.setItem("desinfo", this.phoneForm.desinfo);
+          this.$store.commit("setdestdesinfo", this.phoneForm.desinfo);
+          localStorage.setItem("desname", this.phoneForm.desname);
+          this.$store.commit("setdestdesname", this.phoneForm.desname);
+          localStorage.setItem("desnumber", this.phoneForm.desnumber);
+          this.$store.commit("setdestdesnumber", this.phoneForm.desnumber);
+          this.$router.push("/orderconfirmation");
+        } else {
+          console.log(1);
+        }
       }
     }
   }
