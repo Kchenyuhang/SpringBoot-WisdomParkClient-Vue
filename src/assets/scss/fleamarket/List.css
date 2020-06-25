@@ -79,7 +79,12 @@ h5 {
 }
 
 .bgc {
-  border-left: 2px solid #0082fc;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  text-align: center;
+  padding: 2px 0px;
+  border-left: 4px solid #0082fc;
   color: #0082fc;
 }
 /*# sourceMappingURL=List.css.map */

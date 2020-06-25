@@ -11,8 +11,12 @@
         <p>动态详情</p>
       </div>
     </div>
-    <div class="body" v-for="(item, index) in result" :key="index">
-      <p>{{ item.type }}</p>
+    <div class="body">
+      <div class="top">
+        <img :src="user.avatar" alt="" />
+        <p>{{ user.nickname }}</p>
+        <p>{{ result.content }}</p>
+      </div>
     </div>
     <div class="input">
       <div class="inp cc-df-center">
@@ -39,6 +43,7 @@ export default {
   data() {
     return {
       result: [],
+      user: [],
       msg: "",
       id: this.$route.params.Id
     };
@@ -50,13 +55,15 @@ export default {
   mounted() {},
   methods: {
     async Dongtai() {
+      this.url = this.GLOBAL.baseUrl + "/dynamic/";
       this.data = {
         id: this.id
       };
-      this.url = this.GLOBAL.baseUrl + "/dynamic/";
-      this.result = await API.init(this.url, this.data, "post");
+      this.result = (await API.init(this.url, this.data, "post")).data;
       console.log(this.result);
       // this.messages = this.result.data;
+      this.user = this.result.userAccount;
+      console.log(this.user);
     }
   },
   computed: {}

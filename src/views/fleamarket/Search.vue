@@ -14,17 +14,11 @@
         v-model="keyword"
         @keyup="clear"
       />
-      <button
-        class="btn"
-        @click="search"
-      >
+      <button class="btn" @click="search">
         <p>搜索</p>
       </button>
     </div>
-    <div
-      class="history"
-      v-show="show"
-    >
+    <div class="history" v-show="show">
       <p>搜索发现</p>
       <div>
         <button
@@ -36,31 +30,20 @@
         </button>
       </div>
     </div>
-    <div
-      class="like"
-      v-show="!show"
-    >
+    <div class="like" v-show="!show">
       <div class="r-list">
-        <div
-          class="r-left"
-          v-for="(item, index) in list"
-          :key="index"
-        >
-          <div
-            class="r-left-con"
-            @click="gotoDetail(item.pkFleaGoodsId)"
-          >
+        <div class="r-left" v-for="(item, index) in list" :key="index">
+          <div class="r-left-con" @click="gotoDetail(item.pkFleaGoodsId)">
             <img :src="item.goodsImgUrl.split('--**--')[0]" />
             <span>{{ item.goodsName.slice(0, 10) }}</span>
-            <p>$ {{ item.goodsPrice }}</p>
+            <p>¥ {{ item.goodsPrice }}</p>
             <div class="r-right">
               <div class="img-box">
-                <img
-                  :src="item.fleaUser.avatar"
-                  alt=""
-                />
+                <img :src="item.fleaUser.avatar" alt="" />
               </div>
-              <p>{{ item.fleaUser.nickname }}</p>
+              <div>
+                <p>{{ item.fleaUser.nickname }}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -85,13 +68,19 @@ export default {
       count: 0,
       show: true,
       tag: []
+      // historyList: []
     };
   },
   components: {},
   created() {
     this.getTag();
   },
-  mounted() {},
+  mounted() {
+    //如果本地存储的数据historyList有值，直接赋值给data中的historyList
+    if (JSON.parse(localStorage.getItem("historyList"))) {
+      this.historyList = JSON.parse(localStorage.getItem("historyList"));
+    }
+  },
   methods: {
     async search() {
       this.url = this.GLOBAL.baseUrl + "/flea/search";

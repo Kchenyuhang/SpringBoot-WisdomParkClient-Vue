@@ -58,22 +58,22 @@
             v-model="data.goodsPrice"
           />
           </div>
-        <div>
+        <!-- <div>
           <span class="tips">类型:</span>
           <textarea
             type="number"
             class="title"
             placeholder="请输入类型"
-            v-model="data.goodsPrice"
+            v-model="data.goodsType"
           />
-        </div>
+        </div> -->
         <div>
           <span class="tips">选项:</span>
           <textarea
             type="number"
             class="title"
             placeholder="请输入类型"
-            v-model="data.goodsPrice"
+            v-model="data.goodsMark"
           />
           <select
             class="option"
