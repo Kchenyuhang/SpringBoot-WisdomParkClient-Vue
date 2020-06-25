@@ -118,6 +118,6 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
 @import "../../../assets/scss/errands/orders/All.scss";
 </style>
