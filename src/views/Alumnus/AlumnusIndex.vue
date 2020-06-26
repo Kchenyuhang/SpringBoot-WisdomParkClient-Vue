@@ -10,6 +10,7 @@
           />
         </router-link>
         <p>校友圈</p>
+        <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/alumnus/tuijian.png" alt="" class="tuijian">
       </div>
     </div>
     <div class="avatar-card cc-df-between">

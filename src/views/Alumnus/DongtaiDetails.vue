@@ -12,11 +12,80 @@
       </div>
     </div>
     <div class="body">
-      <div class="top">
-        <img :src="user.avatar" alt="" />
-        <p>{{ user.nickname }}</p>
-        <p>{{ result.content }}</p>
+      <div class="dongtai-card">
+          <div class="dongtai-avatar">
+            <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/alumnus/zyj.jpg" alt="">
+          </div>
+          <div class="dongtai-content">
+            <div class="row cc-df-between">
+              <div class="row">
+                <div class="name">
+                  <p>123</p>
+                </div>
+                <div class="fenge cc-df-center">
+                  <p>·</p>
+                </div>
+                <div class="time">
+                  <p>时间</p>
+                </div>
+              </div>
+            </div>
+            <div class="article">
+              <p>123...</p>
+            </div>
+            <div class="image">
+                <div class="avatar-2">
+                  <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/alumnus/zyj.jpg" alt="">
+                </div>
+            </div>
+            <div class="image cc-df-warp">
+              
+                <div class="avatar-2">
+                  <img src="" alt="">
+                </div>
+              
+            </div>
+            <div class="image cc-df-warp">
+             
+                <div class="avatar-2">
+                  <img src="" alt="">
+                </div>
+              
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="pinlun">
+      <div class="all">
+        <p>共2条评论</p>
       </div>
+      <div v-for="item in 3" :key="item.id">
+        <div class="pinlun-content">
+          <div class="avatar">
+            <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/alumnus/zyj.jpg" alt="">
+          </div>
+          <div class="content-row">
+          <div class="pinlun-content1">
+            <div class="name">
+                  <p>123</p>
+                </div>
+                <div class="fenge cc-df-center">
+                  <p>·</p>
+                </div>
+                <div class="time">
+                  <p>时间</p>
+                </div>
+          </div>
+          <div class="pinlun-content2">
+            <p>评论内容</p>
+          </div>
+          </div>
+          <div class="dianzan">
+            <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/alumnus/icon_dianzan.png" alt="">
+          </div>
+        </div>
+      </div>
+      
     </div>
     <div class="input">
       <div class="inp cc-df-center">
