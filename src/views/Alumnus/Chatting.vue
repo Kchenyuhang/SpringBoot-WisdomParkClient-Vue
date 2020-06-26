@@ -15,7 +15,7 @@
           <div class="msgArea cc-df-right">
             <div class="cc-col">
               <p style="text-align: right;">{{user.nickname}}</p>
-              <div class="msg">{{item.content}}</div>
+              <div class="msg1"><p>{{item.content}}</p></div>
             </div>
 
             <div class="avatar cc-right">

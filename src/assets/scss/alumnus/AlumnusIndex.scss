@@ -12,7 +12,7 @@
   left: 0;
   display: flex;
   .header-title {
-    width: 90%;
+    width: 95%;
     display: flex;
     align-items: center;
     img {
@@ -26,6 +26,10 @@
       margin-left: 15px;
       margin: auto;
       color: black;
+    }
+    .tuijian{
+        height: 25px;
+        width: 25px;
     }
   }
 }
