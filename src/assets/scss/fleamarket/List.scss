@@ -59,6 +59,10 @@ h5 {
   text-align: center;
 }
 .bgc {
-  border-left: 2px solid #0082fc;
+  box-sizing: border-box;
+  width: 100%;
+  text-align: center;
+  padding: 2px 0px;
+  border-left: 4px solid #0082fc;
   color: rgb(0, 130, 252);
 }

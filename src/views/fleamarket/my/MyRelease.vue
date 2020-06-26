@@ -20,8 +20,10 @@
           <img :src="item.goodsImgUrl.split('--**--')[0]" />
         </div>
         <div class="right">
-          <p class="title">{{ item.goodsName }}</p>
-          <p class="des">{{ item.goodsDescription.slice(0, 5) }}</p>
+          <p class="title">{{ item.goodsName.slice(0, 7) }}...</p>
+          <div class="chip-item">
+            <p class="des">{{ item.goodsDescription.slice(0, 5) }}</p>
+          </div>
           <p class="price">￥{{ item.goodsPrice }}</p>
         </div>
       </div>
@@ -37,7 +39,7 @@ export default {
       goodsId: 0,
       send: [],
       user: JSON.parse(localStorage.getItem("FleaUser")),
-      lastPath: JSON.parse(localStorage.getItem("path"))
+      lastPath: JSON.parse(localStorage.getItem("path")),
     };
   },
   components: {},
@@ -52,7 +54,7 @@ export default {
       this.data = {
         currentPage: 1,
         pageSize: 10,
-        pkFleaUserId: this.user.pkFleaUserId
+        pkFleaUserId: this.user.pkFleaUserId,
       };
       this.send = (await API.init(this.url, this.data, "post")).data.content;
       console.log(this.send);
@@ -61,12 +63,12 @@ export default {
       this.lastPath[this.lastPath.length] = "/commoditydetails/" + id;
       localStorage.setItem("path", JSON.stringify(this.lastPath));
       this.$router.push({
-        path: `/commoditydetails/${id}`
+        path: `/commoditydetails/${id}`,
       });
-    }
+    },
   },
 
-  computed: {}
+  computed: {},
 };
 </script>
 <style scoped lang="scss">

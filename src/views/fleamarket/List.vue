@@ -23,7 +23,6 @@
         :key="index"
         @click="getFleaType(item.subTypes, index, item.typeName)"
         :class="{ bgc: isShow == index }"
-        class="bk"
       >
         {{ item.typeName }}
       </span>
@@ -52,7 +51,7 @@ export default {
       path: "/list",
       page: [],
       lastPath: JSON.parse(localStorage.getItem("path")),
-      count: JSON.parse(localStorage.getItem("count"))
+      count: JSON.parse(localStorage.getItem("count")),
     };
   },
   components: {},
@@ -79,12 +78,12 @@ export default {
       this.lastPath[this.lastPath.length] = "/list";
       localStorage.setItem("path", JSON.stringify(this.lastPath));
       this.$router.push({
-        path: `/listDetail/${id}`
+        path: `/listDetail/${id}`,
       });
-    }
+    },
   },
   computed: {},
-  watch: {}
+  watch: {},
 };
 </script>
 

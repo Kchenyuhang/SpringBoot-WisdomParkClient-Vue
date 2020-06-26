@@ -93,4 +93,13 @@
 textarea::-webkit-input-placeholder {
   font-size: 14px;
 }
+
+.body {
+  width: 95%;
+}
+
+.top img {
+  height: 50px;
+  width: 50px;
+}
 /*# sourceMappingURL=DongtaiDetails.css.map */

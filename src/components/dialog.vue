@@ -44,7 +44,7 @@ export default {
 .tipsClass {
   top: 60%;
   left: 50%;
-  width: 120px;
+  width: 150px;
   height: 30px;
   line-height: 30px;
   position: absolute;

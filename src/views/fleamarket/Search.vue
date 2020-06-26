@@ -36,12 +36,14 @@
           <div class="r-left-con" @click="gotoDetail(item.pkFleaGoodsId)">
             <img :src="item.goodsImgUrl.split('--**--')[0]" />
             <span>{{ item.goodsName.slice(0, 10) }}</span>
-            <p>$ {{ item.goodsPrice }}</p>
+            <p>¥ {{ item.goodsPrice }}</p>
             <div class="r-right">
               <div class="img-box">
                 <img :src="item.fleaUser.avatar" alt="" />
               </div>
-              <p>{{ item.fleaUser.nickname }}</p>
+              <div>
+                <p>{{ item.fleaUser.nickname }}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -66,13 +68,19 @@ export default {
       count: 0,
       show: true,
       tag: []
+      // historyList: []
     };
   },
   components: {},
   created() {
     this.getTag();
   },
-  mounted() {},
+  mounted() {
+    //如果本地存储的数据historyList有值，直接赋值给data中的historyList
+    if (JSON.parse(localStorage.getItem("historyList"))) {
+      this.historyList = JSON.parse(localStorage.getItem("historyList"));
+    }
+  },
   methods: {
     async search() {
       this.url = this.GLOBAL.baseUrl + "/flea/search";
@@ -102,7 +110,7 @@ export default {
       this.$router.push({
         path: `/commoditydetails/${id}`
       });
-      
+
       // this.page[this.count] = id;
       // this.count++;
       // this.getList();

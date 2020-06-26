@@ -27,6 +27,7 @@
                 ref="file"
                 style="display: none;"
                 id="file"
+                accept="image/jpg, image/jpeg, image/png"
               />
             </div>
             <div v-show="!show">
@@ -139,8 +140,12 @@
           </div>
         </div>
         <div style="text-align:center">
-          <button @click="show = true" v-show="!show"><p>修改</p></button>
-          <button @click="update" v-show="show"><p>确认修改</p></button>
+          <button @click="show = true" v-show="!show">
+            <p>修改</p>
+          </button>
+          <button @click="update" v-show="show">
+            <p>确认修改</p>
+          </button>
         </div>
       </div>
     </div>
@@ -309,5 +314,4 @@ export default {
 
 <style scoped lang="scss">
 @import "../../../assets/scss/fleamarket/personal/PersonalDetail.scss";
-
 </style>

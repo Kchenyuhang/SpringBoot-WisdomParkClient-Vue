@@ -17,21 +17,24 @@
           <img src="../../assets/images/更多.png" alt="" class="imgs" />
         </router-link>
       </div>
-      <Carousel :slideList="slideList"></Carousel>
+
+      <Carousel :slideList="slideList" class="sider"></Carousel>
+
       <!-- 首页四个分类 -->
       <div class="cc-df">
         <div
           class="cc-col-center cc-coll-3 address2"
-          v-for="(item, index) in slideList"
+          v-for="(item, index) in fourList"
           :key="index"
         >
-          <div @click="goListDetail(item.pkFleaTypeId, item.name)">
-            <img :src="item.img" class="icon" />
-            <p class="cc-mtop font-size">{{ item.sub }}</p>
+          <div @click="goListDetail(item.pkFleaTypeId, item.typeName)">
+            <img :src="item.typeCoverUrl" class="icon" />
+            <p class="cc-mtop font-size">{{ item.typeName }}</p>
           </div>
         </div>
       </div>
     </div>
+    <p class="hotShop">热卖商品</p>
     <div class="inform">
       <div
         class="right"
@@ -42,28 +45,26 @@
         <img :src="item.goodsImgUrl.split('--**--')[0]" />
         <div class="left">
           <!-- 商品描述 -->
-          <h3>{{ item.goodsName.slice(0, 10) }}</h3>
+          <h3>{{ item.goodsName.slice(0, 5) }}</h3>
           <!-- 价格 -->
           <span>¥{{ item.goodsPrice }}</span>
         </div>
       </div>
     </div>
-    <div class="release" @scroll="doload()">
+    <p class="hotShop">最新发布</p>
+    <div class="grid" @scroll="doload()">
       <div
-        class="footer"
+        class="box"
         v-for="item in hotList"
         :key="item.pkFleaGoodsId"
         @click="gotoDetail(item.pkFleaGoodsId)"
       >
+        <img :src="item.goodsImgUrl.split('--**--')[0]" class="images" />
+        <p>{{ item.goodsDescription.slice(0, 10) }}....</p>
+        <span>¥ {{ item.goodsPrice }}</span>
         <div class="goods">
-          <img :src="item.userAvatar" alt="" />
-          <span>{{ item.username }}</span>
-          <h5>{{ item.goodsCreateTime }}</h5>
-          <!-- <p>¥ {{ item.goodsPrice }}</p> -->
-        </div>
-        <div class="pic">
-          <img :src="item.goodsImgUrl.split('--**--')[0]" />
-          <p>{{ item.goodsDescription.slice(0, 40) }}....</p>
+          <img :src="item.userAvatar" />
+          <p>{{ item.username }}</p>
         </div>
       </div>
     </div>
@@ -96,10 +97,11 @@ export default {
           sub: "文具",
           description: "one",
           name: "文具",
-          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/1.jpg",
+          image: "",
+          goodsId: "",
           // 上面四个图标
           img:
-            "http://ww1.sinaimg.cn/large/0064QvQTly1gfxa4t8zypj30jg0jg3zb.jpg"
+            "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2kh8jw89j308v04eq2u.jpg"
         },
         {
           url: "#",
@@ -107,10 +109,11 @@ export default {
           sub: "游戏",
           description: "two",
           name: "游戏",
-          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/2.jpg",
+          image: "",
+          goodsId: "",
           // 上面四个图标
           img:
-            "http://ww1.sinaimg.cn/large/0064QvQTly1gfxa54zfyoj30jg0jg0tn.jpg"
+            "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2kmh0sncj308c08ct8n.jpg"
         },
         {
           url: "#",
@@ -118,10 +121,11 @@ export default {
           sub: "衣服",
           description: "three",
           name: "衣服",
-          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg",
+          image: "",
+          goodsId: "",
           // 上面四个图标
           img:
-            "http://ww1.sinaimg.cn/large/0064QvQTly1gfxa3xyg8mj30jg0jgq3l.jpg"
+            "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2kkfw3b9j30ga0f33yu.jpg"
         },
         {
           url: "#",
@@ -129,21 +133,24 @@ export default {
           sub: "数码",
           description: "three",
           name: "数码",
-          image: "https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/3.jpg",
+          image: "",
+          goodsId: "",
           // 上面四个图标
           img:
-            "http://ww1.sinaimg.cn/large/0064QvQTly1gfxa4f62waj30jg0jg751.jpg"
+            "http://ww1.sinaimg.cn/large/0064QvQTgy1gg2kf96qvcj307205i0sn.jpg"
         }
       ],
+      fourList: [],
       id: "1",
       num: 5
     };
   },
   components: {
-    Carousel: require("../../components/Carousel.vue").default
+    Carousel: require("../../components/ShopCarousel.vue").default
   },
   created() {
     this.reInto();
+    this.getForList();
     this.getTopReward();
     this.getGodList();
     this.getList();
@@ -174,12 +181,22 @@ export default {
       this.url = this.GLOBAL.baseUrl + "/flea/goods/all";
       this.data = {
         currentPage: 0,
-        pageSize: 6
+        pageSize: 4
       };
       this.list = (await API.init(this.url, this.data, "post")).data;
       // this.count = this.list.length - 4;
       // this.list.splice(0, this.count);
-      // console.log(this.list);
+      for (let i = 0; i < 4; i++) {
+        this.slideList[i].image = this.list[i].goodsImgUrl;
+        this.slideList[i].goodsId = this.list[i].pkFleaGoodsId;
+      }
+      console.log(this.slideList);
+    },
+    async getForList() {
+      this.url = this.GLOBAL.baseUrl + "/flea/type/top4";
+
+      this.fourList = (await API.init(this.url, null, "post")).data.type;
+      console.log(this.fourList);
     },
     async getHotList() {
       this.url = this.GLOBAL.baseUrl + "/flea/goods/all";
@@ -222,7 +239,7 @@ export default {
     async getTopReward() {
       this.url = this.GLOBAL.baseUrl + "/flea/reward/top";
       this.reward = (await API.init(this.url, this.data, "post")).data;
-      console.log(this.reward);
+      // console.log(this.reward);
     },
     async getGodList() {
       this.url = this.GLOBAL.baseUrl + "/flea/goods/all";
