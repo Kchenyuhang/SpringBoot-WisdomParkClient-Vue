@@ -15,12 +15,28 @@
   width: 250px;
   margin-left: 30px;
   margin-top: -10px;
-  border-radius: 15px;
+  border-radius: 5px;
   font-size: 15px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
   background-color: #f3f3f3;
   border: none;
+}
+
+input::-webkit-input-placeholder {
+  padding-left: 10px;
+}
+
+input:-ms-input-placeholder {
+  padding-left: 10px;
+}
+
+input::-ms-input-placeholder {
+  padding-left: 10px;
+}
+
+input::placeholder {
+  padding-left: 10px;
 }
 
 .btn {
@@ -58,13 +74,17 @@
 }
 
 .r-list {
-  width: 90%;
-  margin-left: 5%;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  background: #e6e6e6;
 }
 
 .r-left {
@@ -79,32 +99,46 @@
 }
 
 .r-left img {
-  height: 100px;
+  height: 120px;
   border: none;
+  width: 100%;
+  margin-top: 10px;
   border-bottom: 1px solid #eeeeee;
 }
 
-.r-right p {
-  color: red;
+.r-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 5px;
 }
 
 .r-right img {
   height: 30px;
   width: 30px;
   border-radius: 50%;
-  margin-top: 30px;
 }
 
 .r-right p {
   float: right;
-  margin-right: 60px;
-  margin-top: -24px;
   color: red;
+  margin-left: 10px;
 }
 
 .r-left-con p {
-  font-size: 0.7rem;
+  font-size: 14px;
   color: red;
+  margin-top: 5px;
 }
 
 .r-left-con span {
