@@ -1,73 +1,196 @@
 .bg {
-    background-color: #f7f7f7;
-    height: 100%;
+  background-color: #f7f7f7;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 60px;
+}
+.header {
+  background-color: #11aca8;
+  height: 55px;
+  display: flex;
+  .header-title {
     width: 100%;
-    margin-bottom: 60px;
-  }
-  .header {
-    background-color: #11aca8;
-    height: 55px;
     display: flex;
-    .header-title {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      img {
-        height: 18px;
-        width: 18px;
-        margin-top: 5px;
-        margin-left: 5px;
-      }
-      p {
-        font-size: 18px;
-        font-weight: 550;
-        margin-left: 15px;
-        color: white;
-      }
-      .inp{
-          width: 70%;
-          height: 35px;
-          border-radius: 20px;
-          margin-left: 20px;
-          background-color: white;
-          padding-top: 5px;
-          input {
-            width: 100%;
-            border: none;
-            background-color: rgba(255, 255, 255, 0);
-            color: #636363;
-            font-size: 16px;
-            margin-left: 20px;
-          }
+    align-items: center;
+    img {
+      height: 18px;
+      width: 18px;
+      margin-top: 5px;
+      margin-left: 5px;
+    }
+    p {
+      font-size: 18px;
+      font-weight: 550;
+      margin-left: 15px;
+      color: white;
+    }
+    .inp {
+      width: 70%;
+      height: 35px;
+      border-radius: 20px;
+      margin-left: 20px;
+      background-color: white;
+      padding-top: 5px;
+      input {
+        width: 100%;
+        border: none;
+        background-color: rgba(255, 255, 255, 0);
+        color: #636363;
+        font-size: 16px;
+        margin-left: 20px;
       }
     }
-    
   }
-  .faxian{
-      width: 100%;
-      height: 400px;
-      background-color: white;
-      padding-top: 30px;
-      .faxian-card{
-        width: 85%;
-        margin: auto;
-        .row{
-            font-size: 22px;
-        }
-        .faxian-title-card{
-            margin-top: 30px;
-            display: flex;
-            .faxian-title{
-                width: 80px;
-                height: 40px;
-                margin-right: 20px;
-                border-radius: 10px;
-                background-color: #ebebeb;
-        }
-        }
-        
+}
+.faxian {
+  width: 100%;
+  height: 400px;
+  background-color: white;
+  padding-top: 30px;
+  .faxian-card {
+    width: 85%;
+    margin: auto;
+    .row {
+      font-size: 22px;
+    }
+    .faxian-title-card {
+      margin-top: 30px;
+      display: flex;
+      .faxian-title {
+        width: 80px;
+        height: 40px;
+        margin-right: 20px;
+        border-radius: 10px;
+        background-color: #ebebeb;
       }
+    }
   }
-  .body{
-    
+}
+.body {
+  .job-type {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    display: flex;
+    .part-time-job {
+      width: 50%;
+    }
+    .full-time-job {
+      width: 50%;
+    }
   }
+}
+.job-card {
+  width: 100%;
+  height: 130px;
+  margin-bottom: 5px;
+  background-color: white;
+  .job-card-wide {
+    width: 90%;
+    margin: auto;
+    padding-top: 15px;
+    .job-title {
+      .job-name {
+        font-size: 18px;
+        font-weight: 550;
+      }
+      .salary {
+        font-size: 14px;
+        font-weight: 550;
+        color: #52aba9;
+      }
+    }
+    .job-time {
+      margin-top: 10px;
+      display: flex;
+      p {
+        font-size: 12px;
+        color: #6d6d6d;
+        margin-right: 20px;
+      }
+    }
+    .job-number {
+      margin-top: 10px;
+      p {
+        font-size: 12px;
+        color: #6d6d6d;
+        margin-right: 20px;
+      }
+    }
+    .job-place {
+      margin-top: 10px;
+      .boss {
+        font-size: 14px;
+      }
+      .place {
+        font-size: 16px;
+        font-weight: 550;
+      }
+    }
+  }
+}
+.job-card2 {
+  width: 100%;
+  height: 130px;
+  margin-bottom: 5px;
+  background-color: white;
+  .job-card-wide2 {
+    width: 90%;
+    margin: auto;
+    padding-top: 15px;
+    .job-title2 {
+      .job-name2 {
+        font-size: 18px;
+        font-weight: 550;
+      }
+      .salary2 {
+        font-size: 14px;
+        font-weight: 550;
+        color: #52aba9;
+      }
+    }
+    .type-row {
+      width: 90%;
+      height: 30%;
+      margin-top: 10px;
+      display: flex;
+      .job-type2 {
+        height: 20px;
+        margin-right: 10px;
+        padding: 5px 5px 5px 5px;
+        border-radius: 5px;
+        background-color: #ebebeb;
+        p {
+          font-size: 12px;
+        }
+      }
+    }
+
+    .job-number2 {
+      margin-top: 10px;
+      margin-bottom: 5px;
+      display: flex;
+      p {
+        font-size: 16px;
+        color: black;
+        margin-right: 20px;
+      }
+    }
+    .job-place2 {
+      .boss {
+        font-size: 14px;
+      }
+      .place {
+        font-size: 16px;
+        font-weight: 550;
+      }
+    }
+  }
+}
+.fontBlack {
+  font-size: 19px;
+  color: black;
+}
