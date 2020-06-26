@@ -112,7 +112,7 @@ export default {
         "3612ea7f539f61f33e49e15f6c3cb748"
     }).then(res => {
       this.homeCity = res.data.city;
-      // console.log(this.homeCity);
+      console.log(this.homeCity);
     });
   },
   mounted() {},

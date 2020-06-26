@@ -129,7 +129,7 @@ input {
 
 .zhezhaoceng {
   z-index: 999;
-  position: absolute;
+  position: fixed;
   overflow-x: hidden;
   overflow-y: auto;
   width: 89.8%;
@@ -145,7 +145,7 @@ input {
 
 .zhezhaoceng p {
   font-size: 14px;
-  color: white;
+  color: black;
   text-align: center;
   margin-bottom: 15%;
   margin-top: 5%;
@@ -156,6 +156,15 @@ button {
   height: 30px;
   border: none;
   border-radius: 10px;
-  background-color: red;
+  margin-bottom: 10px;
+  background-color: #0085d7;
+}
+
+button p {
+  color: white;
+}
+
+button:hover {
+  background-color: #1170bc;
 }
 /*# sourceMappingURL=PersonalDetail.css.map */

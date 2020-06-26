@@ -17,7 +17,9 @@
           <img src="../../assets/images/更多.png" alt="" class="imgs" />
         </router-link>
       </div>
-      <Carousel :slideList="slideList"></Carousel>
+
+      <Carousel :slideList="slideList" class="sider"></Carousel>
+
       <!-- 首页四个分类 -->
       <div class="cc-df">
         <div

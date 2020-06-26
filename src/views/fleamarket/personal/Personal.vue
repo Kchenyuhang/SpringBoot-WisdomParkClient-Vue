@@ -38,7 +38,7 @@
         </div>
       </div>
       <div class="bottom">
-        <p>1234天前来过</p>
+        <!-- <p>1234天前来过</p> -->
         <p>我就是我不一样的烟火！！！！！</p>
       </div>
       <div class="count">
@@ -167,10 +167,10 @@
             v-if="item.isDeleted == false"
           >
             <div class="title">
-              <p>{{ item.goodsName }}</p>
+              <p>{{ item.goodsName.slice(0, 5) }}</p>
             </div>
 
-            <p class="des">{{ item.goodsDescription }}</p>
+            <p class="des">{{ item.goodsDescription.slice(0, 5) }}</p>
             <div class="price">
               <span class="red">￥{{ item.goodsPrice }}</span>
             </div>
@@ -188,18 +188,9 @@
         </div>
         <div class="right">
           <p class="title">订单号：{{ item.orderId }}</p>
-          <p class="title">商品名：{{ item.goodsName }}</p>
-          <p class="des">{{ item.goodsDescription }}</p>
-          <p class="des">卖家：{{ item.goodsSeller }}</p>
+          <p class="title">{{ item.goodsName }}</p>
           <p class="red">￥{{ item.goodsPrice }}</p>
           <p class="des">{{ item.orderCreateTime }}</p>
-          <!-- <div class="com">
-            <img
-              class="icon"
-              src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/cc-message.png"
-            />
-            <p class="mes">10</p>
-          </div> -->
         </div>
       </div>
       <div
@@ -220,24 +211,12 @@
         </div>
         <div class="right">
           <p class="title">{{ item.goodsName }}</p>
-          <p class="des">{{ item.goodsDescription }}</p>
+          <p class="des">{{ item.goodsDescription.slice(0, 5) }}</p>
+          <div class="chip-item">
           <p class="price">￥{{ item.goodsPrice }}</p>
+          </div>
         </div>
       </div>
-      <!-- <div
-        class="send"
-        v-show="show"
-      >
-        <router-link to="/sell">
-          <div class="round">
-            <img
-              class="icon"
-              src="https://student-m.oss-cn-hangzhou.aliyuncs.com/img/add.png"
-            />
-            <p>发布</p>
-          </div>
-        </router-link>
-      </div> -->
     </div>
     <div
       class="opzzc"

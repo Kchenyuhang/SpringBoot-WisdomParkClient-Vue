@@ -7,6 +7,7 @@ const store = new Vuex.Store({
     user: JSON.parse(localStorage.getItem("user")),
     mvUrl: JSON.stringify(localStorage.getItem("mvUrl")),
     transitionName: JSON.stringify(localStorage.getItem("transitionName")),
+    app: JSON.stringify(localStorage.getItem("app")),
     //跑腿缓存
     type: JSON.stringify(localStorage.getItem("type")),
     address: JSON.stringify(localStorage.getItem("address")),
@@ -61,6 +62,9 @@ const store = new Vuex.Store({
     },
     setbdAdress(state, data) {
       state.bdAdress = data;
+    },
+    setapp(state, data) {
+      state.app = data;
     }
   },
   actions: {}

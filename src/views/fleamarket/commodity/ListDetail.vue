@@ -17,13 +17,21 @@
         >  -->
           <div class="r-left-con" @click="gotoComDetail(item.pkFleaGoodsId)">
             <img :src="item.goodsImgUrl.split('--**--')[0]" />
-            <span>{{ item.goodsDescription.slice(0,15) }}</span>
-            <p>$ {{ item.goodsPrice }}</p>
+            <div class="r-left-con-div">
+              <span>
+                {{ item.goodsDescription.slice(0, 10) }}
+              </span>
+            </div>
+            <p>¥ {{ item.goodsPrice }}</p>
+
+
             <div class="r-right">
               <div class="img-box">
                 <img :src="item.userAvatar" alt="" />
               </div>
-              <p>{{ item.nickname }}</p>
+              <div>
+                <p class="nick">{{ item.nickname }}</p>
+              </div>
             </div>
           </div>
         </div>

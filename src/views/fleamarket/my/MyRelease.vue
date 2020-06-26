@@ -20,7 +20,7 @@
           <img :src="item.goodsImgUrl.split('--**--')[0]" />
         </div>
         <div class="right">
-          <p class="title">{{ item.goodsName }}</p>
+          <p class="title">{{ item.goodsName.slice(0, 7) }}...</p>
           <div class="chip-item">
             <p class="des">{{ item.goodsDescription.slice(0, 5) }}</p>
           </div>
@@ -39,7 +39,7 @@ export default {
       goodsId: 0,
       send: [],
       user: JSON.parse(localStorage.getItem("FleaUser")),
-      lastPath: JSON.parse(localStorage.getItem("path")),
+      lastPath: JSON.parse(localStorage.getItem("path"))
     };
   },
   components: {},
