@@ -15,7 +15,18 @@
       <div class="top">
         <img :src="user.avatar" alt="" />
         <p>{{ user.nickname }}</p>
+        <span>{{ result.gmtCreate }}</span>
+      </div>
+      <div class="des">
         <p>{{ result.content }}</p>
+      </div>
+      <div class="comment" v-for="(item, index) in comment" :key="index">
+        <div class="description">
+          <img :src="item.avatar" alt="" />
+          <p>{{ item.nickname }}</p>
+          <span>{{ item.gmtCreate }}</span>
+          <h5>{{ item.content }}</h5>
+        </div>
       </div>
     </div>
     <div class="input">
@@ -44,6 +55,7 @@ export default {
     return {
       result: [],
       user: [],
+      comment: [],
       msg: "",
       id: this.$route.params.Id
     };
@@ -63,6 +75,7 @@ export default {
       console.log(this.result);
       // this.messages = this.result.data;
       this.user = this.result.userAccount;
+      this.comment = this.result.commentVoList;
       console.log(this.user);
     }
   },

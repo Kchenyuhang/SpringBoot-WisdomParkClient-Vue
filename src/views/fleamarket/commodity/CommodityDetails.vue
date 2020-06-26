@@ -41,10 +41,6 @@
             <img :src="list[0].goodsImgUrl.split('--**--')[index]" />
           </div>
         </div>
-        <!-- <div class="comment">
-          <p>评论</p>
-          <button @click="AddComment">评论</button>
-        </div> -->
         <div class="like">
           <div class="head">
             <div class="pos">
@@ -59,7 +55,7 @@
               <div class="r-left-con" @click="gotoDetail(item.pkFleaGoodsId)">
                 <img :src="item.goodsImgUrl.split('--**--')[0]" />
                 <span>{{ item.goodsDescription.slice(0, 9) }}</span>
-                <p class="price">$ {{ item.goodsPrice }}</p>
+                <p class="price">¥ {{ item.goodsPrice }}</p>
                 <div class="r-right">
                   <div class="img-box">
                     <img :src="item.userAvatar" alt="" />
