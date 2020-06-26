@@ -2,10 +2,7 @@
   <div class="bg">
     <div class="header">
       <router-link to="/metrocard">
-        <img
-          src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
-          alt=""
-        />
+        <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png" alt />
       </router-link>
       <p>消费明细</p>
     </div>
@@ -37,7 +34,7 @@ export default {
   data() {
     return {
       // 获取用户卡号
-      userCard: this.$store.state.user.userAccount,
+      jobNumber: this.$store.state.user.jobNumber,
       result: [],
       customers: []
     };
@@ -50,11 +47,19 @@ export default {
   methods: {
     async customer() {
       this.data = {
-        field: this.userCard
+        field: this.jobNumber
       };
       this.url = this.GLOBAL.baseUrl + "/card/consume";
       this.result = await API.init(this.url, this.data, "post");
       this.customers = this.result.data;
+      console.log(this.customers);
+      this.customers.sort(function(a, b) {
+        return (
+          Date.parse(b.gmtCreate.replace(/-/g, "/")) -
+          Date.parse(a.gmtCreate.replace(/-/g, "/"))
+        );
+      });
+      console.log(this.customers);
     }
   },
   computed: {}

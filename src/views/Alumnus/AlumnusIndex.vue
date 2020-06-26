@@ -10,6 +10,7 @@
           />
         </router-link>
         <p>校友圈</p>
+        <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/alumnus/tuijian.png" alt="" class="tuijian">
       </div>
     </div>
     <div class="avatar-card cc-df-between">
@@ -86,11 +87,8 @@
                 >
                   <p>收藏</p>
                 </div>
-                <hr class="line" v-if="user.pkUserAccountId == item1.userid" />
-                <div
-                  class="jubao cc-df-center"
-                  v-if="user.pkUserAccountId == item1.userid"
-                >
+                <hr class="line" v-if="user.pkUserAccountId == item1.userId" />
+                <div class="jubao cc-df-center" v-if="user.pkUserAccountId == item1.userId">
                   <p>删除</p>
                 </div>
                 <hr class="line" />
@@ -138,8 +136,11 @@
               </div>
             </div>
             <div class="inp cc-df-between cc-df">
-              <input type="text" class="pinglun-input" />
-              <div class="input-btn cc-df-center">
+              <input type="text" class="pinglun-input" v-model="content" />
+              <div
+                class="input-btn cc-df-center"
+                @click="addContent(item1.pkDynamicId,index,index1)"
+              >
                 <p>发送</p>
               </div>
             </div>
@@ -215,7 +216,9 @@ export default {
       show: true,
       isShow: 0,
       user: this.$store.state.user,
-      token: this.$store.state.token
+      token: this.$store.state.token,
+      content: "",
+      text: {}
     };
   },
   components: {
@@ -225,12 +228,79 @@ export default {
     await this.selectDongtai();
   },
   mounted() {
+    window.addEventListener("scroll", this.handleScroll);
     setTimeout(() => {
       this.show = false;
       this.msg = "加载完了！";
     }, 3000);
   },
+  destroy() {
+    // 必须移除监听器，不然当该vue组件被销毁了，监听器还在就会出错
+    window.removeEventListener("scroll", this.onScroll);
+  },
   methods: {
+    handleScroll() {
+      let scrollTop = document.documentElement.scrollTop;
+      let documentTop = document.body.scrollHeight; //全部内容的高
+      let screenHeight = window.screen.availHeight; //当前屏幕的高
+      // console.log(scrollTop);
+      if (scrollTop + screenHeight >= documentTop - 1) {
+        this.page++;
+        this.selectDongtai();
+        //干你想干的事儿
+        /* console.log(screenTop)
+				console.log(documentTop)
+				console.log(screenHeight) */
+      }
+    },
+    async addContent(index, i, j) {
+      console.log(i, j);
+      this.data = {
+        content: this.content,
+        dynamicId: index,
+        userId: this.user.pkUserAccountId
+      };
+      this.url = this.GLOBAL.baseUrl + "/dynamic/comment/insert";
+      this.result = await API.init(this.url, this.data, "post");
+      this.text = {
+        avatar: this.user.avatar,
+        content: this.content,
+        dynamicId: index,
+        gmtCreate: this.formatDateTime(new Date()),
+        isDeleted: false,
+        nickname: this.user.nickname,
+        pkCommentId: "59075843049525248",
+        replyCommentVos: Array(0),
+        replyComments: Array(0),
+        userId: this.user.pkUserAccountId
+      };
+      console.log(this.Dongtais[i][j].commentVoList);
+      if (this.Dongtais[i][j].commentVoList != null) {
+        this.Dongtais[i][j].commentVoList = this.Dongtais[i][
+          j
+        ].commentVoList.concat(this.text);
+      } else {
+        this.Dongtais[i][j].commentVoList=[]
+        this.Dongtais[i][j].commentVoList.push(this.text);
+      }
+      console.log(this.Dongtais[i][j].commentVoList);
+      this.content = "";
+    },
+    formatDateTime(value) {
+      let date = new Date(value);
+      let y = date.getFullYear();
+      let MM = date.getMonth() + 1;
+      MM = MM < 10 ? "0" + MM : MM;
+      let d = date.getDate();
+      d = d < 10 ? "0" + d : d;
+      let h = date.getHours();
+      h = h < 10 ? "0" + h : h;
+      let m = date.getMinutes();
+      m = m < 10 ? "0" + m : m;
+      let s = date.getSeconds();
+      s = s < 10 ? "0" + s : s;
+      return y + "-" + MM + "-" + d + " " + h + ":" + m + ":" + s;
+    },
     async college(index) {
       this.data = {
         dynamicId: index,

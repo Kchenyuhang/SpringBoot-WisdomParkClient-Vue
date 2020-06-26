@@ -13,7 +13,11 @@
         <div class="cc-df-between" v-if="item.fromId==user.pkUserAccountId">
           <div></div>
           <div class="msgArea cc-df-right">
-            <div class="msg">{{item.content}}</div>
+            <div class="cc-col">
+              <p style="text-align: right;">{{user.nickname}}</p>
+              <div class="msg1"><p>{{item.content}}</p></div>
+            </div>
+
             <div class="avatar cc-right">
               <img :src="user.avatar" />
             </div>
@@ -24,8 +28,11 @@
             <div class="avatar">
               <img :src="friend.avatar" />
             </div>
-            <div class="msg">
-              <p>{{item.content}}</p>
+            <div class="cc-col">
+              <p>{{friend.nickname}}</p>
+              <div class="msg">
+                <p>{{item.content}}</p>
+              </div>
             </div>
           </div>
           <div></div>
@@ -35,7 +42,7 @@
         <div class="inp cc-df-center">
           <textarea name id cols="30" rows="1" v-model="msg" class="test" placeholder="请输入私聊内容"></textarea>
         </div>
-        <div @click="sendToUser" class="btn cc-df-center">
+        <div @click="sendToUser()" class="btn cc-df-center">
           <p>发送</p>
         </div>
       </div>
@@ -77,28 +84,35 @@ export default {
   },
   methods: {
     async selectChat() {
+      this.dataList = [];
       this.id = this.friendId + this.user.pkUserAccountId;
       this.data = {
         id: this.id
       };
-      this.url = "http://120.26.185.155:8079/dynamic/message/all";
+      this.url = "/a/dynamic/message/all";
       this.result = await API.init(this.url, this.data, "post");
+      console.log(this.result);
       this.dataList = this.result.data;
       this.id = this.user.pkUserAccountId + this.friendId;
       this.data = {
         id: this.id
       };
-      this.url = "http://120.26.185.155:8079/dynamic/message/all";
+      this.url = "/a/dynamic/message/all";
       this.result = await API.init(this.url, this.data, "post");
       this.dataList = this.dataList.concat(this.result.data);
       console.log(this.dataList);
-      // this.dataList.sort(function(a, b) {
-      //   return (
-      //     Date.parse(b.date.replace(/-/g, "/")) -
-      //     Date.parse(a.date.replace(/-/g, "/"))
-      //   );
-      // });
-      //console.log(this.dataList);
+      this.dataList.sort(function(a, b) {
+        return (
+          Date.parse(a.gmtCreate.replace(/-/g, "/")) -
+          Date.parse(b.gmtCreate.replace(/-/g, "/"))
+        );
+      });
+      console.log(this.dataList);
+      this.msg = "";
+      document.documentElement.scrollTop = document.body.scrollHeight;
+      // let documentTop = document.body.scrollHeight; //全部内容的高
+      // let screenHeight = window.screen.availHeight; //当前屏幕的高
+      console.log(document.documentElement.scrollTop);
     },
     async selectUser() {
       this.data = {
@@ -139,7 +153,7 @@ export default {
     },
     connection() {
       // 建立连接对象
-      this.socket = new SockJS("http://120.26.185.155:8079/websocket"); //连接服务端提供的通信接口，连接以后才可以订阅广播消息和个人消息
+      this.socket = new SockJS("/a/websocket"); //连接服务端提供的通信接口，连接以后才可以订阅广播消息和个人消息
       // 获取STOMP子协议的客户端对象
       this.stompClient = Stomp.over(this.socket);
       // 定义客户端的认证信息,按需求配置
@@ -164,6 +178,7 @@ export default {
             //   msg: msg.body.substring(msg.body.indexOf(":") + 1)
             // });
             // console.log(this.dataList);
+            this.selectChat();
             console.log(msg.body);
             console.log(frame);
           });
@@ -180,6 +195,7 @@ export default {
               //   msg: msg.body.substring(msg.body.indexOf(":") + 1)
               // });
               // console.log(this.dataList);
+              this.selectChat();
               console.log(msg.body);
               console.log(frame);
             }
