@@ -3,10 +3,7 @@
     <div class="header">
       <div class="header-title">
         <router-link to="/layout">
-          <img
-            src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/position/zuojiantou.png"
-            alt
-          />
+          <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/position/zuojiantou.png" alt />
         </router-link>
         <p>推荐好友</p>
       </div>
@@ -24,8 +21,7 @@
             <p>Ta在刚刚也评论了你的动态</p>
             <p>我和原来是渐渐相离。。</p>
           </div>
-          <div class="down">
-          </div>
+          <div class="down"></div>
         </div>
       </div>
       <div class="row4">
@@ -33,18 +29,14 @@
           <div class="up">
             <p>聊一聊，会有惊喜发现！</p>
           </div>
-          <div class="down">
-          </div>
+          <div class="down"></div>
         </div>
       </div>
     </div>
 
     <div class="overall">
       <div class="circle-box">
-        <div
-          class="circle"
-          :style="`width:${circle_w}px;height:${circle_h}px`"
-        >
+        <div class="circle" :style="`width:${circle_w}px;height:${circle_h}px`">
           <div
             class="origin"
             :style="`width:${box_w}px;height:${box_h}px;transform: rotate(${stard}deg);`"
@@ -52,12 +44,14 @@
             <div
               :style="`width:${box_w}px;height:${box_h}px;transform: rotate(${-stard}deg);`"
               class="img-box"
-              v-for="(i,index) in boxNum"
+              v-for="(item,index) in boxNum"
               :key="index"
               @click="Turn(index)"
             >
-              <div class="box">
-                <div class="content">{{index+1}}</div>
+              <div class="box" v-bind:style="{ backgroundImage: 'url(' + avatars[index] + ')' }">
+                <div class="content">
+                  <p>{{nicknames[index]}}</p>
+                </div>
               </div>
             </div>
           </div>
@@ -68,30 +62,54 @@
 </template>
 
 <script>
+const API = require("../../request/api");
 export default {
   name: "Tuijian",
   data() {
     return {
-      circle_w: window.innerHeight, //圆盘的宽
-      circle_h: window.innerHeight, //圆盘的高
+      circle_w: 600, //圆盘的宽
+      circle_h: 600, //圆盘的高
       box_w: 350, //圆盘上覆盖的小圆点宽
       box_h: 350, //圆盘上覆盖的小圆点高
       PI: 360, //分布角度，默认为360deg
-      stard: 90, //起始角度
+      stard: 150, //起始角度
       stard_s: null, //用来默认储存第一个初始值
       boxNum: 10, //圆盘上覆盖的小圆点个数
-      activeIndex: 0 //默认下标
+      activeIndex: 0, //默认下标
+      friends: [],
+      avatars: [],
+      nicknames:[]
     };
   },
   components: {},
   created() {
+    this.selectFriend();
     this.stard_s = this.stard;
+    this.init();
+    this.Turn(this.activeIndex);
   },
   mounted() {
+    this.selectFriend();
     this.init();
     this.Turn(this.activeIndex);
   },
   methods: {
+    async selectFriend() {
+      this.data = {
+        tag: "情感交流",
+        userId: "1"
+      };
+      this.url = this.GLOBAL.baseUrl + "/dynamic/friend";
+      this.result = await API.init(this.url, this.data, "post");
+      this.friends = this.result.data;
+      for (let i = 0; i < this.friends.length; i++) {
+        this.avatars[i] = this.friends[i].avatar;
+        this.nicknames[i] = this.friends[i].nickname;
+      }
+      console.log(this.friends);
+
+      this.boxNum = this.friends.length;
+    },
     //初始化小圆点，根据计算使其分布到对应位置
     init() {
       let box = document.querySelectorAll(".img-box");
@@ -107,7 +125,7 @@ export default {
     Turn(index) {
       let _this = this;
       let bx = document.querySelectorAll(".box");
-      _this.stard = index * (_this.PI / _this.boxNum) + _this.stard_s;
+      _this.stard = index * 30 + _this.stard_s;
       for (let i = 0; i < bx.length; i++) {
         if (i == index) {
           bx[i].classList.add("box-active");
@@ -123,19 +141,11 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/scss/alumnus/Tuijian.scss";
-.overall {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .circle-box {
   position: fixed; //注释--------------------------此处显示全圆
   overflow: hidden; //注释----------------------此处显示全圆
-  right: 0px; //注释---------------------此处显示全圆
-  bottom: -200px;
+  right: 15px; //注释---------------------此处显示全圆
+  top: 45%;
   .circle {
     transform: scale(0.6);
     width: 100%;
@@ -174,7 +184,7 @@ export default {
           cursor: pointer;
           color: white;
           font-size: 40px;
-          background: black;
+          background: white;
           overflow: hidden;
           &:hover {
             transform: scale(0.5);
@@ -184,7 +194,9 @@ export default {
           }
           .content {
             width: 100%;
-            height: 100%;
+            height: 70px;
+            margin-top: 60%;
+            background-color: white;
             display: flex;
             align-items: center;
             justify-content: center;
