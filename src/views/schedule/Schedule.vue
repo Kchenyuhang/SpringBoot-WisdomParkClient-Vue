@@ -2,10 +2,7 @@
   <div id="classSchedule" class="bg">
     <div class="header">
       <router-link to="/layout">
-        <img
-          src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
-          alt
-        />
+        <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png" alt />
       </router-link>
       <p>课程表</p>
     </div>
@@ -37,19 +34,14 @@
             </div>
           </div>
         </div>
-        <img
-          class="close"
-          src="../../assets/close.png"
-          alt="123"
-          @click="show = false"
-        />
+        <img class="close" src="../../assets/close.png" alt="123" @click="show = false" />
       </div>
     </div>
     <!--课程表-->
     <table class="schedule">
       <tr class="week-list" style="height:30px">
         <td colspan="2"></td>
-        <td v-for="(item, index) in weekends" :key="index">{{ item }}</td>
+        <td v-for="(item, index) in weekends" :key="index" style="width:40px">{{ item }}</td>
       </tr>
       <tr class="am" style="height:70px">
         <td rowspan="2" @click="show = true">上午</td>
@@ -61,9 +53,7 @@
           :rowspan="sum[0][index]"
           v-bind:style="{ backgroundColor: item.backgroundColor }"
           @click="getMessage(item)"
-        >
-          {{ item.subjectName }}
-        </td>
+        >{{ item.subjectName }}</td>
       </tr>
       <tr style="height:70px">
         <td>3-4</td>
@@ -74,9 +64,7 @@
           v-show="sum[0][index] == 1"
           v-bind:style="{ backgroundColor: item.backgroundColor }"
           @click="getMessage(item)"
-        >
-          {{ item.subjectName }}
-        </td>
+        >{{ item.subjectName }}</td>
       </tr>
       <tr class="noon" style="height:20px">
         <td colspan="9" class="blank"></td>
@@ -92,9 +80,7 @@
           v-bind:style="{
             backgroundColor: subjects[2][item - 1].backgroundColor
           }"
-        >
-          {{ subjects[2][item - 1].subjectName }}
-        </td>
+        >{{ subjects[2][item - 1].subjectName }}</td>
       </tr>
       <tr class="pm" style="height:70px">
         <td>7-8</td>
@@ -106,9 +92,7 @@
           v-bind:style="{
             backgroundColor: subjects[3][item - 1].backgroundColor
           }"
-        >
-          {{ subjects[3][item - 1].subjectName }}
-        </td>
+        >{{ subjects[3][item - 1].subjectName }}</td>
       </tr>
       <tr style="height:20px">
         <td colspan="9" class="blank"></td>
@@ -123,9 +107,7 @@
           v-bind:style="{
             backgroundColor: subjects[4][item - 1].backgroundColor
           }"
-        >
-          {{ subjects[4][item - 1].subjectName }}
-        </td>
+        >{{ subjects[4][item - 1].subjectName }}</td>
       </tr>
     </table>
 
@@ -189,18 +171,24 @@ export default {
       semesterId: 1,
       exam: [],
       day: "",
-      dayId: 1
+      user: this.$store.state.user,
+      dayId: 2
     };
   },
   components: {},
   async created() {
+    this.selectSum();
+    // this.getAll();
+    this.getList();
+    // console.log(this.List);
     this.data = {
-      clazzId: 1,
-      semesterId: this.semesterId,
+      clazzId: this.user.clazzId,
+      semesterId: 19,
       week: this.dayId
     };
     this.url = this.GLOBAL.baseUrl + "/course/schedule";
     this.result = (await API.init(this.url, this.data, "post")).data;
+    console.log(this.result);
     for (let j = 0; j < this.subjects.length; j++) {
       for (let k = 0; k < this.subjects[j].length; k++) {
         this.subjects[j][k] = {
@@ -220,15 +208,11 @@ export default {
       for (let j = 0; j < this.subjects.length; j++) {
         for (let k = 0; k < this.subjects[j].length; k++) {
           if (this.result[i].time == j + 1 && this.result[i].weekDay == k) {
-            this.subjects[j][k] = this.result[i];
+            this.subjects[j][k - 1] = this.result[i];
           }
         }
       }
     }
-    this.selectSum();
-    // this.getAll();
-    this.getList();
-    // console.log(this.List);
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
@@ -268,12 +252,13 @@ export default {
         [1, 1, 1, 1, 1, 1, 1]
       ];
       this.data = {
-        clazzId: 1,
+        clazzId: this.user.clazzId,
         semesterId: this.semesterId,
         week: this.dayId
       };
       this.url = this.GLOBAL.baseUrl + "/course/schedule";
       this.result = (await API.init(this.url, this.data, "post")).data;
+      console.log(this.result);
       for (let j = 0; j < this.subjects.length; j++) {
         for (let k = 0; k < this.subjects[j].length; k++) {
           this.subjects[j][k] = {
@@ -292,7 +277,10 @@ export default {
       for (let i = 0; i < this.result.length; i++) {
         for (let j = 0; j < this.subjects.length; j++) {
           for (let k = 0; k < this.subjects[j].length; k++) {
-            if (this.result[i].time == j + 1 && this.result[i].weekDay == k) {
+            if (
+              this.result[i].time == j + 1 &&
+              this.result[i].weekDay == k + 1
+            ) {
               this.subjects[j][k] = this.result[i];
             }
           }
