@@ -58,9 +58,11 @@
           >
             <div class="cc-col-center">
               <input
-                type="text"
+                type="number"
                 placeholder="自定义金额"
-              >
+                oninput="if(value.length>6)value=value.slice(0,6)"
+                v-model="zidingyi"
+              />
             </div>
           </div>
         </div>
@@ -136,6 +138,7 @@ export default {
       isShow: 1,
       radio: true,
       user: this.$store.state.user,
+      zidingyi: ""
     };
   },
   components: {},
@@ -152,9 +155,17 @@ export default {
       if (this.isShow == 3) {
         this.money = 100;
       }
+      if (this.isShow == 4) {
+        this.money = this.zidingyi;
+      }
       localStorage.setItem("app", 1);
       this.$store.commit("setapp", 1);
-      window.location.href = 'http://localhost/alipay/toPay?amount='+ this.money +'&jobNumber='+ this.user.jobNumber +'&rechargeType=%E6%94%AF%E4%BB%98%E5%AE%9D&regexId=3';
+      window.location.href =
+        "http://localhost/alipay/toPay?amount=" +
+        this.money +
+        "&jobNumber=" +
+        this.user.jobNumber +
+        "&rechargeType=%E6%94%AF%E4%BB%98%E5%AE%9D&regexId=3";
     }
   },
   computed: {}

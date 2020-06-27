@@ -1,27 +1,25 @@
 module.exports = {
   devServer: {
     host: "localhost",
-    port: 8088,
+    port: 8089,
     https: false,
     open: true,
     hotOnly: true,
-
     proxy: {
-      "/a": {
+      "/api": {
         target: "http://120.26.185.155:8079",
         changeOrigin: true,
         ws: true,
         pathRewrite: {
-          "^/a": ""
-        }
-        // pathRewrite:{'.+?/api':'/api'},
-      }
-    }
+          "^/api": "", //代理的路径
+        },
+      },
+    },
   },
 
   outputDir: "./dist",
   assetsDir: "./assets/",
   publicPath: "./",
   indexPath: "./index.html",
-  transpileDependencies: ["vuetify"]
+  transpileDependencies: ["vuetify"],
 };

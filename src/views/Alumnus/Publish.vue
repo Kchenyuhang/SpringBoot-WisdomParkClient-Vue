@@ -12,7 +12,12 @@
       </div>
     </div>
     <div class="article">
-      <input type="text" class="theme" placeholder="在此输入标题" />
+      <input
+        type="text"
+        class="theme"
+        placeholder="在此输入标题"
+        v-model="data.title"
+      />
       <textarea
         cols="5"
         placeholder="在此输入正文"
@@ -20,13 +25,26 @@
         v-model="data.content"
       ></textarea>
       <div class="image cc-col-center">
-        <img
+        <!-- <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/alumnus/picture_icon.png"
           alt=""
         />
         <div>
           <p>添加照片</p>
-        </div>
+        </div> -->
+        <img
+          class="up-pic"
+          :src="pic[0].picture"
+          @click="avatarClick()"
+        />
+        <input
+          type="file"
+          @change="uploadAvatar($event)"
+          ref="file"
+          style="display: none;"
+          id="file"
+          accept="image/jpg, image/jpeg, image/png"
+        />
       </div>
     </div>
     <hr class="line" />
@@ -43,7 +61,7 @@
       </div>
       <div class="right">
         <img
-        @click="handCity"
+          @click="handCity"
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/youjiantou.png"
           alt=""
         />
@@ -54,7 +72,7 @@
       <p>*请按照发帖要求，合理发帖，如有违规将会被删除，乃至封禁</p>
     </div>
     <div class="publish-btn cc-df-center">
-      <p>发布</p>
+      <p @click="send">发布</p>
     </div>
   </div>
 </template>
@@ -92,7 +110,7 @@ export default {
       url:
         "https://restapi.amap.com/v3/ip?key=" +
         "3612ea7f539f61f33e49e15f6c3cb748"
-    }).then((res) => {
+    }).then(res => {
       this.homeCity = res.data.city;
       console.log(this.homeCity);
     });
