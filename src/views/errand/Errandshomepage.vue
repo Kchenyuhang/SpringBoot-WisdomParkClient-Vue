@@ -1,11 +1,14 @@
 <template>
   <div>
+    <!-- <button @click="sss">发送消息</button> -->
     <!-- 顶部图片 -->
     <div class="bg">
       <img
         src="https://soft1851.oss-cn-beijing.aliyuncs.com/markdown/lADPGqGoaTpyd_7NAljNA4Q_900_600.jpg_720x720q90g.jpg"
         alt
       />
+      <!-- 消息推送 -->
+      <Eservice :message="dd"></Eservice>
       <!-- 地址栏 -->
       <div class="inputDiv">
         <div class="inputTop">
@@ -131,12 +134,15 @@
 </template>
 
 <script>
+import Eservice from "../../components/Eservice";
+const Sock = require("../../assets/js/Sock");
 import Dialog from "../../components/dialog";
 const API = require("../../request/api");
 export default {
   name: "Errandshomepage",
   data() {
     return {
+      dd: this.$store.state.message1,
       userId: this.$store.state.user.jobNumber,
       homeCity: "",
       showBombTips: {
@@ -167,6 +173,7 @@ export default {
     };
   },
   created() {
+    Sock.initWebSocket();
     this.orerrand();
     this.runorders();
     this.receiver();
@@ -181,8 +188,18 @@ export default {
       this.homeCity = res.data.city;
     });
   },
-  components: { Dialog },
+  components: { Dialog, Eservice },
+  mounted() {
+    console.log(this.userId);
+    // 消息推送测试
+    this.information();
+  },
   methods: {
+    sss() {
+      Sock.sendMessageToErrends("一对一急送,拒绝拼单！", 1802333101, 1802333101);
+      this.dd = localStorage.getItem("message1");
+    },
+
     // 腾讯地图定位 拿到具体详细的地址
     getaddress() {
       let url = "https://apis.map.qq.com/ws/location/v1/ip?";
