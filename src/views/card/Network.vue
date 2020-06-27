@@ -2,7 +2,10 @@
   <div class="bg">
     <div class="header">
       <router-link to="/metrocard">
-        <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png" alt="左箭头" />
+        <img
+          src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/zuojiantou.png"
+          alt="左箭头"
+        />
       </router-link>
       <p>网费充值</p>
     </div>
@@ -13,14 +16,22 @@
       </div>
       <div class="rechargeicon cc-df-warp">
         <div class="cc-df-between">
-          <div class="icon cc-df-center" :class="{'change':isShow==1}" @click="isShow=1">
+          <div
+            class="icon cc-df-center"
+            :class="{'change':isShow==1}"
+            @click="isShow=1"
+          >
             <div class="cc-col-center">
               <b>
                 <p>30元</p>
               </b>
             </div>
           </div>
-          <div class="icon cc-df-center" :class="{'change':isShow==2}" @click="isShow=2">
+          <div
+            class="icon cc-df-center"
+            :class="{'change':isShow==2}"
+            @click="isShow=2"
+          >
             <div class="cc-col-center">
               <b>
                 <p>50元</p>
@@ -29,16 +40,29 @@
           </div>
         </div>
         <div class="cc-df-between">
-          <div class="icon cc-df-center" :class="{'change':isShow==3}" @click="isShow=3">
+          <div
+            class="icon cc-df-center"
+            :class="{'change':isShow==3}"
+            @click="isShow=3"
+          >
             <div class="cc-col-center">
               <b>
                 <p>100元</p>
               </b>
             </div>
           </div>
-          <div class="icon cc-df-center" :class="{'change':isShow==4}" @click="isShow=4">
+          <div
+            class="icon cc-df-center"
+            :class="{'change':isShow==4}"
+            @click="isShow=4"
+          >
             <div class="cc-col-center">
-              <input type="text" placeholder="自定义金额" />
+              <input
+                type="number"
+                placeholder="自定义金额"
+                oninput="if(value.length>6)value=value.slice(0,6)"
+                v-model="zidingyi"
+              />
             </div>
           </div>
         </div>
@@ -47,9 +71,15 @@
         <p>选择支付方式</p>
       </div>
       <div class="paycard cc-df-warp">
-        <div class="cc-df-between alipaycard" @click="radio=true">
+        <div
+          class="cc-df-between alipaycard"
+          @click="radio=true"
+        >
           <div class="alipay">
-            <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_zhifubao.png" alt />
+            <img
+              src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_zhifubao.png"
+              alt
+            />
             <p>支付宝支付</p>
           </div>
           <div class="xuanzhong cc-df-right">
@@ -65,9 +95,15 @@
             />
           </div>
         </div>
-        <div class="cc-df-between wechatpaycard" @click="radio=false">
+        <div
+          class="cc-df-between wechatpaycard"
+          @click="radio=false"
+        >
           <div class="wechatpay">
-            <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_weixin.png" alt />
+            <img
+              src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_weixin.png"
+              alt
+            />
             <p>微信支付</p>
           </div>
           <div class="weixuanzhong cc-df-right">
@@ -84,7 +120,10 @@
           </div>
         </div>
       </div>
-      <div class="login-btn" @click="topUp()">
+      <div
+        class="login-btn"
+        @click="topUp()"
+      >
         <p>立即充值</p>
       </div>
     </div>
@@ -98,7 +137,8 @@ export default {
     return {
       isShow: 1,
       radio: true,
-      user: this.$store.state.user
+      user: this.$store.state.user,
+      zidingyi: ""
     };
   },
   components: {},
@@ -114,6 +154,9 @@ export default {
       }
       if (this.isShow == 3) {
         this.money = 100;
+      }
+      if (this.isShow == 4) {
+        this.money = this.zidingyi;
       }
       localStorage.setItem("app", 3);
       this.$store.commit("setapp", 3);
