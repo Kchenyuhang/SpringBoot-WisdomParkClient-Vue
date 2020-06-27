@@ -154,7 +154,7 @@
         <div class="cc-col">
           <div class="cc-mtop" v-for="(item, index) in infromation" :key="index">
             <div class="cc-df" @click="intoDetail(item.pkInfoManageId)">
-              <div class="left" v-bind:style="{ backgroundImage: 'url(' + item.cover + ')' }"></div>
+              <div class="left" v-bind:style="{ backgroundImage: 'url('+ 'https://images.weserv.nl/?url=' + item.cover + ')' }"></div>
               <div class="right cc-col">
                 <div class="right-top">
                   <p>{{ item.title }}</p>

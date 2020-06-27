@@ -55,6 +55,7 @@
             type="number"
             class="title"
             placeholder="请输入价格"
+            onkeyup="this.value=this.value.replace(/[^\r\n0-9\. ]/g,'');"
             v-model="data.goodsPrice"
           />
           </div>
@@ -178,10 +179,8 @@ export default {
         imageUrl: this.data.goodsImgUrl
       };
       console.log(data);
+      this.$router.push("/reward");
       this.type = (await API.init(this.url, data, "post")).data.types;
-      this.$router.push({
-        path: `/personal/${this.data.pkFleaUserId}`
-      });
     },
     uploadAvatar(event) {
       const OSS = require("ali-oss");

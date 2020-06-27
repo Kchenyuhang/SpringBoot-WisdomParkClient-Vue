@@ -18,7 +18,8 @@ const store = new Vuex.Store({
     desinfo: JSON.stringify(localStorage.getItem("desinfo")),
     desname: JSON.stringify(localStorage.getItem("desname")),
     desnumber: JSON.stringify(localStorage.getItem("desnumber")),
-    bdAdress: JSON.stringify(localStorage.getItem("bdAdress"))
+    bdAdress: JSON.stringify(localStorage.getItem("bdAdress")),
+    message1: JSON.stringify(localStorage.getItem("message1"))
   },
   mutations: {
     setToken(state, data) {
@@ -65,6 +66,9 @@ const store = new Vuex.Store({
     },
     setapp(state, data) {
       state.app = data;
+    },
+    setmessage1(state, data) {
+      state.message1 = data;
     }
   },
   actions: {}

@@ -7,8 +7,14 @@
         </div>
       </router-link>
       <p>更换手机号</p>
-      <div class="save" @click="into()">
-        <button class="color" :class="{ changeColor: isTrue() }">
+      <div
+        class="save"
+        @click="into()"
+      >
+        <button
+          class="color"
+          :class="{ changeColor: isTrue() }"
+        >
           <p>下一步</p>
         </button>
       </div>
@@ -26,10 +32,11 @@
       <div class="newphone">
         <p>新手机号:</p>
         <input
-          type="text"
+          type="number"
           class="phonenumber"
           placeholder="请填写手机号码"
           v-model="phoneInput"
+          oninput="if(value.length>11)value=value.slice(0,11)"
         />
       </div>
       <hr class="line1" />

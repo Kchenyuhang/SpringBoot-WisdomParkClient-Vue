@@ -39,7 +39,7 @@ export default {
       goodsId: 0,
       send: [],
       user: JSON.parse(localStorage.getItem("FleaUser")),
-      lastPath: JSON.parse(localStorage.getItem("path")),
+      lastPath: JSON.parse(localStorage.getItem("path"))
     };
   },
   components: {},
