@@ -1,5 +1,5 @@
 .bg {
-  background-color: #f3f3f3;
+  background-color: white;
   height: 100vh;
   width: 100%;
 }
@@ -7,23 +7,16 @@
 .header {
   background-color: #f8f8f8;
   height: 55px;
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   left: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .header .header-title {
   width: 90%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 
 .header .header-title img {
@@ -47,8 +40,6 @@
   border-top: 1px solid #a7a7a7;
   position: fixed;
   bottom: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   padding-top: 10px;
 }
@@ -95,11 +86,241 @@ textarea::-webkit-input-placeholder {
 }
 
 .body {
+  width: 100%;
+  background-color: white;
+}
+
+.body .dongtai-card {
+  background-color: white;
+  width: 90%;
+  margin: auto;
+  display: flex;
+  margin-bottom: 2px;
+  padding-top: 20px;
+}
+
+.body .dongtai-card .dongtai-avatar {
+  width: 20%;
+}
+
+.body .dongtai-card .dongtai-avatar img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  margin-right: 10px;
+}
+
+.body .dongtai-card .dongtai-content {
+  width: 80%;
+}
+
+.body .dongtai-card .dongtai-content .row {
+  display: flex;
+}
+
+.body .dongtai-card .dongtai-content .row .name p {
+  font-size: 15px;
+  color: #1f5081;
+}
+
+.body .dongtai-card .dongtai-content .row .fenge {
+  width: 20px;
+}
+
+.body .dongtai-card .dongtai-content .row .fenge p {
+  color: #b2b0be;
+}
+
+.body .dongtai-card .dongtai-content .row .time p {
+  margin-top: 3px;
+  font-size: 12px;
+  color: #b2b0be;
+}
+
+.body .dongtai-card .dongtai-content .article {
+  width: 95%;
+  margin-top: 10px;
+}
+
+.body .dongtai-card .dongtai-content .article p {
+  font-size: 17px;
+}
+
+.body .dongtai-card .dongtai-content .image {
+  margin-top: 10px;
   width: 95%;
 }
 
-.top img {
-  height: 50px;
-  width: 50px;
+.body .dongtai-card .dongtai-content .row2 {
+  width: 100%;
+  height: 30px;
+  margin-top: 20px;
 }
-/*# sourceMappingURL=DongtaiDetails.css.map */
+
+.body .dongtai-card .dongtai-content .row2 .comment {
+  width: 70px;
+  height: 100%;
+  border-radius: 30px;
+  border: 1px solid #e0e0e0;
+  display: flex;
+}
+
+.body .dongtai-card .dongtai-content .row2 .comment img {
+  width: 25px;
+  height: 25px;
+}
+
+.body .dongtai-card .dongtai-content .row2 .comment p {
+  font-size: 13px;
+  color: #9091ad;
+}
+
+.body .dongtai-card .dongtai-content .row2 .like {
+  width: 80px;
+  height: 100%;
+}
+
+.body .dongtai-card .dongtai-content .row2 .like img {
+  width: 25px;
+  height: 25px;
+}
+
+.body .dongtai-card .dongtai-content .row2 .like p {
+  font-size: 15px;
+  font-weight: 550;
+  color: #787474;
+  margin-top: 5px;
+}
+
+.body .dongtai-card .dongtai-content .comment-row {
+  margin-top: 5px;
+  width: 100%;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.body .dongtai-card .dongtai-content .comment-row .dis {
+  display: flex;
+}
+
+.body .dongtai-card .dongtai-content .comment-row .dis img {
+  width: 35px;
+  height: 35px;
+  border-radius: 20px;
+}
+
+.body .dongtai-card .dongtai-content .comment-row .dis .comment-content {
+  margin-left: 10px;
+}
+
+.body .dongtai-card .dongtai-content .comment-row .dis .comment-content .row3 {
+  display: flex;
+}
+
+.body .dongtai-card .dongtai-content .comment-row .dis .comment-content .row3 .nickname {
+  font-size: 12px;
+  color: #9e9090;
+}
+
+.body .dongtai-card .dongtai-content .comment-row .dis .comment-content .row3 .dian {
+  font-size: 12px;
+  color: #9e9090;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.body .dongtai-card .dongtai-content .comment-row .dis .comment-content .row3 .time {
+  font-size: 12px;
+  color: #9e9090;
+}
+
+.body .dongtai-card .dongtai-content .comment-row .dis .comment-content .row4 {
+  margin-top: 5px;
+}
+
+.body .dongtai-card .dongtai-content .comment-row .dis .comment-content .row4 p {
+  font-size: 12px;
+  color: #000000;
+}
+
+.body .dongtai-card .dongtai-content .comment-row .zan img {
+  width: 15px;
+  height: 15px;
+}
+
+.pinlun {
+  width: 100%;
+  padding-top: 10px;
+  margin-bottom: 58px;
+  background-color: #f3f3f3;
+}
+
+.pinlun .all {
+  width: 90%;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.pinlun .pinlun-content {
+  width: 90%;
+  margin: auto;
+  display: flex;
+}
+
+.pinlun .pinlun-content .avatar {
+  margin-top: 10px;
+  width: 15%;
+}
+
+.pinlun .pinlun-content .avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  margin-right: 10px;
+}
+
+.pinlun .pinlun-content .content-row {
+  width: 75%;
+}
+
+.pinlun .pinlun-content .content-row .fenge {
+  width: 20px;
+}
+
+.pinlun .pinlun-content .content-row .fenge p {
+  color: #b2b0be;
+}
+
+.pinlun .pinlun-content .content-row .time p {
+  margin-top: 3px;
+  font-size: 12px;
+  color: #b2b0be;
+}
+
+.pinlun .pinlun-content .content-row .pinlun-content1 {
+  margin-top: 12px;
+  height: 20px;
+  display: flex;
+}
+
+.pinlun .pinlun-content .content-row .pinlun-content1 .name p {
+  font-size: 15px;
+  color: #1f5081;
+}
+
+.pinlun .pinlun-content .dianzan {
+  margin-top: 10px;
+}
+
+.pinlun .pinlun-content .dianzan img {
+  width: 30px;
+  height: 30px;
+}
+
+.fontSize {
+  margin-left: 30px;
+}
+
+.fontSize p {
+  font-size: 13px;
+}

@@ -12,7 +12,7 @@
     </div>
     <div class="body">
       <div class="image">
-        <img :src="information.cover" alt="" />
+        <img :src="'https://images.weserv.nl/?url='+information.cover" alt />
       </div>
       <div class="title">
         <p>{{ information.title }}</p>
@@ -20,8 +20,8 @@
       <div class="article">
         <!-- <p>
           {{ information.text }}
-        </p> -->
-        <p v-html="information.text"></p>
+        </p>-->
+        <div v-html="information.text"></div>
       </div>
     </div>
   </div>

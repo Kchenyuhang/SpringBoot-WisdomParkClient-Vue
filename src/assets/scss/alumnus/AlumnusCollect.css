@@ -8,23 +8,16 @@
 .header {
   background-color: #f8f8f8;
   height: 55px;
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   left: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .header .header-title {
   width: 90%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 
 .header .header-title img {
@@ -62,8 +55,6 @@
 }
 
 .collect-card .row .left .left-bottom {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   margin-top: 20px;
 }
@@ -78,6 +69,22 @@
   margin-left: 15px;
   margin-top: 5px;
   font-size: 14px;
+}
+
+.collect-card .row .left .left-bottom .btn {
+  position: absolute;
+  left: 190px;
+  background-color: #5888f0;
+  width: 45px;
+  height: 25px;
+  border-radius: 10px;
+}
+
+.collect-card .row .left .left-bottom .btn p {
+  position: relative;
+  left: -6px;
+  top: -2px;
+  color: white;
 }
 
 .collect-card .row .right {
@@ -105,4 +112,10 @@
   height: 2px;
   background: #e4e4e4;
 }
-/*# sourceMappingURL=AlumnusCollect.css.map */
+
+.del-card {
+  width: 200px;
+  height: 100px;
+  border: 1px black solid;
+  background-color: white;
+}

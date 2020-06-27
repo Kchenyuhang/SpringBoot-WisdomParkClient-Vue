@@ -3,10 +3,7 @@
     <div class="title">
       <p>智慧校园</p>
     </div>
-    <div
-      class="login cc-col-center"
-      v-if="isShow == 1"
-    >
+    <div class="login cc-col-center" v-if="isShow == 1">
       <div
         class="alsrtInfo"
         :style="{ display: displayStsates }"
@@ -52,73 +49,50 @@
           <p>{{ aletMsg }}</p>
         </div>
       </div>
-      <div
-        class="cc-df"
-        style="margin-left:8%"
-      >
+      <div class="cc-df" style="margin-left:8%">
         <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_yanzhengma.png"
           alt="输入验证码图表"
           class="size"
         />
-        <input
-          type="text"
-          maxlength="6"
-          placeholder="请输入验证码"
-          v-model="phoneForm.code"
-        />
-        <div
-          class="btn-sms"
-          @click="sendMessage()"
-        >
+        <input type="text" maxlength="6" placeholder="请输入验证码" v-model="phoneForm.code" />
+        <div class="btn-sms" @click="sendMessage()">
           <p>获取验证码</p>
         </div>
       </div>
       <hr class="line" />
       <div class="cc-df">
         <div>
-          <p
-            class="fontSize"
-            @click="tabIsShow(2)"
-          >账号密码登录</p>
+          <p class="fontSize" @click="tabIsShow(2)">账号密码登录</p>
         </div>
         <div class="cc-mllleft">
-          <p
-            class="fontSize"
-            @click="tabIsShow(3)"
-          >忘记密码</p>
+          <p class="fontSize" @click="tabIsShow(3)">忘记密码</p>
         </div>
       </div>
       <div class="qq">
         <img
-          src="http://ww1.sinaimg.cn/large/0064QvQTly1gfxcqt9219j30jg0jgjsa.jpg"
-          alt=""
+          src="https://images.weserv.nl/?url=http://ww1.sinaimg.cn/large/0064QvQTly1gfxcqt9219j30jg0jgjsa.jpg"
+          alt
           @click="qq"
         />
       </div>
       <div class="weixin">
         <img
-          src="http://ww1.sinaimg.cn/large/0064QvQTly1gfxelshmwwj30jg0jgt9a.jpg"
-          alt=""
+          src="https://images.weserv.nl/?url=http://ww1.sinaimg.cn/large/0064QvQTly1gfxelshmwwj30jg0jgt9a.jpg"
+          alt
         />
       </div>
       <div class="weibo">
         <img
-          src="http://ww1.sinaimg.cn/large/0064QvQTly1gfxfvtsiblj30jh0jggm6.jpg"
-          alt=""
+          src="https://images.weserv.nl/?url=http://ww1.sinaimg.cn/large/0064QvQTly1gfxfvtsiblj30jh0jggm6.jpg"
+          alt
         />
       </div>
-      <div
-        class="login-btn"
-        @click="messageSignIn()"
-      >
+      <div class="login-btn" @click="messageSignIn()">
         <p>确认登录</p>
       </div>
     </div>
-    <div
-      class="login cc-col-center"
-      v-if="isShow == 2"
-    >
+    <div class="login cc-col-center" v-if="isShow == 2">
       <div
         class="alsrtInfo"
         :style="{ display: displayStsates }"
@@ -145,11 +119,7 @@
           alt="输入学号号图表"
           class="size"
         />
-        <input
-          type="number"
-          placeholder="请输入学号"
-          v-model="phoneForm.studentId"
-        />
+        <input type="number" placeholder="请输入学号" v-model="phoneForm.studentId" />
       </div>
       <hr class="line" />
       <div
@@ -168,58 +138,32 @@
           alt="输入mima 图表"
           class="size"
         />
-        <input
-          type="password"
-          placeholder="请输入密码"
-          v-model="phoneForm.passWord"
-        />
+        <input type="password" placeholder="请输入密码" v-model="phoneForm.passWord" />
       </div>
 
       <hr class="line" />
       <div class="cc-df">
         <div>
-          <p
-            class="fontSize"
-            @click="tabIsShow(1)"
-          >手机快捷登录</p>
+          <p class="fontSize" @click="tabIsShow(1)">手机快捷登录</p>
         </div>
         <div class="cc-mllleft">
-          <p
-            class="fontSize"
-            @click="tabIsShow(3)"
-          >忘记密码</p>
+          <p class="fontSize" @click="tabIsShow(3)">忘记密码</p>
         </div>
       </div>
       <div class="qq">
-        <img
-          src="http://ww1.sinaimg.cn/large/0064QvQTly1gfxcqt9219j30jg0jgjsa.jpg"
-          alt=""
-          @click="qq"
-        />
+        <img src="http://ww1.sinaimg.cn/large/0064QvQTly1gfxcqt9219j30jg0jgjsa.jpg" alt @click="qq" />
       </div>
       <div class="weixin">
-        <img
-          src="http://ww1.sinaimg.cn/large/0064QvQTly1gfxelshmwwj30jg0jgt9a.jpg"
-          alt=""
-        />
+        <img src="http://ww1.sinaimg.cn/large/0064QvQTly1gfxelshmwwj30jg0jgt9a.jpg" alt />
       </div>
       <div class="weibo">
-        <img
-          src="http://ww1.sinaimg.cn/large/0064QvQTly1gfxfvtsiblj30jh0jggm6.jpg"
-          alt=""
-        />
+        <img src="http://ww1.sinaimg.cn/large/0064QvQTly1gfxfvtsiblj30jh0jggm6.jpg" alt />
       </div>
-      <div
-        class="login-btn"
-        @click="passwordSignIn()"
-      >
+      <div class="login-btn" @click="passwordSignIn()">
         <p>确认登录</p>
       </div>
     </div>
-    <div
-      class="login cc-col-center"
-      v-if="isShow == 3"
-    >
+    <div class="login cc-col-center" v-if="isShow == 3">
       <div
         class="alsrtInfo"
         :style="{ display: displayStsates }"
@@ -265,25 +209,14 @@
           <p>{{ aletMsg }}</p>
         </div>
       </div>
-      <div
-        class="cc-df"
-        style="margin-left:8%"
-      >
+      <div class="cc-df" style="margin-left:8%">
         <img
           src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/icon_yanzhengma.png"
           alt="输入验证码图表"
           class="size"
         />
-        <input
-          type="text"
-          maxlength="6"
-          placeholder="请输入验证码"
-          v-model="phoneForm.code"
-        />
-        <div
-          class="btn-sms"
-          @click="sendMessage()"
-        >
+        <input type="text" maxlength="6" placeholder="请输入验证码" v-model="phoneForm.code" />
+        <div class="btn-sms" @click="sendMessage()">
           <p>获取验证码</p>
         </div>
       </div>
@@ -304,31 +237,18 @@
           alt="输入密码图表"
           class="size"
         />
-        <input
-          type="password"
-          placeholder="请输入密码"
-          v-model="phoneForm.passWord"
-        />
+        <input type="password" placeholder="请输入密码" v-model="phoneForm.passWord" />
       </div>
       <hr class="line" />
       <div class="cc-df">
         <div>
-          <p
-            class="fontSize"
-            @click="tabIsShow(2)"
-          >账号密码登录</p>
+          <p class="fontSize" @click="tabIsShow(2)">账号密码登录</p>
         </div>
         <div class="cc-mllleft">
-          <p
-            class="fontSize"
-            @click="tabIsShow(1)"
-          >手机验证登录</p>
+          <p class="fontSize" @click="tabIsShow(1)">手机验证登录</p>
         </div>
       </div>
-      <div
-        class="login-btn"
-        @click="forgetSignIn()"
-      >
+      <div class="login-btn" @click="forgetSignIn()">
         <p>确认登录</p>
       </div>
     </div>

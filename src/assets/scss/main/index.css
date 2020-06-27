@@ -63,8 +63,6 @@
 }
 
 .lateral-sliding {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   overflow-y: hidden;
   overflow-x: scroll;
@@ -72,17 +70,17 @@
 
 .fontSizeTitle {
   font-size: 15px;
-  color: #a2c3ff;
+  color: whitesmoke;
 }
 
 .fontSizebody {
   font-size: 1px;
-  color: #a2c3ff;
+  color: whitesmoke;
 }
 
 .fontSizebody1 {
   font-size: 1px;
-  color: #a2c3ff;
+  color: whitesmoke;
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -126,8 +124,7 @@
   background-color: white;
   position: absolute;
   top: 320px;
-  -webkit-box-shadow: 0 5px 20px rgba(41, 207, 146, 0.692);
-          box-shadow: 0 5px 20px rgba(41, 207, 146, 0.692);
+  box-shadow: 0 5px 20px rgba(41, 207, 146, 0.692);
 }
 
 .more .more-row {
@@ -145,4 +142,3 @@
   width: 15px;
   height: 15px;
 }
-/*# sourceMappingURL=index.css.map */

@@ -76,12 +76,12 @@ export default {
     };
   },
   components: {},
-  created() {
+  async created() {
     this.path = this.$route.fullPath;
     this.path = this.path.substring(this.path.indexOf("total_amount") + 13);
     console.log((this.path = this.path.substring(0, this.path.indexOf("."))));
-    this.aplay();
-    this.CurrentCredit();
+    await this.aplay();
+    await this.CurrentCredit();
   },
   mounted() {},
   methods: {

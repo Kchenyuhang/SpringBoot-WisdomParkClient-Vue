@@ -78,7 +78,7 @@
           <p class="nick">班级</p>
         </div>
         <div>
-          <p class="nickname">{{ user.clazzId }}</p>
+          <p class="nickname">软件1851</p>
         </div>
       </div>
       <hr class="line" />

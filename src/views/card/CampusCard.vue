@@ -154,7 +154,7 @@ export default {
       }
       localStorage.setItem("app", 1);
       this.$store.commit("setapp", 1);
-      window.location.href = 'http://localhost/alipay/toPay?amount='+ this.money +'&jobNumber='+ this.user.jobNumber +'&rechargeType=%E6%94%AF%E4%BB%98%E5%AE%9D&regexId=3';
+      window.location.href = 'http://118.31.21.206/alipay/toPay?amount='+ this.money +'&jobNumber='+ this.user.jobNumber +'&rechargeType=%E6%94%AF%E4%BB%98%E5%AE%9D&regexId=3';
     }
   },
   computed: {}

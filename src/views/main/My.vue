@@ -174,6 +174,7 @@ export default {
     avatarClick() {
       this.$refs.file.click();
     },
+    
     async updateAvatar() {
       this.url = this.GLOBAL.baseUrl + "/user/update/info";
       console.log(this.user.avatar);

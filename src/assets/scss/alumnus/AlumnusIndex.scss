@@ -4,6 +4,7 @@
   width: 100%;
   margin-bottom: 60px;
 }
+
 .header {
   background-color: #f8f8f8;
   height: 55px;
@@ -11,38 +12,45 @@
   top: 0;
   left: 0;
   display: flex;
+
   .header-title {
     width: 95%;
     display: flex;
     align-items: center;
+
     img {
       height: 16px;
       width: 16px;
       margin-top: 5px;
       margin-left: 20px;
     }
+
     p {
       font-size: 16px;
       margin-left: 15px;
       margin: auto;
       color: black;
     }
-    .tuijian{
-        height: 25px;
-        width: 25px;
+
+    .tuijian {
+      height: 25px;
+      width: 25px;
     }
   }
 }
+
 .avatar-card {
   background-color: white;
   height: 110px;
   width: 90%;
   margin: auto;
+
   .avatar-card-left {
     width: 70px;
     height: 70px;
     border-radius: 50px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.692);
+
     img {
       width: 70px;
       height: 70px;
@@ -50,37 +58,45 @@
     }
   }
 }
+
 .function-bar {
   background-color: white;
   height: 55px;
   display: flex;
   box-shadow: 0 4px 8px rgba(200, 200, 200, 0.6);
+
   .function {
     height: 100%;
     display: flex;
+
     img {
       height: 25px;
       width: 25px;
     }
+
     p {
       margin-left: 5px;
     }
   }
 }
+
 .line {
   width: 100%;
   border: none;
   height: 1px;
   background: #f8f8f8;
 }
+
 .dongtai-card {
   width: 90%;
   margin: auto;
   display: flex;
   margin-bottom: 2px;
   padding-top: 20px;
+
   .dongtai-avatar {
     width: 20%;
+
     img {
       width: 50px;
       height: 50px;
@@ -88,24 +104,30 @@
       margin-right: 10px;
     }
   }
+
   .dongtai-content {
     width: 80%;
     height: 100%;
+
     .row {
       height: 20px;
       display: flex;
+
       .name {
         p {
           font-size: 15px;
           color: #1f5081;
         }
       }
+
       .fenge {
         width: 20px;
+
         p {
           color: #b2b0be;
         }
       }
+
       .time {
         p {
           margin-top: 3px;
@@ -113,33 +135,39 @@
           color: #b2b0be;
         }
       }
+
       .gengduo {
         img {
           width: 20px;
           height: 25px;
         }
       }
-      .gengduo_box{
+
+      .gengduo_box {
         position: absolute;
         right: 42px;
         margin-top: 45px;
         background-color: white;
-        box-shadow: 0 2px 6px rgba(0,0,0, 0.45);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
         width: 60px;
         height: 100px;
-        .fenxiang{
+
+        .fenxiang {
           width: 100%;
           height: 30px;
         }
-        .shoucang{
+
+        .shoucang {
           width: 100%;
           height: 30px;
         }
-        .jubao{
+
+        .jubao {
           width: 100%;
           height: 30px;
         }
-        .line{
+
+        .line {
           width: 60%;
           height: 1px;
           border: none;
@@ -147,44 +175,54 @@
         }
       }
     }
+
     .article {
       width: 95%;
       height: 50px;
       margin-top: 10px;
+
       p {
         font-size: 17px;
       }
     }
+
     .image {
       margin-top: 10px;
       width: 95%;
     }
+
     .row2 {
       width: 100%;
       height: 30px;
       margin-top: 20px;
+
       .comment {
         width: 70px;
         height: 100%;
         border-radius: 30px;
         border: 1px solid #e0e0e0;
         display: flex;
+
         img {
           width: 25px;
           height: 25px;
         }
+
         p {
           font-size: 13px;
           color: #9091ad;
         }
       }
+
       .like {
         width: 80px;
         height: 100%;
+
         img {
           width: 25px;
           height: 25px;
         }
+
         p {
           font-size: 15px;
           font-weight: 550;
@@ -193,80 +231,96 @@
         }
       }
     }
-    .comment-row{
+
+    .comment-row {
       margin-top: 5px;
       width: 100%;
       display: flex;
       margin-bottom: 10px;
-      .dis{
+
+      .dis {
         display: flex;
-        img{
+
+        img {
           width: 35px;
-            height: 35px;
-            border-radius: 20px;
+          height: 35px;
+          border-radius: 20px;
         }
-        .comment-content{
+
+        .comment-content {
           margin-left: 10px;
-          .row3{
+
+          .row3 {
             display: flex;
-            .nickname{
+
+            .nickname {
               font-size: 12px;
               color: #9e9090;
             }
-            .dian{
+
+            .dian {
               font-size: 12px;
               color: #9e9090;
               margin-left: 5px;
               margin-right: 5px;
             }
-            .time{
+
+            .time {
               font-size: 12px;
               color: #9e9090;
             }
           }
-          .row4{
+
+          .row4 {
             margin-top: 5px;
-            p{
+
+            p {
               font-size: 12px;
               color: #000000;
             }
           }
-          
+
         }
       }
-      
-      .zan{
-        img{
+
+      .zan {
+        img {
           width: 15px;
           height: 15px;
         }
       }
     }
-    .inp{
+
+    .inp {
       width: 100%;
       margin-left: -10px;
       display: flex;
-      .input-btn{
+
+      .input-btn {
         width: 50px;
         height: 30px;
         background-color: #0880cc;
-        p{
+
+        p {
           color: white;
           font-weight: 550;
           font-size: 14px;
         }
-        
+
       }
     }
   }
 }
+
 .avatar-2 {
   width: 100%;
 }
-.fontSize{
+
+.fontSize {
   font-size: 13px;
 }
-.pinglun-input{
+
+.pinglun-input {
   width: 70%;
   height: 30px;
   outline-style: none;
@@ -275,4 +329,23 @@
   border-radius: 5px;
   margin-left: 3%;
   background-color: #e6e6e6;
+}
+
+.del-card {
+  position: fixed;
+  top: 50%;
+  left: 25%;
+  width: 200px;
+  height: 100px;
+  border: 1px black solid;
+  background-color: white;
+
+  .cc-df {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 30px 10px 30px;
+  }
 }

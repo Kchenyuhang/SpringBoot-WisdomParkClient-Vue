@@ -2,7 +2,7 @@
   <div>
     <div class="header">
       <div class="header-title">
-        <router-link to="/layout">
+        <router-link to="/alumnusindex">
           <img src="https://zhxy-vue.oss-cn-hangzhou.aliyuncs.com/icon/position/zuojiantou.png" alt />
         </router-link>
         <p>推荐好友</p>
@@ -78,7 +78,7 @@ export default {
       activeIndex: 0, //默认下标
       friends: [],
       avatars: [],
-      nicknames:[]
+      nicknames: []
     };
   },
   components: {},
