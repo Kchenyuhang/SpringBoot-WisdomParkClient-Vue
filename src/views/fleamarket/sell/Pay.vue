@@ -61,7 +61,7 @@ export default {
       this.url1 = this.GLOBAL.baseUrl + "/flea/goods/delete";
       let rand = Math.ceil(Math.random() * 100000000);
       this.data = {
-        fleaGoodsPkFleaGoodsId: this.page[0],
+        fleaGoodsPkFleaGoodsId: this.page,
         fleaUserBuyerPkFleaUserId: this.user.pkFleaUserId,
         fleaUserSellerPkFleaUserId: this.seller[0].pkFleaUserId,
         pkFleaOrderId: rand
@@ -69,7 +69,7 @@ export default {
       console.log(this.data);
       this.result = (await API.init(this.url, this.data, "post")).data;
       this.goodData = {
-        pkFleaGoodsId: this.page[0]
+        pkFleaGoodsId: this.page
       };
       this.return = (await API.init(this.url1, this.goodData, "post")).data;
       if (this.result == "OK") {
@@ -80,15 +80,9 @@ export default {
     },
     async getSeller() {
       this.url = this.GLOBAL.baseUrl + "/flea/goods/id";
-      if (this.count <= 0) {
-        this.count == 0;
-        this.data = {
-          pkFleaGoodsId: this.page
-        };
-      } else
-        this.data = {
-          pkFleaGoodsId: this.page
-        };
+      this.data = {
+        pkFleaGoodsId: this.page
+      };
       this.seller = (await API.init(this.url, this.data, "post")).data;
       // console.log(this.seller);
     },
