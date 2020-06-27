@@ -14,8 +14,15 @@
     <!-- 图片上传区域 -->
     <div class="upload">
       <div class="hengzhe">
-        <div v-for="(item, index) in img" :key="index">
-          <img :src="item" alt="" class="suolue" />
+        <div
+          v-for="(item, index) in img"
+          :key="index"
+        >
+          <img
+            :src="item"
+            alt=""
+            class="suolue"
+          />
         </div>
       </div>
       <img
@@ -51,7 +58,7 @@
             onkeyup="this.value=this.value.replace(/[^\r\n0-9\. ]/g,'');"
             v-model="data.goodsPrice"
           />
-        </div>
+          </div>
         <!-- <div>
           <span class="tips">类型:</span>
           <textarea
@@ -172,10 +179,8 @@ export default {
         imageUrl: this.data.goodsImgUrl
       };
       console.log(data);
+      this.$router.push("/reward");
       this.type = (await API.init(this.url, data, "post")).data.types;
-      this.$router.push({
-        path: `/personal/${this.data.pkFleaUserId}`
-      });
     },
     uploadAvatar(event) {
       const OSS = require("ali-oss");
