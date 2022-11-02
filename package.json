@@ -40,7 +40,7 @@
     "prettier": "^1.19.1",
     "sass": "^1.26.3",
     "sass-loader": "^8.0.2",
-    "video.js": "^7.7.6",
+    "video.js": "^7.20.3",
     "vue-template-compiler": "^2.6.11"
   }
 }
